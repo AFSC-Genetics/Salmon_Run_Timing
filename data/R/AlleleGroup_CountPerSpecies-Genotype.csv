@@ -1,0 +1,28 @@
+"Species","Gene","Runtime","Genotype","n"
+"Pink Even","LRRC9","Early","EE",60
+"Pink Even","LRRC9","Late","EE",5
+"Pink Even","LRRC9","Early","EL",12
+"Pink Even","LRRC9","Late","EL",29
+"Pink Even","LRRC9","Early","LL",2
+"Pink Even","LRRC9","Late","LL",45
+"Pink Odd","LRRC9","Early","LL",2
+"Pink Odd","LRRC9","Early","EL",9
+"Pink Odd","LRRC9","Early","EE",7
+"Pink Odd","LRRC9","Late","LL",18
+"Pink Odd","LRRC9","Late","EL",20
+"Sockeye","LRRC9","Early Stream","EE",18
+"Sockeye","LRRC9","Early Stream","EL",8
+"Sockeye","LRRC9","Late Beach","EL",2
+"Sockeye","LRRC9","Early Stream","LL",1
+"Sockeye","LRRC9","Late Beach","LL",25
+"Chum","LRRC9","Early","EE",27
+"Chum","LRRC9","Early","EL",14
+"Chum","LRRC9","Early","LL",6
+"Chum","LRRC9","Late","LL",49
+"Chum","ESRB","Early","EE",39
+"Chum","ESRB","Early","EL",8
+"Chum","ESRB","Late","EL",2
+"Chum","ESRB","Late","LL",47
+"Coho","ESRB","Early","EE",45
+"Coho","ESRB","Late","EL",1
+"Coho","ESRB","Late","LL",37

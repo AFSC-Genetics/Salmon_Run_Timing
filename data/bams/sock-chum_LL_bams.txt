@@ -1,0 +1,14 @@
+/home/nhowe/runtiming/sockeye/bamtools/sock-chum_TEAL5_sorted_dedup_clipped.bam
+/home/nhowe/runtiming/sockeye/bamtools/sock-chum_ABLG14772_sorted_dedup_clipped.bam
+/home/nhowe/runtiming/sockeye/bamtools/sock-chum_ABLG14775_sorted_dedup_clipped.bam
+/home/nhowe/runtiming/sockeye/bamtools/sock-chum_ABLG14779_sorted_dedup_clipped.bam
+/home/nhowe/runtiming/sockeye/bamtools/sock-chum_ABLG14780_sorted_dedup_clipped.bam
+/home/nhowe/runtiming/sockeye/bamtools/sock-chum_ABLG14782_sorted_dedup_clipped.bam
+/home/nhowe/runtiming/sockeye/bamtools/sock-chum_ABLG14784_sorted_dedup_clipped.bam
+/home/nhowe/runtiming/sockeye/bamtools/sock-chum_ABLG14790_sorted_dedup_clipped.bam
+/home/nhowe/runtiming/sockeye/bamtools/sock-chum_ABLG14798_sorted_dedup_clipped.bam
+/home/nhowe/runtiming/sockeye/bamtools/sock-chum_ABLG14799_sorted_dedup_clipped.bam
+/home/nhowe/runtiming/sockeye/bamtools/sock-chum_ABLG14801_sorted_dedup_clipped.bam
+/home/nhowe/runtiming/sockeye/bamtools/sock-chum_ABLG14803_sorted_dedup_clipped.bam
+/home/nhowe/runtiming/sockeye/bamtools/sock-chum_ABLG14804_sorted_dedup_clipped.bam
+/home/nhowe/runtiming/sockeye/bamtools/sock-chum_ABLG14810_sorted_dedup_clipped.bam

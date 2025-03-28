@@ -1,0 +1,18 @@
+chrName,beg.pos,end.pos,gene,geneName,geneAbbr,y.min,y.max,color
+NC_068449.1,24.827174,24.832417,LOC118362573,homeobox protein SIX6,six6,0.03,0.035,#666666
+NC_068449.1,24.853479,24.857698,LOC118362574,homeobox protein six1b,six1b,0.03,0.035,paleturquoise3
+NC_068449.1,24.863549,24.872105,LOC118362575,homeobox protein SIX4-like,six4l,0.03,0.035,skyblue1
+NC_068449.1,25.076136,25.08343,snapc1b,small nuclear RNA activating complex- polypeptide 1b,snapc1b,0.03,0.035,darkorchid4
+NC_068449.1,25.084421,25.108049,syt16,synaptotagmin XVI,syt16,0.03,0.035,darkorange
+NC_068449.1,25.164403,25.198422,ppp2r5eb,protein phosphatase 2- regulatory subunit B'- epsilon isoform b,ppp2r5eb,0.03,0.035,#7F27EE
+NC_068449.1,25.203881,25.30326,kcnh5b,potassium voltage-gated channel- subfamily H (eag-related)- member 5b,kcnh5b,0.03,0.035,orangered3
+NC_068449.1,25.30986,25.452074,syne2b,spectrin repeat containing- nuclear envelope 2b,syne2b,0.07,0.075,#E9E29D
+NC_068449.1,25.451985,25.483494,LOC118362590,estrogen receptor beta,esrb,0.03,0.035,dodgerblue2
+NC_068449.1,25.554129,25.581471,LOC118362592,protein jagged-2-like,jag2l,0.03,0.035,#A0869D
+NC_068449.1,25.774018,25.792058,bag5,BCL2 associated athanogene 5,bag5,0.03,0.035,#6AF0C5
+NC_068449.1,25.814236,25.825247,ckba,creatine kinase- brain a,ckba,0.03,0.035,olivedrab
+NC_068449.1,25.887178,25.897962,tnfaip2b,tumor necrosis factor- alpha-induced protein 2b,tnfaip2b,0.03,0.035,#E48796
+NC_068449.1,26.083794,26.087707,crls1,cardiolipin synthase 1,crls1,0.03,0.035,#D9D9F3
+NC_068449.1,26.087839,26.09611,mcm8,minichromosome maintenance 8 homologous recombination repair factor,mcm8,0.03,0.035,#8E6B23
+NC_068449.1,26.151471,26.158008,enpp4,ectonucleotide pyrophosphatase/phosphodiesterase 4,enpp4,0.03,0.035,#70EC49
+NC_068449.1,26.381293,26.40699,metap1,methionyl aminopeptidase 1,metap1,0.03,0.035,#75E6E5
