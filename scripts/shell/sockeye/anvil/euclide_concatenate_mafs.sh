@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#SBATCH --cpus-per-task=10
+#SBATCH --job-name=euclide_concat-mafs
+#SBATCH --mail-type=FAIL
+#SBATCH --mail-user=natasha.howe@noaa.gov
+#SBATCH --output=/home/nhowe/runtiming/anvil/job_outfiles/euclide_concatenate-mafs_%A.out
+
+module unload bio/angsd/0.933
+module load bio/angsd/0.933
+
+for i in /home/nhowe/runtiming/anvil/gls/euclide_NC_068421.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068422.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068423.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068424.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068425.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068426.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068427.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068428.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068429.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068430.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068431.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068432.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068433.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068434.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068435.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068436.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068437.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068438.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068439.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068440.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068441.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068442.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068443.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068444.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068445.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068446.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068447.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068448.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068449.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068450.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068451.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068452.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068453.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068454.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068455.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068456.1_minInd0.3.mafs.gz /home/nhowe/runtiming/anvil/gls/euclide_NC_068457.1_minInd0.3.mafs.gz
+do zcat $i | tail -n +2 -q >> /home/nhowe/runtiming/anvil/gls/euclide_wholegenome_minInd0.3.mafs; done
+cut -f 1,2,3,4 /home/nhowe/runtiming/anvil/gls/euclide_wholegenome_minInd0.3.mafs > /home/nhowe/runtiming/anvil/gls/euclide_wholegenome_minInd0.3.sites
+gzip /home/nhowe/runtiming/anvil/gls/euclide_wholegenome_minInd0.3.mafs
+
+angsd sites index /home/nhowe/runtiming/anvil/gls/euclide_wholegenome_minInd0.3.sites

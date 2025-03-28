@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#SBATCH --job-name=fqc_array_sock-chum
+#SBATCH --cpus-per-task=1
+#SBATCH --output=/home/nhowe/runtiming/sockeye/job_outfiles/sock-chum-trim_fastqc_%A-%a.out
+#SBATCH --error=/home/nhowe/runtiming/sockeye/job_outfiles/sock-chum-trim_fastqc_%A-%a.err
+#SBATCH --mail-type=FAIL,END
+#SBATCH --mail-user=natasha.howe@noaa.gov
+#SBATCH --time=0-03:00:00
+#SBATCH --array=1-246%48
+
+module unload bio/fastqc/0.11.9
+module load bio/fastqc/0.11.9
+
+JOBS_FILE=/home/nhowe/runtiming/sockeye/scripts/sock-chum-trim_fqcARRAY_input.txt
+IDS=$(cat ${JOBS_FILE})
+
+for sample_line in ${IDS}
+do
+	job_index=$(echo ${sample_line} | awk -F ":" '{print $1}')
+	fq=$(echo ${sample_line} | awk -F ":" '{print $2}')
+	if [[ ${SLURM_ARRAY_TASK_ID} == ${job_index} ]]; then
+		break
+	fi
+done
+
+fastqc ${fq} -o /home/nhowe/runtiming/sockeye/fastqc/trimmed/
