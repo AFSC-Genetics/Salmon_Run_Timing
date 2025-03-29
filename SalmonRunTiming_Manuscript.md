@@ -1,18 +1,14 @@
 ---
 title: "Runtiming - Four Species Data Compilation"
 author: "Natasha Howe"
-date: "`r format(Sys.time(), '%B %d, %Y')`"
+date: "March 28, 2025"
 output: 
   html_document:
     keep_md: true
     wrap: 72
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-#load libraries
-library(tidyverse)
-```
+
 
 The fourspecies data compiled the separate R project data for Auke Creek pink, Wood River sockeye, Yukon River chum, and Skilak River coho.
 
@@ -24,7 +20,8 @@ Investigating run timing differentiation between early and late returning salmon
 
 Sample collection data was compiled from the raw data in each four species manually with three columns: sampleID, Runtime, and Species
 
-```{r MetaData, eval=F, echo=T}
+
+``` r
 # All samples and sequencing information can be found at:
 read.csv("./data/raw/fourspecies_runtiming_metadata.csv")
 ```
@@ -53,7 +50,8 @@ We first downloaded the reference genome onto our Slurm Manager so that we can a
 
 We listed chromosomes by using a few commands in the terminal.
 
-```{bash Chromosomes, eval=F, echo=T}
+
+``` bash
 grep '^>NC' ./home/nhowe/reference_genomes/chum/GCF_023373465.1_Oket_V2_genomic.fna |  awk '{print $1}' | sed 's/>//' > chromosomes_all.txt
 ```
 
@@ -61,19 +59,22 @@ Chum have 37 chromosomes + 1 mtDNA.
 
 Remove the mitochondrial genome from our list of chromosomes to analyze.
 
-```{r RmMtDNA, eval=F, echo=T}
+
+``` r
 sed '/NC_017838.1/d' chromosomes_all.txt > chromosomes.txt
 ```
 
 Get sizes of chromosomes.
 
-```{bash ChromSize, eval=F, echo=T}
+
+``` bash
  cut -f1,2 GCF_023373465.1_Oket_V2_genomic.fna.fai | grep '^NC' > chrom_sizes.txt
 ```
 
 Two shell scripts index the reference genome and can be run with the sbatch command which will have the SLURM manager schedule them.
 
-```{bash, Step0_bwa_fai, eval=F, echo=T}
+
+``` bash
 sbatch GCF_023373465.1_Oket_V2_genomic_bwa-index_script.sh
 sbatch GCF_023373465.1_Oket_V2_genomic_fai_script.sh
 ```
@@ -90,7 +91,8 @@ This step is a quality control of the sequencing data (raw fastqs). It runs Fast
 
 Run two shell scripts [PREFIX]-raw_fastqcARRAY.sh and [PREFIX]-raw_multiqcSLURM.sh in succession.
 
-```{bash, Step1_multiqc, eval=F, echo = T}
+
+``` bash
 sbatch [PREFIX]-raw_fastqcARRAY.sh
 sbatch [PREFIX]-raw_multiqcSLURM.sh
 ```
@@ -99,7 +101,8 @@ sbatch [PREFIX]-raw_multiqcSLURM.sh
 
 Trim adapters from raw fastqs with the program TRIMMOMATIC [@Bolger2014] and quality-check the trimmed fastqs with multiQC [@Ewels2016]. Run three shell scripts [PREFIX]\_trimARRAY.sh, [PREFIX]-trim_fastqcARRAY.sh, and [PREFIX]-trim_multiqcSLURM.sh which should all run in succession.
 
-```{bash, Step2_Trim, eval=F, echo=T}
+
+``` bash
 # trim adapters
 sbatch [PREFIX]_trimARRAY.sh
 
@@ -114,7 +117,8 @@ Download the multiQC.html file and evaluate the data quality before proceeding.
 
 Align reads to the reference genome that we downloaded with BWA and runs the aligned reads through SAMTOOLS [@Li2009]: 'fixmate' cleans up the read pairings and flags from BWA; a pair of 'view' statements converts the .sam file to a .bam file and filters the .bam file for non-unique and poor quality mappings; and 'sort' sorts the read pairings by coordinate (instead of read name). After a .bam file is built, duplicate reads are removed and (if the data is PE) overlapping reads are clipped to generate the final .bam.
 
-```{bash, Step3_Align, eval=F, echo=T}
+
+``` bash
 # align to genome
 sbatch [PREFIX]_alignARRAY.sh
 
@@ -124,7 +128,8 @@ sbatch [PREFIX]_depthsARRAY.sh
 
 There is an output file [PREFIX]\_depths.csv which we can import and run through the downsampling script to see if there is uneven distribution of depths across early and late individuals. The depth of these samples were quite low, and we didn't even use a cutoff because the two individuals that were less than 0.5x were in the 0.4s.
 
-```{R, plotDepths, eval=F, echo=T}
+
+``` r
 ./species-specific/downsampling_[PREFIX].R
 ```
 
@@ -132,13 +137,15 @@ There is an output file [PREFIX]\_depths.csv which we can import and run through
 
 Calculate the total number of mapped reads from the bamfiles with samtools.
 
-```{bash, mappedReads, eval=F, echo=T}
+
+``` bash
 sbatch [PREFIX]_mapped_reads.sh
 ```
 
 Now calculate the average and standard deviation for the mapped reads after downloading.
 
-```{r, mapped_reads, eval=F, echo=T}
+
+``` r
 mean(read.csv("./results/depth/[PREFIX]_mapped_reads.csv", header = F)$V1)
 sd(read.csv("./results/depth/[PREFIX]_mapped_reads.csv", header = F)$V1)
 ```
@@ -147,7 +154,8 @@ sd(read.csv("./results/depth/[PREFIX]_mapped_reads.csv", header = F)$V1)
 
 Calculates genotype likelihoods for putatively polymorphic sites (SNPs). This is done on a chrom-by-chrom level using an array. These script uses [PREFIX]\_angsdARRAY_input.txt (array file with chromosomes) and a list of the bam files to analyze ([PREFIX]\_filtered_bamslist.txt).
 
-```{bash, Step4_LikelihoodCalc, eval=F, echo=T}
+
+``` bash
 sbatch [PREFIX]_minInd0.3_[minDepthHalf_]glsARRAY.sh 
 ```
 
@@ -168,7 +176,8 @@ Filters slightly differed depending on the species alignment and average coverag
 
 The genotype likelihood files from above are split by chromosome. Create whole genome beagle and maf files by concatenating the chromosome beagle and maf files. Also create a *sites* file that will be used as input for Fst calculations under the -sites flag.
 
-```{bash, Step5-collate, eval=F, echo=T}
+
+``` bash
 sbatch [PREFIX]_concat_minInd0.3_minDepthHalf_mafs.sh
 sbatch [PREFIX]_concat_minInd0.3_minDepthHalf_beagles.sh
 ```
@@ -181,7 +190,8 @@ Move file to Slurm Manager scripts folder. The python script creates a bamlist f
 
 *setminDepth* and set*maxDepth* are included, but adjusted to the sample size of the subset group.
 
-```{bash, fst, eval=F, echo=T}
+
+``` bash
 # for chum it is summer-fall instead of early-late
 # for euclide, it is creek-beach instead of early-late 
 sbatch [PREFIX]_fst_early-late_minInd0.3_minDepthHalf_ARRAY.sh
@@ -199,7 +209,8 @@ Multi-species whole genome Fst scan plot with esrb and lrrc9 highlighted. These 
 
 4.  Coho: Early v. Late
 
-```{r WG_fst, eval=F, echo=T}
+
+``` r
 Figure1_Fst_WholeGenomeManhattan_FourSpp.R
 ```
 
@@ -209,13 +220,15 @@ The two other comparisons were included as a supplementary figure.
 
 6.  Sockeye: Early Creek v. Late Creek
 
-```{r WG_fst_additional, eval=F, echo=T}
+
+``` r
 FigureS2_Fst_WholeGenomeManhattan_OddPink-Sockeye.R
 ```
 
 The two highlighted regions of divergence that were shared across 2+ species were *lrrc9* and *esrb*. They are in the same \~850 kb duplicated region across chromosomes 29 and 35. We plotted the genes in this region to better visualize the duplication and the surrounding regions. To do so, we downloaded the gff file from the reference genome on NCBI. For the zoom in plot, we made the values on chr35 negative to avoid plotting as an inversion.
 
-```{r, WGD_plot, eval=F, echo=T}
+
+``` r
 Figure2_A_WGD_Illustration.R
 ```
 
@@ -229,7 +242,8 @@ First, NCBI sequences were taken for lrrc9, esrb, and their duplicated variants 
 
 Consensus trees were plotted for lrrc9 and esrb using the code below.
 
-```{r, consensus_tree_plot, eval=F, echo=T}
+
+``` r
 Figure2_BC_ConsensusTrees.R
 ```
 
@@ -241,34 +255,39 @@ For each species, we ran pcAngsd for the determined shared peak boundary across 
 
 ***esrb***: NC_068449.1:START-STOP
 
-```{bash LocalpcAngsd, eval=F, echo=T}
+
+``` bash
 sbatch lrrc9_pca_minInd0.3.sh
 sbatch esrb_expand_pca_minInd0.3.sh # expand = broader than exact esrb gene boundary
 ```
 
 Plotted each species-gene local PCA independently. In each of the R scripts, a local PCA was plotted, where the PC1 showed variance across run timing phenotypes. Each local PCA was split into three clusters along the PC1 axis. The three groups were defined as the homozygous early (EE), heterozygous (EL), and homozygous late (LL).
 
-```{r local_pca_fst, eval=F, echo=T}
+
+``` r
 ../species_specific/[PREFIX]_lrrc9_pca.R
 ../species_specific/[PREFIX]_esrb_pca.R
 ```
 
 The scripts above also split the individuals by sampleID into these three genotypes. Heterozygous individuals were dropped, and EE and LL individuals were placed into separate bamslists. The bamslists were used to run an allele-based FST, which was run in the scripts below for each species comparison.
 
-```{bash LocalAlleleFst, eval=F, echo=T}
+
+``` bash
 sbatch [PREFIX]_minInd0.3_lrrc9_allele_fst.sh
 sbatch [PREFIX]_minInd0.3_esrb_allele_fst.sh
 ```
 
 These figures are the local PCAs for each species with the cutoff used to delineate the genotypes. Also, the zoomed in FST on the main regions of differentiation using the pca-assigned genotypes. Genes within the regions are also included.
 
-```{r fig3_local_pca_fst, eval=F, echo=T}
+
+``` r
 Figure3_Allele_LocalPCAandFst.R
 ```
 
 Supplemental local PCAs - adding Whitefish to the local lrrc9 sockeye PCA, and Pink Odd lineage local PCA. Whitefish individuals were included in the EE and LL bamslists for the above FST.
 
-```{r supplfig_local_pca, eval=F, echo=T}
+
+``` r
 FigureS3_AlleleLocalPCAs_OddPink-Sockeye.R
 ```
 
@@ -276,7 +295,8 @@ FigureS3_AlleleLocalPCAs_OddPink-Sockeye.R
 
 Barplots of putative allele proportions from PCA assignment of allele groups.
 
-```{r alleleBarplot, eval=F, echo=T}
+
+``` r
 lrrc9_esrb_barplots.R
 ```
 
@@ -304,7 +324,8 @@ Use the IBS matrix in angsd to create phylogenetic trees from our GL data. This 
 
 All of the bam files were already created at this point but are stored in the species-specific run timing folders. Therefore, the species bamslists have to be concatenated.
 
-```{bash bamslist, eval=F, echo=T}
+
+``` bash
 cd runtiming/
 
 cat ./pink/pink-chum_filtered_bamslist.txt ./sockeye/sock-chum_filtered_bamslist.txt ./anvil/euclide_filtered_bamslist.txt ./coho/coho-chum_filtered_bamslist.txt ./chum/chumrun_bamslist.txt > ./fourspecies/fourspp_bamslist_all.txt
@@ -316,7 +337,8 @@ There are a total of 432 individuals.
 
 We used a subset of the total individuals assigned to homozygous early (EE) and late genotypes (LL) to plot a digestible phylogenetic tree for the manuscript (ten per species, 5 per genotype where applicable). Individuals were selected largely based on depth, as determined via the following script:
 
-```{r top10Ind_Selection, eval=F, echo=T}
+
+``` r
 Individual_Subset_for_Figure4_AlleleNJTree.R
 ```
 
@@ -329,13 +351,15 @@ fourspp_esrb_top5_ibs_input.txt
 
 Upload the files to Slurm Manager and use as input bamslists in the following shells.
 
-```{bash top5_tree, eval=F, echo=T}
+
+``` bash
 top5_lrrc9_fourspp_ibs.sh
 top5_esrb_expand_fourspp_ibs.sh
 ```
 
 Plot Trees in R for both lrrc9 and esrb.
 
-```{r, tree_plot, eval=F, echo=T}
+
+``` r
 Figure4_AlleleNJTree.R
 ```

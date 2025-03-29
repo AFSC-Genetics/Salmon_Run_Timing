@@ -16,7 +16,7 @@ library(tidyverse)
 #### BRING IN ALL INDIVIDUAL DATA
 
 # original full data bamlist
-bam_df <- read.table("./sedna_files/bams/fourspp_bamslist_all.txt", header = F)
+bam_df <- read.table("./R/bams/fourspp_bamslist_all.txt", header = F)
 
 # metadata
 pop_df <- read.csv("./data/raw/fourspecies_runtiming_metadata.csv", header = T)
@@ -58,15 +58,8 @@ sample_df <- bam_df %>%
 lrrc9_df <- inner_join(sample_df, lrrc9_al, by = "sampleID") %>%
   mutate(sppAl = paste0(Species,"-",RuntimeAl))
 
-lrrc9_top10 <- lrrc9_df %>%
-  filter(RuntimeAl != "EL") %>%
-  group_by(sppAl) %>%
-  top_n(10, depth)
-
-lrrc9_top10 <- lrrc9_top10[order(lrrc9_top10$sppAl, lrrc9_top10$depth, decreasing = T),]
-
 final_lrrc9_bams <- lrrc9_top10[,"V1"]
-write.table(final_lrrc9_bams, file = "./sedna_files/threespp_lrrc9_top10_ibs_input.txt",
+write.table(final_lrrc9_bams, file = "./R/threespp_lrrc9_top10_ibs_input.txt",
             quote = F, row.names = F, col.names = F)
 
 lrrc9_top5 <- lrrc9_df %>%
@@ -76,39 +69,22 @@ lrrc9_top5 <- lrrc9_df %>%
 
 lrrc9_top5 <- lrrc9_top5[order(lrrc9_top5$sppAl, lrrc9_top5$depth, decreasing = T),]
 
-final_lrrc9_bams <- lrrc9_top5[,"V1"]
-write.table(final_lrrc9_bams, file = "./sedna_files/threespp_lrrc9_top5_ibs_input.txt",
-            quote = F, row.names = F, col.names = F)
 ########## ESRB ##################################
 
 esrb_df <- inner_join(sample_df, esrb_al, by = "sampleID") %>%
   mutate(sppAl = paste0(Species,"-",RuntimeAl))
-
-esrb_top10 <- esrb_df %>%
-  filter(RuntimeAl != "EL") %>%
-  group_by(sppAl) %>%
-  top_n(10, depth)
-
-esrb_top10 <- esrb_top10[order(esrb_top10$sppAl, esrb_top10$depth, decreasing = T),]
-#View(esrb_top10)
 
 final_esrb_bams <- esrb_top10[,"V1"]
 write.table(final_esrb_bams, file = "./sedna_files/twospp_esrb_top10_ibs_input.txt",
             quote = F, row.names = F, col.names = F)
 
 esrb_top5 <- esrb_df %>%
-  #filter(sampleID != "ABLG37023") %>%
-  #filter(sampleID != "ABLG37021") %>%
   filter(RuntimeAl != "EL") %>%
   group_by(sppAl) %>%
   top_n(5, depth)
 
 esrb_top5 <- esrb_top5[order(esrb_top5$sppAl, esrb_top5$depth, decreasing = T),]
 View(esrb_top5)
-
-final_esrb_bams <- esrb_top5[,"V1"]
-write.table(final_esrb_bams, file = "./sedna_files/twospp_esrb_top5_ibs_input.txt",
-            quote = F, row.names = F, col.names = F)
 
 ###########################################################################
 # FOUR SPECIES TOP 5
@@ -118,7 +94,7 @@ write.table(final_esrb_bams, file = "./sedna_files/twospp_esrb_top5_ibs_input.tx
 fourspp_lrrc9 <- rbind(lrrc9_top5,
                        filter(esrb_top5, Species == "Coho"))
 fourspp_lrrc9 <- fourspp_lrrc9[,"V1"]
-write.table(fourspp_lrrc9, file = "./sedna_files/fourspp_lrrc9_top5_ibs_input.txt",
+write.table(fourspp_lrrc9, file = "./R/fourspp_lrrc9_top5_ibs_input.txt",
             quote = F, row.names = F, col.names = F)
 
 
@@ -126,6 +102,6 @@ fourspp_esrb <- rbind(esrb_top5,
                        filter(lrrc9_top5, Species == "Pink"),
                       filter(lrrc9_top5, Species == "Sockeye"))
 fourspp_esrb <- fourspp_esrb[,"V1"]
-write.table(fourspp_esrb, file = "./sedna_files/fourspp_esrb_top5_ibs_input3.txt",
+write.table(fourspp_esrb, file = "./R/fourspp_esrb_top5_ibs_input3.txt",
             quote = F, row.names = F, col.names = F)
 
