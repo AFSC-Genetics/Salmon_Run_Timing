@@ -41,25 +41,18 @@ sockall_pca.eigenval.sum = sum(sockall_e$values) #sum of eigenvalues
   sockall_varPC1 <- (sockall_e$values[1]/sockall_pca.eigenval.sum)*100 #Variance explained by PC1
   sockall_varPC2 <- (sockall_e$values[2]/sockall_pca.eigenval.sum)*100 #Variance explained by PC2
 
-# create dataframe for color designation
-#sockall_df_popMetaData <- data.frame(Runtime = )
-
 sockall_Palette <- c("goldenrod1", "royalblue3", "orchid")
 sockall_pca.vectors$Runtime <- factor(sockall_pca.vectors$Runtime, levels = c("Early Stream", "Late Stream", "Late Beach"))
 names(sockall_Palette) <- c("Early Stream", "Late Stream", "Late Beach")
 
 theme_set(
   theme( 
-    legend.text=element_text(size=16),
-    legend.title = element_text(size = 18),
+    legend.text=element_text(size=16), legend.title = element_text(size = 18),
     legend.position = "top",
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    axis.text = element_text(angle = 0, size = 14),
-    axis.title = element_text(size = 16),
+    panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+    axis.text = element_text(angle = 0, size = 14), axis.title = element_text(size = 16),
     panel.background = element_rect(fill = "white"), 
-    panel.spacing = unit(0,"lines"),
-    strip.text.y = element_text(angle = 0)
+    panel.spacing = unit(0,"lines"), strip.text.y = element_text(angle = 0)
   )
 )
 

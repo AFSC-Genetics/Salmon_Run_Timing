@@ -1,5 +1,5 @@
 # BARPLOTS FOR LRRC9 AND ESRB ALLELE FREQUENCIES
-# the proportions are pulled from the outputs of the pca_lrrc9 and pca_esrb scripts for each species
+# the proportions are pulled from the outputs of the species-specifc pca_lrrc9 and pca_esrb scripts
 
 packages_needed <- c("ggplot2", "scales", "ggpubr", "tidyverse", "grid", "gridExtra",
                      "lattice", "patchwork", "here", "cowplot", "magrittr", "ggh4x")
@@ -11,13 +11,12 @@ for(i in 1:length(packages_needed)){
 
 ############ LRRC9 INPUT ##################
 
-pinkeven_lrrc9 <- read.table(file = "../2024_pink/data/R/pink-chum_minInd0.3_lrrc9_allele_proportions.txt",
+pinkeven_lrrc9 <- read.table(file = "./data/R/pink-chum_allele_proportions.txt",
                          header = T, sep = "\t")%>%
-  mutate(Species = "Pink Even") %>%
-  select(Species, Runtime, Genotype, n) 
+  select(Runtime, Genotype, n) %>%
+  mutate(Species = "Pink Even")
 
-pinkodd_lrrc9 <- read.csv("./data/R/threespp_lrrc9_alleles/PinkOdd_2019_GTseq.csv",
-                          row.names = NULL) %>%
+pinkodd_lrrc9 <- read.csv("./data/R/PinkOdd_2019_GTseq.csv", row.names = NULL) %>%
   mutate(Species = "Pink Odd",
          Runtime = Pheno,
          n = nPinks,
@@ -26,31 +25,29 @@ pinkodd_lrrc9 <- read.csv("./data/R/threespp_lrrc9_alleles/PinkOdd_2019_GTseq.cs
                               value == 2002 ~ "LL")) %>%
   select(Species, Runtime, Genotype, n)
 
-sock_lrrc9 <- read.table(file = "../2024_sockeye/data/R/sock-all_lrrc9_allele_proportions.txt",
-                         header = T, sep = "\t")%>%
-  mutate(Species = "Sockeye") %>%
-  select(Species, Runtime, Genotype, n)
+sock_lrrc9 <- read.table(file = "./data/R/sock-all_lrrc9_allele_proportions.txt",
+                         header = T, sep = "\t") %>%
+  select(Runtime, Genotype, n) %>%
+  mutate(Species = "Sockeye")
 
-chum_lrrc9 <- read.table(
-  file = "../2024_chum/data/R/chumrun_minInd0.3_minDepthHalf_lrrc9_allele_proportions.txt", 
-  header = T, sep = "\t") %>%
-  mutate(Species = "Chum") %>%
-  select(Species, Runtime, Genotype, n) 
+chum_lrrc9 <- read.table(file = "./data/R/chumrun_lrrc9_allele_proportions.txt", 
+                         header = T, sep = "\t") %>%
+  select(Runtime, Genotype, n) %>%
+  mutate(Species = "Chum")
 
 lrrc9_df <- rbind(pinkeven_lrrc9, pinkodd_lrrc9, sock_lrrc9, chum_lrrc9) %>%
   mutate(Gene = "LRRC9")
 
 ######## ESRB ####################
-chum_esrb <- read.table(
-  file = "../2024_chum/data/R/chumrun_NC_068449.1_s25414060_e25501622_esrb_minInd0.3_minDepthHalf_allele_proportions.txt", 
+chum_esrb <- read.table(file = "./data/R/chumrun_esrb_allele_proportions.txt", 
                         header = T, sep = "\t") %>%
-  mutate(Species = "Chum") %>%
-  select(Species, Runtime, Genotype, n) 
+  select(Runtime, Genotype, n) %>%
+  mutate(Species = "Chum")
 
-coho_esrb <- read.table(file = "../2024_coho/data/R/coho-chum_esrb_allele_proportions.txt", 
+coho_esrb <- read.table(file = "./data/R/coho-chum_esrb_allele_proportions.txt", 
                         header = T, sep = "\t") %>%
-  mutate(Species = "Coho") %>%
-  select(Species, Runtime, Genotype, n) 
+  select(Runtime, Genotype, n) %>%
+  mutate(Species = "Coho")
 
 esrb_df <- rbind(chum_esrb, coho_esrb) %>%
   mutate(Gene = "ESRB")
@@ -70,40 +67,6 @@ levels(genes_df$Gene)
 write.csv(genes_df, "./data/R/AlleleGroup_CountPerSpecies-Genotype.csv", 
             row.names = F)
 
-######## FIRST COMBINED BAR PLOT FOR LRRC9 AND ESRB
-
-genes_barplot <- ggplot(genes_df, aes(x = Runtime, y = n, fill = Genotype)) +
-  geom_bar(position = "fill", stat = "identity") +
-  facet_nested(~ Gene + Species + Runtime, 
-               scales = "free", space = "free",
-               labeller = label_wrap_gen(10)) +
-  scale_fill_manual(name = "Genotype", values = c("goldenrod2", "mediumseagreen", "royalblue3")) +
-  ylab("Proportion") +
-  xlab("Runtiming Phenotype") +
-  scale_x_discrete(labels = function(x) str_wrap(x, width = 9)) +
-  scale_y_continuous(expand = expansion(mult = c(0.01, 0.01))) +
-  theme_bw() +
-  theme(legend.position = "right",
-        legend.title = element_text(size = 12),
-        panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        axis.text.x = element_blank(),
-        axis.text.y = element_text(angle = 0, size = 10, color = "black"),
-        axis.title.x = element_blank(),
-        axis.ticks.x = element_blank(),
-        axis.title.y = element_text(size = 13, angle = 90, margin = margin(0,5,0,1)),
-        panel.background = element_rect(fill = "white", color = "black"),
-        panel.spacing = unit(0,"mm"),
-        strip.background = element_rect(fill = "gray95", color = "black"),
-        strip.text.x = element_text(size = 11, color = "black"),
-        legend.background = element_rect(color = "white")
-  )
-genes_barplot
-
-pdf(file = paste0("./figures/barplot/fourspp_genes_barplot_",format(Sys.Date(),"%m%d%Y"),".pdf"), 
-    width = 12, height = 6)
-print(genes_barplot)
-dev.off()
 
 #############################################################################
 # SPLIT LRRC9 AND ESRB and then make A and B
@@ -114,21 +77,17 @@ lrrc9_barplot <- ggplot(filter(genes_df, Gene == "LRRC9"),
                scales = "free", space = "free",
                labeller = label_wrap_gen(10)) +
   scale_fill_manual(name = "Genotype", values = c("goldenrod2", "mediumseagreen", "royalblue3")) +
-  ylab("Proportion") +
-  xlab("Run Timing Phenotype") +
+  ylab("Proportion") + xlab("Run Timing Phenotype") +
   ggtitle(expression(italic(lrrc9))) +
   scale_x_discrete(labels = function(x) str_wrap(x, width = 9)) +
   scale_y_continuous(expand = expansion(mult = c(0.01, 0.01))) +
   theme_bw() +
   theme(legend.position = "none",
-        #legend.title = element_text(size = 20),
         plot.title = element_text(hjust = 0.5, size = 22),
-        panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         axis.text.x = element_text(size = 14, vjust = 0.5, color = "black"),
         axis.text.y = element_text(size = 14, angle = 0, color = "black"),
-        axis.ticks.x = element_blank(),
-        axis.title.x = element_blank(),
+        axis.ticks.x = element_blank(), axis.title.x = element_blank(),
         axis.title.y = element_text(size = 20, angle = 90, margin = margin(0,5,0,1)),
         panel.background = element_rect(fill = "white", color = "black"),
         panel.spacing = unit(0,"mm"),
@@ -145,23 +104,19 @@ esrb_barplot <- ggplot(filter(genes_df, Gene == "ESRB"),
                scales = "free", space = "free",
                labeller = label_wrap_gen(10)) +
   scale_fill_manual(name = "Genotype", values = c("goldenrod2", "mediumseagreen", "royalblue3")) +
-  ylab("Proportion") +
-  xlab("Run Timing Phenotype") +
+  ylab("Proportion") + xlab("Run Timing Phenotype") +
   ggtitle(expression(italic(esrb))) +
   scale_x_discrete(labels = function(x) str_wrap(x, width = 9)) +
   scale_y_continuous(expand = expansion(mult = c(0.01, 0.01))) +
   theme_bw() +
   theme(legend.position = "right",
-        legend.title = element_text(size = 20),
-        legend.text = element_text(size = 15),
+        legend.title = element_text(size = 20), legend.text = element_text(size = 15),
         plot.title = element_text(hjust = 0.5, size = 22),
-        panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
+        panel.grid.major = element_blank(),  panel.grid.minor = element_blank(),
         axis.text.x = element_text(size = 14, vjust = 0.5, color = "black"),
         axis.text.y = element_text(size = 14, angle = 0, color = "black"),
         axis.ticks.x = element_blank(),
-        axis.title.x = element_blank(),
-        axis.title.y = element_blank(),
+        axis.title.x = element_blank(), axis.title.y = element_blank(),
         panel.background = element_rect(fill = "white", color = "black"),
         panel.spacing = unit(0,"mm"),
         strip.background = element_rect(fill = "gray95", color = "black"),
@@ -174,6 +129,7 @@ final_barplot <- cowplot::plot_grid(lrrc9_barplot, esrb_barplot, rel_widths = c(
                      nrow = 1, align = "h",
                      labels = c('A','B'), label_fontfamily = "ArialMT",
                      label_size = 30, label_colour = "black")
+
 x.grob <- grid::textGrob("Run Timing Phenotype", 
                    gp=gpar(col="black", fontsize=18))
 final_barplot

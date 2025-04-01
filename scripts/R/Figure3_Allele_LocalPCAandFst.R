@@ -27,14 +27,14 @@ pink_cov <- as.matrix(read.table("../2024_pink/results/pca/pink-chum_NC_068455.1
   pink_e_per <- pink_e$values/sum(pink_e$values) # percent explained by each component
 
 # call in bams
-pink_bam_df <- read.table("../2024_pink/sedna_files/bams/pink-chum_filtered_bamslist.txt", header = F)
+pink_bam_df <- read.table("./data/bams/pink-chum_filtered_bamslist.txt", header = F)
 
 # convert bam to FID with ABLG
 pink_FID <- pink_bam_df %>%
   mutate(ABLG = as.numeric(gsub("[^0-9]", "", V1))) %>% select(-V1)
 
 # call in some metadata
-pink_meta <- read.csv("../2024_pink/data/raw/pink_even_collection_062024.csv", header = T)
+pink_meta <- read.csv("./data/raw/pink_even_collection_062024.csv", header = T)
 
 # join those two dataframes
 pink_popFID <- inner_join(pink_FID, pink_meta, by = "ABLG")
@@ -92,7 +92,7 @@ sock_cov <- as.matrix(read.table("../2024_sockeye/results/pca/euclide_NC_068455.
   sock_e_vectors <- as.data.frame(sock_e$vectors)
   sock_e_per <- sock_e$values/sum(sock_e$values) # percent explained by each component
 
-sock_bam_df <- read.table("../2024_sockeye/sedna_files/bams/all_sockeye_bamslist.txt", header = F)
+sock_bam_df <- read.table("./data/bams/all_sockeye_bamslist.txt", header = F)
 
 # convert bam to FID with ABLG
 sock_FID <- sock_bam_df %>%
@@ -102,9 +102,9 @@ sock_FID <- sock_bam_df %>%
   select(-c(V1, temp))
 
 # call in some metadata
-sock_meta <- read.csv("../2024_sockeye/data/raw/wood_runtiming_metadata_anvil_added.csv", 
+sock_meta <- read.csv("./data/raw/wood_runtiming_metadata_anvil_added.csv", 
                       header = T) %>%
-  filter(!grepl("ABLG",sampleID))
+  filter(!grepl("ABLG",sampleID)) # remove whitefish
 
 # join those two dataframes
 sock_popFID <- inner_join(sock_FID, sock_meta, by = "sampleID")
@@ -248,14 +248,14 @@ chumE_cov <- as.matrix(read.table("../2024_chum/results/pca/chumrun_NC_068449.1_
   chumE_e_per <- chumE_e$values/sum(chumE_e$values) # percent explained by each component
 
 # call in bams
-chum_bam_df <- read.table("../2024_chum/sedna_files/bams/chumrun_bamslist.txt", header = F)
+chum_bam_df <- read.table("./data/bams/chumrun_bamslist.txt", header = F)
 
 # convert bam to FID with ABLG
 chum_FID <- chum_bam_df %>%
   mutate(ABLG = as.numeric(gsub("[^0-9-]", "", V1))) %>% select(-V1)
 
 # call in metadata
-chum_meta <- read.csv("../2024_chum/data/raw/yukon_chum_metadata.csv", header = T)
+chum_meta <- read.csv("./data/raw/yukon_chum_metadata.csv", header = T)
 
 # join those two dataframes
 chum_popFID <- inner_join(chum_FID, chum_meta, by = "ABLG")
