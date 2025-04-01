@@ -29,7 +29,6 @@ esrb_df <- rbind(read.delim2("./data/R/twospp_esrb_alleles/coho-chum_esrb_allele
 options(ignore.negative.edge=TRUE)
 
 ######################  LRRC9: TOP FIVE PER GROUP   ###########################
-# SEE individual_subset_tree.R for individual selection
 
 ibs_mat_lrrc9 <- as.matrix(read.table(paste0("./results/ibs/fourspp_top5_GL1_MM4_lrrc9.ibsMat")))
 bam_lrrc9 <- read.table(paste0("./data/R/fourspp_lrrc9_top5_ibs_input.txt"), header = F)
@@ -53,7 +52,6 @@ lrrc9AlleleTree <- nj(ibs_mat_lrrc9) %>%
   dplyr::mutate(FID = row_number()) %>%
   left_join(sample_table, by = "FID")
 
-library(cowplot)
 legend <- get_legend(ggtree(lrrc9AlleleTree, aes(color = RuntimeAl), size = 1.5) + 
                        scale_color_manual(name = "Genotype", values = c("goldenrod2", "royalblue2")) +
                        theme(legend.title = element_text(size = 22),

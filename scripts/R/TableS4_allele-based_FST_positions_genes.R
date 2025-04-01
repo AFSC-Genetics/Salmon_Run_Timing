@@ -8,13 +8,16 @@ library(BiocManager)
 BiocManager::install("biomaRt")
 library(biomaRt)
 
-##########################################
+# reference genome files
+GFFDIR <- "./data/R/genomic.gff"
+GAFDIR <- "./data/R/GCF_023373465.1-RS_2023_03_gene_ontology.gaf"
+
 # table for chromosome name and number
 chrom_df <- read.table("./data/R/chrom_meta.txt", header = TRUE)
 
 ################ GFF FILE #############################################
 # find exons from gff file for genes of interest (from NCBI chum reference genome)
-gff_df <- read.delim("./data/R/genomic.gff", header = F, comment.char = "#")
+gff_df <- read.delim(GFFDIR, header = F, comment.char = "#")
   gff_df <- gff_df[,c(1:5,9)] # remove excess columns
     colnames(gff_df) <- c("chrName", "RefSeq","exon","start.pos","fin.pos", "ID") # rename remaining columns
 
@@ -42,7 +45,7 @@ rm(gene_pattern, exon_pattern, descr_pattern)
 
 ########### IMPORT GENE ASSOCIATION FILE  ######################################
 
-go_df <- read.delim("./data/R/GCF_023373465.1-RS_2023_03_gene_ontology.gaf", header = F, comment.char = "!")
+go_df <- read.delim(GAFDIR, header = F, comment.char = "!")
   go_df <- go_df[,c(3:5,9:10)]
   colnames(go_df) <- c("geneID", "qualifier", "go_id", "ontology", "geneProduct")
 
@@ -80,7 +83,7 @@ colnames(pink_Fst) <- c("region", "chrName", "midPos", "Nsites", "Pink.Fst")
 pink_Fst <- pink_Fst[,c(2:3,5)] 
 
 ########## SOCKEYE
-sock_Fst <- read.delim("../2024_sockeye/results/fst/sock-all_NC_068455.1_EE-LL_minInd0.3.sfs.pbs.fst.txt",
+sock_Fst <- read.delim("./results/fst/sock-all_NC_068455.1_EE-LL_minInd0.3.sfs.pbs.fst.txt",
                        row.names = NULL,sep = "\t")
   colnames(sock_Fst) <- c("region", "chrName", "midPos", "Nsites", "Sockeye.Fst")
   sock_Fst <- sock_Fst[,c(2:3,5)]
@@ -151,7 +154,4 @@ table_df <- four_subset %>%
   relocate(gene, geneName, geneAnnotation, .after = last_col())
 
 write.csv(table_df, "./data/R/supplemental_table2_FST_and_genes.csv", row.names = F)
-
-
-
 

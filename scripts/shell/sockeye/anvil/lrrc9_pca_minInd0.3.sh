@@ -3,6 +3,7 @@
 #SBATCH --job-name=lrrc9PCA
 #SBATCH --time=0-1:00:00
 #SBATCH --mail-type=FAIL,END
+#SBATCH --partition=medmem
 #SBATCH --mail-user=natasha.howe@noaa.gov # update your email
 #SBATCH --output=/home/nhowe/runtiming/anvil/job_outfiles/lrrc9_pca.%j.out # update your out file directory
 #SBATCH --error=/home/nhowe/runtiming/anvil/job_outfiles/lrrc9_pca.%j.err # update your error readout directory
@@ -12,7 +13,7 @@ module load bio/pcangsd/0.99
 source /opt/bioinformatics/venv/pcangsd-0.99/bin/activate
 
 path=/home/nhowe/runtiming/anvil
-prefix=euclide
+prefix=sock-all
 chrom=NC_068455.1
 firstpos=28128954
 lastpos=28169980

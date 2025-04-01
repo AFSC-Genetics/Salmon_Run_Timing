@@ -10,11 +10,10 @@ for(i in 1:length(packages_needed)){
   library(packages_needed[i], character.only = TRUE)
 }
 
-#########################################################
-# read in each chromosome fst file.
+### Read in each chr IDX FST file #########################################
 
 ########## PINK-EVEN
-pink_list <- as.list(Sys.glob("../2024_pink/results/fst/*pink-chum*early-late*minInd0.3*.idx.txt"))
+pink_list <- as.list(Sys.glob("./results/fst/*pink-chum*early-late*minInd0.3*.idx.txt"))
 
 # read in all data files that match wildcard
 pink_df <- pink_list %>%
@@ -26,7 +25,7 @@ pink_df <- pink_list %>%
   mutate(Species = "Pink-Even")
 
 ########## PINK-ODD
-odd_list <- as.list(Sys.glob("../2024_pinkOdd/results/fst/*pink-odd*early-late*minInd0.3*.idx.txt"))
+odd_list <- as.list(Sys.glob("./results/fst/*pink-odd*early-late*minInd0.3*.idx.txt"))
 
 # read in all data files that match wildcard
 odd_df <- odd_list %>%
@@ -37,8 +36,8 @@ odd_df <- odd_list %>%
   ) %>% 
   mutate(Species = "Pink-Odd")
 
-########## SOCKEYE
-sock_list <- as.list(Sys.glob("../2024_sockeye/results/fst/*sock-chum*minInd0.3*.idx.txt"))
+########## SOCKEYE (Creek)
+sock_list <- as.list(Sys.glob("./results/fst/*sock-chum*minInd0.3*.idx.txt"))
 
 # read in all data files that match wildcard
 sock_df <- sock_list %>%
@@ -49,8 +48,8 @@ sock_df <- sock_list %>%
   ) %>% 
   mutate(Species = "Sockeye")
 
-########## EUCLIDE
-eucl_list <- as.list(Sys.glob("../2024_sockeye/results/fst/*euclide*minInd0.3*.idx.txt"))
+########## EUCLIDE (Early Creek v Late Beach)
+eucl_list <- as.list(Sys.glob("./results/fst/*euclide*minInd0.3*.idx.txt"))
 
 # read in all data files that match wildcard
 eucl_df <- eucl_list %>%
@@ -62,7 +61,7 @@ eucl_df <- eucl_list %>%
   mutate(Species = "Euclide")
 
 ########## CHUM
-chum_list <- as.list(Sys.glob("../2024_chum/results/fst/*chumrun*minInd0.3*.idx.txt"))
+chum_list <- as.list(Sys.glob("./results/fst/*chumrun*minInd0.3*.idx.txt"))
 
 # read in all data files that match wildcard
 chum_df <- chum_list %>%
@@ -75,7 +74,7 @@ chum_df <- chum_list %>%
 
 
 ########## COHO
-coho_list <- as.list(Sys.glob("../2024_coho/results/fst/*coho-chum*minInd0.3*.idx.txt"))
+coho_list <- as.list(Sys.glob("./results/fst/*coho-chum*minInd0.3*.idx.txt"))
 
 # read in all data files that match wildcard
 coho_df <- coho_list %>%
@@ -88,15 +87,15 @@ coho_df <- coho_list %>%
 
 rm(pink_list, odd_list, sock_list, eucl_list, chum_list, coho_list)
 
-############## COMBINE FOUR SPECIES INTO ONE DATAFRAME #######################
+##### Combine each IDX Fst Comparison #######################
 # bind rows together
-all_df <- bind_rows(pink_df, odd_df, sock_df, eucl_df, chum_df, coho_df) %>%
+idx_df <- bind_rows(pink_df, odd_df, sock_df, eucl_df, chum_df, coho_df) %>%
   mutate(A = as.numeric(A),
          B = as.numeric(B))
 
-all_df$A[all_df$A < 0] <- 0
+idx_df$A[idx_df$A < 0] <- 0
 
-weighted_Fsts <- all_df %>%
+weighted_Fsts <- idx_df %>%
   group_by(Species) %>%
   dplyr::summarise(globalFst = sum(A)/sum(B))
 
@@ -106,24 +105,24 @@ write.csv(weighted_Fsts, "./results/fst/weighted_globalFSTs.csv",
 rm(pink_df, odd_df, sock_df, eucl_df, chum_df, coho_df) # remove to save space
 
 
-#### Calculate Peak Boundaries with Fst ##########################################
+### Calculate Peak Boundaries with Fst ##########################################
 
 # lrrc9
-pink_Fst <- read.delim2("../2024_pink/results/fst/pink-chum_NC_068455.1_early-late_minInd0.3.sfs.pbs.fst.txt",
+pink_Fst <- read.delim2("./results/fst/pink-chum_NC_068455.1_early-late_minInd0.3.sfs.pbs.fst.txt",
                         row.names = NULL,sep = "\t")[,c(2:3,5)] %>% mutate(Species = "Pink-Even")
-odd_Fst <- read.delim2("../2024_pinkOdd/results/fst/pink-odd_NC_068455.1_early-late_minInd0.3.sfs.pbs.fst.txt",
+odd_Fst <- read.delim2("./results/fst/pink-odd_NC_068455.1_early-late_minInd0.3.sfs.pbs.fst.txt",
                         row.names = NULL,sep = "\t")[,c(2:3,5)] %>% mutate(Species = "Pink-Odd")
-eucl_Fst <- read.delim("../2024_sockeye/results/fst/euclide_NC_068455.1_beach-creek_minInd0.3.sfs.pbs.fst.txt",
+eucl_Fst <- read.delim("./results/fst/euclide_NC_068455.1_beach-creek_minInd0.3.sfs.pbs.fst.txt",
                        row.names = NULL,sep = "\t")[,c(2:3,5)] %>% mutate(Species = "Euclide")
-sock_Fst <- read.delim("../2024_sockeye/results/fst/sock-chum_NC_068455.1_early-late_minInd0.3.sfs.pbs.fst.txt",
+sock_Fst <- read.delim("./results/fst/sock-chum_NC_068455.1_early-late_minInd0.3.sfs.pbs.fst.txt",
                        row.names = NULL,sep = "\t")[,c(2:3,5)] %>% mutate(Species = "Sockeye")
-chumL_Fst <- read.delim2("../2024_chum/results/fst/chumrun_NC_068455.1_fall-summer_minInd0.3_minDepthHalf.sfs.pbs.fst.txt",
+chumL_Fst <- read.delim2("./results/fst/chumrun_NC_068455.1_fall-summer_minInd0.3_minDepthHalf.sfs.pbs.fst.txt",
                         row.names = NULL,sep = "\t")[,c(2:3,5)] %>% mutate(Species = "Chum")
 
 #esrb
-chumE_Fst <- read.delim2("../2024_chum/results/fst/chumrun_NC_068449.1_fall-summer_minInd0.3_minDepthHalf.sfs.pbs.fst.txt",
+chumE_Fst <- read.delim2("./results/fst/chumrun_NC_068449.1_fall-summer_minInd0.3_minDepthHalf.sfs.pbs.fst.txt",
                          row.names = NULL,sep = "\t")[,c(2:3,5)] %>% mutate(Species = "Chum")
-coho_Fst <- read.delim2("../2024_coho/results/fst/coho-chum_NC_068449.1_early-late_minInd0.3_minDepthHalf.sfs.pbs.fst.txt",
+coho_Fst <- read.delim2("./results/fst/coho-chum_NC_068449.1_early-late_minInd0.3_minDepthHalf.sfs.pbs.fst.txt",
                          row.names = NULL,sep = "\t")[,c(2:3,5)] %>% mutate(Species = "Coho")
 
 # Bind fst dataframes and make all columns as.character
@@ -165,7 +164,7 @@ View(gene_boundary)
 
 # Use gene boundaries to define min and max position
 # Not that the mutate function was used for species that weren't assigned appropriate boundaries
-fst_calcs <- all_df %>%
+idx_calcs <- idx_df %>%
   filter(chrName %in% unique(gene_boundary$chrName)) %>%
   dplyr::left_join(gene_boundary, by = c('Species','chrName')) %>%
   mutate(maxPos = case_when(chrName == "NC_068449.1" ~ maxPos,
@@ -178,7 +177,7 @@ fst_calcs <- all_df %>%
                             T ~ minPos)) %>%
   filter(midPos >= minPos, midPos <= maxPos)
 
-fst_local_summary <- fst_calcs %>%
+idx_local_summary <- idx_calcs %>%
   group_by(Species, chrName) %>%
   dplyr::summarize(peak_mean_Fst = sum(A)/sum(B)) %>%
   ungroup() %>%
@@ -186,7 +185,5 @@ fst_local_summary <- fst_calcs %>%
   left_join(weighted_Fsts, by = "Species") %>%
   select(Species, globalFst, everything())
 
-write.csv(weighted_Fsts, "./results/fst/weighted_global-peak_meanFsts.csv",
+write.csv(idx_local_summary, "./results/fst/weighted_global-peak_meanFsts.csv",
           row.names = F, quote = F)
-
-#### CALCULATE BOUNDARIES FOR ESRB ########################

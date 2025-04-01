@@ -8,16 +8,15 @@ for(i in 1:length(packages_needed)){
   if(!(packages_needed[i] %in% installed.packages())){install.packages(packages_needed[i])}
   library(packages_needed[i], character.only = TRUE)
 }
+  rm(packages_needed, i)  
 
-##########################################
-# table for chromosome name and number
+# Table for chromosome name and number
 chrom_df <- read.table("./data/R/chrom_meta.txt", header = TRUE)
 
-#########################################################
-# read in each chromosome fst file.
+###### Read in each per-chrom Fst File #########################################
 
 ########## PINK
-pink_list <- as.list(Sys.glob("../2024_pink/results/fst/*pink-chum*minInd0.3*"))
+pink_list <- as.list(Sys.glob("./results/fst/*pink-chum*minInd0.3*"))
 
 # read in all data files that match wildcard
 pink_df <- pink_list %>%
@@ -29,7 +28,7 @@ pink_df <- pink_list %>%
   mutate(Species = "Pink Even")
 
 ########## SOCKEYE
-sock_list <- as.list(Sys.glob("../2024_sockeye/results/fst/*euclide*minInd0.3*"))
+sock_list <- as.list(Sys.glob("./results/fst/*euclide*minInd0.3*"))
 
 # read in all data files that match wildcard
 sock_df <- sock_list %>%
@@ -41,7 +40,7 @@ sock_df <- sock_list %>%
   mutate(Species = "Sockeye")
 
 ########## CHUM
-chum_list <- as.list(Sys.glob("../2024_chum/results/fst/*chumrun*minInd0.3*"))
+chum_list <- as.list(Sys.glob("./results/fst/*chumrun*minInd0.3*"))
 
 # read in all data files that match wildcard
 chum_df <- chum_list %>%
@@ -53,7 +52,7 @@ chum_df <- chum_list %>%
   mutate(Species = "Chum")
 
 ########## COHO
-coho_list <- as.list(Sys.glob("../2024_coho/results/fst/*coho-chum*minInd0.3*"))
+coho_list <- as.list(Sys.glob("./results/fst/*coho-chum*minInd0.3*"))
 
 # read in all data files that match wildcard
 coho_df <- coho_list %>%
@@ -134,8 +133,7 @@ axis_set <- cum_df %>%
 theme_set(
   theme( 
     legend.position = "none",
-    panel.grid.major.y = element_blank(),
-    panel.grid.major.x = element_blank(),
+    panel.grid.major.y = element_blank(), panel.grid.major.x = element_blank(),
     panel.grid.minor = element_blank(),
     axis.text = element_text(angle = 0, size = 22),
     axis.title.x = element_text(size = 24, 
@@ -147,8 +145,6 @@ theme_set(
     strip.text.y = element_text(angle = 0)
   )
 )
-
-##################################################################
 
 ########### Pink
 pink_plot <- ggplot() + 
@@ -162,9 +158,9 @@ pink_plot <- ggplot() +
   scale_x_continuous(expand = expansion(mult = c(0.003, 0.003)), 
                      label = axis_set$chr, 
                      breaks = axis_set$center) +
-  scale_y_continuous(breaks = seq(0.2, 1, by = 0.2),
-                     limits = c(0, 1.02),
-                     expand = expansion(mult = c(0.02, 0.001))) +
+  scale_y_continuous(expand = expansion(mult = c(0.02, 0.001)),
+                     breaks = seq(0.2, 1, by = 0.2),
+                     limits = c(0, 1.02)) +
   ylab("Pink") +
   theme(plot.margin = unit(c(0.1,0.1,0,0.1), "cm"),
         axis.text.x = element_blank(),
@@ -215,7 +211,6 @@ chum_plot <- ggplot() +
         axis.ticks.x = element_blank(),
         axis.title.x = element_blank()) 
 
-
 ########### COHO
 coho_plot <- ggplot() + 
   geom_point(data = filter(cum_df, Species == "Coho"), 
@@ -240,7 +235,7 @@ coho_plot <- ggplot() +
 # add FST as separate label (it will be it's own plot)
 y_lab <- ggplot() + 
   annotate(geom = "text", x = 1, y = 1, label = expression(italic(F[ST])), angle = 90, size = 16) + 
-  coord_cartesian(clip = "off")+
+  coord_cartesian(clip = "off") +
   theme_void() 
 
 ######  ADD LABELS 
@@ -257,7 +252,7 @@ fourspp_cowplot_lab <- (y_lab - fourspp_cowplot) + # patchwork uses hyphen to al
 
 height = 14
 
-jpeg(paste0("./figures/fst/fourspp_wholegenome_LABEL_h",round(height, digits = 0),"_",format(Sys.Date(), "%Y%m%d"),".jpg"), 
+jpeg(paste0("./figures/fst/fourspp_wholegenome_h",round(height, digits = 0),"_",format(Sys.Date(),"%Y%m%d"),".jpg"), 
      width = 20, height = height, res = 300, units = "in")
 print(fourspp_cowplot_lab)
 dev.off()

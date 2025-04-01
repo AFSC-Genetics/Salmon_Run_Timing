@@ -1,5 +1,4 @@
 # plot WHOLE GENOME pink-odd and sockeye (Teal & Whitefish)
-# 02/17/2025
 
 packages_needed <- c("ggplot2", "scales", "ggpubr", "ggrepel", "tidyverse",
                      "stringr", "data.table", "plyr","gtools","reshape2", 
@@ -9,16 +8,15 @@ for(i in 1:length(packages_needed)){
   if(!(packages_needed[i] %in% installed.packages())){install.packages(packages_needed[i])}
   library(packages_needed[i], character.only = TRUE)
 }
+rm(packages_needed, i)  
 
-##########################################
-# table for chromosome name and number
+# Table for chromosome name and number
 chrom_df <- read.table("./data/R/chrom_meta.txt", header = TRUE)
 
-#########################################################
-# read in each chromosome fst file.
+###### Read in each per-chrom Fst File ########
 
 ########## PINK
-pink_list <- as.list(Sys.glob("../2024_pinkOdd/results/fst/*pink-odd*minInd0.3*"))
+pink_list <- as.list(Sys.glob("./results/fst/*pink-odd*minInd0.3*"))
 
 # read in all data files that match wildcard
 pink_df <- pink_list %>%
@@ -30,7 +28,7 @@ pink_df <- pink_list %>%
   mutate(Species = "Pink - Odd")
 
 ########## SOCKEYE
-sock_list <- as.list(Sys.glob("../2024_sockeye/results/fst/sock-chum*early-late*minInd0.3*"))
+sock_list <- as.list(Sys.glob("./results/fst/sock-chum*early-late*minInd0.3*"))
 
 # read in all data files that match wildcard
 sock_df <- sock_list %>%
@@ -45,13 +43,11 @@ rm(pink_list, sock_list)
 
 ############## COMBINE FOUR SPECIES INTO ONE DATAFRAME #######################
 # bind rows together
-two_df <- bind_rows(pink_df, sock_df)
-
-two_df$Fst[two_df$Fst < 0] <- 0 # Change negative Fst SNPs to 0s
-
-two_df <- two_df %>%
+two_df <- bind_rows(pink_df, sock_df) %>%
   mutate(midPos = as.numeric(midPos/10^6),
          Fst = as.numeric(Fst))
+
+two_df$Fst[two_df$Fst < 0] <- 0 # Change negative Fst SNPs to 0s
 
 #add chromosome numbers, remove chrName
 two_df <- left_join(two_df, chrom_df, by = "chrName") %>%

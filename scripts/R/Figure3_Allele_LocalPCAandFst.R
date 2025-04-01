@@ -16,12 +16,14 @@ for(i in 1:length(packages_needed)){
 
 rm(i, packages_needed)
 
+METADATAFILE <- "./data/raw/fourspecies_runtiming_metadata.csv"
+
 #### A) LRRC9 #################################################################
 
-##### PINK #####################################################################
+##### PINK ######################
 
 # read in the covariance matrix
-pink_cov <- as.matrix(read.table("../2024_pink/results/pca/pink-chum_NC_068455.1_lrrc9_minInd0.3.cov"))
+pink_cov <- as.matrix(read.table("./results/pca/pink-chum_NC_068455.1_lrrc9_minInd0.3.cov"))
   pink_e <- eigen(pink_cov) # calculate eigenvector values
   pink_e_vectors <- as.data.frame(pink_e$vectors)
   pink_e_per <- pink_e$values/sum(pink_e$values) # percent explained by each component
@@ -31,10 +33,12 @@ pink_bam_df <- read.table("./data/bams/pink-chum_filtered_bamslist.txt", header 
 
 # convert bam to FID with ABLG
 pink_FID <- pink_bam_df %>%
-  mutate(ABLG = as.numeric(gsub("[^0-9]", "", V1))) %>% select(-V1)
+  mutate(ABLG = as.numeric(gsub("[^0-9]","", V1))) %>% select(ABLG)
 
 # call in some metadata
-pink_meta <- read.csv("./data/raw/pink_even_collection_062024.csv", header = T)
+pink_meta <- read.csv(METADATAFILE, header = T) %>%
+  filter(Species == 'Pink') %>%
+  mutate(ABLG = as.numeric(sub('ABLG','',sampleID))) 
 
 # join those two dataframes
 pink_popFID <- inner_join(pink_FID, pink_meta, by = "ABLG")
@@ -50,16 +54,11 @@ pink_pca.eigenval.sum = sum(pink_e$values) #sum of eigenvalues
 # Plotting
 theme_set(
   theme( 
-    legend.text=element_text(size=16),
-    legend.title = element_text(size = 18),
-    legend.position = "top",
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    axis.text = element_text(angle = 0, size = 14),
-    axis.title = element_text(size = 16),
-    panel.background = element_rect(fill = "white"), 
-    panel.spacing = unit(0,"lines"),
-    strip.text.y = element_text(angle = 0)
+    legend.text=element_text(size=16), legend.title = element_text(size = 18),
+    panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+    axis.text = element_text(angle = 0, size = 14), axis.title = element_text(size = 16),
+    legend.position = "top", panel.background = element_rect(fill = "white"), 
+    panel.spacing = unit(0,"lines"), strip.text.y = element_text(angle = 0)
   )
 )
 
@@ -84,10 +83,10 @@ pink_lrrc9 <- ggplot(data = pink_pca.vectors,
   theme(legend.position = "none",
         plot.title = element_text(size = 20, hjust = 0.5, margin=margin(0,0,10,0)))
 
-##### EUCLIDE SOCKEYE ##########################################################
+##### EUCLIDE SOCKEYE ####################
 
 # read in the covariance matrix
-sock_cov <- as.matrix(read.table("../2024_sockeye/results/pca/euclide_NC_068455.1_minInd0.3_lrrc9.cov"))
+sock_cov <- as.matrix(read.table("./results/pca/euclide_NC_068455.1_minInd0.3_lrrc9.cov"))
   sock_e <- eigen(sock_cov) # calculate eigenvector values
   sock_e_vectors <- as.data.frame(sock_e$vectors)
   sock_e_per <- sock_e$values/sum(sock_e$values) # percent explained by each component
@@ -99,12 +98,12 @@ sock_FID <- sock_bam_df %>%
   dplyr::mutate(temp = basename(file_path_sans_ext(V1)),
                 temp = gsub("^[^_]*_", "", temp), # remove everything after 1st underscore
                 sampleID = str_extract(temp, "[^_]+")) %>%
-  select(-c(V1, temp))
+  select(sampleID)
 
 # call in some metadata
-sock_meta <- read.csv("./data/raw/wood_runtiming_metadata_anvil_added.csv", 
-                      header = T) %>%
-  filter(!grepl("ABLG",sampleID)) # remove whitefish
+sock_meta <- read.csv(METADATAFILE, header = T) %>%
+  filter(Species == "Sockeye") %>%
+  filter(Runtime != "Late Stream") # remove whitefish
 
 # join those two dataframes
 sock_popFID <- inner_join(sock_FID, sock_meta, by = "sampleID")
@@ -138,31 +137,31 @@ sock_lrrc9 <- ggplot(data = sock_pca.vectors,
   theme(legend.position = "none",
         plot.title = element_text(size = 20, hjust = 0.5, margin=margin(0,0,10,0)))
 
-
-##### CHUM #####################################################################
+##### CHUM ###################
 
 # read in the covariance matrix
-chum_cov <- as.matrix(read.table("../2024_chum/results/pca/chumrun_NC_068455.1_lrrc9_minInd0.3_minDepthHalf.cov"))
+chum_cov <- as.matrix(read.table("./results/pca/chumrun_NC_068455.1_lrrc9_minInd0.3_minDepthHalf.cov"))
   chum_e <- eigen(chum_cov) # calculate eigenvector values
   chum_e_vectors <- as.data.frame(chum_e$vectors)
   chum_e_per <- chum_e$values/sum(chum_e$values) # percent explained by each component
 
 # call in bams
-chum_bam_df <- read.table("../2024_chum/sedna_files/bams/chumrun_bamslist.txt", header = F)
+chum_bam_df <- read.table("./data/bams/chumrun_bamslist.txt", header = F)
 
 # convert bam to FID with ABLG
 chum_FID <- chum_bam_df %>%
-  mutate(ABLG = as.numeric(gsub("[^0-9-]", "", V1))) %>% select(-V1)
+  mutate(ABLG = as.numeric(gsub('[^0-9]','', V1))) %>% select(ABLG)
 
 # call in metadata
-chum_meta <- read.csv("../2024_chum/data/raw/yukon_chum_metadata.csv", header = T)
+chum_meta <- read.csv(METADATAFILE, header = T) %>%
+  filter(Species == 'Chum') %>%
+  mutate(ABLG = as.numeric(sub('ABLG','',sampleID))) 
 
 # join those two dataframes
 chum_popFID <- inner_join(chum_FID, chum_meta, by = "ABLG")
 
 ##combine row names (population info) with the covariance matrix
-chum_pca.vectors = as_tibble(cbind(chum_popFID, chum_e_vectors)) %>%
-  mutate(Runtime = ifelse(Runtime == "fall","Late","Early"))
+chum_pca.vectors = as_tibble(cbind(chum_popFID, chum_e_vectors))
 
 # determine the variance explained as a percent
 chum_pca.eigenval.sum = sum(chum_e$values) #sum of eigenvalues
@@ -191,23 +190,24 @@ chum_lrrc9 <- ggplot(data = chum_pca.vectors,
 
 #### B) ESRB ###################################################################
 
-###### COHO ####################################################################
+###### COHO ###########
 
 # read in the covariance matrix
-coho_cov <- as.matrix(read.table("../2024_coho/results/pca/coho-chum_NC_068449.1_s25414060_e25501622_esrb_minInd0.3_minDepthHalf.cov"))
+coho_cov <- as.matrix(read.table("./results/pca/coho-chum_NC_068449.1_s25414060_e25501622_esrb_minInd0.3_minDepthHalf.cov"))
   coho_e <- eigen(coho_cov)
   coho_e_vectors <- as.data.frame(coho_e$vectors)
   coho_e_per <- coho_e$values/sum(coho_e$values)
 
-coho_bam_df <- read.table("../2024_coho/sedna_files/bams/coho-chum_filtered_bamslist.txt", header = F)
+coho_bam_df <- read.table("./data/bams/coho-chum_filtered_bamslist.txt", header = F)
 
 # convert bam to FID with ABLG
 coho_FID <- coho_bam_df %>%
   mutate(ABLG = as.numeric(gsub("[^0-9]", "", V1))) %>% select(-V1)
 
 # call in some metadata
-coho_meta <- read.csv("../2024_coho/data/raw/coho_runtiming_metadata.csv", header = T) %>%
-  mutate(Runtime = ifelse(Runtime == "late","Late","Early"))
+coho_meta <- read.csv(METADATAFILE, header = T) %>%
+  filter(Species == 'Coho') %>%
+  mutate(ABLG = as.numeric(gsub('ABLG','',sampleID)))
 
 # join those two dataframes
 coho_popFID <- inner_join(coho_FID, coho_meta, by = "ABLG")
@@ -239,10 +239,10 @@ coho_esrb <- ggplot(data = coho_pca.vectors,
   theme(legend.position = "none",
         plot.title = element_text(size = 20, hjust = 0.5, margin=margin(0,0,10,0)))
 
-##### CHUM #####################################################################
+##### CHUM ####################
 
 # read in the covariance matrix
-chumE_cov <- as.matrix(read.table("../2024_chum/results/pca/chumrun_NC_068449.1_s25414060_e25501622_esrb_minInd0.3_minDepthHalf.cov"))
+chumE_cov <- as.matrix(read.table("./results/pca/chumrun_NC_068449.1_s25414060_e25501622_esrb_minInd0.3_minDepthHalf.cov"))
   chumE_e <- eigen(chumE_cov)
   chumE_e_vectors <- as.data.frame(chumE_e$vectors)
   chumE_e_per <- chumE_e$values/sum(chumE_e$values) # percent explained by each component
@@ -252,17 +252,18 @@ chum_bam_df <- read.table("./data/bams/chumrun_bamslist.txt", header = F)
 
 # convert bam to FID with ABLG
 chum_FID <- chum_bam_df %>%
-  mutate(ABLG = as.numeric(gsub("[^0-9-]", "", V1))) %>% select(-V1)
+  mutate(ABLG = as.numeric(gsub("[^0-9]", "", V1))) %>% select(-V1)
 
 # call in metadata
-chum_meta <- read.csv("./data/raw/yukon_chum_metadata.csv", header = T)
+chum_meta <- read.csv(METADATAFILE, header = T) %>%
+  filter(Species == 'Chum') %>%
+  mutate(ABLG = as.numeric(sub('ABLG','',sampleID))) 
 
 # join those two dataframes
 chum_popFID <- inner_join(chum_FID, chum_meta, by = "ABLG")
 
 ##combine row names (population info) with the covariance matrix
-chumE_pca.vectors = as_tibble(cbind(chum_popFID, chumE_e_vectors)) %>%
-  mutate(Runtime = ifelse(Runtime == "fall","Late","Early"))
+chumE_pca.vectors = as_tibble(cbind(chum_popFID, chumE_e_vectors))
 
 # determine the variance explained as a percent
 chumE_pca.eigenval.sum = sum(chumE_e$values) #sum of eigenvalues
@@ -341,7 +342,8 @@ gff_chr29 <- gff_df %>%
   filter(chrName == "NC_068449.1")
 rm(gff_df)
 
-########## Pink lrrc9 FST ######################################################
+########## Pink lrrc9 FST ###################
+
 pink_Fst <- read.delim2("./results/fst/allele/pink-chum_NC_068455.1_EE-LL_minInd0.3.sfs.pbs.fst.txt",
                         row.names = NULL,sep = "\t")
   colnames(pink_Fst) <- c("region", "chrName", "midPos", "Nsites", "Fst")
@@ -358,8 +360,9 @@ pink_Fst$Fst[pink_Fst$Fst < 0] <- 0 # remove negative Fst values
 pink_df <- pink_Fst %>%
   filter(midPos > xstart.lrrc9, midPos < xend.lrrc9) 
 
-###### Sockeye lrrc9 FST ###################################################
-sock_fst <- read.delim("../2024_sockeye/results/fst/sock-all_NC_068455.1_EE-LL_minInd0.3.sfs.pbs.fst.txt",
+###### Sockeye lrrc9 FST #####################
+
+sock_fst <- read.delim("./results/fst/sock-all_NC_068455.1_EE-LL_minInd0.3.sfs.pbs.fst.txt",
                        row.names = NULL,sep = "\t")
   colnames(sock_fst) <- c("region", "chrName", "midPos", "Nsites", "Fst")
 
@@ -375,7 +378,8 @@ sock_fst$Fst[sock_fst$Fst < 0] <- 0 # remove negative Fst values
 sock_df <- sock_fst %>%
   filter(midPos > xstart.lrrc9, midPos < xend.lrrc9)
 
-##### Chum lrrc9 FST ######################################################
+##### Chum lrrc9 FST ######################
+
 chum_Fst <- read.delim2("./results/fst/allele/chumrun_NC_068455.1_EE-LL_minInd0.3.sfs.pbs.fst.txt",
                         row.names = NULL,sep = "\t")
   colnames(chum_Fst) <- c("region", "chrName", "midPos", "Nsites", "Fst")
@@ -550,7 +554,8 @@ xend.esrb = 26.4
 pca.start.esrb = 25414060
 pca.end.esrb = 25501622
 
-###### Chum esrb FST ###########################################################
+###### Chum esrb FST ##############################
+
 chum_Fst <- read.delim2("./results/fst/allele/chumrun_NC_068449.1_EE-LL_minInd0.3_minDepthHalf.sfs.pbs.fst.txt",
                         row.names = NULL,sep = "\t")
   colnames(chum_Fst) <- c("region", "chrName", "midPos", "Nsites", "Fst")
@@ -567,7 +572,8 @@ chum_Fst$Fst[chum_Fst$Fst < 0] <- 0 # remove negative Fst values
 chum_df <- chum_Fst %>%
   filter(midPos > xstart.esrb, midPos < xend.esrb)
 
-##### Coho esrb FST ########################################################
+##### Coho esrb FST ###########################
+
 coho_Fst <- read.delim2("./results/fst/allele/coho-chum_NC_068449.1_EE-LL_minInd0.3_minDepthHalf.sfs.pbs.fst.txt",
                         row.names = NULL,sep = "\t")
   colnames(coho_Fst) <- c("region", "chrName", "midPos", "Nsites", "Fst")
@@ -714,7 +720,6 @@ multiplot_esrb <- (y_lab - multiplot_temp) + # patchwork uses hyphen to allow fo
 multiplot_esrb
 
 
-
 #### C/D) Combine #####################
 twofst_cowplot <- plot_grid(multiplot_lrrc9, multiplot_esrb,
                             rel_widths = c(5,5), ncol = 2, nrow = 1,
@@ -732,23 +737,4 @@ fig3
 jpeg(paste0("./figures/figure3_panelsA-D_",format(Sys.Date(),"%Y%m%d"),".jpg"), 
      width = 18, height = 20, res = 200, units = "in")
 print(fig3)
-dev.off()
-
-
-
-##### is the bottom incorrect? #############
-
-figure3 <- plot_grid(plot_grid(pca_four,
-                               plot_grid(sock_lrrc9, NULL,legend, NULL,ncol=2, 
-                                         rel_widths=c(1,0.09)),
-                               rel_widths=c(2, 1),
-                               align = 'hv'),
-                     twofst_cowplot,
-                     rel_widths = c(1.5,1), 
-                     ncol = 1, nrow = 2, align = 'v'
-                     )
-figure3
-jpeg(paste0("./figures/figure3_panelsA-D_",format(Sys.Date(),"%m%d%Y"),".jpg"), 
-     width = 18, height = 20, res = 200, units = "in")
-figure3
 dev.off()
