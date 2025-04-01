@@ -163,7 +163,7 @@ Calculates genotype likelihoods for putatively polymorphic sites (SNPs). This is
 
 
 ``` bash
-sbatch PREFIX_minInd0.3_[minDepthHalf_]glsARRAY.sh 
+sbatch PREFIX_minInd0.3_glsARRAY.sh 
 ```
 
 Filters slightly differed depending on the species alignment and average coverage.

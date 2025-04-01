@@ -154,7 +154,7 @@ sd(read.csv("./results/depth/PREFIX_mapped_reads.csv", header = F)$V1)
 Calculates genotype likelihoods for putatively polymorphic sites (SNPs). This is done on a chrom-by-chrom level using an array. These script uses PREFIX_angsdARRAY_input.txt (array file with chromosomes) and a list of the bam files to analyze (PREFIX_filtered_bamslist.txt).
 
 ```{bash, Step4_LikelihoodCalc, eval=F, echo=T}
-sbatch PREFIX_minInd0.3_[minDepthHalf_]glsARRAY.sh 
+sbatch PREFIX_minInd0.3_glsARRAY.sh 
 ```
 
 Filters slightly differed depending on the species alignment and average coverage.
