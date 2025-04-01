@@ -21,7 +21,7 @@ Data from Auke Creek pink salmon (even and odd lineage), Wood River sockeye salm
 
 ``` r
 # All samples and sequencing information can be found at:
-read.csv("./data/raw/fourspecies_runtiming_metadata.csv")
+as.vector(Sys.glob("./data/raw/*"))
 ```
 
 ### Site Map
@@ -96,26 +96,26 @@ This step is a quality control of the sequencing data (raw fastqs). It runs Fast
 -   Export of results to an HTML based permanent report
 -   Offline operation to allow automated generation of reports without running the interactive application
 
-Run two shell scripts [PREFIX]-raw_fastqcARRAY.sh and [PREFIX]-raw_multiqcSLURM.sh in succession.
+Run two shell scripts PREFIX-raw_fastqcARRAY.sh and PREFIX-raw_multiqcSLURM.sh in succession.
 
 
 ``` bash
-sbatch [PREFIX]-raw_fastqcARRAY.sh
-sbatch [PREFIX]-raw_multiqcSLURM.sh
+sbatch PREFIX-raw_fastqcARRAY.sh
+sbatch PREFIX-raw_multiqcSLURM.sh
 ```
 
 ### Step 2: Trim
 
-Trim adapters from raw fastqs with the program TRIMMOMATIC [@Bolger2014] and quality-check the trimmed fastqs with multiQC [@Ewels2016]. Run three shell scripts [PREFIX]\_trimARRAY.sh, [PREFIX]-trim_fastqcARRAY.sh, and [PREFIX]-trim_multiqcSLURM.sh which should all run in succession.
+Trim adapters from raw fastqs with the program TRIMMOMATIC [@Bolger2014] and quality-check the trimmed fastqs with multiQC [@Ewels2016]. Run three shell scripts PREFIX_trimARRAY.sh, PREFIX-trim_fastqcARRAY.sh, and PREFIX-trim_multiqcSLURM.sh which should all run in succession.
 
 
 ``` bash
 # trim adapters
-sbatch [PREFIX]_trimARRAY.sh
+sbatch PREFIX_trimARRAY.sh
 
 # multiqc report
-sbatch [PREFIX]-trim_fastqcARRAY.sh
-sbatch [PREFIX]-trim_multiqcSLURM.sh
+sbatch PREFIX-trim_fastqcARRAY.sh
+sbatch PREFIX-trim_multiqcSLURM.sh
 ```
 
 Download the multiQC.html file and evaluate the data quality before proceeding.
@@ -127,17 +127,17 @@ Align reads to the reference genome that we downloaded with BWA and runs the ali
 
 ``` bash
 # align to genome
-sbatch [PREFIX]_alignARRAY.sh
+sbatch PREFIX_alignARRAY.sh
 
 # calculate average depths
-sbatch [PREFIX]_depthsARRAY.sh
+sbatch PREFIX_depthsARRAY.sh
 ```
 
-There is an output file [PREFIX]\_depths.csv which we can import and run through the downsampling script to see if there is uneven distribution of depths across early and late individuals. We generally used 0.5x as a depth cutoff. Two chum samples were close to the 0.5x cutoff, above or rounding up to 0.4x; therefore, we didn't use a cutoff for chum.
+There is an output file PREFIX_depths.csv which we can import and run through the downsampling script to see if there is uneven distribution of depths across early and late individuals. We generally used 0.5x as a depth cutoff. Two chum samples were close to the 0.5x cutoff, above or rounding up to 0.4x; therefore, we didn't use a cutoff for chum.
 
 
 ``` r
-./species-specific/[PREFIX]_depth_and_downsampling.R
+./species-specific/PREFIX_depth_and_downsampling.R
 ```
 
 #### Mapped Reads
@@ -146,24 +146,24 @@ Calculate the total number of mapped reads from the bamslists with samtools.
 
 
 ``` bash
-sbatch [PREFIX]_mapped_reads.sh
+sbatch PREFIX_mapped_reads.sh
 ```
 
 Now calculate the average and standard deviation for the mapped reads after downloading.
 
 
 ``` r
-mean(read.csv("./results/depth/[PREFIX]_mapped_reads.csv", header = F)$V1)
-sd(read.csv("./results/depth/[PREFIX]_mapped_reads.csv", header = F)$V1)
+mean(read.csv("./results/depth/PREFIX_mapped_reads.csv", header = F)$V1)
+sd(read.csv("./results/depth/PREFIX_mapped_reads.csv", header = F)$V1)
 ```
 
 ### Step 4: Genotype Likelihoods
 
-Calculates genotype likelihoods for putatively polymorphic sites (SNPs). This is done on a chrom-by-chrom level using an array. These script uses [PREFIX]\_angsdARRAY_input.txt (array file with chromosomes) and a list of the bam files to analyze ([PREFIX]\_filtered_bamslist.txt).
+Calculates genotype likelihoods for putatively polymorphic sites (SNPs). This is done on a chrom-by-chrom level using an array. These script uses PREFIX_angsdARRAY_input.txt (array file with chromosomes) and a list of the bam files to analyze (PREFIX_filtered_bamslist.txt).
 
 
 ``` bash
-sbatch [PREFIX]_minInd0.3_[minDepthHalf_]glsARRAY.sh 
+sbatch PREFIX_minInd0.3_[minDepthHalf_]glsARRAY.sh 
 ```
 
 Filters slightly differed depending on the species alignment and average coverage.
@@ -185,8 +185,8 @@ The genotype likelihood files from above are split by chromosome. Create whole g
 
 
 ``` bash
-sbatch [PREFIX]_minInd0.3_concatenate_mafs.sh
-sbatch [PREFIX]_minInd0.3_concatenate_beagles.sh
+sbatch PREFIX_minInd0.3_concatenate_mafs.sh
+sbatch PREFIX_minInd0.3_concatenate_beagles.sh
 ```
 
 ### Step 6: Population Analyses - FST
@@ -197,14 +197,14 @@ First, angsd calls GLs for each subgroup, but it uses the *sites* flag from the 
 
 
 ``` bash
-sbatch [PREFIX]_minInd0.3_fstARRAY.sh
+sbatch PREFIX_minInd0.3_fstARRAY.sh
 ```
 
 #### Weighted FST
 
 
 ``` bash
-[PREFIX]_print_idx_minInd0.3_globalFst.sh
+PREFIX_print_idx_minInd0.3_globalFst.sh
 ```
 
 ## Identifying Regions of Divergence associated with Run Timing
@@ -282,16 +282,16 @@ Plotted each species-gene local PCA independently. In each of the R scripts, a l
 
 
 ``` r
-../species_specific/[PREFIX]_lrrc9_pca.R
-../species_specific/[PREFIX]_esrb_pca.R
+../species_specific/PREFIX_lrrc9_pca.R
+../species_specific/PREFIX_esrb_pca.R
 ```
 
 The scripts above also split the individuals by sampleID into these three genotypes. Heterozygous individuals were dropped, and EE and LL individuals were placed into separate bamslists. The bamslists were used to run an allele-based FST, which was run in the scripts below for each species comparison.
 
 
 ``` bash
-sbatch [PREFIX]_minInd0.3_lrrc9_allele_fst.sh
-sbatch [PREFIX]_minInd0.3_esrb_allele_fst.sh
+sbatch PREFIX_minInd0.3_lrrc9_allele_fst.sh
+sbatch PREFIX_minInd0.3_esrb_allele_fst.sh
 ```
 
 These figures are the local PCAs for each species with the cutoff used to delineate the genotypes. Also, the zoomed in FST on the main regions of differentiation using the pca-assigned genotypes. Genes within the regions are also included.
