@@ -1,10 +1,5 @@
 # PINK ALIGNED TO CHUM FOR RUNTIMING STUDY AT LRRC9
 
-# they have different depths of coverage, but also different samples sizes
-# after looking at this paper [https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14286],
-# decided that the effective sample size is not drastically different between two pops
-# this is when all jacks are removed from whitefish data
-
 # code originally written by Laura Timm
 # NH edited for project
 
@@ -22,16 +17,14 @@ for(i in 1:length(packages_needed)){
 #to run locally
 FEATURE_NAME <- "Runtime" #column name (in the metadata file) that contains the categorical variable you want to compare depth across (batch, region, sex, etc)
 PREFIX <- "coho-chum" #the prefix for the lcWGS run
+SPECIES <- 'Coho'
 
-BASEDIR <- here()
-DEPTHFILE <- paste0("./results/depth/",PREFIX,"_depths.csv")
-METADATAFILE <- "./data/raw/coho_runtiming_metadata.csv"
+DEPTHFILE <- paste0("./data/depth/",PREFIX,"_depths.csv")
+METADATAFILE <- "./data/raw/fourspecies_runtiming_metadata.csv"
 
 ###########################################################################################################################
 
-# define function
-
-# NH EDITED THIS TO WORK FOR MY DATASET
+# NH edited Laura Timm's depth function
 depths_t_test <- function(df, colnm, f1, f2) {
   first_factor_depths <- df[which(df[[colnm]] == f1), which(colnames(df) == "mean_depth")]
   second_factor_depths <- df[which(df[[colnm]] == f2), which(colnames(df) == "mean_depth")]
@@ -50,37 +43,34 @@ depths_t_test <- function(df, colnm, f1, f2) {
 
 ###########################################################################################################################
 
-## ADD THE MATURITY DATA TO FILTER OUT JACKS
-full_metadata <- read.csv(METADATAFILE)
+## read in metadata for species
+full_metadata <- read.csv(METADATAFILE) %>%
+  filter(Species == SPECIES)
 head(full_metadata)
 
-features_df <- full_metadata[c("ABLG", FEATURE_NAME)]
-head(features_df)
+features_df <- full_metadata[c("sampleID", FEATURE_NAME)]
+  head(features_df)
 
 just_depths <- read.csv(DEPTHFILE, header = F, row.names = NULL)
-colnames(just_depths) <- c("ABLG", "mean_depth")
-head(just_depths)
+  colnames(just_depths) <- c("sampleID", "mean_depth")
+  head(just_depths)
 
-just_depths <- just_depths %>%
-  mutate(ABLG = gsub("ABLG", "", ABLG))
-
-just_depths$ABLG <- as.numeric(just_depths$ABLG)
 just_depths$mean_depth <- as.numeric(just_depths$mean_depth)
 
-depths_df <- left_join(just_depths, features_df, by = "ABLG")
-colnames(depths_df) <- c("ABLG", "mean_depth", "feature")
-head(depths_df)
+depths_df <- left_join(just_depths, features_df, by = "sampleID")
+  colnames(depths_df) <- c("sampleID", "mean_depth", "feature")
+  head(depths_df)
 
 ###########################################################################################################################
 # plot depth distribution, colored by feature of interest
 
-depths_plot <- ggplot(data = depths_df, aes(x = reorder(ABLG, -mean_depth), y = mean_depth, fill = feature)) +
+depths_plot <- ggplot(data = depths_df, aes(x = reorder(sampleID, -mean_depth), y = mean_depth, fill = feature)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   xlab("individual") +
   ylab("mean depth") +
   geom_hline(yintercept = 0.4) +
   geom_hline(yintercept = 1) +
-  ggtitle("Coho-chum: Depth Distribution") + 
+  ggtitle("Coho: Depth Distribution") + 
   scale_y_continuous(breaks = c(0.25, 0.4, 0.5, 0.75, 1),
                      expand = expansion(0.01,0.01)) +
   theme_bw() + 
@@ -89,36 +79,19 @@ depths_plot <- ggplot(data = depths_df, aes(x = reorder(ABLG, -mean_depth), y = 
 
 depths_plot
 
-ggsave(paste0(BASEDIR, "./figures/depth/",PREFIX, "-", FEATURE_NAME, "_mean_depths.jpg"), width = 8, height = 5, units = "in", dpi = 300)
+ggsave(paste0("./figures/depth/",PREFIX, "-", FEATURE_NAME, "_mean_depths.jpg"), width = 8, height = 5, units = "in", dpi = 300)
 
 ###########################################################################################################################
 
+# However, because there is only two below 0.5 and they're not far off, we keep those.
+keeplist_df0.4 <- depths_df[depths_df$mean_depth >= 0.4,] # similar including the one that rounded up to 0.4
+blocklist_df0.4 <- depths_df[depths_df$mean_depth < 0.4,] # similar including the one that rounded up to 0.4
 
-# compare depth distributions (with a series of t-tests)
+# check mean depth after 0.4x cutoff (none removed)
+mean((filter(keeplist_df0.4, feature == "Early"))$mean_depth)
+mean((filter(keeplist_df0.4, feature == "Late"))$mean_depth)
 
-out_df <- depths_df %>%
-  mutate(sampleID = paste0("ABLG",ABLG)) %>%
-  select(sampleID, feature, mean_depth)
-head(out_df)
-
-keeplist_df0.4 <- out_df[out_df$mean_depth >= 0.4,]
-blocklist_df0.4 <- out_df[out_df$mean_depth < 0.4,]
-
-# write out average depth for 0.4x cutoff
-mean((keeplist_df0.4 %>% filter(feature == "early"))$mean_depth)
-mean((keeplist_df0.4 %>% filter(feature == "late"))$mean_depth)
-
-keeplist_df0.5 <- out_df[out_df$mean_depth >= 0.5,]
-blocklist_df0.5 <- out_df[out_df$mean_depth < 0.5,]
-
-write.table(blocklist_df0.5[,1], "./sedna_files/inputs/blocklist_0.5x.txt",
-            sep = "\t", quote = F, row.names = F, col.names = F)
-
-write.table(blocklist_df0.4[,1], "./sedna_files/inputs/blocklist_0.4x.txt",
-            sep = "\t", quote = F, row.names = F, col.names = F)
-
-# for FST input
-write.table(keeplist_df0.4[,c(1:2)], "./sedna_files/inputs/early_late_keeplist0.4x_fst.txt",
+write.table(blocklist_df0.4[,1], paste0("./data/",PREFIX,"_blocklist_0.4x.txt"),
             sep = "\t", quote = F, row.names = F, col.names = F)
 
 ###########################################################################
@@ -160,7 +133,12 @@ for (i in 1:length(factors_list)) {
     }
   }
 }
-#did it work?
-downsampled_factors
 
-### DID NOT NEED TO BE DOWNSAMPLED FOR THE 0.4X CUTOFF
+#did it work?
+if(nrow(downsampled_factors) == 0){
+  print("Welch's t-test showed no significant difference in depths across early and late run timing groups.")
+}else{
+  print("Welch's t-test showed significant difference in depths across early and late run timing groups.")
+  downsampled_factors
+}
+

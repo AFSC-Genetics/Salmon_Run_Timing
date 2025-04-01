@@ -22,13 +22,29 @@ SPECIES <- "Chum" # for filtering the metadata table
 
 setwd(here())
 DEPTHFILE <- paste0("./data/depth/",PREFIX,"_depths.csv")
-METADATAFILE <- "./data/raw/yukon_chum_metadata.csv"
 METADATAFILE <- "./data/raw/fourspecies_runtiming_metadata.csv"
-###########################################################################################################################
 
 ###########################################################################################################################
 
-## ADD THE MATURITY DATA TO FILTER OUT JACKS
+# NH edited Laura Timm's depth function
+depths_t_test <- function(df, colnm, f1, f2) {
+  first_factor_depths <- df[which(df[[colnm]] == f1), which(colnames(df) == "mean_depth")]
+  second_factor_depths <- df[which(df[[colnm]] == f2), which(colnames(df) == "mean_depth")]
+  if (length(first_factor_depths) < 5) {
+    print(paste0("WARNING: ", f1, " is represented by fewer than five individuals. Consider removing these from the depths analysis and adding ", f1, " to the downsample list (factors_to_downsample) manually."))
+  }
+  if (length(second_factor_depths) < 5) {
+    print(paste0("WARNING: ", f2, " is represented by fewer than five individuals. Consider removing these from the depths analysis and adding ", f2, " to the downsample list (factors_to_downsample) manually."))
+  }
+  f1_depths = as.numeric(first_factor_depths)
+  f2_depths = as.numeric(second_factor_depths)
+  t_out <- t.test(x = f1_depths, y = f2_depths, var.equal = FALSE)
+  outlist <- list(pval = t_out$p.value, f1_depths = f1_depths, f2_depths = f2_depths)
+  return(outlist)
+}
+###########################################################################################################################
+
+## read in metadata for species
 full_metadata <- read.csv(METADATAFILE) %>%
   filter(Species == SPECIES)
 head(full_metadata)
@@ -53,8 +69,8 @@ depths_plot <- ggplot(data = depths_df, aes(x = reorder(sampleID, -mean_depth), 
   geom_bar(stat = "identity", position = position_dodge()) +
   xlab("individual") + ylab("mean depth") +
   geom_hline(yintercept = 0.5) +
-  geom_hline(yintercept = 1) +
-  scale_y_continuous(breaks = c(0.5, 1, 1.5, 2, 2.5, 3, 3.5),
+  geom_hline(yintercept = 0.4) +
+  scale_y_continuous(breaks = c(0.4, 0.5, 1, 1.5, 2),
                      expand = expansion(0.01,0.01)) +
   theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), 
@@ -64,7 +80,6 @@ depths_plot <- ggplot(data = depths_df, aes(x = reorder(sampleID, -mean_depth), 
 depths_plot
 
 ggsave(paste0(BASEDIR, "./figures/depth/",PREFIX, "-", FEATURE_NAME, "_mean_depths.jpg"), width = 8, height = 5, units = "in", dpi = 300)
-
 
 ###########################################################################################################################
 
@@ -82,7 +97,7 @@ blocklist_df0.4 <- depths_df[depths_df$mean_depth < 0.39,] # similar including t
 mean((filter(keeplist_df0.4, feature == "Early"))$mean_depth)
 mean((filter(keeplist_df0.4, feature == "Late"))$mean_depth)
 
-write.table(blocklist_df0.4[,1], "./sedna_files/inputs/blocklist_0.4x.txt",
+write.table(blocklist_df0.4[,1], paste0("./data/",PREFIX,"_blocklist_0.4x.txt"),
             sep = "\t", quote = F, row.names = F, col.names = F)
 
 ###########################################################################
@@ -90,7 +105,6 @@ write.table(blocklist_df0.4[,1], "./sedna_files/inputs/blocklist_0.4x.txt",
 
 #BASED ON CHOSEN CUTOFF, WHAT KEEPLIST ARE YOU USING
 keeplist_df <- keeplist_df0.4
-
 factors_list <- unique(keeplist_df[["feature"]])
 
 ## get a list of factors (batch1, batch2, etc) that require downsampling
@@ -124,10 +138,12 @@ for (i in 1:length(factors_list)) {
     }
   }
 }
+
 #did it work?
 if(nrow(downsampled_factors) == 0){
   print("Welch's t-test showed no significant difference in depths across early and late run timing groups.")
 }else{
   print("Welch's t-test showed significant difference in depths across early and late run timing groups.")
+  downsampled_factors
 }
 

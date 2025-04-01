@@ -21,17 +21,15 @@ for(i in 1:length(packages_needed)){
 
 #to run locally
 FEATURE_NAME <- "Runtime" #column name (in the metadata file) that contains the categorical variable you want to compare depth across (batch, region, sex, etc)
-PREFIX <- "pink-chum" #the prefix for the lcWGS run
+PREFIX <- "pink-odd" #the prefix for the lcWGS run
 
 BASEDIR <- here()
-DEPTHFILE <- paste0("./results/depth/",PREFIX,"_depths.csv")
-METADATAFILE <- "./data/raw/pink_even_collection_062024.csv"
+DEPTHFILE <- paste0("./data/R/depth/",PREFIX,"_depths.csv")
+METADATAFILE <- "./data/raw/pinkOdd_collection_07172024_cleaned.csv"
 
 ###########################################################################################################################
 
-# define function
-
-# NH EDITED THIS TO WORK FOR MY DATASET
+# NH edited Laura Timm's depth function
 depths_t_test <- function(df, colnm, f1, f2) {
   first_factor_depths <- df[which(df[[colnm]] == f1), which(colnames(df) == "mean_depth")]
   second_factor_depths <- df[which(df[[colnm]] == f2), which(colnames(df) == "mean_depth")]
@@ -57,7 +55,7 @@ head(full_metadata)
 features_df <- full_metadata[c("ABLG", FEATURE_NAME)]
 head(features_df)
 
-just_depths <- read.csv(DEPTHFILE, header = F, row.names = NULL)
+just_depths <- read.csv(DEPTHFILE, header = F, row.names = NULL, sep = "\t")
 colnames(just_depths) <- c("ABLG", "mean_depth")
 head(just_depths)
 
@@ -90,7 +88,6 @@ depths_plot
 
 ggsave(paste0(BASEDIR, "./figures/depth/",PREFIX, "-", FEATURE_NAME, "_mean_depths.jpg"), width = 8, height = 5, units = "in", dpi = 300)
 
-
 ###########################################################################################################################
 
 # compare depth distributions (with a series of t-tests)
@@ -106,15 +103,9 @@ blocklist_df1 <- out_df[out_df$mean_depth < 1,]
 keeplist_df0.5 <- out_df[out_df$mean_depth >= 0.5,]
 blocklist_df0.5 <- out_df[out_df$mean_depth < 0.5,]
 
-write.table(blocklist_df0.5[,1], "./sedna_files/inputs/blocklist_0.5x.txt",
+write.table(blocklist_df0.5[,1], "./data/",PREFIX,"_blocklist_0.5x.txt",
             sep = "\t", quote = F, row.names = F, col.names = F)
 
-write.table(blocklist_df1[,1], "./sedna_files/inputs/blocklist_1x.txt",
-            sep = "\t", quote = F, row.names = F, col.names = F)
-
-# for FST input
-write.table(keeplist_df0.5[,c(1:2)], "./sedna_files/inputs/early_late_keeplist0.5x_fst.txt",
-            sep = "\t", quote = F, row.names = F, col.names = F)
 
 ###########################################################################
 ####### CHECK IF DOWNSAMPLING SHOULD BE CONSIDERED ########################

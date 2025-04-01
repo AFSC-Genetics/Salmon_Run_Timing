@@ -1,10 +1,5 @@
 # PINK ALIGNED TO CHUM FOR RUNTIMING STUDY AT LRRC9
 
-# they have different depths of coverage, but also different samples sizes
-# after looking at this paper [https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14286],
-# decided that the effective sample size is not drastically different between two pops
-# this is when all jacks are removed from whitefish data
-
 # code originally written by Laura Timm
 # NH edited for project
 
@@ -21,17 +16,15 @@ for(i in 1:length(packages_needed)){
 
 #to run locally
 FEATURE_NAME <- "Runtime" #column name (in the metadata file) that contains the categorical variable you want to compare depth across (batch, region, sex, etc)
-PREFIX <- "pink-odd" #the prefix for the lcWGS run
+PREFIX <- "pink-chum" #the prefix for the lcWGS run
+SPECIES = "Pink"
 
-BASEDIR <- here()
-DEPTHFILE <- paste0("./data/R/depth/",PREFIX,"_depths.csv")
-METADATAFILE <- "./data/raw/pinkOdd_collection_07172024_cleaned.csv"
+DEPTHFILE <- paste0("./data/depth/",PREFIX,"_depths.csv")
+METADATAFILE <- "./data/raw/fourspecies_runtiming_metadata.csv"
 
 ###########################################################################################################################
 
-# define function
-
-# NH EDITED THIS TO WORK FOR MY DATASET
+# NH edited Laura Timm's depth function
 depths_t_test <- function(df, colnm, f1, f2) {
   first_factor_depths <- df[which(df[[colnm]] == f1), which(colnames(df) == "mean_depth")]
   second_factor_depths <- df[which(df[[colnm]] == f2), which(colnames(df) == "mean_depth")]
@@ -51,75 +44,56 @@ depths_t_test <- function(df, colnm, f1, f2) {
 ###########################################################################################################################
 
 ## ADD THE MATURITY DATA TO FILTER OUT JACKS
-full_metadata <- read.csv(METADATAFILE)
+full_metadata <- read.csv(METADATAFILE) %>%
+  filter(Species == SPECIES)
 head(full_metadata)
 
-features_df <- full_metadata[c("ABLG", FEATURE_NAME)]
-head(features_df)
+features_df <- full_metadata[c("sampleID", FEATURE_NAME)]
+  head(features_df)
 
-just_depths <- read.csv(DEPTHFILE, header = F, row.names = NULL, sep = "\t")
-colnames(just_depths) <- c("ABLG", "mean_depth")
-head(just_depths)
+just_depths <- read.csv(DEPTHFILE, header = F, row.names = NULL)
+  colnames(just_depths) <- c("sampleID", "mean_depth")
+  head(just_depths)
 
-just_depths <- just_depths %>%
-  mutate(ABLG = gsub("ABLG", "", ABLG))
-
-just_depths$ABLG <- as.numeric(just_depths$ABLG)
 just_depths$mean_depth <- as.numeric(just_depths$mean_depth)
 
-depths_df <- left_join(just_depths, features_df, by = "ABLG")
-colnames(depths_df) <- c("ABLG", "mean_depth", "feature")
-head(depths_df)
+depths_df <- left_join(just_depths, features_df, by = "sampleID")
+  colnames(depths_df) <- c("sampleID", "mean_depth", "feature")
+  head(depths_df)
 
 ###########################################################################################################################
 # plot depth distribution, colored by feature of interest
 
-depths_plot <- ggplot(data = depths_df, aes(x = reorder(ABLG, -mean_depth), y = mean_depth, fill = feature)) +
+depths_plot <- ggplot(data = depths_df, aes(x = reorder(sampleID, -mean_depth), y = mean_depth, fill = feature)) +
   geom_bar(stat = "identity", position = position_dodge()) +
-  xlab("individual") +
-  ylab("mean depth") +
+  xlab("individual") + ylab("mean depth") +
   geom_hline(yintercept = 0.5) +
   geom_hline(yintercept = 1) +
   scale_y_continuous(breaks = c(0.5, 1, 1.5, 2, 2.5, 3, 3.5),
                      expand = expansion(0.01,0.01)) +
   theme_bw() + 
-  theme(panel.border = element_blank(), panel.grid.major = element_blank(), axis.text.x = element_blank(),
-        panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), 
+        axis.text.x = element_blank(), axis.line = element_line(colour = "black"),
+        panel.grid.minor = element_blank())
 
 depths_plot
 
-ggsave(paste0(BASEDIR, "./figures/depth/",PREFIX, "-", FEATURE_NAME, "_mean_depths.jpg"), width = 8, height = 5, units = "in", dpi = 300)
+ggsave(paste0("./figures/depth/",PREFIX,"-",FEATURE_NAME,"_mean_depths.jpg"), width = 8, height = 5, units = "in", dpi = 300)
 
 ###########################################################################################################################
 
-# compare depth distributions (with a series of t-tests)
+# Remove samples below 0.5x, which there were none
+keeplist_df0.5 <- depths_df[depths_df$mean_depth >= 0.5,]
+blocklist_df0.5 <- depths_df[depths_df$mean_depth < 0.5,]
 
-out_df <- depths_df %>%
-  mutate(sampleID = paste0("ABLG",ABLG)) %>%
-  select(sampleID, feature, mean_depth)
-head(out_df)
-
-keeplist_df1 <- out_df[out_df$mean_depth >= 1,]
-blocklist_df1 <- out_df[out_df$mean_depth < 1,]
-
-keeplist_df0.5 <- out_df[out_df$mean_depth >= 0.5,]
-blocklist_df0.5 <- out_df[out_df$mean_depth < 0.5,]
-
-write.table(blocklist_df0.5[,1], "./sedna_files/inputs/blocklist_0.5x.txt",
+write.table(blocklist_df0.5[,1], paste0("./data/R/",PREFIX,"blocklist_0.5x.txt"),
             sep = "\t", quote = F, row.names = F, col.names = F)
 
-write.table(blocklist_df1[,1], "./sedna_files/inputs/blocklist_1x.txt",
-            sep = "\t", quote = F, row.names = F, col.names = F)
-
-# for FST input
-write.table(keeplist_df0.5[,c(1:2)], "./sedna_files/inputs/early_late_keeplist0.5x_fst.txt",
-            sep = "\t", quote = F, row.names = F, col.names = F)
-
-###########################################################################
 ####### CHECK IF DOWNSAMPLING SHOULD BE CONSIDERED ########################
 
 #BASED ON CHOSEN CUTOFF, WHAT KEEPLIST ARE YOU USING
 keeplist_df <- keeplist_df0.5
+keeplist_df <- keeplist_df1
 
 factors_list <- unique(keeplist_df[["feature"]])
 
@@ -155,7 +129,12 @@ for (i in 1:length(factors_list)) {
   }
 }
 #did it work?
-downsampled_factors
+if(nrow(downsampled_factors) == 0){
+  print("Welch's t-test showed no significant difference in depths across early and late run timing groups.")
+}else{
+  print("Welch's t-test showed significant difference in depths across early and late run timing groups.")
+  downsampled_factors
+}
 
 
 ######## MANUALLY DOWNSAMPLE THE TOP 13 SAMPLES (SINCE THERE WAS A JUMP IN DEPTH THERE)
@@ -177,7 +156,7 @@ for (i in 1:length(factors_list)) {
       if (results$pval < 0.05) {
           print("Need to select more individuals")  
         }else{  
-        print("This will correct for difference in depth")
+          print("This will correct for difference in depth")
         }
      }
   }
@@ -186,35 +165,30 @@ for (i in 1:length(factors_list)) {
 # first 13 get new depths
 depths_new <- depths_downsample %>%
   mutate(seed_depth = 42 + (2.6 / mean_depth)) %>%
-  mutate(array_input = paste0(row_number(),":ABLG",ABLG,":",round(seed_depth,digits = 3)))
+  mutate(array_input = paste0(row_number(),":",sampleID,":",round(seed_depth,digits = 3)))
 
-write.table(depths_new[,"array_input"], file = paste0("./sedna_files/inputs/",PREFIX,"_13indivs_downsampleARRAY_input.txt"),
+write.table(depths_new[,"array_input"], file = paste0("./data/",PREFIX,"_13indivs_downsampleARRAY_input.txt"),
             row.names = F, col.names = F, quote = F)
 
 ##########################################################################################################
 # RERAN MEAN_DEPTH.PY SCRIPT TO GET NEW DEPTHS AND PLOT AFTER DOWNSAMPLING
 
-post_down_depth <- read.csv(paste0("./results/depth/",PREFIX,"_downsample_depths.csv"), header = F,
-                            col.names = c("ABLG", "new_depth")) 
+post_down_depth <- read.csv(paste0("./data/depth/",PREFIX,"_downsample_depths.csv"), header = F,
+                            col.names = c("sampleID", "new_depth")) 
 
-post_down_depth <-post_down_depth %>%
-  mutate(ABLG = gsub("ABLG", "", ABLG))
-
-post_down_depth$ABLG <- as.numeric(post_down_depth$ABLG)
-
-post_down_all_depths <- full_join(depths_order, post_down_depth, by = "ABLG")
+post_down_all_depths <- full_join(depths_order, post_down_depth, by = "sampleID")
 
 post_down_all_depths <- post_down_all_depths %>%
   mutate(new_depth = ifelse(is.na(new_depth), mean_depth, new_depth))
 
-# MAY NEED TO EDIT CODE MORE TO WORK FOR BELOW                    !!!!!!!!!!!!!!!!!!!!!!!!!
+###### Re-Plot
 
 #plot new depth values, if needed
-downdepths_plot <- ggplot(data = post_down_all_depths, aes(x = reorder(ABLG, -new_depth), y = new_depth, fill = feature)) +
+downdepths_plot <- ggplot(data = post_down_all_depths, aes(x = reorder(sampleID, -new_depth), y = new_depth, fill = feature)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   xlab("individual") +
   ylab("mean depth") +
-  ggtitle(paste0("Pink-Chum: Downsampled 13 individuals to 2.6x")) +
+  ggtitle(paste0("Pink-Chum: Downsampled")) +
   geom_hline(yintercept = 0.5) +
   geom_hline(yintercept = 1) +
   scale_y_continuous(breaks = c(0.5, 1, 1.5, 2, 2.5, 3, 3.5),
@@ -223,31 +197,6 @@ downdepths_plot <- ggplot(data = post_down_all_depths, aes(x = reorder(ABLG, -ne
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), axis.text.x = element_blank(),
         panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))
 
-downdepths_plot
 
-ggsave(paste0(BASEDIR, "./figures/depth/",PREFIX, "-", FEATURE_NAME, "_mean_downsampled_depths.jpg"), width = 8, height = 5, units = "in", dpi = 300)
-
-
-################ DID NOT USE THIS BELOW ########################################
-################################################################################
-
-# write out subsetBAMS_array_input
-
-if (exists("downsample_df")) {
-  outfile <- file(paste0(here(), PREFIX, "-", FEATURE_NAME, "_downsample-bamsARRAY_inputTEST.txt"), "wb")
-  iterator <- 1
-  for (sample in 1:nrow(downsample_df)) {
-    if (downsample_df[sample, "target_prop", 1] != 1) {
-      outline <- paste0(as.character(iterator), ":", downsample_df[sample, "sample"], ":", as.character(round(as.numeric(downsample_df[sample, "target_prop"]), 3)))
-      write(outline, file = outfile, append = TRUE)
-      iterator <- iterator + 1
-    }
-  }
-  
-  close(outfile)
-  
-  #the file that was written is uploaded to sedna and used as the input array file for lcWGSpipeline_opt-downsample.py.
-  #Be sure -a flag in opt-downsample matches the name of the file written here
-  #unless you change it, the filename is "PREFIX-FEATURENAME_downsample-bamsARRAY_input.txt":
-  print(paste0(PREFIX, "-", FEATURE_NAME, "_downsample-bamsARRAY_input.txt"))
-}
+ggsave(paste0("./figures/depth/",PREFIX, "-", FEATURE_NAME, "_mean_downsampled_depths.jpg"), 
+       plot = downdepths_plot, width = 8, height = 5, units = "in", dpi = 300)

@@ -128,15 +128,15 @@ sbatch [PREFIX]_alignARRAY.sh
 sbatch [PREFIX]_depthsARRAY.sh
 ```
 
-There is an output file [PREFIX]\_depths.csv which we can import and run through the downsampling script to see if there is uneven distribution of depths across early and late individuals. The depth of these samples were quite low, and we didn't even use a cutoff because the two individuals that were less than 0.5x were in the 0.4s.
+There is an output file [PREFIX]\_depths.csv which we can import and run through the downsampling script to see if there is uneven distribution of depths across early and late individuals. We generally used 0.5x as a depth cutoff. Two chum samples were close to the 0.5x cutoff, above or rounding up to 0.4x; therefore, we didn't use a cutoff for chum.
 
 ```{R, plotDepths, eval=F, echo=T}
-./species-specific/downsampling_[PREFIX].R
+./species-specific/[PREFIX]_depth_and_downsampling.R
 ```
 
 #### Mapped Reads
 
-Calculate the total number of mapped reads from the bamfiles with samtools.
+Calculate the total number of mapped reads from the bamslists with samtools.
 
 ```{bash, mappedReads, eval=F, echo=T}
 sbatch [PREFIX]_mapped_reads.sh
