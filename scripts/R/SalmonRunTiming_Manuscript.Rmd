@@ -245,7 +245,7 @@ The peaks varied across species in boundary width. To assign genotypes across sp
 
 ```{bash LocalpcAngsd, eval=F, echo=T}
 sbatch lrrc9_pca_minInd0.3.sh
-sbatch esrb_expand_pca_minInd0.3.sh # expand = broader than exact esrb gene boundary
+sbatch esrb_pca_minInd0.3.sh
 ```
 
 Plotted each species-gene local PCA independently. In each of the R scripts, a local PCA was plotted, where the PC1 showed variance across run timing phenotypes. Each local PCA was split into three clusters along the PC1 axis. The three groups were defined as the homozygous early (EE), heterozygous (EL), and homozygous late (LL).
@@ -335,7 +335,7 @@ Upload the files to Slurm Manager and use as input bamslists in the following sh
 
 ```{bash top5_tree, eval=F, echo=T}
 top5_lrrc9_fourspp_ibs.sh
-top5_esrb_expand_fourspp_ibs.sh
+top5_esrb_fourspp_ibs.sh
 ```
 
 Plot Trees in R for both *lrrc9* and *esrb*.
