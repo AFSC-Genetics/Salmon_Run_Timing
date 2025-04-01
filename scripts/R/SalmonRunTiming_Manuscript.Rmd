@@ -1,6 +1,6 @@
 ---
-title: "Runtiming - Four Species Data Compilation"
-author: "Natasha Howe"
+title: "Runtiming - Four Salmon Species"
+author: "Patrick Barry & Natasha Howe"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: 
   html_document:
@@ -10,11 +10,9 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-#load libraries
+#load libraries 
 library(tidyverse)
 ```
-
-The fourspecies data compiled the separate R project data for Auke Creek pink, Wood River sockeye, Yukon River chum, and Skilak River coho.
 
 ## Introduction
 
@@ -22,14 +20,22 @@ Investigating run timing differentiation between early and late returning salmon
 
 ## Sample Collection
 
-Sample collection data was compiled from the raw data in each four species manually with three columns: sampleID, Runtime, and Species
+Data from Auke Creek pink salmon (even and odd lineage), Wood River sockeye salmon, Yukon River chum salmon, and Skilak River coho salmon. Sample collection data was compiled from the raw data in each four species manually with three columns: sampleID, Runtime, and Species
 
 ```{r MetaData, eval=F, echo=T}
 # All samples and sequencing information can be found at:
 read.csv("./data/raw/fourspecies_runtiming_metadata.csv")
 ```
 
-## low-coverage Whole Genome Sequencing Pipeline
+### Site Map
+
+@PatrickBarry-NOAA
+
+```{r, site_map, eval=F, echo=T}
+FigureS1_SiteMap.R
+```
+
+## Low-coverage Whole Genome Sequencing Pipeline
 
 Sequencing facilities differed across samples and had vastly different coverages. Refer to methods for species-specific sequencing effort details.
 
@@ -42,9 +48,9 @@ Prefix Options:
 1.  **Chum (Yukon):** "chumrun"
 2.  **Coho (Skilak Lake):** "coho-chum"
 3.  **Sockeye**:
-    i.  **Teal (Early Creek) and Whitefish (Late Creek)**: "sock-chum"
-    ii. **Teal (Early Creek) and Anvil (Late Beach)**: "euclide"
-    iii. **Teal (Early Creek) and Whitefish (Late Creek) and Anvil (Late Beach)**: "sock-all"
+    i.  **Teal (Early Creek) & Whitefish (Late Creek)**: "sock-chum"
+    ii. **Teal (Early Creek) & Anvil (Late Beach)**: "euclide"
+    iii. **Teal (Early Creek) & Whitefish (Late Creek) & Anvil (Late Beach)**: "sock-all"
 4.  **Pink:**
     i.  **Even**: "pink-chum"
     ii. **Odd**: "pink-odd
@@ -177,19 +183,17 @@ sbatch [PREFIX]_concat_minInd0.3_minDepthHalf_beagles.sh
 
 Created bamslists for the early and late run timing phenotypes (subset the filtered bamslist of all samples for that species by the run timing phenotype).
 
-Move file to Slurm Manager scripts folder. The python script creates a bamlist for each group, and the shell script contains every combination of comparisons for FST. First, angsd calls GLs for each subgroup, but it uses the *sites* flag from the file created in Step 5, so the SNPs being called will be the same as for the polymorphic files from Step 4. Therefore, some of the filtering steps have been removed, such as: *SNP_pval* and *minMaf*.
-
-*setminDepth* and set*maxDepth* are included, but adjusted to the sample size of the subset group.
+First, angsd calls GLs for each subgroup, but it uses the *sites* flag from the sites file created in Step 5, so the SNPs being called will only be from the polymorphic files from Step 4. Therefore, some of the filtering steps have been removed, such as: *SNP_pval* and *minMaf*. Filters were adjusted for the sample size of the subset group: *setminDepth* and set*maxDepth*, and *minInd.*
 
 ```{bash, fst, eval=F, echo=T}
-# for chum it is summer-fall instead of early-late
-# for euclide, it is creek-beach instead of early-late 
+# for chum it is "summer-fall" instead of "early-late"
+# for euclide, it is "creek-beach" instead of "early-late" 
 sbatch [PREFIX]_fst_early-late_minInd0.3_minDepthHalf_ARRAY.sh
 ```
 
 ## Identifying Regions of Divergence associated with Run Timing
 
-Multi-species whole genome Fst scan plot with esrb and lrrc9 highlighted. These plots are the initial runtiming phenotype comparisons.
+Multi-species whole genome Fst scan plot with *esrb* and *lrrc9* highlighted. These plots are the initial run timing phenotype comparisons.
 
 1.  Pink (Even): Early v. Late
 
@@ -223,11 +227,11 @@ The gene/duplicate figures were imported into Inkscape and further developed int
 
 ### Consensus Tree
 
-First, NCBI sequences were taken for lrrc9, esrb, and their duplicated variants (lrrc9-like, and esrb-like) from reference genomes in the four salmon species included in this study. Pike was used as an outgroup. They were imported into Geneious Prime and phylogenetic trees were created and exported as newick files.
+First, NCBI sequences were taken for *lrrc9*, *esrb*, and their duplicated variants (*lrrc9*-like, and *esrb*-like) from reference genomes in the four salmon species included in this study. Pike was used as an outgroup. They were imported into Geneious Prime and phylogenetic trees were created and exported as newick files.
 
-***Additional description.***
+@PatrickBarry-NOAA
 
-Consensus trees were plotted for lrrc9 and esrb using the code below.
+Consensus trees were plotted for *lrrc9* and *esrb* using the code below.
 
 ```{r, consensus_tree_plot, eval=F, echo=T}
 Figure2_BC_ConsensusTrees.R
@@ -235,11 +239,11 @@ Figure2_BC_ConsensusTrees.R
 
 ### Genotype Assignment from Local PCAs & Resulting Fsts
 
-For each species, we ran pcAngsd for the determined shared peak boundary across each gene region.
+The peaks varied across species in boundary width. To assign genotypes across species, we used the overlapping peak region as the peak boundary. For *lrrc9,* the shared peak was directly in the *lrrc9* gene region. For *esrb*, it was directly around *esrb* where coho and chum share a peak.
 
-***lrrc9***: NC_068455.1:START-STOP
+***lrrc9***: NC_068455.1:28128954-28169980
 
-***esrb***: NC_068449.1:START-STOP
+***esrb***: NC_068449.1:25414060-25501622
 
 ```{bash LocalpcAngsd, eval=F, echo=T}
 sbatch lrrc9_pca_minInd0.3.sh
@@ -266,7 +270,7 @@ These figures are the local PCAs for each species with the cutoff used to deline
 Figure3_Allele_LocalPCAandFst.R
 ```
 
-Supplemental local PCAs - adding Whitefish to the local lrrc9 sockeye PCA, and Pink Odd lineage local PCA. Whitefish individuals were included in the EE and LL bamslists for the above FST.
+Supplemental local PCAs - adding Whitefish to the local *lrrc9* sockeye PCA, and Pink Odd lineage local PCA. Whitefish individuals were included in the EE and LL bamslists for the above FST.
 
 ```{r supplfig_local_pca, eval=F, echo=T}
 FigureS3_AlleleLocalPCAs_OddPink-Sockeye.R
@@ -274,7 +278,9 @@ FigureS3_AlleleLocalPCAs_OddPink-Sockeye.R
 
 #### Barplots
 
-Barplots of putative allele proportions from PCA assignment of allele groups.
+Barplots of putative allele proportions from PCA assignment of genotypes.
+
+For pink-odd, we used the GTseq proportions from 2019 instead of whole genome results.
 
 ```{r alleleBarplot, eval=F, echo=T}
 lrrc9_esrb_barplots.R
@@ -282,7 +288,7 @@ lrrc9_esrb_barplots.R
 
 ### Homozygous Allele Phylogenetic Trees
 
-Use the IBS matrix in angsd to create phylogenetic trees from our GL data. This was used within the lrrc9 gene region and the esrb gene region. The associated new and older flags include:
+Use the IBS matrix in angsd to create phylogenetic trees from our GL data. This was used within the *lrrc9* gene region and the *esrb* gene region. The associated new and older flags include:
 
 -   -doCov 1, -makeMatrix 1, & -doIBS 1
 
@@ -334,7 +340,7 @@ top5_lrrc9_fourspp_ibs.sh
 top5_esrb_expand_fourspp_ibs.sh
 ```
 
-Plot Trees in R for both lrrc9 and esrb.
+Plot Trees in R for both *lrrc9* and *esrb*.
 
 ```{r, tree_plot, eval=F, echo=T}
 Figure4_AlleleNJTree.R
