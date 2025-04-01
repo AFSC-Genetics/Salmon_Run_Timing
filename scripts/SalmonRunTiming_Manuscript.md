@@ -200,6 +200,13 @@ First, angsd calls GLs for each subgroup, but it uses the *sites* flag from the 
 sbatch [PREFIX]_minInd0.3_fstARRAY.sh
 ```
 
+#### Weighted FST
+
+
+``` bash
+[PREFIX]_print_idx_minInd0.3_globalFst.sh
+```
+
 ## Identifying Regions of Divergence associated with Run Timing
 
 Multi-species whole genome Fst scan plot with *esrb* and *lrrc9* highlighted. These plots are the initial run timing phenotype comparisons.
@@ -228,7 +235,14 @@ The two other comparisons were included as a supplementary figure.
 FigureS2_Fst_WholeGenomeManhattan_OddPink-Sockeye.R
 ```
 
-The two highlighted regions of divergence that were shared across 2+ species were *lrrc9* and *esrb*. They are in the same \~850 kb duplicated region across chromosomes 29 and 35. We plotted the genes in this region to better visualize the duplication and the surrounding regions. To do so, we downloaded the gff file from the reference genome on NCBI. For the zoom in plot, we made the values on chr35 negative to avoid plotting as an inversion.
+The two highlighted regions of divergence that were shared across 2+ species were *lrrc9* and *esrb*. We calculated the mean weighted Fst across the entire genome for each species. We also calculated local weighted Fst within the shared elevated peaks (that have different bounds for each species).
+
+
+``` r
+TableS2_fourspp_weightedFst_calculations.R
+```
+
+*Lrrc9* and *esrb* are in the same \~850 kb duplicated region across chromosomes 29 and 35. We plotted the genes in this region to better visualize the duplication and the surrounding regions. To do so, we downloaded the gff file from the reference genome on NCBI. For the zoom in plot, we made the values on chr35 negative to avoid plotting as an inversion.
 
 
 ``` r
@@ -261,7 +275,7 @@ The peaks varied across species in boundary width. To assign genotypes across sp
 
 ``` bash
 sbatch lrrc9_pca_minInd0.3.sh
-sbatch esrb_expand_pca_minInd0.3.sh # expand = broader than exact esrb gene boundary
+sbatch esrb_pca_minInd0.3.sh
 ```
 
 Plotted each species-gene local PCA independently. In each of the R scripts, a local PCA was plotted, where the PC1 showed variance across run timing phenotypes. Each local PCA was split into three clusters along the PC1 axis. The three groups were defined as the homozygous early (EE), heterozygous (EL), and homozygous late (LL).
@@ -294,6 +308,13 @@ Supplemental local PCAs - adding Whitefish to the local *lrrc9* sockeye PCA, and
 FigureS3_AlleleLocalPCAs_OddPink-Sockeye.R
 ```
 
+For the *esrb* and *lrrc9* regions plotted in Figure 3B&C, we determined if there were SNPs with elevated FST (FST \> 0.5) shared across species. Furthermore, if SNPs were within an annotated genes region, the genes and associated GO terms were listed with that SNP.
+
+
+``` r
+TableS4_allele-based_FST_positions_genes.R
+```
+
 #### Barplots
 
 Barplots of putative allele proportions from PCA assignment of genotypes.
@@ -302,7 +323,7 @@ For pink-odd, we used the GTseq proportions from 2019 instead of whole genome re
 
 
 ``` r
-lrrc9_esrb_barplots.R
+FigureS4_Lrrc9_Esrb_Barplots.R
 ```
 
 ### Homozygous Allele Phylogenetic Trees
@@ -359,7 +380,7 @@ Upload the files to Slurm Manager and use as input bamslists in the following sh
 
 ``` bash
 top5_lrrc9_fourspp_ibs.sh
-top5_esrb_expand_fourspp_ibs.sh
+top5_esrb_fourspp_ibs.sh
 ```
 
 Plot Trees in R for both *lrrc9* and *esrb*.

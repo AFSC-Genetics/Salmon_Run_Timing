@@ -24,7 +24,7 @@ FEATURE_NAME <- "Runtime" #column name (in the metadata file) that contains the 
 PREFIX <- "pink-odd" #the prefix for the lcWGS run
 
 BASEDIR <- here()
-DEPTHFILE <- paste0("./data/R/depth/",PREFIX,"_depths.csv")
+DEPTHFILE <- paste0("./results/depth/",PREFIX,"_depths.csv")
 METADATAFILE <- "./data/raw/pinkOdd_collection_07172024_cleaned.csv"
 
 ###########################################################################################################################

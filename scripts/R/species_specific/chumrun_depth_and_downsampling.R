@@ -21,7 +21,7 @@ PREFIX <- "chumrun" #the prefix for the lcWGS run
 SPECIES <- "Chum" # for filtering the metadata table
 
 setwd(here())
-DEPTHFILE <- paste0("./data/depth/",PREFIX,"_depths.csv")
+DEPTHFILE <- paste0("./results/depth/",PREFIX,"_depths.csv")
 METADATAFILE <- "./data/raw/fourspecies_runtiming_metadata.csv"
 
 ###########################################################################################################################

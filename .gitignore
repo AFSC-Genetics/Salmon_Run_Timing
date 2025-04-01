@@ -1,6 +1,6 @@
 # Results files
 **/results/
-**/depth/
+*.html
 
 # History files
 .Rhistory

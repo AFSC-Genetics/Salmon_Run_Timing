@@ -19,7 +19,7 @@ FEATURE_NAME <- "Runtime" #column name (in the metadata file) that contains the 
 PREFIX <- "pink-chum" #the prefix for the lcWGS run
 SPECIES = "Pink"
 
-DEPTHFILE <- paste0("./data/depth/",PREFIX,"_depths.csv")
+DEPTHFILE <- paste0("./results/depth/",PREFIX,"_depths.csv")
 METADATAFILE <- "./data/raw/fourspecies_runtiming_metadata.csv"
 
 ###########################################################################################################################

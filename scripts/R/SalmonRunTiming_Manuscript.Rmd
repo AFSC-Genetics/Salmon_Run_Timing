@@ -24,14 +24,14 @@ Data from Auke Creek pink salmon (even and odd lineage), Wood River sockeye salm
 
 ```{r MetaData, eval=F, echo=T}
 # All samples and sequencing information can be found at:
-read.csv("./data/raw/fourspecies_runtiming_metadata.csv")
+as.vector(Sys.glob("./data/raw/*"))
 ```
 
 ### Site Map
 
 @PatrickBarry-NOAA
 
-```{r, site_map, eval=F, echo=T}
+```{r, fig1_site_map, eval=F, echo=T}
 FigureS1_SiteMap.R
 ```
 
@@ -189,6 +189,12 @@ First, angsd calls GLs for each subgroup, but it uses the *sites* flag from the 
 sbatch [PREFIX]_minInd0.3_fstARRAY.sh
 ```
 
+#### Weighted FST
+
+```{bash, weighted_fst, eval=F, echo=T}
+[PREFIX]_print_idx_minInd0.3_globalFst.sh
+```
+
 ## Identifying Regions of Divergence associated with Run Timing
 
 Multi-species whole genome Fst scan plot with *esrb* and *lrrc9* highlighted. These plots are the initial run timing phenotype comparisons.
@@ -215,7 +221,13 @@ The two other comparisons were included as a supplementary figure.
 FigureS2_Fst_WholeGenomeManhattan_OddPink-Sockeye.R
 ```
 
-The two highlighted regions of divergence that were shared across 2+ species were *lrrc9* and *esrb*. They are in the same \~850 kb duplicated region across chromosomes 29 and 35. We plotted the genes in this region to better visualize the duplication and the surrounding regions. To do so, we downloaded the gff file from the reference genome on NCBI. For the zoom in plot, we made the values on chr35 negative to avoid plotting as an inversion.
+The two highlighted regions of divergence that were shared across 2+ species were *lrrc9* and *esrb*. We calculated the mean weighted Fst across the entire genome for each species. We also calculated local weighted Fst within the shared elevated peaks (that have different bounds for each species).
+
+```{r weightedfst, eval=F, echo=T}
+TableS2_fourspp_weightedFst_calculations.R
+```
+
+*Lrrc9* and *esrb* are in the same \~850 kb duplicated region across chromosomes 29 and 35. We plotted the genes in this region to better visualize the duplication and the surrounding regions. To do so, we downloaded the gff file from the reference genome on NCBI. For the zoom in plot, we made the values on chr35 negative to avoid plotting as an inversion.
 
 ```{r, WGD_plot, eval=F, echo=T}
 Figure2_A_WGD_Illustration.R
@@ -270,8 +282,14 @@ Figure3_Allele_LocalPCAandFst.R
 
 Supplemental local PCAs - adding Whitefish to the local *lrrc9* sockeye PCA, and Pink Odd lineage local PCA. Whitefish individuals were included in the EE and LL bamslists for the above FST.
 
-```{r supplfig_local_pca, eval=F, echo=T}
+```{r figS3_local_pca, eval=F, echo=T}
 FigureS3_AlleleLocalPCAs_OddPink-Sockeye.R
+```
+
+For the *esrb* and *lrrc9* regions plotted in Figure 3B&C, we determined if there were SNPs with elevated FST (FST \> 0.5) shared across species. Furthermore, if SNPs were within an annotated genes region, the genes and associated GO terms were listed with that SNP.
+
+```{r figS4_highfst, eval=F, echo=T}
+TableS4_allele-based_FST_positions_genes.R
 ```
 
 #### Barplots
@@ -281,7 +299,7 @@ Barplots of putative allele proportions from PCA assignment of genotypes.
 For pink-odd, we used the GTseq proportions from 2019 instead of whole genome results.
 
 ```{r alleleBarplot, eval=F, echo=T}
-lrrc9_esrb_barplots.R
+FigureS4_Lrrc9_Esrb_Barplots.R
 ```
 
 ### Homozygous Allele Phylogenetic Trees
