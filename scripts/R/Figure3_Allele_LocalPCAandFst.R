@@ -16,6 +16,8 @@ for(i in 1:length(packages_needed)){
 
 rm(i, packages_needed)
 
+#setwd()
+
 METADATAFILE <- "./data/raw/fourspecies_runtiming_metadata.csv"
 
 #### A) LRRC9 #################################################################
@@ -102,8 +104,9 @@ sock_FID <- sock_bam_df %>%
 
 # call in some metadata
 sock_meta <- read.csv(METADATAFILE, header = T) %>%
-  filter(Species == "Sockeye") %>%
-  filter(Runtime != "Late Stream") # remove whitefish
+  filter(Species == "Sockeye",
+         Runtime != "Late Stream") %>% # remove whitefish
+  mutate(Runtime = if_else(Runtime == 'Late Beach', 'Late', 'Early'))
 
 # join those two dataframes
 sock_popFID <- inner_join(sock_FID, sock_meta, by = "sampleID")
@@ -117,15 +120,14 @@ sock_pca.eigenval.sum = sum(sock_e$values) #sum of eigenvalues
   sock_varPC2 <- (sock_e$values[2]/sock_pca.eigenval.sum)*100 # PC2 variance
 
 # create dataframe for color designation
-sockPalette <- c("goldenrod1", "orchid", "royalblue3")
-sock_pca.vectors$Runtime <- factor(sock_pca.vectors$Runtime, levels = c("Early Creek", "Late Creek", "Late Beach"))
-  names(sockPalette) <- levels(sock_pca.vectors$Runtime)
+sock_pca.vectors$Runtime <- factor(sock_pca.vectors$Runtime, levels = c("Early", "Late"))
+  names(mypalette) <- levels(sock_pca.vectors$Runtime)
 
 ### SOCKEYE
 sock_lrrc9 <- ggplot(data = sock_pca.vectors, 
                      aes(x=V1, y=V2, fill = Runtime, shape = Runtime)) + 
   geom_point(alpha = 0.7, size = 3, color = "gray20") +
-  scale_fill_manual(name = expression('Sockeye'~italic(lrrc9)), values = sockPalette) +
+  scale_fill_manual(name = expression('Sockeye'~italic(lrrc9)), values = mypalette) +
   scale_shape_manual(name = expression('Sockeye'~italic(lrrc9)), values = c(21,22)) +
   geom_vline(xintercept = 0.1, color = "gray30", alpha = 0.5, linetype = "dashed") +
   geom_vline(xintercept = -0.05, color = "gray30", alpha = 0.5, linetype = "dashed") +
@@ -331,7 +333,7 @@ dev.off()
 ###### GFF NCBI Data ###################################
 
 # find exons from gff file for genes of interest (from NCBI chum reference genome)
-gff_df <- read.delim("./data/R/genomic.gff", header = F, comment.char = "#")
+gff_df <- read.delim('../../Ref_genomes/chumV2/genomic.gff', header = F, comment.char = "#")
   gff_df <- gff_df[,c(1:5,9)] # remove excess columns
   colnames(gff_df) <- c("chrName", "RefSeq","exon","start.pos","fin.pos", "ID")
 
@@ -343,7 +345,6 @@ gff_chr29 <- gff_df %>%
 rm(gff_df)
 
 ########## Pink lrrc9 FST ###################
-
 pink_Fst <- read.delim2("./results/fst/allele/pink-chum_NC_068455.1_EE-LL_minInd0.3.sfs.pbs.fst.txt",
                         row.names = NULL,sep = "\t")
   colnames(pink_Fst) <- c("region", "chrName", "midPos", "Nsites", "Fst")
@@ -361,8 +362,7 @@ pink_df <- pink_Fst %>%
   filter(midPos > xstart.lrrc9, midPos < xend.lrrc9) 
 
 ###### Sockeye lrrc9 FST #####################
-
-sock_fst <- read.delim("./results/fst/sock-all_NC_068455.1_EE-LL_minInd0.3.sfs.pbs.fst.txt",
+sock_fst <- read.delim("./results/fst/allele/sock-all_NC_068455.1_EE-LL_minInd0.3.sfs.pbs.fst.txt",
                        row.names = NULL,sep = "\t")
   colnames(sock_fst) <- c("region", "chrName", "midPos", "Nsites", "Fst")
 
@@ -379,7 +379,6 @@ sock_df <- sock_fst %>%
   filter(midPos > xstart.lrrc9, midPos < xend.lrrc9)
 
 ##### Chum lrrc9 FST ######################
-
 chum_Fst <- read.delim2("./results/fst/allele/chumrun_NC_068455.1_EE-LL_minInd0.3.sfs.pbs.fst.txt",
                         row.names = NULL,sep = "\t")
   colnames(chum_Fst) <- c("region", "chrName", "midPos", "Nsites", "Fst")
@@ -423,23 +422,39 @@ exons_to_plot <- exons_to_plot[!grepl("^LOC",exons_to_plot$gene),] # remove unch
 exons_to_plot$gene <- factor(exons_to_plot$gene, levels = unique(exons_to_plot$gene)) # factor based on gene name
 
 # The below file is manually edited for plotting purposes
-# Colors are assigned to each gene, two versions for different panel sizes
+# Colors are assigned to each gene
 genes_df <- read.delim2("./data/R/chr35_chum_genes_exons.txt", header = T, 
-                        sep = "\t", row.names = NULL) 
+                        sep = "\t", row.names = NULL) %>%
+  mutate(beg.pos = as.numeric(beg.pos), end.pos = as.numeric(end.pos),
+         y.min = as.numeric(y.min), y.max = as.numeric(y.max))
 
 # set factors for plotting columns
 genes_df$gene <- factor(genes_df$gene, levels = genes_df$gene)
   mypalette <- genes_df$color
   names(mypalette) <- levels(genes_df$gene)
 
-# having an issue with these not being numeric, so assign them all as such here
-genes_df$beg.pos = as.numeric(genes_df$beg.pos)
-genes_df$end.pos = as.numeric(genes_df$end.pos)
-genes_df$y.min = as.numeric(genes_df$y.min)
-genes_df$y.max = as.numeric(genes_df$y.max)
+##### Make genes with FST < 0.5 gray w/o legend ####################
+highfst_lrrc9 <- rbind(pink_df, sock_df, chum_df) %>%
+  filter(Fst > 0.5) %>%
+  distinct(midPos)
+
+lowfst_lrrc9_genes <- gff_region %>%
+  filter(exon == 'gene') %>%
+  mutate(gene = str_match(ID, gene_pattern)[,2]) %>%  # gene abbr.      
+  rowwise() %>%
+  mutate(highfst = any(highfst_lrrc9$midPos >= start.pos & highfst_lrrc9$midPos <= fin.pos)) %>%
+  ungroup() %>%
+  filter(highfst == F)
+
+highfst_genes <- genes_df %>%
+  filter(!(gene %in% lowfst_lrrc9_genes$gene))
+  
+lowfst_genes <- genes_df %>%
+  filter((gene %in% lowfst_lrrc9_genes$gene))
 
 # only keep exons from genes that have color codes
-exons_to_plot <- filter(exons_to_plot, gene %in% genes_df$gene)
+highfst_exons <- filter(exons_to_plot, gene %in% highfst_genes$gene)
+lowfst_exons <- filter(exons_to_plot, gene %in% lowfst_genes$gene)
 
 ################# Plotting ###########################
 # Set the general themes
@@ -505,10 +520,15 @@ chum_plot <- ggplot() +
 
 ####### plot genes/exons
 gene_plot <- ggplot() +
-  geom_rect(data = genes_df, aes(xmin = beg.pos, xmax = end.pos, ymin = y.min, ymax = y.max,
+  geom_rect(data = highfst_genes, aes(xmin = beg.pos, xmax = end.pos, ymin = y.min, ymax = y.max,
                                  fill = gene), alpha = 1) +
-  geom_rect(data = exons_to_plot, aes(xmin = start.pos, xmax = fin.pos, ymin = 0, ymax = 0.1,
+  geom_rect(data = highfst_exons, aes(xmin = start.pos, xmax = fin.pos, ymin = 0, ymax = 0.1,
                                       fill = gene)) +
+  # gray blocks without legend
+  geom_rect(data = lowfst_genes, aes(xmin = beg.pos, xmax = end.pos, ymin = y.min, ymax = y.max),
+                                 fill = "gray70", alpha = 0.7) +
+  geom_rect(data = lowfst_exons, aes(xmin = start.pos, xmax = fin.pos, ymin = 0, ymax = 0.1),
+                                      fill = "gray70", alpha = 0.7) +
   theme_minimal() +
   scale_y_continuous(limits = c(0, 0.1),
                      expand = expansion(mult = c(0, 0))) +
@@ -524,6 +544,7 @@ gene_plot <- ggplot() +
     panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
     legend.text = element_text(size = 24), legend.title = element_text(size = 26),
     axis.line = element_blank(), plot.margin = unit(c(0.05,0,0,0), "cm"))
+gene_plot
 
 ######### Combine Plots
 multiplot_temp <- gene_plot / sock_plot / chum_plot / pink_plot + 
@@ -607,20 +628,14 @@ exons_df <- gff_region_exon[,c(4,5,7:8)] # only retain columns of interest
 
 # this file was manually edited for plotting purposes based on above description
 # This filtered file removed all uncharacterized loci except those of great interest (esrb, six genes)
-genes_df <- read.csv("./data/R/chr29_chum_genes_exons_filtered.csv", header = T, row.names = NULL) 
+genes_df <- read.csv("./data/R/chr29_chum_genes_exons_filtered.csv", 
+                     header = T, row.names = NULL) %>%
+  mutate(beg.pos = as.numeric(beg.pos), end.pos = as.numeric(end.pos),
+         y.min = as.numeric(y.min), y.max = as.numeric(y.max))
 
 genes_df$geneAbbr <- factor(genes_df$geneAbbr, levels = genes_df$geneAbbr) # set factors for plotting columns 
 exons_to_plot <- inner_join(exons_df, genes_df, by = "gene")
 exons_to_plot$geneAbbr <- factor(exons_to_plot$geneAbbr, levels = unique(exons_to_plot$geneAbbr)) # factor based on gene name
-
-mypalette <- genes_df$color # color based on color column
-  names(mypalette) <- levels(genes_df$geneAbbr)
-
-# having an issue with these not being numeric, so assign them all as such here
-exons_to_plot$y.min = as.numeric(exons_to_plot$y.min)
-exons_to_plot$y.max = as.numeric(exons_to_plot$y.max)
-exons_to_plot$beg.pos = as.numeric(exons_to_plot$beg.pos)
-exons_to_plot$end.pos = as.numeric(exons_to_plot$end.pos)
 
 unique(exons_to_plot$gene)
 
@@ -638,6 +653,32 @@ exons_to_plot <- exons_to_plot %>%
 # this exon in esrb is too small even with the above edit
 # make slightly larger so it is visible in plot
 exons_to_plot$fin.pos[which(exons_to_plot$geneAbbr == "esrb")[length(which(exons_to_plot$geneAbbr == "esrb"))]] <- 25.456 # changed from 27.994277
+
+##### Make genes with FST < 0.5 gray w/o legend ####################
+highfst_esrb <- rbind(coho_df, chum_df) %>%
+  filter(Fst > 0.5) %>%
+  distinct(midPos)
+
+lowfst_esrb_genes <- gff_region %>%
+  filter(exon == 'gene') %>%
+  mutate(gene = str_match(ID, gene_pattern)[,2]) %>%  # gene abbr.      
+  rowwise() %>%
+  mutate(highfst = any(highfst_esrb$midPos >= start.pos & highfst_esrb$midPos <= fin.pos)) %>%
+  ungroup() %>%
+  filter(highfst == F)
+
+highfst_genes <- genes_df %>%
+  filter(!(gene %in% lowfst_esrb_genes$gene))
+
+lowfst_genes <- genes_df %>%
+  filter((gene %in% lowfst_esrb_genes$gene))
+
+# only keep exons from genes that have color codes
+highfst_exons <- filter(exons_to_plot, gene %in% highfst_genes$gene)
+lowfst_exons <- filter(exons_to_plot, gene %in% lowfst_genes$gene)
+
+mypalette <- genes_df$color # color based on color column
+  names(mypalette) <- levels(genes_df$geneAbbr)
 
 ####### Plotting #################
 # Set the general themes
@@ -687,10 +728,14 @@ chum_esrb_plot <- ggplot() +
 
 ####### plot genes/exons
 gene_plot <- ggplot() +
-  geom_rect(data = exons_to_plot, aes(xmin = beg.pos, xmax = end.pos, ymin = y.min, ymax = y.max,
+  geom_rect(data = highfst_exons, aes(xmin = beg.pos, xmax = end.pos, ymin = y.min, ymax = y.max,
                                       fill = geneAbbr)) +
-  geom_rect(data = exons_to_plot, aes(xmin = start.pos, xmax = fin.pos, ymin = 0, ymax = 0.1,
+  geom_rect(data = highfst_exons, aes(xmin = start.pos, xmax = fin.pos, ymin = 0, ymax = 0.1,
                                       fill = geneAbbr)) +
+  geom_rect(data = lowfst_exons, aes(xmin = beg.pos, xmax = end.pos, ymin = y.min, ymax = y.max),
+                                     fill = "gray70", alpha = 0.7) +
+  geom_rect(data = lowfst_exons, aes(xmin = start.pos, xmax = fin.pos, ymin = 0, ymax = 0.1),
+                                     fill = "gray70", alpha = 0.7) +
   theme_minimal() +
   scale_y_continuous(limits = c(0, 0.1),
                      expand = expansion(mult = c(0, 0))) +
