@@ -1,0 +1,12 @@
+﻿Species,Location,Peak run (est),Lat,Long,Label,RunTimeFct
+Chum,Pelly River (Yukon Fall),9/25/24,62.793,-137.337,Pelly R. (Fall),Late
+Chum,Gisasa River (Yukon summer),7/1/24,65.267,-157.667,Gisasa R. (Summer),Early
+Sockeye,Whitefish Creek,8/26/24,59.267,-158.686,Whitefish Crk.,Late
+Sockeye,Teal Creek,8/10/24,59.482,-158.733,Teal Crk.,Early
+Sockeye,Anvil Beach,9/10/24,59.553,-158.85,Anvil Beach,Late
+Coho,Skilak River,8/31/24,60.392,-150.126,Skilak R.,Early
+Coho,Skilak Lake Outlet,1/25/24,60.464,-150.531,Skilak L.,Late
+Pink,"Auke Creek (even, early)",8/5/24,58.381,-134.641,Auke Crk.,Early
+Pink,"Auke Creek (even, late)",9/8/24,58.381,-134.641,Auke Crk.,Late
+Pink,"Auke Creek (odd, early)",8/5/24,58.381,-134.641,Auke Crk.,Early
+Pink,"Auke Creek (odd, late)",9/8/24,58.381,-134.641,Auke Crk.,Late
