@@ -28,8 +28,12 @@ as.vector(Sys.glob("./data/raw/*"))
 ```
 
 ### Site Map
-
-@PatrickBarry-NOAA
+The Alaska anadromous waters (AWC) catalog available from ADFG is required for plotting 
+water bodies in the map of collections (Figure S1). The AWC can be downloaded
+from https://www.adfg.alaska.gov/sf/SARR/AWC/index.cfm?ADFG=maps.dataFiles.
+Additionally, SEAK salmon stat areas are used in the pink salmon subplot. This
+file is available from ADFG https://gis.adfg.alaska.gov/ags/rest/services/CF_public/SoutheastSalmon5AAC33_200/MapServer/9
+or the authors. 
 
 ``` r
 FigureS1_SiteMap.R
