@@ -108,7 +108,7 @@ sbatch ./shell/GCF_023373465.1_Oket_V2_genomic_fai_script.sh
 ### Step 1: Quality Control
 
 This step is a quality control of the sequencing data (raw fastqs). It runs 
-FastQC [@Andrews2010] on the raw sequence data. FastQC is a java based application 
+FastQC on the raw sequence data. FastQC is a java based application 
 that runs a set of quality control measures.
 
 Run two shell scripts PREFIX-raw_fastqcARRAY.sh and 
@@ -122,8 +122,8 @@ sbatch ./shell/PREFIX-raw_multiqcSLURM.sh
 ### Step 2: Trim
 
 After initial quality control steps, adapters were trimmed from raw fastqs 
-with the program TRIMMOMATIC [@Bolger2014] and 
-an additional quality-check of the trimmed fastqs with multiQC [@Ewels2016]
+with the program TRIMMOMATIC and 
+an additional quality-check of the trimmed fastqs with multiQC
 was performed. Three shell scripts: PREFIX_trimARRAY.sh, PREFIX-trim_fastqcARRAY.sh, and 
 PREFIX-trim_multiqcSLURM.sh should all run in succession.
 
@@ -143,7 +143,7 @@ present in the trimmed data before proceeding to alignment.
 
 Alignment of trimmed reads to the chum salmon reference genome
 was performed with BWA and aligned reads were then processed with 
-SAMTOOLS [@Li2009]. The average read depth for each sample was then calculated.
+SAMTOOLS. The average read depth for each sample was then calculated.
 
 ``` bash
 # align to genome
@@ -301,101 +301,109 @@ into an illustration for the manuscript.
 
 ### Consensus Tree
 
-First, NCBI sequences were taken for *lrrc9*, *esrb*, and their duplicated 
+Sequences were downloaded from NCBI for *lrrc9*, *esrb*, and their duplicated 
 variants (*lrrc9*-like, and *esrb*-like) from reference genomes in the four 
-salmon species included in this study. Pike was used as an outgroup. They were 
-imported into Geneious Prime and phylogenetic trees were created and exported 
-as newick files.
+salmon species included in this study. Locus specific information
+to obtain sequences is available in Table S3 of the supplemental tables. 
+Pike, a closely related species, was used as an outgroup. All sequences were 
+imported into Geneious Prime, aligned with Clustal Omega, and neighbor joining trees 
+were created and exported as newick files.
 
-@PatrickBarry-NOAA - any additional comments?
+Clustal alignments can be performed from the command line with
 
-Consensus trees were plotted for *lrrc9* and *esrb* using the code below.
-
-``` r
-Figure2_BC_ConsensusTrees.R
+``` bash
+clustalo -i INPUT.fasta -o clustal.aln -v --outfmt=clustal --output-order=tree-order --iter=0 --cluster-size=100 -t DNA
 ```
 
-### Genotype Assignment from Local PCAs & Resulting Fsts
+where `INPUT` can be replaced by the locus name (lrrc9 or esrb);
+and the locus specific fasta file is located in the data directory.
 
-The peaks varied across species in boundary width. To assign genotypes across 
-species, we used the overlapping peak region as the peak boundary. For *lrrc9,* 
-the shared peak was directly in the *lrrc9* gene region. For *esrb*, it was 
-directly around *esrb* where coho and chum share a peak.
+Consensus trees were plotted for *lrrc9* and *esrb* in R with ggtree with
+
+``` r
+./R/Figure2_BC_ConsensusTrees.R
+```
+
+### Genotype Assignment from Local PCAs & Allele Based $F_{ST}$
+
+Local principal component analysis, focused on the peaks of divergence 
+associated with run timing, was used to define run timing genotypes. There was
+variation in the width of elevated divergence across species, so the region 
+showing elevated divergence across all species was used. For *lrrc9,* 
+the shared peak was contained within *lrrc9* while for *esrb*, it exceeded 
+*esrb* slightly.
 
 ***lrrc9***: NC_068455.1:28128954-28169980
 
 ***esrb***: NC_068449.1:25414060-25501622
 
 ``` bash
-sbatch lrrc9_pca_minInd0.3.sh
-sbatch esrb_pca_minInd0.3.sh
+sbatch ./shell/lrrc9_pca_minInd0.3.sh
+sbatch ./shell/esrb_pca_minInd0.3.sh
 ```
 
-Plotted each species-gene local PCA independently. In each of the R scripts, 
-a local PCA was plotted, where the PC1 showed variance across run timing 
-phenotypes. Each local PCA was split into three clusters along the PC1 axis. 
+Each species-gene local PCA was plotted independently. Each local PCA 
+showed three distinct clusters of individuals separated along PC1. 
 The three groups were defined as the homozygous early (EE), heterozygous (EL), 
 and homozygous late (LL).
 
 ``` r
-../species_specific/PREFIX_lrrc9_pca.R
-../species_specific/PREFIX_esrb_pca.R
+./R/species_specific/PREFIX_lrrc9_pca.R
+./R/species_specific/PREFIX_esrb_pca.R
 ```
 
-The scripts above also split the individuals by sampleID into these three 
-genotypes. Heterozygous individuals were dropped, and EE and LL individuals 
-were placed into separate bamslists. The bamslists were used to run an 
-allele-based FST, which was run in the scripts below for each species comparison.
+As part of the scripts to produce local PCA plots, bamslists containing 
+the early and late homozygotes are produced to estimate
+allele-based $F_{ST}$. These estimates can be produced with 
 
 ``` bash
-sbatch PREFIX_minInd0.3_lrrc9_allele_fst.sh
-sbatch PREFIX_minInd0.3_esrb_allele_fst.sh
+sbatch ./shell/PREFIX_minInd0.3_lrrc9_allele_fst.sh
+sbatch ./shell/PREFIX_minInd0.3_esrb_allele_fst.sh
 ```
 
-These figures are the local PCAs for each species with the cutoff used to 
-delineate the genotypes. Also, the zoomed in FST on the main regions of 
-differentiation using the pca-assigned genotypes. Genes within the regions 
-are also included.
+Figure 3 from the manuscript can be created with the 
+following script which combines the local PCAs and zoomed in $F_{ST}$ 
+plots confined to the regions of highest association with run timing.
 
 ``` r
-Figure3_Allele_LocalPCAandFst.R
+./R/Figure3_Allele_LocalPCAandFst.R
 ```
 
-Supplemental local PCAs - adding Whitefish to the local *lrrc9* sockeye PCA, 
-and Pink Odd lineage local PCA. Whitefish individuals were included in the EE 
-and LL bamslists for the above FST.
+Additional, supplemental local PCAs - adding Whitefish to the local *lrrc9* sockeye PCA, 
+and Pink Odd lineage local PCA were created. Whitefish individuals were included in the EE 
+and LL bamslists for the above $F_{ST}$ scan.
 
 ``` r
-FigureS3_AlleleLocalPCAs_OddPink-Sockeye.R
+./R/FigureS3_AlleleLocalPCAs_OddPink-Sockeye.R
 ```
 
 For the *esrb* and *lrrc9* regions plotted in Figure 3B&C, we determined if 
 there were SNPs with elevated $F_{ST}$ ($F_{ST}$ \> 0.5) shared across species. 
-Furthermore, if SNPs were within an annotated genes region, the genes and 
-associated GO terms were listed with that SNP.
+If SNPs were within an annotated gene region, the genes and 
+associated GO terms were listed with that SNP in Table S4.
 
 ``` r
-TableS4_allele-based_FST_positions_genes.R
+./R/TableS4_allele-based_FST_positions_genes.R
 ```
 
 #### Barplots
 
-Barplots of putative allele proportions from PCA assignment of genotypes.
-
-For pink-odd, we used the GTseq proportions from 2019 instead of whole genome 
-results.
+To compare run timing allele frequency by run timing phenotype, 
+barplots of putative allele proportions from PCA assignment of genotypes were
+constructed. For pink-odd, we used the GTseq proportions from 2019 instead 
+of whole genome results.
 
 ``` r
-FigureS4_Lrrc9_Esrb_Barplots.R
+./R/FigureS4_Lrrc9_Esrb_Barplots.R
 ```
 
-### Homozygous Allele Phylogenetic Trees
+### IBS Matrix
 
-Use the IBS matrix in angsd to create phylogenetic trees from our GL data. This 
-was used within the *lrrc9* gene region and the *esrb* gene region. The 
-associated new and older flags include:
+Relationships among the run timing alleles among species were investigated by producing 
+IBS neighbor-joining trees. The IBS matrix was produced in ANGSD with the following
+settings:
 
--   -doCov 1, -makeMatrix 1, & -doIBS 1
+-   -doIBS 1, -makeMatrix 1 
 -   *minMapQ* [20]: the minimum map quality is 20.
 -   *minQ* [20]: the minimum base quality is 20.
 -   *doMajorMinor* [4]: Set the major and minor as the reference genome 
@@ -403,19 +411,15 @@ associated new and older flags include:
 -   *C* [50]: use an adjustment of the Map Quality for excessive mismatches 
     of 50. This is the suggested value for BWA and leads to fewer false positive 
     variant calls
--   *SNP_pval* [1e-10]: only work with sites with a p-value from the likelihood 
+-   *SNP_pval* [1e-10]: Retain sites with a p-value from the likelihood 
     test of less than 1e-10.
--   *GL* [1]: use SAMtools genotype likelihood calling algorithm. One assumption 
-    of the SAMtools algorithm is that it assumes that errors are not independent, 
-    but that once a first error occurs at a certain site in an individual, a 
-    second error is more likely to occur at the same site
--   *minMaf* [0.05]: only work with sites with a maf above 0.05
+-   *GL* [1]: use SAMtools genotype likelihood calling algorithm.
+-   *minMaf* [0.05]: Retain sites with a maf above 0.05
 
-### Allele-Based Neighbor Joining Tree
+### Allele-Based Neighbor-Joining Tree
 
-All of the bam files were already created at this point but are stored in the 
-species-specific run timing folders. Therefore, the species bamslists have to be 
-concatenated.
+All of the .bam files from species-specific folders were combined to 
+create an all-sample bamlist.
 
 ``` bash
 cd runtiming/
@@ -423,17 +427,15 @@ cd runtiming/
 cat ./pink/pink-chum_filtered_bamslist.txt ./sockeye/sock-chum_filtered_bamslist.txt ./anvil/euclide_filtered_bamslist.txt ./coho/coho-chum_filtered_bamslist.txt ./chum/chumrun_bamslist.txt > ./fourspecies/fourspp_bamslist_all.txt
 ```
 
-There are a total of 432 individuals.
-
-#### Allele Trees
-
-We used a subset of the total individuals assigned to homozygous early (EE) and 
-late genotypes (LL) to plot a digestible phylogenetic tree for the manuscript 
-(ten per species, 5 per genotype where applicable). Individuals were selected 
-largely based on depth, as determined via the following script:
+To facilitate display of the allele-based NJ-tree, the full data set of 
+432 individuals was subset. We used a subset of the total individuals assigned 
+to homozygous early (EE) and 
+late genotypes (LL): ten individuals per species, 5 per genotype. 
+Individuals were selected 
+largely based on depth, as determined via:
 
 ``` r
-Individual_Subset_for_Figure4_AlleleNJTree.R
+./R/Individual_Subset_for_Figure4_AlleleNJTree.R
 ```
 
 The script results in the following two files:
@@ -443,15 +445,14 @@ fourspp_lrrc9_top5_ibs_input.txt
 fourspp_esrb_top5_ibs_input.txt
 ```
 
-Upload the files to Slurm Manager and use as input bamslists in the following 
-shells.
+The final subsetted IBS matrices to produce NJ trees were calculated with
 
 ``` bash
 top5_lrrc9_fourspp_ibs.sh
 top5_esrb_fourspp_ibs.sh
 ```
 
-Plot Trees in R for both *lrrc9* and *esrb*.
+Trees were then plotted in in R for both *lrrc9* and *esrb* with ggtree
 
 ``` r
 Figure4_AlleleNJTree.R
