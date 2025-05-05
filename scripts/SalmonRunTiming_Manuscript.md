@@ -11,9 +11,11 @@ output:
 
 ## Introduction
 
-Investigating run timing differentiation between early and late returning salmon 
-from multiple regions of Alaska. All species were aligned to chum to compare the 
-specified regions on the genome that are differentiated across species.
+This markdown document outlines all analyses presented in the 
+manuscript 'Diversification of large-effect loci in a duplicated genomic region 
+leads to complex phenotypes'. The document points to relevant scripts for 
+each major analysis. To perform the analyses will require that the 
+user set up their own directories and modify some paths.
 
 ## Sample Collection
 
