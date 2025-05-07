@@ -179,7 +179,7 @@ subsequent scripts).
 Calculate the total number of mapped reads from the bamslists with samtools.
 
 ``` bash
-sbatch ./R/PREFIX_mapped_reads.sh
+sbatch ./shell/PREFIX_mapped_reads.sh
 ```
 
 The average and standard deviation for the mapped reads after 
