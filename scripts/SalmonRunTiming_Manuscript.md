@@ -1,5 +1,6 @@
 ---
-title: "Runtiming - Four Salmon Species"
+title: "Diversification of large-effect loci in a duplicated genomic region 
+leads to complex phenotypes"
 author: "Patrick Barry & Natasha Howe"
 date: "April 01, 2025"
 output: 
