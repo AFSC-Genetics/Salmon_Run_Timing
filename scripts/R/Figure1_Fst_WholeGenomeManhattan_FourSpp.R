@@ -111,7 +111,12 @@ for(i in 1:length(unique(four_df$chr))){
 
 rm(cum_temp, chrom, i, cumPos) # remove unneeded files
 
-# SINGLE OUT ESRB AND LRRC9 REGIONS
+# SINGLE OUT ESR1, ESRB, AND LRRC9 REGIONS
+esr1_df <- cum_df %>%
+  filter(chr == 8,
+         midPos >= 23.141735,
+         midPos <= 23.906114)
+
 esrb_df <- cum_df %>%
   filter(chr == 29,
          midPos >= 25,
@@ -152,7 +157,7 @@ pink_plot <- ggplot() +
              mapping = aes(x = cumPos, y = Fst, color = as_factor(chr)),
              alpha = 0.8, size = 1.3) +
   geom_point(data = filter(lrrc9_df, Species == "Pink Even"), mapping = aes(x = cumPos, y = Fst), 
-             color = "brown1", alpha = 1, size = 1.5) +
+             color = '#fe5a1d', alpha = 1, size = 1.5) +
   scale_color_manual(values = rep(c("gray50","black"),
                                   unique(length(axis_set$chr)))) +
   scale_x_continuous(expand = expansion(mult = c(0.003, 0.003)), 
@@ -173,7 +178,9 @@ sock_plot <- ggplot() +
              mapping = aes(x = cumPos, y = Fst, color = as_factor(chr)),
              alpha = 0.8, size = 1.3) +
   geom_point(data = filter(lrrc9_df, Species == "Sockeye"), mapping = aes(x = cumPos, y = Fst), 
-             color = "brown1", alpha = 1, size = 1.5) +
+             color = '#fe5a1d', alpha = 1, size = 1.5) +
+  geom_point(data = filter(esr1_df, Species == "Sockeye"), mapping = aes(x = cumPos, y = Fst), 
+             color = '#4CBB17', alpha = 1, size = 1.5) +
   scale_color_manual(values = rep(c("gray50","black"),
                                   unique(length(axis_set$chr)))) +
   scale_x_continuous(expand = expansion(mult = c(0.003, 0.003)), 
@@ -196,7 +203,7 @@ chum_plot <- ggplot() +
   geom_point(data = filter(esrb_df, Species == "Chum"), mapping = aes(x = cumPos, y = Fst), 
              color = "dodgerblue2", alpha = 1, size = 1.5) +
   geom_point(data = filter(lrrc9_df, Species == "Chum"), mapping = aes(x = cumPos, y = Fst), 
-             color = "brown1", alpha = 1, size = 1.5) +
+             color = '#fe5a1d', alpha = 1, size = 1.5) +
   scale_color_manual(values = rep(c("gray50","black"),
                                   unique(length(axis_set$chr)))) +
   scale_x_continuous(expand = expansion(mult = c(0.003, 0.003)), 
@@ -218,6 +225,8 @@ coho_plot <- ggplot() +
              alpha = 0.8, size = 1.3) +
   geom_point(data = filter(esrb_df, Species == "Coho"), mapping = aes(x = cumPos, y = Fst), 
              color = "dodgerblue2", alpha = 1, size = 1.5) +
+  geom_point(data = filter(esr1_df, Species == "Coho"), mapping = aes(x = cumPos, y = Fst), 
+             color = '#4CBB17', alpha = 1, size = 1.5) +
   scale_color_manual(values = rep(c("gray50","black"),
                                   unique(length(axis_set$chr)))) +
   scale_x_continuous(expand = expansion(mult = c(0.003, 0.003)), 
@@ -256,5 +265,4 @@ jpeg(paste0("./figures/fst/fourspp_wholegenome_h",round(height, digits = 0),"_",
      width = 20, height = height, res = 300, units = "in")
 print(fourspp_cowplot_lab)
 dev.off()
-
 
