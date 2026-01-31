@@ -36,7 +36,7 @@ bam_lrrc9 <- read.table(paste0("./data/R/fourspp_lrrc9_top5_ibs_input.txt"), hea
 # convert bam to FID with ABLG
 FIDlrrc9 <- bam_lrrc9 %>%
   dplyr::mutate(FID = row_number(),
-                temp = basename(file_path_sans_ext(V1)),      # remove file path
+                temp = basename(tools::file_path_sans_ext(V1)),      # remove file path
                 temp = gsub("^[^_]*_", "", temp),             # remove everything after 1st underscore
                 sampleID = str_extract(temp, "[^_]+")) %>%
   select(FID, sampleID)
@@ -52,7 +52,7 @@ lrrc9AlleleTree <- nj(ibs_mat_lrrc9) %>%
   dplyr::mutate(FID = row_number()) %>%
   left_join(sample_table, by = "FID")
 
-legend <- get_legend(ggtree(lrrc9AlleleTree, aes(color = RuntimeAl), size = 1.5) + 
+legend <- cowplot::get_legend(ggtree(lrrc9AlleleTree, aes(color = RuntimeAl), size = 1.5) + 
                        scale_color_manual(name = "Genotype", values = c("goldenrod2", "royalblue2")) +
                        theme(legend.title = element_text(size = 22),
                              legend.text = element_text(size = 20)))
@@ -109,7 +109,7 @@ bam_esrb <- read.table(paste0("./data/R/fourspp_esrb_top5_ibs_input.txt"), heade
 # convert bam to FID with ABLG
 FID_esrb <- bam_esrb %>%
   dplyr::mutate(FID = row_number(),
-                temp = basename(file_path_sans_ext(V1)),      # remove file path
+                temp = basename(tools::file_path_sans_ext(V1)),      # remove file path
                 temp = gsub("^[^_]*_", "", temp),             # remove everything after 1st underscore
                 sampleID = str_extract(temp, "[^_]+")) %>%
   select(FID, sampleID)
@@ -162,3 +162,25 @@ ggtree(esrbAlleleTree, aes(color = RuntimeAl), size = 1.5) +
 
 rm(ibs_mat_esrb, bam_esrb, esrbAlleleTree, c_esrb, d_esrb, p_esrb, finalplot_esrb)
 
+cowplot::plot_grid(finalplot_esrb,
+                   finalplot_lrrc9,
+                   legend,
+                   rel_widths = c(0.45,0.45,0.1),
+                   nrow=1,ncol=2,
+                   labels=c(list(bquote("A)"~italic("esrb")~" Oket29")),
+                            "B) lrrc9 Oket35",""))
+
+geneChr1 <- "A) esrb Oket29"
+geneChr2 <- "B) lrrc9 Oket35"
+
+lrrc9_esrb <- cowplot::plot_grid(finalplot_esrb, NULL,
+                   finalplot_lrrc9,
+                   legend,
+                   rel_widths = c(0.45,0.1,0.45,0.1),
+                   nrow=1,ncol=4,
+                   labels=c(geneChr1,"",geneChr2,""),
+                   label_fontface='italic',
+                   label_size = 20)
+
+ggsave(plot = lrrc9_esrb, filename = "./figures/tree/fourspp_lrrc9_esrb_tree_top5.pdf",
+       width = 22, height = 15, limitsize = FALSE)                

@@ -40,10 +40,11 @@ lrrc9_homTree
 lrrc9_homTree + geom_text(aes(label=node), color = "firebrick", size = 6)
 
 lrrc9_homTree2 <- lrrc9_homTree %>%
-  flip(9, 8) %>% # flip pink & chum lrrc9
-  flip(4, 5) %>% # flip pink & coho lrrc9L
-  flip(2, 13) %>% # flip chumlrrc9L w/ other lrrc9L
-  flip(3, 14)     # flip socklrrc9L w/ other lrrc9L
+  rotate(15)#%>%
+  #flip(9, 8) %>% # flip pink & chum lrrc9
+  #flip(4, 5) %>% # flip pink & coho lrrc9L
+  #flip(2, 13) %>% # flip chumlrrc9L w/ other lrrc9L
+  #flip(3, 14)     # flip socklrrc9L w/ other lrrc9L
 lrrc9_homTree2
 
 ggsave(paste0("./figures/tree/consensus/fourspp_lrrc9_consensus_tree_black_",format(Sys.Date(),"%Y%m%d"),".jpg"),
@@ -87,9 +88,25 @@ esrb_homTree
 esrb_homTree + geom_text(aes(label=node), color = "firebrick", size = 6)
 
 esrb_homTree2 <- esrb_homTree %>%
-  flip(8, 9) # flip pink & chum esrb
+  rotate(15)%>% 
+  rotate(17)
+  #flip(8, 9) # flip pink & chum esrb
 esrb_homTree2
 
 ggsave(paste0("./figures/tree/consensus/fourspp_esrb_consensus_tree_black_",format(Sys.Date(),"%Y%m%d"),".jpg"),
        esrb_homTree2, width = 8, height = 6)
+
+geneChr1 <- "B"
+geneChr2 <- "C"
+lrrc9_esrb_Homology <- cowplot::plot_grid(esrb_homTree2, NULL,
+                                       lrrc9_homTree2,
+                                 legend,
+                                 rel_widths = c(0.45,0.1,0.45),
+                                 nrow=1,ncol=3,
+                                 labels=c(geneChr1,"",geneChr2,""),
+                                 #label_fontface='italic',
+                                 label_size = 20)
+
+ggsave(plot = lrrc9_esrb_Homology, filename = paste0("./figures/tree/consensus/ALTfourspp_esrb_consensus_tree_black_",format(Sys.Date(),"%Y%m%d"),".jpg"),
+       width = 15, height = 6, limitsize = FALSE)  
 
