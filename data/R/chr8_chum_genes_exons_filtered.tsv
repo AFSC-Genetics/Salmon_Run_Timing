@@ -1,0 +1,28 @@
+chrName	beg.pos	end.pos	gene	geneName	geneAbbr	y.min	y.max	color
+NC_068428.1	23.08922	23.090524	LOC118387205	uncharacterized LOC118387205	LOC118387205	0.02	0.025	#666666
+NC_068428.1	23.115564	23.118586	tmem18	transmembrane protein 18	tmem18	0.075	0.08	paleturquoise3
+NC_068428.1	23.132049	23.133019	LOC127931371	uncharacterized LOC127931371	LOC127931371	0.02	0.025	#666665
+NC_068428.1	23.133488	23.139796	si:dkey-126g1.9	uncharacterized protein C1orf115 homolog	si:dkey-126g1.9	0.075	0.08	midnightblue
+NC_068428.1	23.140246	23.14892	LOC118387038	cytochrome P450 2K6-like	cyp2d6l	0.02	0.025	darkorange
+NC_068428.1	23.148751	23.174128	si:dkey-119f1.1	Structural maintenance of chromosomes protein 6-like	si:dkey-119f1.1	0.075	0.08	#7F27EE
+NC_068428.1	23.174314	23.182203	LOC118387037	flap endonuclease GEN homolog 1	gen1l	0.02	0.025	skyblue
+NC_068428.1	23.183025	23.184885	msgn1	mesogenin 1	msgn1	0.075	0.08	mistyrose4
+NC_068428.1	23.189229	23.191501	si:ch211-51e12.7	uncharacterized protein LOC336335 homolog	si:ch211-51e12.7	0.02	0.025	navy
+NC_068428.1	23.198683	23.20356	mrps10	mitochondrial ribosomal protein S10	mrps10	0.075	0.08	#A0869D
+NC_068428.1	23.206582	23.261565	tulp4a	TUB like protein 4a	tulp4a	0.02	0.025	darkseagreen4
+NC_068428.1	23.233074	23.234521	LOC127931372	uncharacterized LOC127931372	LOC127931372	0.075	0.08	#666664
+NC_068428.1	23.262008	23.270603	tmem181	transmembrane protein 181	tmem181	0.075	0.08	#E48796
+NC_068428.1	23.270808	23.272422	dynlt1b	dynein light chain Tctex-type 1b	dynlt1b	0.02	0.025	navy
+NC_068428.1	23.272635	23.27548	gtf2h5	general transcription factor IIH%2C polypeptide 5	gtf2h5	0.075	0.08	#8E6B23
+NC_068428.1	23.27648	23.28578	serac1	serine active site containing 1	serac1	0.02	0.025	lightsalmon
+NC_068428.1	23.286763	23.289402	myct1a	myc target 1a	myct1a	0.075	0.08	darkcyan
+NC_068428.1	23.324411	23.525715	syne1a	spectrin repeat containing%2C nuclear envelope 1a	syne1a	0.075	0.08	goldenrod1
+NC_068428.1	23.525841	23.552881	esr1	estrogen receptor 1	esr1	0.02	0.025	green3
+NC_068428.1	23.554027	23.562044	armt1	acidic residue methyltransferase 1	armt1	0.02	0.025	skyblue1
+NC_068428.1	23.567603	23.568414	LOC118373784	uncharacterized LOC118373784	LOC118373784	0.075	0.08	#666667
+NC_068428.1	23.568502	23.57628	zbtb2b	zinc finger and BTB domain containing 2b	zbtb2b	0.02	0.025	mediumpurple
+NC_068428.1	23.579047	23.643078	akap12b	A kinase (PRKA) anchor protein 12b	akap12b	0.075	0.08	coral3
+NC_068428.1	23.652316	23.744268	mthfd1l	methylenetetrahydrofolate dehydrogenase (NADP+ dependent) 1 like	mthfd1l	0.02	0.025	orangered3
+NC_068428.1	23.760652	23.777856	LOC118373786	syntaxin-11-like	syn11l	0.02	0.025	#E9E29D
+NC_068428.1	23.779864	23.779946	trnal-uaa	transfer RNA leucine (anticodon UAA)	trnal-uaa	0.075	0.08	dodgerblue2
+NC_068428.1	23.783049	23.934243	utrn	utrophin	utrn	0.02	0.025	#A0869D

@@ -1,0 +1,16 @@
+chrName	beg.pos	end.pos	gene	geneAbbr	geneName	y.min	y.max	color
+NC_068455.1	27.866724	27.880224	slc38a6	slc38a6	solute carrier family 38 member 6	0.075	0.08	olivedrab2
+NC_068455.1	27.88051	27.882965	trmt5	trmt5	tRNA methyltransferase 5	0.02	0.025	mediumblue
+NC_068455.1	27.883063	27.94037	mnat1	mnat1	MNAT1 component of CDK activating kinase	0.075	0.08	firebrick2
+NC_068455.1	27.940809	27.948399	six4a	six4a	SIX homeobox 4a	0.02	0.025	skyblue1
+NC_068455.1	27.954019	27.956186	six1a	six1a	SIX homeobox 1a	0.02	0.025	paleturquoise3
+NC_068455.1	27.987293	27.994277	six6a	six6a	SIX homeobox 6a	0.02	0.025	#666666
+NC_068455.1	28.006847	28.007664	LOC127915931	lncRNA	uncharacterized LOC127915931	0.02	0.025	#666667
+NC_068455.1	28.042783	28.070928	LOC118368238	ppm1al	protein phosphatase 1A-like	0.075	0.08	#666665
+NC_068455.1	28.070768	28.078117	dhrs7	dhrs7	dehydrogenase/reductase (SDR family) member 7	0.02	0.025	#E6AB02
+NC_068455.1	28.078217	28.090285	pcnx4	pcnx4	pecanex 4	0.075	0.08	coral4
+NC_068455.1	28.128954	28.16998	lrrc9	lrrc9	leucine rich repeat containing 9	0.02	0.025	#E7298A
+NC_068455.1	28.160558	28.205932	rtn1a	rtn1a	reticulon 1a	0.075	0.08	#7570B3
+NC_068455.1	28.171249	28.172877	LOC127915932	LOC127915932	putative nuclease HARBI1	0.02	0.025	#666669
+NC_068455.1	28.205647	28.234961	LOC118369080	LOC118369080	ATP-dependent RNA helicase TDRD9-like	0.02	0.025	#666664
+NC_068455.1	28.228799	28.233331	LOC118368243	LOC118368243	protein RD3-like	0.075	0.08	#666663

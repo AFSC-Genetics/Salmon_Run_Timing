@@ -1,0 +1,53 @@
+chrName	beg.pos	end.pos	gene	geneAbbr	geneName	color	y.min	y.max
+NC_068449.1	24.652125	24.705709	LOC118362565	rtn1al	reticulon-1-A-like	#4d9aa7	0.075	0.08
+NC_068449.1	24.715043	24.717058	LOC118362569	LOC118362569	uncharacterized LOC118362569	#36393d	0.025	0.03
+NC_068449.1	24.737444	24.748467	LOC118362570	pcnx4	pecanex-like protein 4	#445d54	0.075	0.08
+NC_068449.1	24.771673	24.794534	LOC118362571	ppm1a	protein phosphatase 1A	#f7fbfe	0.025	0.03
+NC_068449.1	24.827174	24.832417	LOC118362573	six6	homeobox protein SIX6	#666666	0.025	0.03
+NC_068449.1	24.853479	24.857698	LOC118362574	six1b	homeobox protein six1b	paleturquoise3	0.025	0.03
+NC_068449.1	24.863549	24.872105	LOC118362575	six4l	homeobox protein SIX4-like	skyblue1	0.025	0.03
+NC_068449.1	24.954577	24.957367	LOC118362576	LOC118362576	tRNA (guanine(37)-N1)-methyltransferase-like	#ad8d86	0.075	0.08
+NC_068449.1	24.957389	24.995682	LOC118362577	LOC118362577	uncharacterized LOC118362577	#7aa7b7	0.025	0.03
+NC_068449.1	25.009894	25.047562	LOC118362578	LOC118362578	protein kinase C eta type-like	#2a2107	0.075	0.08
+NC_068449.1	25.052121	25.074317	LOC118362580	LOC118362580	hypoxia-inducible factor 1-alpha	#71b1f8	0.025	0.03
+NC_068449.1	25.069314	25.072339	LOC118362581	LOC118362581	uncharacterized LOC118362581	#1d89ac	0.075	0.08
+NC_068449.1	25.076136	25.08343	snapc1b	snapc1b	small nuclear RNA activating complex%2C polypeptide 1b	darkorchid4	0.025	0.03
+NC_068449.1	25.084421	25.108049	syt16	syt16	synaptotagmin XVI	darkorange	0.025	0.03
+NC_068449.1	25.108648	25.112385	LOC118362584	LOC118362584	uncharacterized LOC118362584	#500c55	0.075	0.08
+NC_068449.1	25.112877	25.128607	LOC118362585	LOC118362585	sphingosine-1-phosphate phosphatase 1-like	#693b46	0.025	0.03
+NC_068449.1	25.164403	25.198422	ppp2r5eb	ppp2r5eb	protein phosphatase 2%2C regulatory subunit B'%2C epsilon isoform b	#7F27EE	0.025	0.03
+NC_068449.1	25.17099	25.174071	LOC118362588	LOC118362588	uncharacterized LOC118362588	#cdcace	0.075	0.08
+NC_068449.1	25.203881	25.30326	kcnh5b	kcnh5b	potassium voltage-gated channel%2C subfamily H (eag-related)%2C member 5b	orangered3	0.025	0.03
+NC_068449.1	25.30986	25.452074	syne2b	syne2b	spectrin repeat containing%2C nuclear envelope 2b	khaki3	0.075	0.08
+NC_068449.1	25.451985	25.483494	LOC118362590	esrb	estrogen receptor beta	dodgerblue2	0.025	0.03
+NC_068449.1	25.554129	25.581471	LOC118362592	jag2l	protein jagged-2-like	#A0869D	0.025	0.03
+NC_068449.1	25.604709	25.606495	LOC118362046	LOC118362046	uncharacterized LOC118362046	#050401	0.075	0.08
+NC_068449.1	25.662813	25.712891	LOC118362594	tflllb90l	transcription factor IIIB 90 kDa subunit-like	#d99d7d	0.025	0.03
+NC_068449.1	25.696401	25.699606	LOC118362593	LOC118362593	BTB/POZ domain-containing protein 6-B-like	#320639	0.075	0.08
+NC_068449.1	25.715968	25.723831	LOC118362596	LOC118362596	zinc finger FYVE domain-containing protein 21-like	#3d3333	0.075	0.08
+NC_068449.1	25.730373	25.764408	LOC118362597	LOC118362597	kinesin light chain 1-like	#ffd0e6	0.075	0.08
+NC_068449.1	25.765297	25.773802	LOC118362603	LOC118362603	cytochrome c oxidase assembly factor 8	#130502	0.075	0.08
+NC_068449.1	25.774018	25.792058	bag5	bag5	BCL2 associated athanogene 5	#6AF0C5	0.025	0.03
+NC_068449.1	25.814236	25.825247	ckba	ckba	creatine kinase%2C brain a	olivedrab	0.025	0.03
+NC_068449.1	25.825316	25.85813	LOC118362598	LOC118362598	MAP/microtubule affinity-regulating kinase 3-like	#181f0f	0.075	0.08
+NC_068449.1	25.859295	25.866058	LOC118362604	LOC118362604	eukaryotic translation initiation factor 5-like	#5b5640	0.025	0.03
+NC_068449.1	25.86508	25.870112	LOC127913629	LOC127913629	uncharacterized LOC127913629	#a28cf0	0.075	0.08
+NC_068449.1	25.874919	25.886995	si:dkey-196h17.9	si:dkey-196h17.9	exocyst complex component 3-like protein	#0b5b54	0.025	0.03
+NC_068449.1	25.887178	25.897962	tnfaip2b	tnfaip2b	tumor necrosis factor%2C alpha-induced protein 2b	#E48796	0.025	0.03
+NC_068449.1	25.903086	25.926623	LOC118362609	LOC118362609	exocyst complex component 3-like protein 4	#f9d8c3	0.075	0.08
+NC_068449.1	25.948437	25.956292	LOC118362047	LOC118362047	protein LBH-like	#a4cfb4	0.025	0.03
+NC_068449.1	25.973766	25.988218	LOC118362178	LOC118362178	protein AHNAK2-like	#ccb68d	0.075	0.08
+NC_068449.1	26.010939	26.016611	si:dkey-229e3.2	si:dkey-229e3.2	uncharacterized si:dkey-229e3.2	#23072d	0.025	0.03
+NC_068449.1	26.023332	26.029474	LOC118362613	LOC118362613	cell division cycle-associated protein 4-like	#26352f	0.075	0.08
+NC_068449.1	26.031523	26.058039	LOC118362179	LOC118362179	1-phosphatidylinositol 4%2C5-bisphosphate phosphodiesterase beta-1-like	#d3e7e9	0.075	0.08
+NC_068449.1	26.083794	26.087707	crls1	crls1	cardiolipin synthase 1	#D9D9F3	0.025	0.03
+NC_068449.1	26.087839	26.09611	mcm8	mcm8	minichromosome maintenance 8 homologous recombination repair factor	#8E6B23	0.025	0.03
+NC_068449.1	26.096331	26.104707	LOC118362616	LOC118362616	beta-soluble NSF attachment protein-like	#f3eadd	0.075	0.08
+NC_068449.1	26.104945	26.106482	LOC118362048	LOC118362048	tribbles homolog 2-like	#7f7d3d	0.025	0.03
+NC_068449.1	26.121003	26.139605	LOC118362617	LOC118362617	cell division cycle 5-like protein	#acb9db	0.075	0.08
+NC_068449.1	26.151471	26.158008	enpp4	enpp4	ectonucleotide pyrophosphatase/phosphodiesterase 4	#70EC49	0.025	0.03
+NC_068449.1	26.163483	26.173902	LOC118362180	LOC118362180	XK-related protein 6-like	#302425	0.075	0.08
+NC_068449.1	26.183217	26.294459	LOC118362620	LOC118362620	transmembrane protein KIAA1109 homolog	#3c1b23	0.025	0.03
+NC_068449.1	26.310218	26.35206	LOC118362622	LOC118362622	leucine-rich repeat and immunoglobulin-like domain-containing nogo receptor-interacting protein 2	#583c5a	0.075	0.08
+NC_068449.1	26.35585	26.362553	LOC118362624	LOC118362624	eukaryotic translation initiation factor 4E-like	#7f987c	0.075	0.08
+NC_068449.1	26.381293	26.40699	metap1	metap1	methionyl aminopeptidase 1	#75E6E5	0.025	0.03
