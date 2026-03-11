@@ -25,7 +25,7 @@ mypalette <- c("goldenrod1", "royalblue3")
 
 ### GFF NCBI Data ###########################################################
 
-# find exons from gff file for genes of interest (from NCBI chum reference genome)
+# find exons from gff file for genes of interest (from NCBI chum reference genome: GCF_023373465.1)
 gff_df <- read.delim('./data/R/genomic.gff', header = F, comment.char = "#")
 gff_df <- gff_df[,c(1:5,9)] # remove excess columns
   colnames(gff_df) <- c("chrName", "RefSeq","exon","start.pos","fin.pos", "ID")
