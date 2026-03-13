@@ -1,0 +1,5 @@
+Genotype	Runtime	n	prop
+EE	Early	27	0.28125
+EL	Early	14	0.145833333333333
+LL	Early	6	0.0625
+LL	Late	49	0.510416666666667

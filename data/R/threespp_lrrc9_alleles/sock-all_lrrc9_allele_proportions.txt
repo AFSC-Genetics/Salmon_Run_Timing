@@ -1,0 +1,9 @@
+Genotype	Runtime	n	prop
+EE	Early Stream	18	0.18
+EE	Late Stream	14	0.14
+EL	Early Stream	8	0.08
+EL	Late Stream	19	0.19
+EL	Late Beach	2	0.02
+LL	Early Stream	1	0.01
+LL	Late Stream	13	0.13
+LL	Late Beach	25	0.25
