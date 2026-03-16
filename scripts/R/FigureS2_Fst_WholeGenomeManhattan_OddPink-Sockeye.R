@@ -16,7 +16,7 @@ chrom_df <- read.table("./data/R/chrom_meta.txt", header = TRUE)
 ###### Read in each per-chrom Fst File ########
 
 ########## PINK
-pink_list <- as.list(Sys.glob("./results/fst/*pink-odd*minInd0.3*"))
+pink_list <- as.list(Sys.glob("../2024_pinkOdd/results/fst/*pink-odd*minInd0.3*fst.txt"))
 
 # read in all data files that match wildcard
 pink_df <- pink_list %>%
@@ -27,8 +27,8 @@ pink_df <- pink_list %>%
   select(-c(region, Nsites)) %>%
   mutate(Species = "Pink - Odd")
 
-########## SOCKEYE
-sock_list <- as.list(Sys.glob("./results/fst/sock-chum*early-late*minInd0.3*"))
+########## SOCKEYE - Whitefish-Teal
+sock_list <- as.list(Sys.glob("../2024_sockeye/results/fst/sock-chum*early-late*minInd0.3*fst.txt"))
 
 # read in all data files that match wildcard
 sock_df <- sock_list %>%
@@ -39,24 +39,34 @@ sock_df <- sock_list %>%
   select(-c(region, Nsites)) %>%
   mutate(Species = "Sockeye - Streams")
 
-rm(pink_list, sock_list)
+########## SOCKEYE - Whitefish-Teal
+pick_list <- as.list(Sys.glob("../2024_sockeye/results/fst/pick-chum*early-late*minInd0.3*fst.txt"))
 
-############## COMBINE FOUR SPECIES INTO ONE DATAFRAME #######################
+# read in all data files that match wildcard
+pick_df <- pick_list %>%
+  set_names(nm = pick_list) %>%   
+  map_dfr(
+    ~ read.delim2(.x, header = T, sep = "\t", row.names = NULL, col.names = c("region", "chrName", "midPos", "Nsites", "Fst"))
+  ) %>% 
+  select(-c(region, Nsites)) %>%
+  mutate(Species = "Sockeye - Pick Creek")
+
+rm(pink_list, sock_list, pick_list)
+
+############## COMBINE THREE FST OUTPUTS INTO ONE DATAFRAME #######################
 # bind rows together
-two_df <- bind_rows(pink_df, sock_df) %>%
+comb_df <- bind_rows(pink_df, sock_df, pick_df) %>%
   mutate(midPos = as.numeric(midPos/10^6),
-         Fst = as.numeric(Fst))
-
-two_df$Fst[two_df$Fst < 0] <- 0 # Change negative Fst SNPs to 0s
+         Fst = as.numeric(Fst) %>% ifelse(. < 0,0,.))
 
 #add chromosome numbers, remove chrName
-two_df <- left_join(two_df, chrom_df, by = "chrName") %>%
+comb_df <- left_join(comb_df, chrom_df, by = "chrName") %>%
   select(chr, midPos, Fst, Species)
 
-rm(pink_df, sock_df) # remove to save space
+rm(pink_df, sock_df, pick_df) # remove to save space
 
 # find max of each chrom
-cumulate <- two_df %>%
+cumulate <- comb_df %>%
   dplyr::group_by(chr) %>%
   dplyr::summarise(max_bp = max(midPos)) %>%
   mutate(final_bp = max_bp + 5) %>%
@@ -64,17 +74,17 @@ cumulate <- two_df %>%
 
 # create cumulative position column for all chromosomes
 cum_df <- NULL
-for(i in 1:length(unique(two_df$chr))){
+for(i in 1:length(unique(comb_df$chr))){
   chrom <- cumulate$chr[i]
   # for chr == 1 only, bc not adding to any chrom.
-  if(i == 1){cum_temp <- two_df %>%
+  if(i == 1){cum_temp <- comb_df %>%
     filter(chr == chrom) %>%
     mutate(cumPos = midPos)
   cum_df <- cum_temp
   }
   # for all other chromosomes, append
   if(i != 1){cumPos <- cumulate$cum_bp[i-1]
-  cum_temp <- two_df %>%
+  cum_temp <- comb_df %>%
     filter(chr == chrom) %>%
     mutate(cumPos = midPos + cumPos)
   cum_df <- rbind(cum_df,cum_temp)
@@ -87,6 +97,12 @@ lrrc9_df <- cum_df %>%
   filter(chr == 35,
          midPos >= 27.85,
          midPos <= 28.20)
+
+esr1_df <- cum_df %>%
+  filter(chr == 8,
+         midPos >= 23.141735,
+         midPos <= 23.906114)
+
 
 ############# PREPARE FOR PLOTTING #########################################
 
@@ -113,8 +129,6 @@ theme_set(
   )
 )
 
-##################################################################
-
 ########### Pink
 pink_plot <- ggplot() + 
   geom_point(data = filter(cum_df, Species == "Pink - Odd"), 
@@ -130,20 +144,21 @@ pink_plot <- ggplot() +
   scale_y_continuous(breaks = seq(0.2, 1, by = 0.2),
                      limits = c(0, 1.02),
                      expand = expansion(mult = c(0.02, 0.001))) +
-  ylab("Pink (Odd)") +
+  ylab("Pink \n (Odd)") +
   theme(plot.margin = unit(c(0.6,0.1,0,0.1), "cm"),
         axis.text.x = element_blank(),
         axis.ticks.x = element_blank(),
         axis.title.x = element_blank()) 
 
-
-########### SOCKEYE
+########### Sockeye - Pick Creek
 sock_plot <- ggplot() + 
   geom_point(data = filter(cum_df, Species == "Sockeye - Streams"), 
              mapping = aes(x = cumPos, y = Fst, color = as_factor(chr)),
              alpha = 0.8, size = 1.3) +
   geom_point(data = filter(lrrc9_df, Species == "Sockeye - Streams"), mapping = aes(x = cumPos, y = Fst), 
              color = "brown1", alpha = 1, size = 1.6) +
+  geom_point(data = filter(esr1_df, Species == "Sockeye - Streams"), mapping = aes(x = cumPos, y = Fst), 
+             color = "green3", alpha = 1, size = 1.6) +
   scale_color_manual(values = rep(c("gray50","black"),
                                   unique(length(axis_set$chr)))) +
   scale_x_continuous(expand = expansion(mult = c(0.003, 0.003)), 
@@ -152,32 +167,67 @@ sock_plot <- ggplot() +
   scale_y_continuous(breaks = seq(0.2, 1, by = 0.2),
                      limits = c(0, 1.02),
                      expand = expansion(mult = c(0.02, 0.001))) +
-  ylab("Sockeye (Stream)") +
+  ylab("Sockeye \n (Whitefish-Teal)") +
+  theme(plot.margin = unit(c(0.6,0.1,0,0.1), "cm"),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.title.x = element_blank()) 
+
+########### SOCKEYE - Whitefish v Teal
+pick_plot <- ggplot() + 
+  geom_point(data = filter(cum_df, Species == "Sockeye - Pick Creek"), 
+             mapping = aes(x = cumPos, y = Fst, color = as_factor(chr)),
+             alpha = 0.8, size = 1.3) +
+  # geom_point(data = filter(lrrc9_df, Species == "Sockeye - Pick Creek"), mapping = aes(x = cumPos, y = Fst), 
+  #            color = "brown1", alpha = 1, size = 1.6) +
+  geom_point(data = filter(esr1_df, Species == "Sockeye - Pick Creek"), mapping = aes(x = cumPos, y = Fst), 
+             color = "green3", alpha = 1, size = 1.6) +
+  scale_color_manual(values = rep(c("gray50","black"),
+                                  unique(length(axis_set$chr)))) +
+  scale_x_continuous(expand = expansion(mult = c(0.003, 0.003)), 
+                     label = axis_set$chr, 
+                     breaks = axis_set$center) +
+  scale_y_continuous(breaks = seq(0, 1, by = 0.2),
+                     limits = c(0, 1.02),
+                     expand = expansion(mult = c(0.02, 0.001))) +
+  ylab("Sockeye \n (Pick Creek)") +
   xlab("Chromosome") +
   theme(plot.margin = unit(c(0.4,0.1,0.1,0.1), "cm"))
 
 ##################### COMBINE PLOTS ########################################
 
+# add FST as separate label (it will be it's own plot)
+y_lab <- ggplot() + 
+  annotate(geom = "text", x = 1, y = 1, label = expression(italic(F[ST])), angle = 90, size = 16) + 
+  coord_cartesian(clip = "off") +
+  theme_void() 
 
 ###### ADD LABELS #####
-twospp_cowplot <- plot_grid(pink_plot, sock_plot,
-                            rel_heights = c(1,1.16),
+threespp_cowplot <- plot_grid(pink_plot, sock_plot, pick_plot,
+                            rel_heights = c(1, 1, 1.15),
                             ncol = 1,
-                            labels = c('A','B'), 
+                            labels = c('A','B','C'), 
                             label_fontfamily = "ArialMT",
                             label_x = 0, label_y = 1.06,
                             label_size = 30, label_colour = "black")
 
 # combine FST label to other plots 
-twospp_cowplot_lab <- (y_lab - twospp_cowplot) + # patchwork uses hyphen to allow for lefthand additions
+threespp_cowplot_lab <- (y_lab - threespp_cowplot) + # patchwork uses hyphen to allow for lefthand additions
   plot_layout(widths = c(0.8, 20))
 
-height = 8
+height = 11
 
-jpeg(paste0("./figures/fst/supplfig_twospp_wholegenome_LABEL2_h",round(height, digits = 0),"_",format(Sys.Date(),"%Y%m%d"),".jpg"), 
+jpeg(paste0("./figures/fst/supplfig_threespp_wholegenome_LABEL2_h",round(height, digits = 0),"_",format(Sys.Date(),"%Y%m%d"),".jpg"), 
      width = 20, height = height, res = 300, units = "in")
-print(twospp_cowplot_lab)
+print(threespp_cowplot_lab)
 dev.off()
 
+
+# test <- (y_lab - pick_plot) + plot_layout(widths = c(0.8, 20))
+# 
+# jpeg(paste0("./figures/fst/supplfig_test_h",round(height, digits = 0),"_",format(Sys.Date(),"%Y%m%d"),".jpg"),
+#      width = 20, height = 5, res = 300, units = "in")
+# print(test)
+# dev.off()
 
 
