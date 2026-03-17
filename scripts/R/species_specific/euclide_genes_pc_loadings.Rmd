@@ -5,7 +5,7 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-### PCAngsd Loadings for Gene Regions 
+### PCAngsd Loadings for Gene Regions
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

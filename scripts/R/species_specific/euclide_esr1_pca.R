@@ -57,7 +57,7 @@ ggplot(data = pca.vectors, aes(x=V1, y=V2, fill = Runtime, color = Runtime)) +
   scale_fill_manual(values = mypalette) +
   scale_color_manual(values = mypalette) +
   scale_x_continuous(breaks = c(-.2,-.1, 0, 0.1, 0.2)) +
-  ggtitle("Coho: Chr 8 - esr1 gene") +
+  ggtitle("Sockeye: Chr 8 - esr1 gene") +
   labs(x = paste0("PC1 (",round(varPC1, digits = 2),"%)"), 
        y= paste0("PC2 (",round(varPC2, digits = 2),"%)")) 
 
