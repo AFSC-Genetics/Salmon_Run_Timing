@@ -74,15 +74,15 @@ bam_df <- read.table(BAMFILE, header = F) %>%
   dplyr::mutate(temp = basename(file_path_sans_ext(V1)),
                 temp = gsub("^[^_]*_", "", temp), # remove everything after 1st underscore
                 sampleID = str_extract(temp, "[^_]+")) %>%
-  select(sampleID)
+  dplyr::select(sampleID)
 
 sock_meta <- allmeta_df %>%
   filter(Species == "Sockeye") %>%
-  select(-Species) %>%
+  dplyr::select(-Species) %>%
   rbind(., pick_df %>% 
           dplyr::rename(sampleID = sample) %>%
           mutate(Runtime = paste(Runtime,"- Pick Creek")) %>%
-          select(sampleID, Runtime)) %>%
+          dplyr::select(sampleID, Runtime)) %>%
   inner_join(bam_df, ., by = "sampleID")
 
 # read in the covariance matrix

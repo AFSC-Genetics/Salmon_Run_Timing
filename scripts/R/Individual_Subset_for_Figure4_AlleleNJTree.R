@@ -13,10 +13,10 @@ library(stringr)
 library(tools)
 library(tidyverse)
 
-#### BRING IN ALL INDIVIDUAL DATA
+### INPUT FILES #################
 
-# original full data bamlist
-bam_df <- read.table("./R/bams/fourspp_bamslist_all.txt", header = F)
+#### Metadata ##########################
+bam_df <- read.table("./data/bams/fourspp_bamslist_all.txt", header = F)
 
 # metadata
 pop_df <- read.csv("./data/raw/fourspecies_runtiming_metadata.csv", header = T)
@@ -28,16 +28,25 @@ sock_depth <- rbind(read.csv("./results/depth/sock-chum_depths.csv", header = F,
 chum_depth <- read.csv("./results/depth/chumrun_depths.csv", header = F)
 coho_depth <- read.csv("./results/depth/coho-chum_depths.csv", header = F)
 
-lrrc9_al <- rbind(read.delim2("./data/R/sock-all_lrrc9_alleles_all.txt", sep = "\t", header = F),
-                  read.delim2("./data/R/chumrun_lrrc9_alleles_all.txt", sep = "\t", header = F),
-                  read.delim2("./data/R/pink-chum_lrrc9_alleles_all.txt", sep = "\t", header = F))
+#### Genotypes #################
+
+# LRRC9
+lrrc9_al <- rbind(read.delim2("./data/R/threespp_lrrc9_alleles/sock-all_lrrc9_alleles_all.txt", sep = "\t", header = F),
+                  read.delim2("./data/R/threespp_lrrc9_alleles/chumrun_minInd0.3_minDepthHalf_lrrc9_alleles_all.txt", sep = "\t", header = F),
+                  read.delim2("./data/R/threespp_lrrc9_alleles/pink-chum_minInd0.3_lrrc9_alleles_all.txt", sep = "\t", header = F))
 colnames(lrrc9_al) <- c("sampleID", "RuntimeAl")
 
-esrb_al <- rbind(read.delim2("./data/R/coho-chum_esrb_alleles.txt", sep = "\t", header = F),
-                 read.delim2("./data/R/chumrun_esrb_alleles.txt", sep = "\t", header = F))
+# ESRB
+esrb_al <- rbind(read.delim2("./data/R/twospp_esrb_alleles/coho-chum_esrb_alleles.txt", sep = "\t", header = F),
+                 read.delim2("./data/R/twospp_esrb_alleles/chumrun_esrb_alleles.txt", sep = "\t", header = F))
 colnames(esrb_al) <- c("sampleID", "RuntimeAl")
 
-######### EDIT INPUT DATA #####################
+# ESR1
+er1_al <- rbind(read.delim2("./data/R/twospp_esr1_alleles/coho-chum_esr1_alleles.txt", sep = "\t", header = F),
+                 read.delim2("./data/R/twospp_esr1_alleles/euclide_esr1_alleles.txt", sep = "\t", header = F))
+colnames(er1_al) <- c("sampleID", "RuntimeAl")
+
+#### Edit Input data #####################
 
 # add column with just sampleID
 bam_df <- bam_df %>%
@@ -53,7 +62,7 @@ sample_df <- bam_df %>%
   inner_join(depth_df, by = "sampleID") %>%
   inner_join(pop_df, by = "sampleID")
 
-######### LRRC9 ######################
+### LRRC9 ######################
 
 lrrc9_df <- inner_join(sample_df, lrrc9_al, by = "sampleID") %>%
   mutate(sppAl = paste0(Species,"-",RuntimeAl))
@@ -65,7 +74,7 @@ lrrc9_top5 <- lrrc9_df %>%
 
 lrrc9_top5 <- lrrc9_top5[order(lrrc9_top5$sppAl, lrrc9_top5$depth, decreasing = T),]
 
-########## ESRB ##################################
+### ESRB ##################################
 
 esrb_df <- inner_join(sample_df, esrb_al, by = "sampleID") %>%
   mutate(sppAl = paste0(Species,"-",RuntimeAl))
@@ -76,24 +85,43 @@ esrb_top5 <- esrb_df %>%
   top_n(5, depth)
 
 esrb_top5 <- esrb_top5[order(esrb_top5$sppAl, esrb_top5$depth, decreasing = T),]
-View(esrb_top5)
 
-###########################################################################
-# FOUR SPECIES TOP 5
+### ESR1 ##################################
+
+er1_df <- inner_join(sample_df, er1_al, by = "sampleID") %>%
+  mutate(sppAl = paste0(Species,"-",RuntimeAl))
+
+er1_top5 <- er1_df %>%
+  filter(RuntimeAl != "EL") %>%
+  group_by(sppAl) %>%
+  top_n(5, depth)
+
+er1_top5 <- er1_top5[order(er1_top5$sppAl, er1_top5$depth, decreasing = T),]
+View(er1_top5)
+
+### 40 Individuals - 10/spp #############################
 # use the top 5 from represented gene for unrepresented gene group
 # i.e. for coho at lrrc9, use coho's top 5 from esrb.
 
+# LRRC9
 fourspp_lrrc9 <- rbind(lrrc9_top5,
                        filter(esrb_top5, Species == "Coho"))
-fourspp_lrrc9 <- fourspp_lrrc9[,"V1"]
-write.table(fourspp_lrrc9, file = "./R/fourspp_lrrc9_top5_ibs_input.txt",
-            quote = F, row.names = F, col.names = F)
 
+  write.table(fourspp_lrrc9[,"V1"], file = "./data/R/fourspp_lrrc9_top5_ibs_input.txt",
+              quote = F, row.names = F, col.names = F)
+
+# ESRB
 fourspp_esrb <- rbind(esrb_top5,
                       filter(lrrc9_top5, Species == "Pink"),
                       filter(lrrc9_top5, Species == "Sockeye"))
-fourspp_esrb <- fourspp_esrb[,"V1"]
+  
+  write.table(fourspp_esrb[,"V1"], file = "./data/R/fourspp_esrb_top5_ibs_input.txt",
+              quote = F, row.names = F, col.names = F)
 
-write.table(fourspp_esrb, file = "./R/fourspp_esrb_top5_ibs_input.txt",
-            quote = F, row.names = F, col.names = F)
-
+# ER1
+fourspp_er1 <- rbind(er1_top5,
+                     filter(lrrc9_top5, Species == "Pink"),
+                     filter(lrrc9_top5, Species == "Chum"))
+   
+  write.table(fourspp_er1[,"V1"], file = "./data/R/fourspp_esr1_top5_ibs_input.txt",
+              quote = F, row.names = F, col.names = F)

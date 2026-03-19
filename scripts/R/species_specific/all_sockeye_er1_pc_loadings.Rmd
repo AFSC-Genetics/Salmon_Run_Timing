@@ -1,0 +1,99 @@
+---
+title: "euclide_gene_pca_loadings"
+author: "Natasha Howe"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+### PCAngsd Loadings for Gene Regions
+Add pick creek samples
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r libraries-metadata, warning=F, message=F}
+library(tidyverse)
+library(cowplot)
+library(here)
+```
+
+Slurm script with the following code was run for esr1. I ran it with `--e 2` and `--e 10`
+
+```{bash, eval=F}
+module load bio/pcangsd/1.36.4
+
+path=/home/nhowe/runtiming/sock-pick
+prefix=pick-all
+
+# Region Specific naming, conducted separately for lrrc9
+gene=esr1
+chrom=NC_068428.1
+firstpos=23264160
+lastpos=23645630
+
+nEig=2
+
+# call in whole genome beagle file
+BEAGLE=${path}/gls/${prefix}_wholegenome_minInd0.3.beagle.gz
+
+# cut to regions of interest
+zgrep -E "${chrom}" ${BEAGLE} | awk -v s=$firstpos -v e=$lastpos -F'[\t_]' '$3 >= s && $3 <= e' | gzip > ${path}/gls/${prefix}_${chrom}_s${firstpos}_e${lastpos}_minInd0.3_${gene}.beagle.gz
+
+echo "Create pca loading weights file with 2 pcs"
+pcangsd --threads 2 \
+  -b ${path}/gls/${prefix}_${chrom}_s${firstpos}_e${lastpos}_minInd0.3_${gene}.beagle.gz \
+  -o ${path}/pca/${prefix}_${chrom}_s${firstpos}_e${lastpos}_minInd0.3_${gene}_e2 \
+  --sites-save --eig ${nEig} --snp-weights --iter 500 --pcadapt
+
+# Create snp list        
+zcat ${path}/gls/${prefix}_${chrom}_s${firstpos}_e${lastpos}_minInd0.3_${gene}.beagle.gz | cut -f1 | awk -F"_" '{print $1"_"$2"\t"$3}' > ${path}/gls/${prefix}_${chrom}_s${firstpos}_e${lastpos}_minInd0.3_${gene}.snp_list
+```
+
+### ESR1
+
+```{r}
+path=here("../2024_sockeye/results")
+outdir=here("../2024_sockeye/figures/pca/")
+filename="pick-all_NC_068428.1_s23264160_e23645630_minInd0.3_esr1"
+nEig=2
+
+# PC weights
+weight_tmp <- read_delim(paste0(path,"/pca/",filename,"_e",nEig,".weights"), delim=" ",
+                         col_names = c("pc1","pc2"), show_col_types = F) %>% 
+  as_tibble()
+
+# output sites file from PCAngsd - not as expected
+# should be 1 for keep and 0 for remove
+sites_file <- read_tsv(str_c(paste0(path,"/pca/",filename,"_e",nEig,".sites")), 
+                       col_names="keep", show_col_types = F)
+
+# snp-list from beagle file
+snp_list <- read_tsv(str_c(paste0(path,"/gls/",filename,".snp_list")), 
+                     col_names = c("lg","pos"),
+                     show_col_types = F) %>% slice(-1)
+
+# weight table from snp list and kept sites  
+weight_table <- sites_file %>%
+  bind_cols(snp_list) %>%
+  filter(keep==1) %>%
+  dplyr::select(lg, pos) %>%
+  bind_cols(weight_tmp) %>%
+  pivot_longer(cols = 3:(ncol(weight_tmp)+2), names_to = "pc", values_to = "weight")
+
+weight_table %>%
+  filter(pc=="pc1" | pc=="pc2") %>%
+  mutate(pos = as.numeric(pos)) %>%
+  ggplot() +
+  geom_point(aes(x=pos/10^6, y=abs(weight)), size=1) +
+  scale_x_continuous(breaks=seq(0, 100, 0.05)) +  
+  facet_grid(pc~., scales='free_x', space='free_x') +
+  labs(x = "Position (Mb)",
+       title = "Sockeye + Pick: ESR1") +
+  theme(panel.spacing = unit(0.1, 'lines'),
+        axis.title.x=element_text(),
+        axis.text=element_text(size=6),
+        legend.position='none',
+        text = element_text(size=10),
+        axis.text.x = element_text(angle = 45))
+```
