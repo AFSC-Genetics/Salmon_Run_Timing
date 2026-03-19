@@ -435,7 +435,7 @@ dev.off()
 #
 #
 #
-# If including FST in same figure, but with esr1, not likely...
+# If including FST in same figure, but not likely with esr1...
 #
 #### GFF NCBI Data ###########################################################
 

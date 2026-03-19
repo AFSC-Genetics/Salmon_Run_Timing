@@ -1,5 +1,7 @@
 # Create allele-base NJ Tree for esrb and lrrc9 data
 
+# setwd("../../Salmon_Run_Timing")
+
 library(BiocManager)
 # BiocManager::install("ggtree", force = T)
 library(ggtree)

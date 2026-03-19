@@ -7,48 +7,50 @@ library(tidyverse)
 library(patchwork)
 library(cowplot)
 
-setwd("C:/Users/Natasha.Howe/Work/Salmon-Genetics/Salmon_runtiming/2024_fourspecies")
+# setwd("../../Salmon_Run_Timing")
+
+### Import Metadata ###
+
+allmeta_df <- read.csv("./data/raw/fourspecies_runtiming_metadata.csv", header = T)
+pick_df <- read.csv("./data/raw/pick_creek_metadata.csv", header = T)
+pink_odd_meta_df <- read.csv("./data/raw/pinkOdd_collection_07172024_cleaned.csv", header = T)
 
 ##### Whitefish Addition ############
 # read in the covariance matrix
-sockall_cov <- as.matrix(read.table("../2024_sockeye/results/pca/sock-all_NC_068455.1_minInd0.3_lrrc9.cov"))
+sockall_cov <- as.matrix(read.table("./results/pca/sock-all_NC_068455.1_minInd0.3_lrrc9.cov"))
   sockall_e <- eigen(sockall_cov) # calculate eigenvector values
   sockall_e_vectors <- as.data.frame(sockall_e$vectors)
-  sockall_e_per <- sockall_e$values/sum(sockall_e$values) # percent explained by each component
+  sockall_varPC1 <- (sockall_e$values[1]/sum(sockall_e$values))*100 #Variance explained by PC1
+  sockall_varPC2 <- (sockall_e$values[2]/sum(sockall_e$values))*100 #Variance explained by PC2
 
-sockall_bam_df <- read.table("../2024_sockeye/sedna_files/bams/all_sockeye_bamslist.txt", header = F)
-
-# convert bam to FID with ABLG
-sockall_FID <- sockall_bam_df %>%
+sockall_bam_df <- read.table("./data/bams/all_sockeye_bamslist.txt", header = F) %>%
   dplyr::mutate(temp = basename(file_path_sans_ext(V1)),
                 temp = gsub("^[^_]*_", "", temp), # remove everything after 1st underscore
                 sampleID = str_extract(temp, "[^_]+")) %>%
   select(-c(V1, temp))
 
-# call in some metadata
-sockall_meta <- read.csv("../2024_sockeye/data/raw/wood_runtiming_metadata_anvil_added.csv", 
-                         header = T) 
+sockall_meta <- allmeta_df %>% filter(Species=="Sockeye")
 
 # join those two dataframes
-sockall_popFID <- inner_join(sockall_FID, sockall_meta, by = "sampleID") %>%
-  mutate(Runtime = sub('Creek','Stream',Runtime))
+sockall_popFID <- inner_join(sockall_bam_df, sockall_meta, by = "sampleID") %>%
+  mutate(Runtime = Runtime %>% 
+           gsub("Early Stream",'Early Stream (Teal)',.) %>% 
+           gsub("Late Stream",'Late Stream (Whitefish)',.) %>%
+           gsub("Late Beach",'Late Beach (Anvil)',.))
 
 ##combine row names (population info) with the covariance matrix
-sockall_pca.vectors = as_tibble(cbind(sockall_popFID, sockall_e_vectors))
+sockall_pca.vectors <- as_tibble(cbind(sockall_popFID, sockall_e_vectors))
 
-# determine the variance explained as a percent
-sockall_pca.eigenval.sum = sum(sockall_e$values) #sum of eigenvalues
-  sockall_varPC1 <- (sockall_e$values[1]/sockall_pca.eigenval.sum)*100 #Variance explained by PC1
-  sockall_varPC2 <- (sockall_e$values[2]/sockall_pca.eigenval.sum)*100 #Variance explained by PC2
-
-sockall_Palette <- c("goldenrod1", "royalblue3", "orchid")
-sockall_pca.vectors$Runtime <- factor(sockall_pca.vectors$Runtime, levels = c("Early Stream", "Late Stream", "Late Beach"))
-names(sockall_Palette) <- c("Early Stream", "Late Stream", "Late Beach")
+sockall_pca.vectors$Runtime <- factor(sockall_pca.vectors$Runtime, levels = c(unique(sockall_pca.vectors$Runtime)[-1],unique(sockall_pca.vectors$Runtime)[1]))
+  sockall_Palette <-c("khaki", "lightblue1", "orchid")
+  names(sockall_Palette) <- c(unique(sockall_pca.vectors$Runtime)[-1],unique(sockall_pca.vectors$Runtime)[1])
 
 theme_set(
   theme( 
-    legend.text=element_text(size=16), legend.title = element_text(size = 18),
-    legend.position = "top",
+    legend.text=element_text(size=16), 
+    legend.title = element_text(size = 18,v.just=1),
+    legend.position = "bottom",
+    plot.title = element_text(size = 20,hjust=0.5),
     panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
     axis.text = element_text(angle = 0, size = 14), axis.title = element_text(size = 16),
     panel.background = element_rect(fill = "white"), 
@@ -59,82 +61,138 @@ theme_set(
 sockall_lrrc9 <- ggplot(data = sockall_pca.vectors, 
                         aes(x=V1, y=V2, fill = Runtime, shape = Runtime)) + 
   geom_point(alpha = 0.7, size = 3, color = "gray20") +
-  scale_fill_manual(name = expression('Sockeye'~italic(lrrc9)), values = sockall_Palette) +
-  scale_shape_manual(name = expression('Sockeye'~italic(lrrc9)), values = c(21,22,23)) +
+  scale_fill_manual(name = "Run Timing", values = sockall_Palette) +
+  scale_shape_manual(name = "Run Timing", values = c(21,23,22)) +
+  ggtitle(expression('Sockeye'~italic(lrrc9)))+
   geom_vline(xintercept = 0.1, color = "gray30", alpha = 0.5, linetype = "dashed") +
   geom_vline(xintercept = -0.05, color = "gray30", alpha = 0.5, linetype = "dashed") +
   scale_x_reverse(breaks = c(-0.15, -0.1, -0.05, 0, 0.05, 0.1, 0.15)) +
   labs(x = paste0("PC1 (",round(sockall_varPC1, digits = 1),"%)"), 
        y= paste0("PC2 (",round(sockall_varPC2, digits = 1),"%)")) +
-  guides(fill = guide_legend(title.position="top", title.hjust = 0.5,
+  guides(fill = guide_legend(title.position="top", title.hjust = 0.5,vjust=1,
+                             nrow = 3, byrow = TRUE,
                              override.aes = list(size =3)))
 sockall_lrrc9
 
 ##### Odd-Pink Addition ############
 
 # read in the covariance matrix
-pinkO_cov <- as.matrix(read.table("../2024_pinkOdd/results/pca/pink-odd_NC_068455.1_lrrc9_minInd0.3.cov"))
+pinkO_cov <- as.matrix(read.table("./results/pca/pink-odd_NC_068455.1_lrrc9_minInd0.3.cov"))
   pinkO_e <- eigen(pinkO_cov)
   pinkO_e_vectors <- as.data.frame(pinkO_e$vectors)
-  pinkO_e_per <- pinkO_e$values/sum(pinkO_e$values) # percent explained by each component
+  pinkO_varPC1 <- (pinkO_e$values[1]/sum(pinkO_e$values))*100 #Variance explained by PC1
+  pinkO_varPC2 <- (pinkO_e$values[2]/sum(pinkO_e$values))*100 #Variance explained by PC2
 
 # call in bams
-pinkO_bam_df <- read.table("../2024_pinkOdd/sedna_files/bams/pink-odd_filtered_bamslist.txt", header = F)
-
-# convert bam to FID with ABLG
-pinkO_FID <- pinkO_bam_df %>%
+pinkO_bam_df <- read.table("./data/bams/pink-odd_filtered_bamslist.txt", header = F) %>%
   mutate(V1 = basename(file_path_sans_ext(V1)),
          temp = gsub("^[^_]*_", "", V1), # remove everything after 1st underscore
          sampleID = str_extract(temp, "[^_]+")) %>%
   select(-c(V1, temp))
 
 # call in some metadata
-pinkO_meta <- read.csv("../2024_pinkOdd/data/raw/pinkOdd_collection_07172024_cleaned.csv", 
-                       header = T) %>%
+pinkO_meta <- pink_odd_meta %>%
   mutate(sampleID = paste0("ABLG",ABLG),
          Runtime = ifelse(Runtime == "late","Late","Early"))
 
 # join those two dataframes
-pinkO_popFID <- inner_join(pinkO_FID, pinkO_meta, by = "sampleID")
+pinkO_pop_df <- inner_join(pinkO_bam_df, pinkO_meta, by = "sampleID")
 
 ##combine row names (population info) with the covariance matrix
-pinkO_pca.vectors = as_tibble(cbind(pinkO_popFID, pinkO_e_vectors))
+pinkO_pca.vectors = as_tibble(cbind(pinkO_pop_df, pinkO_e_vectors))
 
-# determine the variance explained as a percent
-pinkO_pca.eigenval.sum = sum(pinkO_e$values) #sum of eigenvalues
-  pinkO_varPC1 <- (pinkO_e$values[1]/pinkO_pca.eigenval.sum)*100 #Variance explained by PC1
-  pinkO_varPC2 <- (pinkO_e$values[2]/pinkO_pca.eigenval.sum)*100 #Variance explained by PC2
-
-df_popMetaData <- data.frame(Runtime = c("Early", "Late"),color = c("goldenrod1", "royalblue3"))
-
-mypalette <- c("goldenrod1", "royalblue3")
 pinkO_pca.vectors$Runtime <- factor(pinkO_pca.vectors$Runtime, levels = c("Early", "Late"))
-names(mypalette) <- levels(pinkO_pca.vectors$Runtime)
+  mypalette <- c("goldenrod1", "royalblue3")
+  names(mypalette) <- levels(pinkO_pca.vectors$Runtime)
 
 ### PINK ODD
 pinkOdd_lrrc9 <- ggplot(data = pinkO_pca.vectors, 
                         aes(x=V1, y=V2, fill = Runtime, shape = Runtime)) + 
   geom_point(alpha = 0.7, size = 3, color = "gray20") +
-  scale_fill_manual(name = expression('Pink-Odd'~italic(lrrc9)), values = mypalette) +
-  scale_shape_manual(name = expression('Pink-Odd'~italic(lrrc9)), values = c(21,22)) +
+  scale_fill_manual(name = "Run Timing", values = mypalette) +
+  scale_shape_manual(name = "Run Timing", values = c(21,22)) +
+  ggtitle(expression('Pink-Odd'~italic(lrrc9)))+
   geom_vline(xintercept = 0, color = "gray30", alpha = 0.5, linetype = "dashed") +
   geom_vline(xintercept = 0.15, color = "gray30", alpha = 0.5, linetype = "dashed") +
   scale_x_reverse(breaks = c(-0.05, 0, 0.05, 0.1, 0.15, 0.2)) +
   labs(x = paste0("PC1 (",round(pinkO_varPC1, digits = 1),"%)"), 
        y= paste0("PC2 (",round(pinkO_varPC2, digits = 1),"%)")) +
-  guides(fill = guide_legend(title.position="top", title.hjust = 0.5,
+  guides(fill = guide_legend(title.position="top", title.hjust = 0.5,vjust=1,
+                             nrow = 2, byrow = TRUE,
                              override.aes = list(size =3)))
 pinkOdd_lrrc9
 
+#### Sockeye ESR1 #########################################
+
+er1_bam_df <- read.table("./data/bams/sock-chum_plusPick_bamslist.txt", header = F) %>%
+  dplyr::mutate(temp = basename(file_path_sans_ext(V1)),
+                temp = gsub("^[^_]*_", "", temp), # remove everything after 1st underscore
+                sampleID = str_extract(temp, "[^_]+")) %>%
+  select(sampleID)
+
+er1_sock_meta <- allmeta_df %>% 
+  filter(Species=="Sockeye") %>%
+  select(-Species) %>%
+  rbind(., pick_df %>% 
+          dplyr::rename(sampleID = sample) %>%
+          mutate(Runtime = paste(Runtime,"- Pick Creek")) %>%
+          select(sampleID, Runtime)) %>%
+  inner_join(er1_bam_df, ., by = "sampleID")
+
+# read in the covariance matrix
+er1.cov <- as.matrix(read.table("./results/pca/pick-all_NC_068428.1_s23264160_e23645630_minInd0.3_esr1.cov"))
+er1.e <- eigen(er1.cov)
+  er1_e_vectors <- as.data.frame(er1.e$vectors)
+  er1.varPC1 <- (er1.e$values[1]/sum(er1.e$values))*100 # PC1 variance
+  er1.varPC2 <- (er1.e$values[2]/sum(er1.e$values))*100 # PC2 variance
+
+# combine row names (population info) with the covariance matrix
+er1.pca.vectors <- er1_sock_meta %>%
+  mutate(Runtime = Runtime %>% 
+           gsub("Early Stream",'Early Stream (Teal)',.) %>% 
+           gsub("Late Stream",'Late Stream (Whitefish)',.) %>%
+           gsub("- ","Stream (",.) %>% gsub("Pick Creek","Pick)",.) %>%
+           gsub("Late Beach",'Late Beach (Anvil)',.)) %>% 
+  bind_cols(er1_e_vectors) %>%
+  as_tibble()
+
+er1.pca.vectors$Runtime <- factor(er1.pca.vectors$Runtime, 
+                                  levels = c(unique(er1.pca.vectors$Runtime)[-3],unique(er1.pca.vectors$Runtime)[3]))
+
+  er1.palette <- c("goldenrod1", "royalblue3", "khaki", "lightblue1", "orchid")
+  er1.shapes <- c(24,24,21,23,22)
+  names(er1.palette) <- levels(er1.pca.vectors$Runtime)
+  names(er1.shapes) <- levels(er1.pca.vectors$Runtime)
+
+# plot pca with cutoffs
+sockall_er1 <- ggplot(data = er1.pca.vectors, 
+       aes(x=V1, y=V2, fill = Runtime, shape = Runtime)) + 
+  geom_point(alpha = 0.7, size = 3, color = "gray20") +
+  scale_fill_manual(name = "Run Timing", values = er1.palette) +
+  scale_color_manual(name = "Run Timing", values = c("black", "black", "firebrick4", "gold4", "lightblue4")) +
+  scale_shape_manual(name = "Run Timing", values = er1.shapes) +
+  ggtitle(expression('Sockeye'~italic(esr1)))+
+  geom_vline(xintercept = 0.075, color = "gray30", alpha = 0.5, linetype = "dashed") +
+  geom_vline(xintercept = -0.04, color = "gray30", alpha = 0.5, linetype = "dashed") +
+  scale_x_continuous(breaks = c(-0.05, 0, 0.05, 0.1, 0.15, 0.2)) +
+  labs(x = paste0("PC1 (",round(er1.varPC1, digits = 1),"%)"), 
+       y= paste0("PC2 (",round(er1.varPC2, digits = 1),"%)")) +
+  guides(fill = guide_legend(title.position="top", title.hjust = 0.5,vjust=1,
+                             nrow = 3, byrow = TRUE,
+                             override.aes = list(size =3)))
+
+sockall_er1
+  
 ###### COMBINE SURPLUS #################################
-surplus_pcas <- plot_grid(pinkOdd_lrrc9, NULL, sockall_lrrc9,
-                          rel_widths = c(1,0.1,1), 
-                          ncol = 3, align = 'h',
-                          labels = c('A','','B'), 
+surplus_pcas <- plot_grid(pinkOdd_lrrc9, NULL, sockall_lrrc9, NULL, sockall_er1,
+                          rel_widths = c(2,0.1,2,0.1,2), 
+                          nrow = 1, align = 'h',
+                          labels = c('A)','','B)','','C'), 
                           label_fontfamily = "ArialMT",
                           label_size = 30, label_colour = "black")
 
-jpeg(paste0("./figures/pca/combine/supplfig_twospp_genes_pca_allele_cutoff_twoPanels_legend_",format(Sys.Date(),"%Y%m%d"),".jpg"),
-     width = 14, height = 7, res = 300, units = "in")
+jpeg(paste0("../Salmon_runtiming/2024_fourspecies/figures/pca/combine/supplfig_genes_pca_allele_cutoff_twoPanels_legend_",format(Sys.Date(),"%Y%m%d"),".jpg"),
+#jpeg(paste0("./figures/pca/combine/supplfig_genes_pca_allele_cutoff_twoPanels_legend_",format(Sys.Date(),"%Y%m%d"),".jpg"),
+     width = 20, height = 7, res = 300, units = "in")
 surplus_pcas
 dev.off()

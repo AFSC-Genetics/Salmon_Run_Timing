@@ -10,7 +10,8 @@ for(i in 1:length(packages_needed)){
 }
 
 # setwd("../../Salmon_Run_Timing")
-outdir="../Salmon_runtiming/2024_fourspecies/figures/barplot/"
+outdir="./figures/barplot/"
+# outdir="../Salmon_runtiming/2024_fourspecies/figures/barplot/"
 
 ### Input Proportions##################
 
@@ -58,17 +59,15 @@ esrb_df <- rbind(chum_esrb, coho_esrb) %>%
   mutate(Gene = "ESRB")
 
 #### ER1 ####################
-sock_esr1 <- read.table(file = "./data/R/twospp_esr1_alleles/euclide_esr1_allele_proportions.txt", 
+sock_esr1 <- read.table(file = "./data/R/twospp_esr1_alleles/pick-all_esr1_allele_proportions.txt", 
                         header = T, sep = "\t") %>%
   select(Runtime, Genotype, n) %>%
   mutate(Species = "Sockeye",
-         Runtime = ifelse(Runtime=="Late",'Late Beach','Early Stream'))
-
-pick_esr1 <- read.table(file = "./data/R/twospp_esr1_alleles/pick-chum_esr1_allele_proportions.txt", 
-                        header = T, sep = "\t") %>%
-  select(Runtime, Genotype, n) %>%
-  mutate(Species = "Sockeye",
-         Runtime = ifelse(Runtime=="Late",'Late Pick Creek','Early Pick Creek'))
+         Runtime = gsub("- ","Stream (",Runtime) %>% gsub("Pick Creek","Pick)",.),
+         Runtime = case_when(Runtime=="Late Beach"~'Late Beach (Anvil)',
+                             Runtime=="Late Stream" ~ 'Late Stream (Whitefish)',
+                             Runtime=="Early Stream" ~ 'Early Stream (Teal)',
+                             T ~ Runtime))
 
 coho_esr1 <- read.table(file = "./data/R/twospp_esr1_alleles/coho-chum_esr1_allele_proportions.txt", 
                         header = T, sep = "\t") %>%
@@ -78,22 +77,20 @@ coho_esr1 <- read.table(file = "./data/R/twospp_esr1_alleles/coho-chum_esr1_alle
 esr1_df <- rbind(sock_esr1, coho_esr1) %>%
   mutate(Gene = "ESR1")
 
-# When Pick is added
-# esr1_df <- rbind(sock_esr1, pick_esr1, coho_esr1) %>%
-#   mutate(Gene = "ESR1")
-
 ### Combine Gene-Species Proportions #############
 genes_df <- rbind(lrrc9_df, esrb_df, esr1_df) %>%
   select(Species, Gene, everything())
 
 # add levels for ordering plots
 genes_df$Species <- factor(genes_df$Species, levels = c("Pink Even", "Pink Odd", "Sockeye", "Chum", "Coho"))
-genes_df$Runtime <- factor(genes_df$Runtime, levels = c("Early", "Late", "Early Stream", "Late Stream", "Late Beach"))
+genes_df$Runtime <- factor(genes_df$Runtime, levels = c("Early","Late","Early Stream","Late Stream", "Late Beach", 
+                                                        "Early Stream (Teal)", "Late Stream (Whitefish)", 
+                                                        "Early Stream (Pick)", "Late Stream (Pick)", "Late Beach (Anvil)"))
 genes_df$Gene <- factor(genes_df$Gene, levels = c("LRRC9", "ESRB", "ESR1"))
 levels(genes_df$Species)
 levels(genes_df$Gene)
 
-write.csv(genes_df, "./data/R/AlleleGroup_CountPerSpecies-Genotype.csv", 
+write.csv(genes_df, "./data/R/AlleleGroup_CountPerSpecies-Genotype_2.csv", 
             row.names = F)
 
 #### LRRC9 Plot  ###############
@@ -113,8 +110,8 @@ lrrc9_barplot <- ggplot(filter(genes_df, Gene == "LRRC9"),
   theme(legend.position = "none",
         plot.title = element_text(hjust = 0.5, size = 22),
         panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        axis.text.x = element_text(size = 14, vjust = 0.5, color = "black"),
-        axis.text.y = element_text(size = 14, angle = 0, color = "black"),
+        axis.text.x = element_text(size = 12, vjust = 1, color = "black"),
+        axis.text.y = element_text(size = 12, angle = 0, color = "black"),
         axis.ticks.x = element_blank(), axis.title.x = element_blank(),
         axis.title.y = element_text(size = 20, angle = 90, margin = margin(0,5,0,1)),
         panel.background = element_rect(fill = "white", color = "black"),
@@ -139,11 +136,10 @@ esrb_barplot <- ggplot(filter(genes_df, Gene == "ESRB"),
   scale_y_continuous(expand = expansion(mult = c(0.01, 0.01))) +
   theme_bw() +
   theme(legend.position = "none",
-        legend.title = element_text(size = 20), legend.text = element_text(size = 15),
         plot.title = element_text(hjust = 0.5, size = 22),
-        panel.grid.major = element_blank(),  panel.grid.minor = element_blank(),
-        axis.text.x = element_text(size = 14, vjust = 0.5, color = "black"),
-        axis.text.y = element_text(size = 14, angle = 0, color = "black"),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.x = element_text(size = 12, vjust = 1, color = "black"),
+        axis.text.y = element_text(size = 12, angle = 0, color = "black"),
         axis.ticks.x = element_blank(),
         axis.title.x = element_blank(), axis.title.y = element_blank(),
         panel.background = element_rect(fill = "white", color = "black"),
@@ -171,8 +167,8 @@ esr1_barplot <- ggplot(filter(genes_df, Gene == "ESR1"),
         legend.title = element_text(size = 20), legend.text = element_text(size = 15),
         plot.title = element_text(hjust = 0.5, size = 22),
         panel.grid.major = element_blank(),  panel.grid.minor = element_blank(),
-        axis.text.x = element_text(size = 14, vjust = 0.5, color = "black"),
-        axis.text.y = element_text(size = 14, angle = 0, color = "black"),
+        axis.text.x = element_text(size = 12, vjust = 1, color = "black"),
+        axis.text.y = element_text(size = 12, angle = 0, color = "black"),
         axis.ticks.x = element_blank(),
         axis.title.x = element_blank(), axis.title.y = element_blank(),
         panel.background = element_rect(fill = "white", color = "black"),
@@ -184,10 +180,13 @@ esr1_barplot <- ggplot(filter(genes_df, Gene == "ESR1"),
 esr1_barplot
 
 ### Combine Plots ##############
-final_barplot <- cowplot::plot_grid(lrrc9_barplot, esrb_barplot, esr1_barplot, rel_widths = c(10, 4.8, 6.5),
-                     nrow = 1, align = "h",
-                     labels = c('A','B','C'), label_fontfamily = "ArialMT",
-                     label_size = 30, label_colour = "black")
+final_barplot <- cowplot::plot_grid(lrrc9_barplot, esrb_barplot, esr1_barplot, 
+                                    rel_widths = c(10, 4.8, 10),
+                                    nrow = 1, align = "h",
+                                    labels = c('A','B','C'), 
+                                    label_fontfamily = "ArialMT",
+                                    label_size = 30, 
+                                    label_colour = "black")
 # final_barplot
 
 x.grob <- grid::textGrob("Run Timing Phenotype", 
@@ -196,9 +195,8 @@ x.grob <- grid::textGrob("Run Timing Phenotype",
 
 
 # PDF and JPG outputs
-#pdf(file = paste0("./figures/barplot/fourspp_genes_barplot_",format(Sys.Date(),"%Y%m%d"),".pdf"), 
 pdf(file = paste0(outdir,"three_genes_barplot_",format(Sys.Date(),"%Y%m%d"),".pdf"), 
-    width = 18, height = 6)
+    width = 21, height = 6)
 grid.arrange(gridExtra::arrangeGrob(final_barplot, bottom = x.grob))
 dev.off()
 
