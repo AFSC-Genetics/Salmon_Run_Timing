@@ -3,7 +3,7 @@
 
 library(tidyverse)
 library(magrittr)
-install.packages("biomaRt")
+# install.packages("biomaRt")
 library(BiocManager)
 BiocManager::install("biomaRt")
 library(biomaRt)
@@ -15,18 +15,20 @@ GAFDIR <- "./data/R/GCF_023373465.1-RS_2023_03_gene_ontology.gaf"
 # table for chromosome name and number
 chrom_df <- read.table("./data/R/chrom_meta.txt", header = TRUE)
 
-################ GFF FILE #############################################
+### GFF FILE #############################################
 # find exons from gff file for genes of interest (from NCBI chum reference genome)
 gff_df <- read.delim(GFFDIR, header = F, comment.char = "#")
   gff_df <- gff_df[,c(1:5,9)] # remove excess columns
-    colnames(gff_df) <- c("chrName", "RefSeq","exon","start.pos","fin.pos", "ID") # rename remaining columns
+  colnames(gff_df) <- c("chrName", "RefSeq","exon","start.pos","fin.pos", "ID") # rename remaining columns
 
-# only keep chr29 & 35
+# only keep chrs 8, 29 & 35
+# subset to the regions shown in the local allele FST plots
 gff_subset <- gff_df %>%
   lst(chrom_df) %>%
   reduce(left_join) %>%
-  filter(chr == "29" & fin.pos >= 24.7*10^6 & start.pos <= 26.4*10^6
-           | chr == "35" & fin.pos >= 27.86*10^6 & start.pos <= 28.3*10^6,
+  filter(chr == "8" & fin.pos >= 23.1*1e6 & start.pos <= 24*1e6
+         | chr == "29" & fin.pos >= 24.7*1e6 & start.pos <= 26.4*1e6
+         | chr == "35" & fin.pos >= 27.86*1e6 & start.pos <= 28.3*1e6,
          exon == "gene") %>%
   dplyr::select(-c(chrName, RefSeq, exon)) %>% dplyr::select(chr, everything())
 rm(gff_df)
@@ -43,7 +45,7 @@ gene_write <- gff_subset %>%
 
 rm(gene_pattern, exon_pattern, descr_pattern)
 
-########### IMPORT GENE ASSOCIATION FILE  ######################################
+### IMPORT GENE ASSOCIATION FILE  ######################################
 
 go_df <- read.delim(GAFDIR, header = F, comment.char = "!")
   go_df <- go_df[,c(3:5,9:10)]
@@ -53,12 +55,25 @@ GO_subset <- go_df %>%
   filter(geneID %in% unique(gene_write$geneID),
          ontology != "C") 
 
-coho_ensembl <- useMart(biomart = "ensembl", dataset = "okisutch_gene_ensembl")
+# coho_ensembl <- useMart(biomart = "ensembl", dataset = "okisutch_gene_ensembl")
+
+# go_fxn <- getBM(attributes = c("go_id", "name_1006"),
+#                 filters = "go",
+#                 values = unique(GO_subset$go_id),
+#                 mart = coho_ensembl)
+
+# receiving error for above commented version on 2/23/26 but worked in 2025
+
+# specified the mirror and it worked
+coho_ensembl <- useEnsembl(biomart = "genes", 
+                           dataset = "okisutch_gene_ensembl", 
+                           mirror = "useast") 
 
 go_fxn <- getBM(attributes = c("go_id", "name_1006"),
                 filters = "go",
                 values = unique(GO_subset$go_id),
                 mart = coho_ensembl)
+
 rm(coho_ensembl, go_df)
 
 GO_subset1 <- GO_subset %>% 
@@ -72,41 +87,57 @@ GO_subset1 <- GO_subset %>%
 
 geneFxn <- gene_write %>%
   left_join(GO_subset1, by = "geneID")
+
 rm(GO_subset, GO_subset1, go_fxn)
 
-################    Read in each species FST file     #############################
+###    Read in each species FST file     #############################
 
-########## PINK
+#### Pink ######
 pink_Fst <- read.delim2("./results/fst/allele/pink-chum_NC_068455.1_EE-LL_minInd0.3.sfs.pbs.fst.txt",
                         row.names = NULL,sep = "\t")
 colnames(pink_Fst) <- c("region", "chrName", "midPos", "Nsites", "Pink.Fst")
 pink_Fst <- pink_Fst[,c(2:3,5)] 
 
-########## SOCKEYE
-sock_Fst <- read.delim("./results/fst/sock-all_NC_068455.1_EE-LL_minInd0.3.sfs.pbs.fst.txt",
+#### Sockeye ######
+sock35 <- read.delim("./results/fst/allele/sock-all_NC_068455.1_EE-LL_minInd0.3.sfs.pbs.fst.txt",
                        row.names = NULL,sep = "\t")
+
+sock8 <- read.delim("./results/fst/allele/euclide_NC_068428.1_EE-LL_minInd0.3.sfs.pbs.fst.txt",
+                    row.names = NULL,sep = "\t")
+sock_Fst <- rbind(sock35, sock8)
   colnames(sock_Fst) <- c("region", "chrName", "midPos", "Nsites", "Sockeye.Fst")
   sock_Fst <- sock_Fst[,c(2:3,5)]
 
-########## COHO
-coho_Fst <- read.delim2("./results/fst/allele/coho-chum_NC_068449.1_EE-LL_minInd0.3_minDepthHalf.sfs.pbs.fst.txt",
+  rm(sock35, sock8)  
+
+#### Coho ######
+coho29 <- read.delim2("./results/fst/allele/coho-chum_NC_068449.1_EE-LL_minInd0.3_minDepthHalf.sfs.pbs.fst.txt",
                         row.names = NULL,sep = "\t")
+
+coho8 <- read.delim2("./results/fst/allele/coho-chum_NC_068428.1_EE-LL_minInd0.3_minDepthHalf.sfs.pbs.fst.txt",
+                      row.names = NULL,sep = "\t")
+
+coho_Fst <- rbind(coho29, coho8)
   colnames(coho_Fst) <- c("region", "chrName", "midPos", "Nsites", "Coho.Fst")
   coho_Fst <- coho_Fst[,c(2:3,5)]
 
-########## CHUM
+  rm(coho29, coho8)  
+
+#### Chum ######
+chum35 <- read.delim2("./results/fst/allele/chumrun_NC_068455.1_EE-LL_minInd0.3.sfs.pbs.fst.txt",
+                      row.names = NULL,sep = "\t")
+
 chum29 <- read.delim2("./results/fst/allele/chumrun_NC_068449.1_EE-LL_minInd0.3_minDepthHalf.sfs.pbs.fst.txt",
                         row.names = NULL,sep = "\t")
-chum35 <- read.delim2("./results/fst/allele/chumrun_NC_068455.1_EE-LL_minInd0.3.sfs.pbs.fst.txt",
-                        row.names = NULL,sep = "\t")
+
 chum_Fst <- rbind(chum29, chum35)
   colnames(chum_Fst) <- c("region", "chrName", "midPos", "Nsites", "Chum.Fst")
   chum_Fst <- chum_Fst[,c(2:3,5)]
 
   rm(chum29, chum35)
   
-############## COMBINE FOUR SPECIES INTO ONE DATAFRAME #######################
-# bind rows together
+### COMBINE INDIV FSTS INTO ONE DATAFRAME #######################
+
 four_df <- lst(pink_Fst, sock_Fst, chum_Fst, coho_Fst) %>% 
   reduce(full_join) %>%
   lst(chrom_df) %>%
@@ -122,25 +153,30 @@ rm(pink_Fst, sock_Fst, coho_Fst, chum_Fst)
 # Change negative Fst SNPs to 0s
 four_df[four_df < 0] <- 0
 
+chr8 <- four_df %>%
+  filter(chr == 8,
+         as.numeric(midPos) > 23.1*1e6,
+         as.numeric(midPos) < 24*1e6) 
+
 chr29 <- four_df %>%
   filter(chr == 29,
-         as.numeric(midPos) > 24.7*10^6,
-         as.numeric(midPos) < 26.4*10^6) 
+         as.numeric(midPos) > 24.7*1e6,
+         as.numeric(midPos) < 26.4*1e6) 
 
 chr35 <- four_df %>%
   filter(chr == 35,
-         midPos > 27.86*10^6,
-         midPos < 28.3*10^6) 
+         midPos > 27.86*1e6,
+         midPos < 28.3*1e6) 
 
-four_subset <- rbind(chr29, chr35); rm(chr29, chr35, four_df)
+four_subset <- rbind(chr8, chr29, chr35); rm(chr8, chr29, chr35, four_df)
 
+### Table with FST, shared SNPs, and gene annotations #####
 table_df <- four_subset %>%
   left_join(geneFxn, by = "chr", relationship = "many-to-many") %>%
   # Filter rows based on gene range
   mutate(gene = ifelse(midPos >= start.pos & midPos <= fin.pos, geneID, NA),
          geneName = ifelse(midPos >= start.pos & midPos <= fin.pos, geneName, NA),
          geneAnnotation = ifelse(midPos >= start.pos & midPos <= fin.pos, gene_fxns, NA)) %>%
-  # Group by 'chr' and 'position' to avoid duplicates
   group_by(chr, midPos) %>%
   # remove duplicates by summarizing & keeping the first non-NA gene
   dplyr::summarize(gene = ifelse(all(is.na(gene)), NA_character_, paste(na.omit(gene), collapse = "; ")),
@@ -153,5 +189,5 @@ table_df <- four_subset %>%
          geneName = gsub("%","-",geneName)) %>%
   relocate(gene, geneName, geneAnnotation, .after = last_col())
 
-write.csv(table_df, "./data/R/supplemental_table2_FST_and_genes.csv", row.names = F)
+write.csv(table_df, "./data/R/supplemental_table2_FST_and_genes_20260323.csv", row.names = F)
 
