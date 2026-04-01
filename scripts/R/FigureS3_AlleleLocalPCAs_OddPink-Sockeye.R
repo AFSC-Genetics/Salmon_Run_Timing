@@ -13,7 +13,7 @@ library(cowplot)
 
 allmeta_df <- read.csv("./data/raw/fourspecies_runtiming_metadata.csv", header = T)
 pick_df <- read.csv("./data/raw/pick_creek_metadata.csv", header = T)
-pink_odd_meta_df <- read.csv("./data/raw/pinkOdd_collection_07172024_cleaned.csv", header = T)
+pink_odd_meta <- read.csv("./data/raw/pinkOdd_collection_07172024_cleaned.csv", header = T)
 
 ##### Whitefish Addition ############
 # read in the covariance matrix
@@ -184,15 +184,15 @@ sockall_er1 <- ggplot(data = er1.pca.vectors,
 sockall_er1
   
 ###### COMBINE SURPLUS #################################
-surplus_pcas <- plot_grid(pinkOdd_lrrc9, NULL, sockall_lrrc9, NULL, sockall_er1,
+surplus_pcas <- plot_grid(sockall_er1, NULL, sockall_lrrc9, NULL, pinkOdd_lrrc9,
                           rel_widths = c(2,0.1,2,0.1,2), 
                           nrow = 1, align = 'h',
                           labels = c('A)','','B)','','C'), 
                           label_fontfamily = "ArialMT",
                           label_size = 30, label_colour = "black")
 
-jpeg(paste0("../Salmon_runtiming/2024_fourspecies/figures/pca/combine/supplfig_genes_pca_allele_cutoff_twoPanels_legend_",format(Sys.Date(),"%Y%m%d"),".jpg"),
-#jpeg(paste0("./figures/pca/combine/supplfig_genes_pca_allele_cutoff_twoPanels_legend_",format(Sys.Date(),"%Y%m%d"),".jpg"),
+#jpeg(paste0("../Salmon_runtiming/2024_fourspecies/figures/pca/combine/supplfig_genes_pca_allele_cutoff_twoPanels_legend_",format(Sys.Date(),"%Y%m%d"),".jpg"),
+jpeg(paste0("./figures/pca/combine/supplfig_genes_pca_allele_cutoff_twoPanels_legend_",format(Sys.Date(),"%Y%m%d"),".jpg"),
      width = 20, height = 7, res = 300, units = "in")
 surplus_pcas
 dev.off()

@@ -55,7 +55,7 @@ bed_intersect(df_valr, df_valr) %>%
 ###### Fst Files import ----------------------------------------------- #######
 
 ########## PINK
-pink_list <- as.list(Sys.glob("../2024_pink/results/fst/pink-chum*early-late_minInd0.3.sfs.pbs.fst.txt"))
+pink_list <- as.list(Sys.glob("./results/fst/pink/pink-chum*early-late_minInd0.3.sfs.pbs.fst.txt"))
 
 # read in all data files that match wildcard
 pink_df <- pink_list %>%
@@ -67,7 +67,7 @@ pink_df <- pink_list %>%
   mutate(Species = "Pink Even")
 
 ########## SOCKEYE
-sock_list <- as.list(Sys.glob("../2024_sockeye/results/fst/euclide*beach-creek_minInd0.3.sfs.pbs.fst.txt"))
+sock_list <- as.list(Sys.glob("./results/fst/sockeye/euclide*beach-creek_minInd0.3.sfs.pbs.fst.txt"))
 
 # read in all data files that match wildcard
 sock_df <- sock_list %>%
@@ -79,7 +79,7 @@ sock_df <- sock_list %>%
   mutate(Species = "Sockeye")
 
 ########## CHUM
-chum_list <- as.list(Sys.glob("../2024_chum/results/fst/chumrun*fall-summer_minInd0.3_minDepthHalf.sfs.pbs.fst.txt"))
+chum_list <- as.list(Sys.glob("./results/fst/chum/chumrun*fall-summer_minInd0.3_minDepthHalf.sfs.pbs.fst.txt"))
 
 # read in all data files that match wildcard
 chum_df <- chum_list %>%
@@ -91,7 +91,7 @@ chum_df <- chum_list %>%
   mutate(Species = "Chum")
 
 ########## COHO
-coho_list <- as.list(Sys.glob("../2024_coho/results/fst/coho-chum*early-late_minInd0.3_minDepthHalf.sfs.pbs.fst.txt"))
+coho_list <- as.list(Sys.glob("./results/fst/coho/coho-chum*early-late_minInd0.3_minDepthHalf.sfs.pbs.fst.txt"))
 
 # read in all data files that match wildcard
 coho_df <- coho_list %>%

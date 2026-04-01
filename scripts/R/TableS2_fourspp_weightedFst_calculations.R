@@ -2,7 +2,7 @@
 # 03/21/2025
 # Updated for esr1 on 03/19/2026
 
-setwd("../../Salmon_Run_Timing")
+# setwd("../../Salmon_Run_Timing")
 
 packages_needed <- c("ggplot2", "scales", "ggpubr", "ggrepel", "tidyverse",
                      "stringr", "data.table", "plyr","gtools","reshape2", 
@@ -195,8 +195,7 @@ gene_boundary <- gene_fst %>%
          BoundarySize = maxPos - minPos) %>%
   ungroup() %>%
   arrange(chrName)
-View(gene_boundary)
-
+# View(gene_boundary)
 
 gene_boundary_by_spp <- gene_boundary %>%
   dplyr::mutate(spp = sub(" - .*", "", Species)) %>% 
@@ -230,7 +229,6 @@ idx_local_summary
 
 write.csv(idx_local_summary, "./results/fst/peak_weighted_meanFsts.csv",
           row.names = F, quote = F)
-
 
 #### Determine the broadest peak range across species & associated size ########
 

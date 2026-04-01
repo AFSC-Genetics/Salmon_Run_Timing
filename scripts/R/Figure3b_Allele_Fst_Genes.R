@@ -21,8 +21,6 @@ rm(i, packages_needed)
 
 allmeta_df <- read.csv("./data/raw/fourspecies_runtiming_metadata.csv", header = T)
 
-mypalette <- c("goldenrod1", "royalblue3")
-
 ### GFF NCBI Data ###########################################################
 
 # find exons from gff file for genes of interest (from NCBI chum reference genome: GCF_023373465.1)
@@ -159,17 +157,6 @@ lowfst_lrrc9_exons <- filter(exons_plot_chr35, gene %in% lowfst_lrrc9_genes$gene
 
 ##### Plotting ###########################
 # Set the general themes
-# theme_set(
-#   theme( 
-#     panel.grid.major = element_line(color = "gray90"),  panel.grid.minor.x = element_blank(),
-#     axis.text.y = element_text(angle = 0, size = 18, color = "black", vjust = 0.5),
-#     axis.title.y = element_text(size = 22, angle = 90, margin = margin(t = 0, r = 8, b = 0, l = 0)),
-#     strip.text.y = element_text(angle = 0), axis.line = element_line(),
-#     panel.background = element_rect(fill = "white"),
-#     panel.border = element_rect(color = "black", fill = "NA")
-#   )
-# )
-
 theme_set(
   theme(
     axis.text.x = element_text(angle = 0, size = 18, color = "black", vjust = 0.5),
@@ -407,20 +394,6 @@ mypalette <- genes_chr29_df$color # color based on color column
   names(mypalette) <- levels(genes_chr29_df$geneAbbr)
 
 ##### Plotting #################
-# Set the general themes
-# theme_set(
-#   theme( 
-#     axis.text.x = element_text(angle = 0, size = 18, color = "black", vjust = 0.5),
-#     axis.title.x = element_text(angle = 0, size = 20, color = "black"),
-#     axis.text.y = element_text(angle = 0, size = 18, color = "black", vjust = 0.5),
-#     axis.title.y = element_text(size = 22, angle = 90,
-#                                 margin = margin(t = 0, r = 8, b = 0, l = 0)),
-#     strip.text.y = element_text(angle = 0), panel.grid.major = element_line(color = "gray90"),
-#     axis.line = element_line(), panel.grid.minor.x = element_blank(),
-#     panel.border = element_rect(color = "black", fill = "NA"),
-#     legend.position = "none", panel.background = element_rect(fill = "white")
-#   )
-# )
 
 # ESRB Gene plot
 gene_esrb_plot <- ggplot() +
@@ -599,7 +572,6 @@ lowfst_er1_genes <- gff_chr8_region %>%
   ungroup() %>%
   filter(highfst == F)
 
-
 # don't include LOC### or si:## genes here
 highfst_er1_genes <- genes_chr8_df %>%
   filter(!(gene %in% lowfst_er1_genes$gene),
@@ -618,21 +590,7 @@ mypalette <- genes_chr8_df$color # color based on color column
   names(mypalette) <- levels(genes_chr8_df$geneAbbr)
 
 #### Plotting #################
-# # Set the general themes
-# theme_set(
-#   theme( 
-#     axis.text.x = element_text(angle = 0, size = 18, color = "black", vjust = 0.5),
-#     axis.title.x = element_text(angle = 0, size = 20, color = "black"),
-#     axis.text.y = element_text(angle = 0, size = 18, color = "black", vjust = 0.5),
-#     axis.title.y = element_text(size = 22, angle = 90,
-#                                 margin = margin(t = 0, r = 8, b = 0, l = 0)),
-#     strip.text.y = element_text(angle = 0), panel.grid.major = element_line(color = "gray90"),
-#     axis.line = element_line(), panel.grid.minor.x = element_blank(),
-#     panel.border = element_rect(color = "black", fill = "NA"),
-#     legend.position = "none", panel.background = element_rect(fill = "white")
-#   )
-# )
-  
+
 # Genes/exons
 er1_gene_plot <- ggplot() +
   geom_rect(data = lowfst_er1_genes, aes(xmin = beg.pos, xmax = end.pos, ymin = y.min, ymax = y.max),
@@ -716,23 +674,3 @@ jpeg(paste0("./figures/Figure4a-c_Allele_FST_Genes_",format(Sys.Date(),"%Y%m%d")
 print(threefst_cowplot)
 dev.off()
 
-
-# Older version without er1
-# ### C/D) Combine #####################
-# twofst_cowplot <- plot_grid(multiplot_lrrc9, multiplot_esrb,
-#                             rel_widths = c(5,5), ncol = 2, nrow = 1,
-#                             labels = c('C','D'), label_fontfamily = "helvetica",
-#                             label_size = 30, label_colour = "black")
-# twofst_cowplot
-# 
-# ### FIG 3) Combine A-D #####################
-# 
-# fig3 <- plot_grid(pca_five_legend, NULL, twofst_cowplot,
-#                   rel_heights = c(1,0.1, 1), 
-#                   ncol = 1, nrow = 3, align = 'v')
-# fig3
-# 
-# jpeg(paste0("./figures/figure3_panelsA-D_",format(Sys.Date(),"%Y%m%d"),".jpg"), 
-#      width = 18, height = 20, res = 200, units = "in")
-# print(fig3)
-# dev.off()

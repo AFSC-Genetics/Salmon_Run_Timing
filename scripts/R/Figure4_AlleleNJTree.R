@@ -1,8 +1,9 @@
 # Create allele-base NJ Tree for esrb and lrrc9 data
 
+# setwd("../../Salmon_Run_Timing")
 
 library(BiocManager)
-BiocManager::install("ggtree", force = T)
+# BiocManager::install("ggtree", force = T)
 library(ggtree)
 library(treeio)
 packages_needed <- c("tidyverse", "tools", "cowplot", "ape", "ggstance", 
@@ -13,8 +14,10 @@ for(i in 1:length(packages_needed)){
   library(packages_needed[i], character.only = TRUE)
 }
 
-##### INPUT DATA #########################
+### INPUT DATA #########################
 pop_df <- read.csv("./data/raw/fourspecies_runtiming_metadata.csv", header = T)
+
+#### LRRC9 ####
 
 # call in allele data and add to sample data
 lrrc9_df <- rbind(read.delim2("./data/R/threespp_lrrc9_alleles/sock-all_lrrc9_alleles_all.txt", sep = "\t", header = F),
@@ -22,21 +25,38 @@ lrrc9_df <- rbind(read.delim2("./data/R/threespp_lrrc9_alleles/sock-all_lrrc9_al
                   read.delim2("./data/R/threespp_lrrc9_alleles/pink-chum_minInd0.3_lrrc9_alleles_all.txt", sep = "\t", header = F))
   colnames(lrrc9_df) <- c("sampleID", "RuntimeAl")
 
-esrb_df <- rbind(read.delim2("./data/R/twospp_esrb_alleles/coho-chum_esrb_allele_groups.txt", sep = "\t", header = F),
+ibs_mat_lrrc9 <- as.matrix(read.table(paste0("./results/ibs/fourspp_top5_GL1_MM4_lrrc9.ibsMat")))
+bam_lrrc9 <- read.table(paste0("./data/R/fourspp_lrrc9_top5_ibs_input.txt"), header = F)
+
+#### ESRB #####  
+
+esrb_df <- rbind(read.delim2("./data/R/twospp_esrb_alleles/coho-chum_esrb_alleles.txt", sep = "\t", header = F),
                  read.delim2("./data/R/twospp_esrb_alleles/chumrun_esrb_alleles.txt", sep = "\t", header = F))
   colnames(esrb_df) <- c("sampleID", "RuntimeAl")
 
+ibs_mat_esrb <- as.matrix(read.table(paste0("./results/ibs/fourspp_GL1_MM4_3_top5_esrb_expand.ibsMat")))
+bam_esrb <- read.table(paste0("./data/R/fourspp_esrb_top5_ibs_input3.txt"), header = F)
+
+#### ER1 #####
+
+er1_df <- rbind(read.delim2("./data/R/twospp_esr1_alleles/coho-chum_esr1_alleles.txt", sep = "\t", header = F),
+                read.delim2("./data/R/twospp_esr1_alleles/euclide_esr1_alleles.txt", sep = "\t", header = F))
+  colnames(er1_df) <- c("sampleID", "RuntimeAl")  
+
+ibs_mat_er1 <- as.matrix(read.table(paste0("./results/ibs/fourspp_GL1_MM4_top5_esr1.ibsMat")))
+bam_er1 <- read.table(paste0("./data/R/fourspp_esr1_top5_ibs_input.txt"), header = F)
+  
+  
 options(ignore.negative.edge=TRUE)
 
-######################  LRRC9: TOP FIVE PER GROUP   ###########################
+###  TREES: TOP FIVE PER GROUP   #############################################
 
-ibs_mat_lrrc9 <- as.matrix(read.table(paste0("./results/ibs/fourspp_top5_GL1_MM4_lrrc9.ibsMat")))
-bam_lrrc9 <- read.table(paste0("./data/R/fourspp_lrrc9_top5_ibs_input.txt"), header = F)
+####  LRRC9   ####
 
 # convert bam to FID with ABLG
 FIDlrrc9 <- bam_lrrc9 %>%
   dplyr::mutate(FID = row_number(),
-                temp = basename(tools::file_path_sans_ext(V1)),      # remove file path
+                temp = basename(file_path_sans_ext(V1)),      # remove file path
                 temp = gsub("^[^_]*_", "", temp),             # remove everything after 1st underscore
                 sampleID = str_extract(temp, "[^_]+")) %>%
   select(FID, sampleID)
@@ -52,7 +72,7 @@ lrrc9AlleleTree <- nj(ibs_mat_lrrc9) %>%
   dplyr::mutate(FID = row_number()) %>%
   left_join(sample_table, by = "FID")
 
-legend <- cowplot::get_legend(ggtree(lrrc9AlleleTree, aes(color = RuntimeAl), size = 1.5) + 
+legend <- get_legend(ggtree(lrrc9AlleleTree, aes(color = RuntimeAl), size = 1.5) + 
                        scale_color_manual(name = "Genotype", values = c("goldenrod2", "royalblue2")) +
                        theme(legend.title = element_text(size = 22),
                              legend.text = element_text(size = 20)))
@@ -71,12 +91,12 @@ ggtree(lrrc9AlleleTree, aes(color = RuntimeAl), size = 1.5) +
 d_lrrc9 <- data.frame(node=1:Nnode2(lrrc9AlleleTree), colour = "black")
 
 # choose allele colors
-d_lrrc9[c(16:20,76:79), 2] <- "goldenrod2" # pink
-d_lrrc9[c(11:15,72:75), 2] <- "royalblue2" # pink
-d_lrrc9[c(6:10,58:61), 2] <- "goldenrod2" # sockeye
-d_lrrc9[c(1:5,54:57), 2] <- "royalblue2" # sockeye
-d_lrrc9[c(26:30,67:70), 2] <- "goldenrod2" # chum
-d_lrrc9[c(21:25,63:66), 2] <- "royalblue2" # chum
+d_lrrc9[c(16:20,76:79), 2] <- "goldenrod2" # pink EE
+d_lrrc9[c(11:15,72:75), 2] <- "royalblue2" # pink LL
+d_lrrc9[c(6:10,58:61), 2] <- "goldenrod2" # sockeye EE
+d_lrrc9[c(1:5,54:57), 2] <- "royalblue2" # sockeye LL
+d_lrrc9[c(26:30,67:70), 2] <- "goldenrod2" # chum EE
+d_lrrc9[c(21:25,63:66), 2] <- "royalblue2" # chum LL
 d_lrrc9[c(31:40,42:49), 2] <- "gray40" # coho NA
 
 ## multiple choices of line types
@@ -86,11 +106,11 @@ c_lrrc9 <- flip(p_lrrc9, 72, 76) %>%
   flip(53, 50) %>%
   scaleClade(node=50, scale = 0.3)
 
-finalplot_lrrc9 <- c_lrrc9 %<+% d_lrrc9 + aes(colour=I(colour))+
+plot_lrrc9 <- c_lrrc9 %<+% d_lrrc9 + aes(colour=I(colour))+
   geom_treescale(x = 0.03, y = 6, fontsize = 5)
-finalplot_lrrc9
+plot_lrrc9
 
-ggsave(plot = finalplot_lrrc9, filename = "./figures/tree/fourspp_lrrc9_tree_top5_flip2.pdf",
+ggsave(plot = plot_lrrc9, filename = "./figures/tree/fourspp_lrrc9_tree_top5_flip2.pdf",
        width = 15, height = 15, limitsize = F)
 
 # visualize branch lengths
@@ -98,19 +118,16 @@ ggtree(lrrc9AlleleTree, aes(color = RuntimeAl), size = 1.5) +
   ggnewscale::new_scale_colour() +
   geom_text2(aes(label = branch.length), hjust = 0.5)
 
-rm(ibs_mat_lrrc9, bam_lrrc9, lrrc9AlleleTree, c_lrrc9, d_lrrc9, p_lrrc9, finalplot_lrrc9)
+rm(ibs_mat_lrrc9, bam_lrrc9, lrrc9AlleleTree, c_lrrc9, d_lrrc9, p_lrrc9, plot_lrrc9)
 
 
-######################  ESRB: TOP FIVE PER GROUP   ###########################
-
-ibs_mat_esrb <- as.matrix(read.table(paste0("./results/ibs/fourspp_GL1_MM4_3_top5_esrb_expand.ibsMat")))
-bam_esrb <- read.table(paste0("./data/R/fourspp_esrb_top5_ibs_input.txt"), header = F)
+####  ESRB   ###########################
 
 # convert bam to FID with ABLG
 FID_esrb <- bam_esrb %>%
   dplyr::mutate(FID = row_number(),
-                temp = basename(tools::file_path_sans_ext(V1)),      # remove file path
-                temp = gsub("^[^_]*_", "", temp),             # remove everything after 1st underscore
+                temp = basename(file_path_sans_ext(V1)),    # remove file path
+                temp = gsub("^[^_]*_", "", temp),           # remove everything after 1st underscore
                 sampleID = str_extract(temp, "[^_]+")) %>%
   select(FID, sampleID)
 
@@ -127,6 +144,7 @@ esrbAlleleTree <- nj(ibs_mat_esrb) %>%
 
 ## multiple choices of line types
 p_esrb <- ggtree(esrbAlleleTree, size = 1.5)
+
 ggtree(esrbAlleleTree, aes(color = RuntimeAl), size = 1.5) + 
   ggnewscale::new_scale_colour() +
   geom_tiplab(align = T, aes(color = Species)) +
@@ -148,11 +166,11 @@ c_esrb <- flip(p_esrb, 63, 67) %>%
   scaleClade(node=52, scale = 0.3) %>%
   scaleClade(node=71, scale = 0.3)
 
-finalplot_esrb <- c_esrb %<+% d_esrb + aes(colour=I(colour)) +
+plot_esrb <- c_esrb %<+% d_esrb + aes(colour=I(colour)) +
   geom_treescale(x = 0.04, y = 4, fontsize=5)
-finalplot_esrb
+plot_esrb
 
-ggsave(plot = finalplot_esrb, filename = "./figures/tree/fourspp_esrb_tree_top5_flip2.pdf",
+ggsave(plot = plot_esrb, filename = "./figures/tree/fourspp_esrb_tree_top5_flip2.pdf",
        width = 15, height = 15, limitsize = FALSE)
 
 # visualize branch lengths
@@ -160,27 +178,72 @@ ggtree(esrbAlleleTree, aes(color = RuntimeAl), size = 1.5) +
   ggnewscale::new_scale_colour() +
   geom_text2(aes(label = branch.length), hjust = -.3)
 
-rm(ibs_mat_esrb, bam_esrb, esrbAlleleTree, c_esrb, d_esrb, p_esrb, finalplot_esrb)
+rm(ibs_mat_esrb, bam_esrb, esrbAlleleTree, c_esrb, d_esrb, p_esrb, plot_esrb)
 
-cowplot::plot_grid(finalplot_esrb,
-                   finalplot_lrrc9,
-                   legend,
-                   rel_widths = c(0.45,0.45,0.1),
-                   nrow=1,ncol=2,
-                   labels=c(list(bquote("A)"~italic("esrb")~" Oket29")),
-                            "B) lrrc9 Oket35",""))
+####  ESR1  #######
 
-geneChr1 <- "A) esrb Oket29"
-geneChr2 <- "B) lrrc9 Oket35"
+# convert bam to FID with ABLG
+FID_er1 <- bam_er1 %>%
+  dplyr::mutate(FID = row_number(),
+                temp = basename(file_path_sans_ext(V1)),    # remove file path
+                temp = gsub("^[^_]*_", "", temp),           # remove everything after 1st underscore
+                sampleID = str_extract(temp, "[^_]+")) %>%
+  select(FID, sampleID)
 
-lrrc9_esrb <- cowplot::plot_grid(finalplot_esrb, NULL,
-                   finalplot_lrrc9,
-                   legend,
-                   rel_widths = c(0.45,0.1,0.45,0.1),
-                   nrow=1,ncol=4,
-                   labels=c(geneChr1,"",geneChr2,""),
-                   label_fontface='italic',
-                   label_size = 20)
+sample_table <- left_join(pop_df, er1_df, by = "sampleID") %>%
+  inner_join(FID_er1, by = "sampleID")
 
-ggsave(plot = lrrc9_esrb, filename = "./figures/tree/fourspp_lrrc9_esrb_tree_top5.pdf",
-       width = 22, height = 15, limitsize = FALSE)                
+colnames(ibs_mat_er1) <- sample_table$sampleID # set IBS matrix colnames to sampleID
+
+er1AlleleTree <- nj(ibs_mat_er1) %>%
+  phytools::midpoint.root() %>%
+  as.treedata() %>%
+  dplyr::mutate(FID = row_number()) %>%
+  left_join(sample_table, by = "FID")
+
+# Start Plotting
+
+## multiple choices of line types
+p_er1 <- ggtree(er1AlleleTree, size = 1.5)
+
+ggtree(er1AlleleTree, aes(color = RuntimeAl), size = 1.5) + 
+  ggnewscale::new_scale_colour() +
+  geom_tiplab(align = T, aes(color = Species)) +
+  geom_treescale(x = 0.1, y = 1) +
+  geom_text2(aes(label=node), hjust=0)
+
+## binary choices of species colors
+d_er1 <- data.frame(node=1:Nnode2(er1AlleleTree), colour = "black")
+
+p_er1 %<+% d_er1 + 
+  aes(color=Species) +
+  geom_treescale(x = 0.04, y = 4, fontsize=5) +
+  geom_tiplab() +
+  geom_text2(aes(label = node), hjust = -0.3, vjust = -0.3, size = 3, color = "darkred")
+
+# choose allele colors
+d_er1[c(1:5,67:70), 2] <- "royalblue2" # sockeye LL
+d_er1[c(6:10,63:66), 2] <- "goldenrod2" # sockeye EE
+d_er1[c(11:15,42:45), 2] <- "royalblue2" # coho LL
+d_er1[c(16:20,48:49), 2] <- "goldenrod2" # coho EE
+d_er1[c(21:40,54:61,72:79), 2] <- "gray40" # chum and pink NA
+
+c_er1 <- flip(p_er1, 50, 62) %>% # move coho above sockeye
+  #flip(63, 67) %>% # flip sockeye Early and Late
+  scaleClade(node=53, scale = 0.3) %>%
+  scaleClade(node=71, scale = 0.3)
+
+plot_er1 <- c_er1 %<+% d_er1 + aes(colour=I(colour)) +
+  geom_treescale(x = 0.04, y = 4, fontsize=5)
+plot_er1
+
+ggsave(plot = plot_er1, filename = "./figures/tree/fourspp_esr1_tree_top5.pdf",
+       width = 15, height = 10, limitsize = FALSE)
+
+# visualize branch lengths
+ggtree(er1AlleleTree, aes(color = RuntimeAl), size = 1.5) + 
+  ggnewscale::new_scale_colour() +
+  geom_text2(aes(label = branch.length), hjust = -.3)
+
+rm(ibs_mat_er1, bam_er1, er1AlleleTree, c_er1, d_er1, p_er1, plot_er1)
+

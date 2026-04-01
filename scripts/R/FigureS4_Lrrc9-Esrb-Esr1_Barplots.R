@@ -9,8 +9,10 @@ for(i in 1:length(packages_needed)){
   library(packages_needed[i], character.only = TRUE)
 }
 
-# setwd("../../Salmon_Run_Timing")
+
 outdir="./figures/barplot/"
+
+# setwd("../../Salmon_Run_Timing")
 # outdir="../Salmon_runtiming/2024_fourspecies/figures/barplot/"
 
 ### Input Proportions##################
@@ -95,6 +97,18 @@ write.csv(genes_df, "./data/R/AlleleGroup_CountPerSpecies-Genotype_2.csv",
 
 #### LRRC9 Plot  ###############
 
+# expand sockeye location names
+genes_df <- genes_df %>%
+  mutate(Runtime = Runtime %>% 
+         gsub("Early Stream$",'Early Stream (Teal)',.) %>% 
+         gsub("Late Stream$",'Late Stream (Whitefish)',.) %>%
+         gsub("- ","Stream (",.) %>% gsub("Pick Creek","Pick)",.) %>%
+         gsub("Late Beach",'Late Beach (Anvil)',.)) 
+
+genes_df$Runtime <- factor(genes_df$Runtime, 
+                                  levels = c(unique(genes_df$Runtime)[-5],unique(genes_df$Runtime)[5]))
+
+
 lrrc9_barplot <- ggplot(filter(genes_df, Gene == "LRRC9"), 
                         aes(x = Runtime, y = n, fill = Genotype)) +
   geom_bar(position = "fill", stat = "identity") +
@@ -107,7 +121,8 @@ lrrc9_barplot <- ggplot(filter(genes_df, Gene == "LRRC9"),
   scale_x_discrete(labels = function(x) str_wrap(x, width = 9)) +
   scale_y_continuous(expand = expansion(mult = c(0.01, 0.01))) +
   theme_bw() +
-  theme(legend.position = "none",
+  theme(legend.position = "right", legend.background = element_rect(color = "white"),
+        legend.title = element_text(size = 20), legend.text = element_text(size = 15),
         plot.title = element_text(hjust = 0.5, size = 22),
         panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         axis.text.x = element_text(size = 12, vjust = 1, color = "black"),
@@ -117,8 +132,7 @@ lrrc9_barplot <- ggplot(filter(genes_df, Gene == "LRRC9"),
         panel.background = element_rect(fill = "white", color = "black"),
         panel.spacing = unit(0,"mm"),
         strip.background = element_rect(fill = "gray95", color = "black"),
-        strip.text.x = element_text(size = 14, color = "black"),
-        legend.background = element_rect(color = "white")
+        strip.text.x = element_text(size = 14, color = "black")
   )
 lrrc9_barplot
 
@@ -145,8 +159,7 @@ esrb_barplot <- ggplot(filter(genes_df, Gene == "ESRB"),
         panel.background = element_rect(fill = "white", color = "black"),
         panel.spacing = unit(0,"mm"),
         strip.background = element_rect(fill = "gray95", color = "black"),
-        strip.text.x = element_text(size = 14, color = "black"),
-        legend.background = element_rect(color = "white")
+        strip.text.x = element_text(size = 14, color = "black")
   )
 esrb_barplot
 
@@ -163,8 +176,7 @@ esr1_barplot <- ggplot(filter(genes_df, Gene == "ESR1"),
   scale_x_discrete(labels = function(x) str_wrap(x, width = 9)) +
   scale_y_continuous(expand = expansion(mult = c(0.01, 0.01))) +
   theme_bw() +
-  theme(legend.position = "right",
-        legend.title = element_text(size = 20), legend.text = element_text(size = 15),
+  theme(legend.position = "none",
         plot.title = element_text(hjust = 0.5, size = 22),
         panel.grid.major = element_blank(),  panel.grid.minor = element_blank(),
         axis.text.x = element_text(size = 12, vjust = 1, color = "black"),
@@ -174,14 +186,13 @@ esr1_barplot <- ggplot(filter(genes_df, Gene == "ESR1"),
         panel.background = element_rect(fill = "white", color = "black"),
         panel.spacing = unit(0,"mm"),
         strip.background = element_rect(fill = "gray95", color = "black"),
-        strip.text.x = element_text(size = 14, color = "black"),
-        legend.background = element_rect(color = "white")
+        strip.text.x = element_text(size = 14, color = "black")
   )
 esr1_barplot
 
 ### Combine Plots ##############
-final_barplot <- cowplot::plot_grid(lrrc9_barplot, esrb_barplot, esr1_barplot, 
-                                    rel_widths = c(10, 4.8, 10),
+final_barplot <- cowplot::plot_grid(esr1_barplot, esrb_barplot, lrrc9_barplot, 
+                                    rel_widths = c(8, 4.8, 10),
                                     nrow = 1, align = "h",
                                     labels = c('A','B','C'), 
                                     label_fontfamily = "ArialMT",
@@ -193,15 +204,14 @@ x.grob <- grid::textGrob("Run Timing Phenotype",
                    gp=gpar(col="black", fontsize=18))
 
 
-
 # PDF and JPG outputs
 pdf(file = paste0(outdir,"three_genes_barplot_",format(Sys.Date(),"%Y%m%d"),".pdf"), 
     width = 21, height = 6)
 grid.arrange(gridExtra::arrangeGrob(final_barplot, bottom = x.grob))
 dev.off()
 
-jpeg(file = paste0("./figures/barplot/fourspp_genes_barplot_",format(Sys.Date(),"%Y%m%d"),".jpg"), 
-     width = 33, height = 15, res = 200, units = 'cm')
+jpeg(file = paste0(outdir,"three_genes_barplot_",format(Sys.Date(),"%Y%m%d"),".jpg"), 
+     width = 40, height = 15, res = 300, units = 'cm')
 grid.arrange(gridExtra::arrangeGrob(final_barplot, bottom = x.grob))
 dev.off()
 

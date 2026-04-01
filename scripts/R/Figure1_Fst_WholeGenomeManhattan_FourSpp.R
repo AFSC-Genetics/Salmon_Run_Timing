@@ -1,5 +1,7 @@
 # plot WHOLE GENOME pink even, sockeye, chum, and coho
 
+# setwd("../../Salmon_Run_Timing")
+
 packages_needed <- c("ggplot2", "scales", "ggpubr", "ggrepel", "tidyverse",
                      "stringr", "data.table", "plyr","gtools","reshape2", 
                      "here", "magrittr", "patchwork", "cowplot")
@@ -16,7 +18,7 @@ chrom_df <- read.table("./data/R/chrom_meta.txt", header = TRUE)
 ###### Read in each per-chrom Fst File #########################################
 
 ########## PINK
-pink_list <- as.list(Sys.glob("./results/fst/*pink-chum*minInd0.3*"))
+pink_list <- as.list(Sys.glob("./results/fst/pink/*pink-chum*minInd0.3*"))
 
 # read in all data files that match wildcard
 pink_df <- pink_list %>%
@@ -28,7 +30,7 @@ pink_df <- pink_list %>%
   mutate(Species = "Pink Even")
 
 ########## SOCKEYE
-sock_list <- as.list(Sys.glob("./results/fst/*euclide*minInd0.3*"))
+sock_list <- as.list(Sys.glob("./results/fst/sockeye/*euclide*minInd0.3*fst.txt"))
 
 # read in all data files that match wildcard
 sock_df <- sock_list %>%
@@ -40,7 +42,7 @@ sock_df <- sock_list %>%
   mutate(Species = "Sockeye")
 
 ########## CHUM
-chum_list <- as.list(Sys.glob("./results/fst/*chumrun*minInd0.3*"))
+chum_list <- as.list(Sys.glob("./results/fst/chum/*chumrun*minInd0.3_minDepth*fst.txt"))
 
 # read in all data files that match wildcard
 chum_df <- chum_list %>%
@@ -52,7 +54,7 @@ chum_df <- chum_list %>%
   mutate(Species = "Chum")
 
 ########## COHO
-coho_list <- as.list(Sys.glob("./results/fst/*coho-chum*minInd0.3*"))
+coho_list <- as.list(Sys.glob("./results/fst/coho/*coho-chum*minInd0.3_minDepth*fst.txt"))
 
 # read in all data files that match wildcard
 coho_df <- coho_list %>%

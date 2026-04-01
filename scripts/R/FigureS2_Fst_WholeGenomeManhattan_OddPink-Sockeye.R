@@ -16,7 +16,7 @@ chrom_df <- read.table("./data/R/chrom_meta.txt", header = TRUE)
 ###### Read in each per-chrom Fst File ########
 
 ########## PINK
-pink_list <- as.list(Sys.glob("../2024_pinkOdd/results/fst/*pink-odd*minInd0.3*fst.txt"))
+pink_list <- as.list(Sys.glob("./results/fst/pink/*pink-odd*minInd0.3*fst.txt"))
 
 # read in all data files that match wildcard
 pink_df <- pink_list %>%
@@ -28,7 +28,7 @@ pink_df <- pink_list %>%
   mutate(Species = "Pink - Odd")
 
 ########## SOCKEYE - Whitefish-Teal
-sock_list <- as.list(Sys.glob("../2024_sockeye/results/fst/sock-chum*early-late*minInd0.3*fst.txt"))
+sock_list <- as.list(Sys.glob("./results/fst/sockeye/sock-chum*early-late*minInd0.3*fst.txt"))
 
 # read in all data files that match wildcard
 sock_df <- sock_list %>%
@@ -40,7 +40,7 @@ sock_df <- sock_list %>%
   mutate(Species = "Sockeye - Streams")
 
 ########## SOCKEYE - Whitefish-Teal
-pick_list <- as.list(Sys.glob("../2024_sockeye/results/fst/pick-chum*early-late*minInd0.3*fst.txt"))
+pick_list <- as.list(Sys.glob("./results/fst/sockeye/pick-chum*early-late*minInd0.3*fst.txt"))
 
 # read in all data files that match wildcard
 pick_df <- pick_list %>%
@@ -221,13 +221,3 @@ jpeg(paste0("./figures/fst/supplfig_threespp_wholegenome_LABEL2_h",round(height,
      width = 20, height = height, res = 300, units = "in")
 print(threespp_cowplot_lab)
 dev.off()
-
-
-# test <- (y_lab - pick_plot) + plot_layout(widths = c(0.8, 20))
-# 
-# jpeg(paste0("./figures/fst/supplfig_test_h",round(height, digits = 0),"_",format(Sys.Date(),"%Y%m%d"),".jpg"),
-#      width = 20, height = 5, res = 300, units = "in")
-# print(test)
-# dev.off()
-
-

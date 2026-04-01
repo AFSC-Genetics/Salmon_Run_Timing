@@ -168,3 +168,5 @@ GC_chart(wgd_genes3,
   GC_legend(F) %>%
   GC_grid(margin = list(top = 0, bottom = 0, left = 15, right = 15))
 
+# These were exported and further edited in Inkscape for illustrative purposes
+

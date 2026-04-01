@@ -325,84 +325,33 @@ sock_er1 <- ggplot(data = sockE1_pca.vectors,
 legend <- get_legend(chum_esrb)
 chum_esrb <- chum_esrb + theme(legend.position = "none")
 
-# # cowplot of leftmost 4 plot grid
-# pca_four <- plot_grid(NULL,chum_lrrc9, pink_lrrc9,
+# # cowplot of leftmost 6 plot grid
+# pca_six <- plot_grid(NULL,chum_lrrc9, pink_lrrc9,
 #                       NULL,NULL,NULL,
 #                       NULL,chum_esrb, coho_esrb,
-#                       rel_heights = c(2,0.1,2), rel_widths = c(0.09,1,1), 
-#                       nrow = 3, align = 'v',
-#                       labels = c('A','','','','','','B','',''), 
+#                       NULL,NULL,NULL,
+#                       NULL,sock_er1, coho_er1,
+#                       rel_heights = c(2,0.1,2,0.1,2), rel_widths = c(0.09,1,1),
+#                       nrow = 5, align = 'v',
+#                       labels = c('A','','','','','','B','','','C','','','','',''),
 #                       label_fontfamily = "helvetica",
 #                       label_size = 30, label_colour = "black")
 # 
 # # add sockeye lrrc9 and legend to the right
-# pca_five_legend <- plot_grid(pca_four,
-#                              plot_grid(sock_lrrc9, legend, ncol=1),
-#                              rel_widths=c(2, 1),
-#                              align = 'hv')
-# pca_five_legend
+# pca_seven_legend <- plot_grid(pca_six,
+#                               plot_grid(sock_lrrc9, legend, NULL, ncol=1),
+#                               rel_widths=c(2, 1),
+#                               align = 'hv')
+# pca_seven_legend
 # 
-# jpeg("./figures/pca/combine/fourspp_genes_pca_allele_cutoff_fivePanels_legend_20250205.jpg",
-#      width = 14, height = 9, res = 300, units = "in")
-# pca_five_legend
+# # jpeg("./figures/pca/combine/fourspp_genes_pca_allele_cutoff_sevenPanels_legend_20260310.jpg",
+# #      width = 14, height = 9, res = 300, units = "in")
+# jpeg("../Salmon_runtiming/2024_fourspecies/figures/pca/combine/fourspp_genes_pca_allele_cutoff_sevenPanels_legend_20260310.jpg",
+#      width = 15, height = 13, res = 300, units = "in")
+# pca_seven_legend
 # dev.off()
 
-# cowplot of leftmost 6 plot grid
-pca_six <- plot_grid(NULL,chum_lrrc9, pink_lrrc9,
-                      NULL,NULL,NULL,
-                      NULL,chum_esrb, coho_esrb,
-                      NULL,NULL,NULL,
-                      NULL,sock_er1, coho_er1,
-                      rel_heights = c(2,0.1,2,0.1,2), rel_widths = c(0.09,1,1),
-                      nrow = 5, align = 'v',
-                      labels = c('A','','','','','','B','','','C','','','','',''),
-                      label_fontfamily = "helvetica",
-                      label_size = 30, label_colour = "black")
-
-# add sockeye lrrc9 and legend to the right
-pca_seven_legend <- plot_grid(pca_six,
-                              plot_grid(sock_lrrc9, legend, NULL, ncol=1),
-                              rel_widths=c(2, 1),
-                              align = 'hv')
-pca_seven_legend
-
-# jpeg("./figures/pca/combine/fourspp_genes_pca_allele_cutoff_sevenPanels_legend_20260310.jpg",
-#      width = 14, height = 9, res = 300, units = "in")
-jpeg("../Salmon_runtiming/2024_fourspecies/figures/pca/combine/fourspp_genes_pca_allele_cutoff_sevenPanels_legend_20260310.jpg",
-     width = 15, height = 13, res = 300, units = "in")
-pca_seven_legend
-dev.off()
-
-# --- Alternative: Wider version --------
-# cowplot of leftmost 6 plot grid
-pca_six3 <- plot_grid(NULL,NULL,NULL,
-                      chum_lrrc9, pink_lrrc9,sock_lrrc9,
-                      NULL,NULL,NULL,
-                      chum_esrb, coho_esrb,sock_er1,
-                      rel_heights = c(0.1,1,0.1,1), rel_widths = c(1,1,1),
-                      nrow = 4, align = 'v',
-                      labels = c('A) lrrc9','','',
-                                 '','','',
-                                 'B) esrb','','C) esr1'),
-                      label_fontfamily = "helvetica",
-                      label_size = 25, label_colour = "black")
-
-extras3 <- plot_grid(NULL,legend, NULL, coho_er1, rel_heights = c(0.1,1,0.1,1), ncol=1)
-
-# add sockeye lrrc9 and legend to the right
-pca_seven_legend_titles <- plot_grid(pca_six3,
-                                     extras3,
-                                     rel_widths=c(3, 1),
-                                     align = 'hv')
-pca_seven_legend_titles
-
-jpeg("../Salmon_runtiming/2024_fourspecies/figures/pca/combine/fourspp_genes_pca_allele_cutoff_sevenPanels_legend_reconfigure3_20260318.jpg",
-#jpeg("./figures/pca/combine/fourspp_genes_pca_allele_cutoff_sevenPanels_legend_reconfigure3_20260310.jpg",
-     width = 20, height = 10, res = 300, units = "in")
-pca_seven_legend_titles
-dev.off()
-
-# --- Alternative: ESR1 and ESRB first --------
+# --- Final Version: ESR1 and ESRB first --------
 
 # cowplot of leftmost 6 plot grid
 pca_flip <- plot_grid(NULL,NULL,NULL,
@@ -424,8 +373,8 @@ pca_three_genes_flip <- plot_grid(pca_flip, extras_flip,
                                   rel_widths=c(3, 1),
                                   align = 'hv')
 
-jpeg("../Salmon_runtiming/2024_fourspecies/figures/pca/combine/fourspp_genes_pca_threegenes_allele_cutoff_20260323.jpg",
-     #jpeg("./figures/pca/combine/fourspp_genes_pca_allele_cutoff_sevenPanels_legend_reconfigure3_20260310.jpg",
+#jpeg("../Salmon_runtiming/2024_fourspecies/figures/pca/combine/fourspp_genes_pca_threegenes_allele_cutoff_20260323.jpg",
+jpeg("./figures/pca/combine/fourspp_genes_pca_allele_cutoff_sevenPanels_legend_reconfigure3_20260310.jpg",
      width = 20, height = 10, res = 300, units = "in")
 pca_three_genes_flip
 dev.off()
@@ -433,11 +382,11 @@ dev.off()
 ### END OF SCRIPT ############################################################
 #
 #
+# No longer including the FST plots in the same figure as PCA?
 #
+# 
 #
-# If including FST in same figure, but with esr1, not likely...
-#
-#### GFF NCBI Data ###########################################################
+##### GFF NCBI Data ###########################################################
 
 # find exons from gff file for genes of interest (from NCBI chum reference genome)
 gff_df <- read.delim('./data/R/genomic.gff', header = F, comment.char = "#")
@@ -459,7 +408,7 @@ exon_pattern <- "ID=exon-\\s*(.*?)\\s*;Parent"  # keep string btwn "exon=" & ";P
 descr_pattern <- ";description=\\s*(.*?)\\s*;"  # keep description
 
 
-#### 2A) LRRC9 FST #############################################################
+##### 2A) LRRC9 FST #############################################################
 
 # Define Boundaries
   xstart.lrrc9 = 27.86
@@ -467,7 +416,7 @@ descr_pattern <- ";description=\\s*(.*?)\\s*;"  # keep description
   pca.start.lrrc9 = 28128954
   pca.end.lrrc9 = 28169980
 
-########## Pink lrrc9 FST ###################
+###### Pink lrrc9 FST ###################
 pink_Fst <- read.delim2("./results/fst/allele/pink-chum_NC_068455.1_EE-LL_minInd0.3.sfs.pbs.fst.txt",
                         row.names = NULL,sep = "\t")
   colnames(pink_Fst) <- c("region", "chrName", "midPos", "Nsites", "Fst")
@@ -501,7 +450,7 @@ sock_fst$Fst[sock_fst$Fst < 0] <- 0 # remove negative Fst values
 sock_df <- sock_fst %>%
   filter(midPos > xstart.lrrc9, midPos < xend.lrrc9)
 
-##### Chum lrrc9 FST ######################
+###### Chum lrrc9 FST ######################
 chum_Fst <- read.delim2("./results/fst/allele/chumrun_NC_068455.1_EE-LL_minInd0.3.sfs.pbs.fst.txt",
                         row.names = NULL,sep = "\t")
   colnames(chum_Fst) <- c("region", "chrName", "midPos", "Nsites", "Fst")
@@ -518,7 +467,7 @@ chum_Fst$Fst[chum_Fst$Fst < 0] <- 0 # remove negative Fst values
 chum_df <- chum_Fst %>%
   filter(midPos > xstart.lrrc9, midPos < xend.lrrc9) 
 
-############ Add Genes ########################################################
+####### Add Genes ########################################################
 
 # only the region of interest
 gff_region <- gff_chr35 %>%
@@ -551,7 +500,7 @@ genes_df$gene <- factor(genes_df$gene, levels = genes_df$gene)
   mypalette <- genes_df$color
   names(mypalette) <- levels(genes_df$gene)
 
-##### Make genes with FST < 0.5 gray w/o legend ####################
+###### Make genes with FST < 0.5 gray w/o legend ####################
 highfst_lrrc9 <- rbind(pink_df, sock_df, chum_df) %>%
   filter(Fst > 0.5) %>%
   distinct(midPos)
@@ -574,7 +523,7 @@ lowfst_genes <- genes_df %>%
 highfst_exons <- filter(exons_to_plot, gene %in% highfst_genes$gene)
 lowfst_exons <- filter(exons_to_plot, gene %in% lowfst_genes$gene)
 
-################# Plotting ###########################
+######## Plotting ###########################
 # Set the general themes
 theme_set(
   theme( 
@@ -682,7 +631,7 @@ multiplot_lrrc9 <- (y_lab - multiplot_temp) + # patchwork uses hyphen to allow f
 multiplot_lrrc9
 
 
-#### 2B) ESRB FST ##############################################################
+##### 2B) ESRB FST ##############################################################
 
 # which region of chr29 to plot (first and last position)
 # panel spanning larger region (Fig 5)
@@ -711,7 +660,7 @@ chum_Fst$Fst[chum_Fst$Fst < 0] <- 0 # remove negative Fst values
 chum_df <- chum_Fst %>%
   filter(midPos > xstart.esrb, midPos < xend.esrb)
 
-##### Coho esrb FST ###########################
+###### Coho esrb FST ###########################
 
 coho_Fst <- read.delim2("./results/fst/allele/coho-chum_NC_068449.1_EE-LL_minInd0.3_minDepthHalf.sfs.pbs.fst.txt",
                         row.names = NULL,sep = "\t")
@@ -772,7 +721,7 @@ exons_to_plot <- exons_to_plot %>%
 # make slightly larger so it is visible in plot
 exons_to_plot$fin.pos[which(exons_to_plot$geneAbbr == "esrb")[length(which(exons_to_plot$geneAbbr == "esrb"))]] <- 25.456 # changed from 27.994277
 
-##### Make genes with FST < 0.5 gray w/o legend ####################
+###### Make genes with FST < 0.5 gray w/o legend ####################
 highfst_esrb <- rbind(coho_df, chum_df) %>%
   filter(Fst > 0.5) %>%
   distinct(midPos)
@@ -883,7 +832,7 @@ multiplot_esrb <- (y_lab - multiplot_temp) + # patchwork uses hyphen to allow fo
 multiplot_esrb
 
 
-#### 2C) ESR1 FST ##############################################################
+##### 2C) ESR1 FST ##############################################################
 
 # which region of chr29 to plot (first and last position)
 # panel spanning larger region (Fig 5)
@@ -912,7 +861,7 @@ sock_Fst$Fst[sock_Fst$Fst < 0] <- 0 # remove negative Fst values
 sock_df <- sock_Fst %>%
   filter(midPos > xstart.er1, midPos < xend.er1)
 
-##### Coho er1 FST ###########################
+###### Coho er1 FST ###########################
 
 coho_Fst <- read.delim2("./results/fst/allele/coho-chum_NC_068449.1_EE-LL_minInd0.3_minDepthHalf.sfs.pbs.fst.txt",
                         row.names = NULL,sep = "\t")
@@ -973,7 +922,7 @@ exons_to_plot <- exons_to_plot %>%
 # make slightly larger so it is visible in plot
 exons_to_plot$fin.pos[which(exons_to_plot$geneAbbr == "er1")[length(which(exons_to_plot$geneAbbr == "er1"))]] <- 25.456 # changed from 27.994277
 
-##### Make genes with FST < 0.5 gray w/o legend ####################
+###### Make genes with FST < 0.5 gray w/o legend ####################
 highfst_er1 <- rbind(coho_df, sock_df) %>%
   filter(Fst > 0.5) %>%
   distinct(midPos)
@@ -1084,14 +1033,14 @@ multiplot_er1 <- (y_lab - multiplot_temp) + # patchwork uses hyphen to allow for
 multiplot_er1
 
 
-#### C/D) Combine #####################
+##### C/D) Combine #####################
 twofst_cowplot <- plot_grid(multiplot_lrrc9, multiplot_esrb,
                             rel_widths = c(5,5), ncol = 2, nrow = 1,
                             labels = c('C','D'), label_fontfamily = "helvetica",
                             label_size = 30, label_colour = "black")
 twofst_cowplot
 
-#### FIG 3) Combine A-D #####################
+##### FIG 3) Combine A-D #####################
 
 fig3 <- plot_grid(pca_five_legend, NULL, twofst_cowplot,
                   rel_heights = c(1,0.1, 1), 
