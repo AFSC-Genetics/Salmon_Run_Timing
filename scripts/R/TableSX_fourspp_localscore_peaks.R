@@ -14,16 +14,16 @@ rm(packages_needed, i)
 # Table for chromosome name and number
 chrom_df <- read.table("./data/R/chrom_meta.txt", header = TRUE)
 
-###### Local Score Peaks ---------------------------------------------- #######
+#### Local Score Peaks ---------------------------------------------- #######
 
 ls_peaks <- bind_rows(
-    read_tsv("../2024_pink/results/localscore/pink-chum_minInd0.3_MM3_xi3_01sig.txt", col_names = T) %>%
+    read_tsv("./results/localscore/pink-chum_minInd0.3_MM3_xi3_01sig.txt", col_names = T) %>%
       mutate(Species = "Pink"),
-    read_tsv("../2024_sockeye/results/localscore/euclide_minInd0.3_MM3_xi3_01sig.txt", col_names = T) %>%
+    read_tsv("./results/localscore/euclide_minInd0.3_MM3_xi3_01sig.txt", col_names = T) %>%
       mutate(Species = "Sockeye"),
-    read_tsv("../2024_coho/results/localscore/coho-chum_minInd0.3_minDepthHalf_MM3_xi3_01sig.txt", col_names = T) %>%
+    read_tsv("./results/localscore/coho-chum_minInd0.3_minDepthHalf_MM3_xi3_01sig.txt", col_names = T) %>%
       mutate(Species = "Coho"),
-    read_tsv("../2024_chum/results/localscore/chumrun_minInd0.3_minDepthHalf_MM3_xi3_01sig.txt", col_names = T) %>%
+    read_tsv("./results/localscore/chumrun_minInd0.3_minDepthHalf_MM3_xi3_01sig.txt", col_names = T) %>%
       mutate(Species = "Chum")
   ) %>%
   dplyr::rename(`chrName` = `chr`) %>%
@@ -40,6 +40,7 @@ ls_peaks <- bind_rows(
 df_valr <- ls_peaks %>%
   dplyr::select(-c(chr,beg,final))
 
+##### Export Local Score Table SX ------------------------------------ ########
 # count overlaps with n > 1
 bed_intersect(df_valr, df_valr) %>%
   dplyr::group_by(chrom, start.x, end.x) %>%
@@ -52,7 +53,7 @@ bed_intersect(df_valr, df_valr) %>%
   arrange(chr, beg) %>% 
   write_tsv(file = "./results/localscore/fourspp_localscore_peaks_xi3_01sig_100kbuffer.txt",col_names=T)
 
-###### Fst Files import ----------------------------------------------- #######
+#### Fst Files import ----------------------------------------------- ########
 
 ########## PINK
 pink_list <- as.list(Sys.glob("./results/fst/pink/pink-chum*early-late_minInd0.3.sfs.pbs.fst.txt"))
@@ -102,7 +103,7 @@ coho_df <- coho_list %>%
   select(-c(region, Nsites)) %>%
   mutate(Species = "Coho")
 
-############## COMBINE FOUR SPECIES INTO ONE DATAFRAME ----------------- ######
+##### Combine four species into one dataframe ----------------- #############
 # bind rows together
 four_df <- bind_rows(pink_df, sock_df, chum_df, coho_df)
 
@@ -166,7 +167,7 @@ lrrc9_df <- cum_df %>%
          midPos >= 27.85,
          midPos <= 28.20)
 
-###### PREPARE FOR PLOTTING-------------------------------------------- #######
+##### Plotting -------------------------------------------- ##################
 
 axis_set <- cum_df %>% 
   dplyr::group_by(chr) %>% 
@@ -291,7 +292,7 @@ coho_plot <- ggplot() +
   theme(plot.margin = unit(c(0,0.1,0.1,0.1), "cm")) 
 
 
-###### COMBINE PLOTS -------------------------------------------------- #######
+###### Combine Manhattan ---------------------------------------------- #######
 
 # add FST as separate label (it will be it's own plot)
 y_lab <- ggplot() + 
