@@ -373,10 +373,10 @@ sigZones01=fet_df[,sig_sl(lindley, pos, unique(thG01)),chr]
 sigZones075=fet_df[,sig_sl(lindley, pos, unique(thG075)),chr]
 sigZones001=fet_df[,sig_sl(lindley, pos, unique(thG001)),chr]
 
-sig05name = paste0("results/localscore/parameterization/",filename,"_xi",xi, "_05sig.txt")
-sig01name = paste0("results/localscore/parameterization/",filename,"_xi",xi, "_01sig.txt")
-sig001name = paste0("results/localscore/parameterization/",filename,"_xi",xi, "_001sig.txt")
-sig075name = paste0("results/localscore/parameterization/",filename,"_xi",xi, "_075sig.txt")
+sig05name = paste0("results/localscore/",filename,"_xi",xi, "_05sig.txt")
+sig01name = paste0("results/localscore/",filename,"_xi",xi, "_01sig.txt")
+sig001name = paste0("results/localscore/",filename,"_xi",xi, "_001sig.txt")
+sig075name = paste0("results/localscore/",filename,"_xi",xi, "_075sig.txt")
 
 ind=which(sigZones075[,peak]>0)
 if (nrow(sigZones075) >0 ) {

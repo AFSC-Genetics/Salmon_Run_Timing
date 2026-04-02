@@ -13,8 +13,7 @@ BAMFILE <- "./data/bams/chumrun_bamslist.txt"
 # read in the covariance matrix
 cov <- as.matrix(read.table(paste0("./results/pca/chumrun_NC_068455.1_lrrc9_minInd0.3_minDepthHalf.cov")))
   e <- eigen(cov)                            # calculate eigenvector values
-  e_vectors <- as.data.frame(e$vectors) %>%
-    mutate(FID = row_number())               # add FID to e_vectors
+  e_vectors <- as.data.frame(e$vectors)
   e_per <- e$values/sum(e$values)            # percent explained by each component
 
 # call in bams
@@ -89,7 +88,7 @@ allele_groups <- pca.vectors[,1:10] %>%
   mutate(name = str_c("ABLG",ABLG))
 
 # write out to text file to be transferred and used as input
-write.table(allele_groups[,c('name','Genotype')], file = paste0("./data/R/chumrun_lrrc9_alleles.txt"), 
+write.table(allele_groups[,c('name','Genotype')], file = paste0("./data/R/threespp_lrrc9_alleles/chumrun_lrrc9_alleles.txt"), 
             col.names = F, row.names = F, sep = "\t", quote = F)
 
 allele_props <- allele_groups %>%
@@ -100,6 +99,6 @@ allele_props <- allele_groups %>%
 allele_props
 
 write.table(allele_props, 
-            file = paste0("./data/R/chumrun_lrrc9_allele_proportions.txt"), 
+            file = paste0("./data/R/threespp_lrrc9_alleles/chumrun_lrrc9_allele_proportions.txt"), 
             col.names = T, row.names = F, sep = "\t", quote = F)
 

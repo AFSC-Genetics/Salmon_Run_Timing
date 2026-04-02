@@ -1,6 +1,5 @@
 # quick plots of lrrc9 only
 
-library(here)
 library(stringr)
 library(tools)
 library(tidyverse)
@@ -17,8 +16,7 @@ BAMFILE <- "./data/bams/all_sockeye_bamslist.txt"
 # read in the covariance matrix
 cov <- as.matrix(read.table(paste0("./results/pca/",prefix,"_NC_068455.1_minInd0.3_lrrc9.cov")))
   e <- eigen(cov)                            # calculate eigenvector values
-  e_vectors <- as.data.frame(e$vectors) %>%
-    mutate(FID = row_number())               # add FID to e_vectors
+  e_vectors <- as.data.frame(e$vectors)
   e_per <- e$values/sum(e$values)            # percent explained by each component
 
 # match populations to data
@@ -92,7 +90,7 @@ allele_groups <- pca.vectors[,1:10] %>%
 
 # write out to text file to be transferred and used as input
 write.table(allele_groups[,c('sampleID', 'Genotype')], 
-            file = paste0("./data/R/",prefix,"_lrrc9_alleles.txt"), 
+            file = paste0("./data/R/threespp_lrrc9_alleles/",prefix,"_lrrc9_alleles.txt"), 
             col.names = F, row.names = F, sep = "\t", quote = F)
 
 ####### ALLELE PROPORTIONS INPUT #############################################
@@ -105,7 +103,7 @@ allele_props <- allele_groups %>%
   mutate(prop = n/nrow(pca.vectors))
 
 write.table(allele_props , 
-            file = paste0("./data/R/",prefix,"_lrrc9_allele_proportions.txt"), 
+            file = paste0("./data/R/threespp_lrrc9_alleles/",prefix,"_lrrc9_allele_proportions.txt"), 
             col.names = T, row.names = F, sep = "\t", quote = F)
 
 ##############################################################

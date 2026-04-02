@@ -1,6 +1,5 @@
 # quick plots of lrrc9 only
 
-library(here)
 library(stringr)
 library(tools)
 library(tidyverse)
@@ -14,12 +13,11 @@ BAMFILE <- "./data/bams/pink-odd_filtered_bamslist.txt"
 # read in the covariance matrix
 cov <- as.matrix(read.table(paste0("./results/pca/",prefix,"_NC_068455.1_lrrc9_minInd0.3.cov")))
   e <- eigen(cov)                            # calculate eigenvector values
-  e_vectors <- as.data.frame(e$vectors) %>%
-    mutate(FID = row_number())               # add FID to e_vectors
+  e_vectors <- as.data.frame(e$vectors)
   e_per <- e$values/sum(e$values)            # percent explained by each component
 
 # convert bam to FID with ABLG
-bam_df <- bam_df %>%
+bam_df <- read.table(BAMFILE, header = F) %>%
   dplyr::mutate(temp = gsub("^[^_]*_", "", V1),   # remove everything after 1st underscore
                 sampleID = str_extract(temp, "[^_]+")) %>%
   select(-c(V1, temp))
@@ -98,7 +96,7 @@ allele_groups <- pca.vectors[,1:10] %>%
 
 # write out to text file to be transferred and used as input
 write.table(allele_groups[,c('name','Genotype')], 
-            file = paste0("./data/R/",prefix,"_lrrc9_alleles.txt"), 
+            file = paste0("./data/R/threespp_lrrc9_alleles/",prefix,"_lrrc9_alleles.txt"), 
             col.names = F, row.names = F, sep = "\t", quote = F)
 
 ########## CREATE STACKED BARGRAPH FOR EARLY AND LATE ALLELE PROPORTIONS
@@ -111,5 +109,5 @@ allele_props <- allele_groups %>%
 allele_props
 
 write.table(allele_props , 
-            file = paste0("./data/R/",prefix,"_lrrc9_allele_proportions.txt"), 
+            file = paste0("./data/R/threespp_lrrc9_alleles/",prefix,"_lrrc9_allele_proportions.txt"), 
             col.names = T, row.names = F, sep = "\t", quote = F)

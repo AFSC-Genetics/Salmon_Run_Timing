@@ -371,10 +371,10 @@ sigZones01=fet_df[,sig_sl(lindley, pos, unique(thG01)),chr]
 sigZones075=fet_df[,sig_sl(lindley, pos, unique(thG075)),chr]
 sigZones001=fet_df[,sig_sl(lindley, pos, unique(thG001)),chr]
 
-sig05name = paste0("results/localscore/parameterization/",filename,"_xi",xi, "_05sig.txt")
-sig01name = paste0("results/localscore/parameterization/",filename,"_xi",xi, "_01sig.txt")
-sig001name = paste0("results/localscore/parameterization/",filename,"_xi",xi, "_001sig.txt")
-sig075name = paste0("results/localscore/parameterization/",filename,"_xi",xi, "_075sig.txt")
+sig05name = paste0("results/localscore/",filename,"_xi",xi, "_05sig.txt")
+sig01name = paste0("results/localscore/",filename,"_xi",xi, "_01sig.txt")
+sig001name = paste0("results/localscore/",filename,"_xi",xi, "_001sig.txt")
+sig075name = paste0("results/localscore/",filename,"_xi",xi, "_075sig.txt")
 
 ind=which(sigZones075[,peak]>0)
 if (nrow(sigZones075) >0 ) {
@@ -475,7 +475,7 @@ chromfile <- read_tsv(here("data/R/chrom_meta.txt"), show_col_types = F)
 
 alpha = "01"
 
-ls_sig_df <- read_tsv(paste0('./results/localscore/parameterization/chumrun_minInd0.3_minDepthHalf_MM3_xi',xi,'_',alpha,'sig.txt')) %>%
+ls_sig_df <- read_tsv(paste0('./results/localscore/chumrun_minInd0.3_minDepthHalf_MM3_xi',xi,'_',alpha,'sig.txt')) %>%
   rename(chrName = chr) %>%
   left_join(chromfile,by='chrName') %>%
   select(-chrName)

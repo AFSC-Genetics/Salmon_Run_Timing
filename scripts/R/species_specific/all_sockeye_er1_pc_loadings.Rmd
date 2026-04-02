@@ -53,8 +53,10 @@ zcat ${path}/gls/${prefix}_${chrom}_s${firstpos}_e${lastpos}_minInd0.3_${gene}.b
 ### ESR1
 
 ```{r}
-path=here("../2024_sockeye/results")
-outdir=here("../2024_sockeye/figures/pca/")
+#path=here("../2024_sockeye/results")
+#outdir=here("../2024_sockeye/figures/pca/")
+path="../../../results"
+outdir="../../../figures/pca/"
 filename="pick-all_NC_068428.1_s23264160_e23645630_minInd0.3_esr1"
 nEig=2
 
@@ -69,7 +71,7 @@ sites_file <- read_tsv(str_c(paste0(path,"/pca/",filename,"_e",nEig,".sites")),
                        col_names="keep", show_col_types = F)
 
 # snp-list from beagle file
-snp_list <- read_tsv(str_c(paste0(path,"/gls/",filename,".snp_list")), 
+snp_list <- read_tsv(str_c(paste0(path,"/pca/",filename,".snp_list")), 
                      col_names = c("lg","pos"),
                      show_col_types = F) %>% slice(-1)
 
