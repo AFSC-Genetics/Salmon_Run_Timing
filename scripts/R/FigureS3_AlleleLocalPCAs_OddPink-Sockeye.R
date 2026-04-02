@@ -1,6 +1,5 @@
 # Supplemental local PCAs for Sockeye (Whitefish) and Pink (Odd)
 
-library(here)
 library(stringr)
 library(tools)
 library(tidyverse)
@@ -114,6 +113,7 @@ pinkOdd_lrrc9 <- ggplot(data = pinkO_pca.vectors,
   ggtitle(expression('Pink-Odd'~italic(lrrc9)))+
   geom_vline(xintercept = 0, color = "gray30", alpha = 0.5, linetype = "dashed") +
   geom_vline(xintercept = 0.15, color = "gray30", alpha = 0.5, linetype = "dashed") +
+  scale_y_continuous(breaks = c(-.3, -.2,-.1, 0, 0.1)) +
   scale_x_reverse(breaks = c(-0.05, 0, 0.05, 0.1, 0.15, 0.2)) +
   labs(x = paste0("PC1 (",round(pinkO_varPC1, digits = 1),"%)"), 
        y= paste0("PC2 (",round(pinkO_varPC2, digits = 1),"%)")) +
@@ -187,7 +187,7 @@ sockall_er1
 surplus_pcas <- plot_grid(sockall_er1, NULL, sockall_lrrc9, NULL, pinkOdd_lrrc9,
                           rel_widths = c(2,0.1,2,0.1,2), 
                           nrow = 1, align = 'h',
-                          labels = c('A)','','B)','','C'), 
+                          labels = c('A)','','B)','','C)'), 
                           label_fontfamily = "ArialMT",
                           label_size = 30, label_colour = "black")
 
