@@ -239,10 +239,6 @@ fc <- sf::st_read(dsn = "./Data/Mapping/AWC_geodatabase/AWC2024.gdb.zip",
 Auke_L <- st_transform(fc,
                         st_crs("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +towgs84=0,0,0")) 
 
-
-# ### 
-#
-
 fc_AWC_pointCrp2 <- Auke_Cr %>%
   mutate(my_nudge_x = c(0,0.002,0.0025,0,0.008,0.005,-0.0035),
          my_nudge_y = c(0,0.0005,0.0005,0.0005,0.002,0,0))%>%
@@ -377,9 +373,21 @@ Prt<-PTdf %>%
 p5<-Prt +theme(legend.position = "none",
                plot.margin = margin(10, 0, 10, 0, "pt"))+ guides(fill = "none")
 
+my_settings <- list(
+  scale_fill_brewer(palette = 'Dark2'),
+  guides(size = "none"),
+  theme(plot.tag = element_text(size = 14, face = "bold")) # Hardcode the tag size here
+)
+
+p1 <- p1 + my_settings
+p2 <- p2 + my_settings
+p3 <- p3 + my_settings
+p4 <- p4 + my_settings
+p5 <- p5 + my_settings
 
 pdf("./figures/FigureS1.pdf",width=12,height=12)
-(p1 + p2 + p3 + p4)/p5 + plot_layout(guides = "collect",widths = c(6, 3),heights = c(6, 1)) &
+(p1 + p2 + p3 + p4)/p5 + plot_layout(guides = "collect",widths = c(6, 3),heights = c(6, 1))+
+  plot_annotation(tag_levels = 'A') &
   scale_fill_brewer(palette = 'Dark2') &
-  guides(size=FALSE) 
+  guides(size='none') 
 dev.off()
