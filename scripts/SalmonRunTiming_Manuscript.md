@@ -238,6 +238,14 @@ TableSXX_fourspp_localscore_peaks.R
 
 Local score captures three regions of divergence that were shared across 2+ species: *esr1*, *lrrc9,* and *esrb.*
 
+## Evaluation of Nonsynonymous mutations
+
+After regions of elevated FST were identified with local score, species specific alignments were used to identify SNP positions and determine mutational type. SNPs from seven regions for the four species were evaluated: pink salmon genes within the *lrrc9* region on chromosome 10 (NC_060182.1:72650536-72875058), chum salmon genes within the *esr2b* region on chromosome 29 (NC_068449.1: 25440358-25545548) and the *lrrc9* region on chromosome 35 (NC_068455.1:28033205-28206418), sockeye salmon genes within the *lrrc9* region on chromosome 12 (NC_042546.1:41162738-41448689) and *esr1* region on chromosome 13 (NC_042547.1:7206200-7643690), and for coho genes within the *esr2b* region on chromosome 7 ( NC_034180.2:29455765-30509378) and *esr1* region on chromosome 21 (NC_034194.2:24716700-24902281)
+
+``` r
+./R/Mutations.R
+```
+
 ## Shared Regions of Divergence across Species
 
 The two highlighted regions of divergence that were shared across 2+ species were *lrrc9* and *esrb*. We calculated the mean weighted Fst across the entire genome for each species. We also calculated local weighted Fst within the shared elevated peaks (that have different bounds for each species).
