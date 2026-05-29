@@ -164,7 +164,7 @@ theme_set(
     axis.text.y = element_text(angle = 0, size = 18, color = "black", vjust = 0.5),
     axis.title.y = element_text(size = 22, angle = 90,
                                 margin = margin(t = 0, r = 8, b = 0, l = 0)),
-    strip.text.y = element_text(angle = 0), panel.grid.major = element_line(color = "gray90"),
+    strip.text.y = element_text(angle = 0), panel.grid.major = element_line(color = "gray80"),
     axis.line = element_line(), panel.grid.minor.x = element_blank(),
     panel.border = element_rect(color = "black", fill = "NA"),
     legend.position = "none", panel.background = element_rect(fill = "white")
@@ -201,10 +201,10 @@ gene_lrrc9_plot <- ggplot() +
 
 # Pink lrrc9 Fst
 pink_lrrc9_plot <- ggplot() +
+  geom_vline(xintercept = pca.start.lrrc9/1e6, linetype = "dashed", linewidth=1.2) +
+  geom_vline(xintercept = pca.end.lrrc9/1e6, linetype = "dashed", linewidth=1.2) +
   geom_point(data = pink_lrrc9_fst, aes(x = midPos, y = Fst), 
              size = 2, alpha = 0.6, color = "gray10") +
-  geom_vline(xintercept = pca.start.lrrc9/1e6, linetype = "dashed", color = "navyblue") +
-  geom_vline(xintercept = pca.end.lrrc9/1e6, linetype = "dashed", color = "navyblue") +
   labs(y = "Pink", x = "Chr 35 Position (Mb)") +
   scale_y_continuous(limits = c(-0.02, 1.02),
                      breaks = seq(0, 1, by = 0.5),
@@ -218,10 +218,10 @@ pink_lrrc9_plot <- ggplot() +
 
 # Sockeye lrrc9 Fst
 sock_lrrc9_plot <- ggplot() +
+  geom_vline(xintercept = pca.start.lrrc9/1e6, linetype = "dashed", linewidth = 1.2) +
+  geom_vline(xintercept = pca.end.lrrc9/1e6, linetype = "dashed", linewidth = 1.2) +
   geom_point(data = sock_lrrc9_fst, aes(x = midPos, y = Fst), 
              size = 2, alpha = 0.6, color = "gray10") + 
-  geom_vline(xintercept = pca.start.lrrc9/1e6, linetype = "dashed", color = "navyblue") +
-  geom_vline(xintercept = pca.end.lrrc9/1e6, linetype = "dashed", color = "navyblue") +
   labs(y = "Sockeye") +
   scale_y_continuous(breaks = seq(0, 1, by = 0.5),
                      limits = c(-0.02, 1.02),
@@ -235,10 +235,10 @@ sock_lrrc9_plot <- ggplot() +
 
 # Chum lrrc9 Fst
 chum_lrrc9_plot <- ggplot() +
+  geom_vline(xintercept = pca.start.lrrc9/1e6, linetype = "dashed", linewidth = 1.2) +
+  geom_vline(xintercept = pca.end.lrrc9/1e6, linetype = "dashed", linewidth = 1.2) +
   geom_point(data = chum_lrrc9_fst, aes(x = midPos, y = Fst), 
              size = 2, alpha = 0.6, color = "gray10") +
-  geom_vline(xintercept = pca.start.lrrc9/1e6, linetype = "dashed", color = "navyblue") +
-  geom_vline(xintercept = pca.end.lrrc9/1e6, linetype = "dashed", color = "navyblue") +
   labs(y = "Chum") +
   scale_y_continuous(breaks = seq(0, 1, by = 0.5),
                      limits = c(-0.01, 1.02),
@@ -274,7 +274,6 @@ multiplot_lrrc9
 # panel spanning larger region (Fig 5)
 xstart.esrb = 24.7
 xend.esrb = 26.4
-
 # where were boundaries for allele-based PCA
 pca.start.esrb = 25414060
 pca.end.esrb = 25501622
@@ -424,11 +423,11 @@ gene_esrb_plot <- ggplot() +
 
   
 # Coho esrb plot
-coho_esrb_plot <- ggplot() +
+coho_esrb_plot <- ggplot() + 
+  geom_vline(xintercept = pca.start.esrb/1e6, linetype = "dashed", linewidth=1.2) +
+  geom_vline(xintercept = pca.end.esrb/1e6, linetype = "dashed", linewidth=1.2) +
   geom_point(data = coho_esrb_fst, aes(x = midPos, y = Fst), 
-             size = 2, alpha = 0.6, color = "gray10") + 
-  geom_vline(xintercept = pca.start.esrb/1e6, linetype = "dashed", color = "navyblue") +
-  geom_vline(xintercept = pca.end.esrb/1e6, linetype = "dashed", color = "navyblue") +
+             size = 2, alpha = 0.6, color = "gray10") +
   labs(y = "Coho") +
   scale_y_continuous(breaks = seq(0, 1, by = 0.5),
                      limits = c(-0.01, 1.02),
@@ -440,11 +439,11 @@ coho_esrb_plot <- ggplot() +
         axis.title.x = element_blank(), axis.text.x = element_blank())
 
 # Chum esrb plot
-chum_esrb_plot <- ggplot() +
+chum_esrb_plot <- ggplot() + 
+  geom_vline(xintercept = pca.start.esrb/1e6, linetype = "dashed", linewidth=1.2) +
+  geom_vline(xintercept = pca.end.esrb/1e6, linetype = "dashed", linewidth=1.2) +
   geom_point(data = chum_esrb_fst, aes(x = midPos, y = Fst), 
-             size = 2, alpha = 0.6, color = "gray10") + 
-  geom_vline(xintercept = pca.start.esrb/1e6, linetype = "dashed", color = "navyblue") +
-  geom_vline(xintercept = pca.end.esrb/1e6, linetype = "dashed", color = "navyblue") +
+             size = 2, alpha = 0.6, color = "gray10") +
   labs(y = "Chum", x="Chr 29 Position (Mb)") +
   scale_y_continuous(limits = c(-0.02, 1.02),
                      breaks = seq(0, 1, by = 0.5),
@@ -619,11 +618,11 @@ er1_gene_plot <- ggplot() +
   guides(fill = guide_legend(title = "Genes")) 
   
 # Sockeye ESR1 FST
-sock_er1_plot <- ggplot() +
+sock_er1_plot <- ggplot() + 
+  geom_vline(xintercept = pca.start.er1/1e6, linetype = "dashed", linewidth = 1.2) +
+  geom_vline(xintercept = pca.end.er1/1e6, linetype = "dashed", linewidth = 1.2) +
   geom_point(data = sock_er1_fst, aes(x = midPos, y = Fst), 
-             size = 2, alpha = 0.6, color = "gray10") + 
-  geom_vline(xintercept = pca.start.er1/1e6, linetype = "dashed", color = "navyblue") +
-  geom_vline(xintercept = pca.end.er1/1e6, linetype = "dashed", color = "navyblue") +
+             size = 2, alpha = 0.6, color = "gray10") +
   labs(y = "Sockeye") +
   scale_y_continuous(breaks = seq(0, 1, by = 0.5),
                      limits = c(-0.01, 1.02),
@@ -636,10 +635,10 @@ sock_er1_plot <- ggplot() +
 
 # Coho ESR1 FST 
 coho_er1_plot <- ggplot() +
+  geom_vline(xintercept = pca.start.er1/1e6, linetype = "dashed", linewidth = 1.2) +
+  geom_vline(xintercept = pca.end.er1/1e6, linetype = "dashed", linewidth = 1.2) +
   geom_point(data = coho_er1_fst, aes(x = midPos, y = Fst), 
-             size = 2, alpha = 0.6, color = "gray10") + 
-  geom_vline(xintercept = pca.start.er1/1e6, linetype = "dashed", color = "navyblue") +
-  geom_vline(xintercept = pca.end.er1/1e6, linetype = "dashed", color = "navyblue") +
+             size = 2, alpha = 0.6, color = "gray10") +
   labs(x="Chr 8 Position (Mb)", y = "Coho") +
   scale_y_continuous(limits = c(-0.02, 1.02),
                      breaks = seq(0, 1, by = 0.5),
@@ -654,7 +653,6 @@ multiplot_temp <- er1_gene_plot / sock_er1_plot / coho_er1_plot +
   plot_layout(heights = c(0.32, 1, 1),
               guides = "collect") & 
   theme(legend.position = "right", legend.justification = 'top')
-# multiplot_temp
 
 # combine FST label to other plots 
 multiplot_er1 <- (y_lab - multiplot_temp) + # patchwork uses hyphen to allow for lefthand additions
@@ -664,13 +662,28 @@ multiplot_er1
 
 ### A/B/C  #####################
 threefst_cowplot <- plot_grid(NULL, multiplot_er1, NULL, multiplot_esrb, NULL, multiplot_lrrc9,
-                            rel_heights = c(0.2,2,0.2,2,0.2,2.8), ncol = 1, nrow = 6, align = 'hv',
-                            labels = c('A) esr1','','B) esrb','','C) lrrc9',''), label_fontfamily = "helvetica",
+                            rel_heights = c(0.2,2,0.2,2,0.2,2.8), ncol = 1, nrow = 6, 
+                            align = 'v', axis = "lr", # axis is what allowed actually plot alignment
+                            labels = c('A) esr1','','B) esr2b','','C) lrrc9',''), label_fontfamily = "helvetica",
                             label_size = 30, label_colour = "black")
 # threefst_cowplot
+jpeg(paste0("../Salmon_runtiming/2024_fourspecies/figures/Figure4a-c_FST_Allele_Genes_",format(Sys.Date(),"%Y%m%d"),".jpg"), 
+#jpeg(paste0("./figures/Figure4a-c_Allele_FST_Genes_",format(Sys.Date(),"%Y%m%d"),".jpg"), 
+          width = 19, height = 22, res = 500, units = "in")
+print(threefst_cowplot)
+dev.off()
 
-jpeg(paste0("./figures/Figure4a-c_Allele_FST_Genes_",format(Sys.Date(),"%Y%m%d"),".jpg"), 
-          width = 19, height = 22, res = 200, units = "in")
+### D/E/F Instead ##################
+
+threefst_cowplot <- plot_grid(NULL, multiplot_er1, NULL, multiplot_esrb, NULL, multiplot_lrrc9,
+                              rel_heights = c(0.2,2,0.2,2,0.2,2.8), ncol = 1, nrow = 6, 
+                              align = 'v', axis = "lr", # axis is what allowed actually plot alignment
+                              labels = c('D) esr1','','E) esr2b','','F) lrrc9',''), label_fontfamily = "helvetica",
+                              label_size = 30, label_colour = "black")
+# threefst_cowplot
+jpeg(paste0("../Salmon_runtiming/2024_fourspecies/figures/Figure3d-f_FST_Allele_Genes_",format(Sys.Date(),"%Y%m%d"),".jpg"), 
+#jpeg(paste0("./figures/Figure4a-c_Allele_FST_Genes_",format(Sys.Date(),"%Y%m%d"),".jpg"), 
+     width = 19, height = 22, res = 500, units = "in")
 print(threefst_cowplot)
 dev.off()
 

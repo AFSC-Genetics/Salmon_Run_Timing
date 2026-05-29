@@ -33,15 +33,15 @@ sockall_meta <- allmeta_df %>% filter(Species=="Sockeye")
 # join those two dataframes
 sockall_popFID <- inner_join(sockall_bam_df, sockall_meta, by = "sampleID") %>%
   mutate(Runtime = Runtime %>% 
-           gsub("Early Stream",'Early Stream (Teal)',.) %>% 
-           gsub("Late Stream",'Late Stream (Whitefish)',.) %>%
+           gsub("Early Stream",'Early Crk. (Teal)',.) %>% 
+           gsub("Late Stream",'Late Crk. (Whitefish)',.) %>%
            gsub("Late Beach",'Late Beach (Anvil)',.))
 
 ##combine row names (population info) with the covariance matrix
 sockall_pca.vectors <- as_tibble(cbind(sockall_popFID, sockall_e_vectors))
 
 sockall_pca.vectors$Runtime <- factor(sockall_pca.vectors$Runtime, levels = c(unique(sockall_pca.vectors$Runtime)[-1],unique(sockall_pca.vectors$Runtime)[1]))
-  sockall_Palette <-c("khaki", "lightblue1", "orchid")
+  sockall_Palette <-c("khaki", "skyblue1", "orchid")
   names(sockall_Palette) <- c(unique(sockall_pca.vectors$Runtime)[-1],unique(sockall_pca.vectors$Runtime)[1])
 
 theme_set(
@@ -63,12 +63,13 @@ sockall_lrrc9 <- ggplot(data = sockall_pca.vectors,
   scale_fill_manual(name = "Run Timing", values = sockall_Palette) +
   scale_shape_manual(name = "Run Timing", values = c(21,23,22)) +
   ggtitle(expression('Sockeye'~italic(lrrc9)))+
-  geom_vline(xintercept = 0.1, color = "gray30", alpha = 0.5, linetype = "dashed") +
-  geom_vline(xintercept = -0.05, color = "gray30", alpha = 0.5, linetype = "dashed") +
+  geom_vline(xintercept = 0.1, color = "gray20", alpha = 0.5, linetype = "dashed", linewidth = 1) +
+  geom_vline(xintercept = -0.05, color = "gray20", alpha = 0.5, linetype = "dashed", linewidth = 1) +
   scale_x_reverse(breaks = c(-0.15, -0.1, -0.05, 0, 0.05, 0.1, 0.15)) +
   labs(x = paste0("PC1 (",round(sockall_varPC1, digits = 1),"%)"), 
        y= paste0("PC2 (",round(sockall_varPC2, digits = 1),"%)")) +
-  guides(fill = guide_legend(title.position="top", title.hjust = 0.5,vjust=1,
+  guides(fill = guide_legend(title.position="top", title.hjust = 0.5,
+                             title.theme = element_text(vjust = 1),
                              nrow = 3, byrow = TRUE,
                              override.aes = list(size =3)))
 sockall_lrrc9
@@ -111,13 +112,14 @@ pinkOdd_lrrc9 <- ggplot(data = pinkO_pca.vectors,
   scale_fill_manual(name = "Run Timing", values = mypalette) +
   scale_shape_manual(name = "Run Timing", values = c(21,22)) +
   ggtitle(expression('Pink-Odd'~italic(lrrc9)))+
-  geom_vline(xintercept = 0, color = "gray30", alpha = 0.5, linetype = "dashed") +
-  geom_vline(xintercept = 0.15, color = "gray30", alpha = 0.5, linetype = "dashed") +
+  geom_vline(xintercept = 0, color = "gray20", alpha = 0.5, linetype = "dashed", linewidth = 1) +
+  geom_vline(xintercept = 0.15, color = "gray20", alpha = 0.5, linetype = "dashed", linewidth = 1) +
   scale_y_continuous(breaks = c(-.3, -.2,-.1, 0, 0.1)) +
   scale_x_reverse(breaks = c(-0.05, 0, 0.05, 0.1, 0.15, 0.2)) +
   labs(x = paste0("PC1 (",round(pinkO_varPC1, digits = 1),"%)"), 
        y= paste0("PC2 (",round(pinkO_varPC2, digits = 1),"%)")) +
-  guides(fill = guide_legend(title.position="top", title.hjust = 0.5,vjust=1,
+  guides(fill = guide_legend(title.position="top", title.hjust = 0.5,
+                             title.theme = element_text(vjust = 1),
                              nrow = 2, byrow = TRUE,
                              override.aes = list(size =3)))
 pinkOdd_lrrc9
@@ -149,9 +151,9 @@ er1.e <- eigen(er1.cov)
 # combine row names (population info) with the covariance matrix
 er1.pca.vectors <- er1_sock_meta %>%
   mutate(Runtime = Runtime %>% 
-           gsub("Early Stream",'Early Stream (Teal)',.) %>% 
-           gsub("Late Stream",'Late Stream (Whitefish)',.) %>%
-           gsub("- ","Stream (",.) %>% gsub("Pick Creek","Pick)",.) %>%
+           gsub("Early Stream",'Early Crk. (Teal)',.) %>% 
+           gsub("Late Stream",'Late Crk. (Whitefish)',.) %>%
+           gsub("- ","Crk. (",.) %>% gsub("Pick Creek","Pick)",.) %>%
            gsub("Late Beach",'Late Beach (Anvil)',.)) %>% 
   bind_cols(er1_e_vectors) %>%
   as_tibble()
@@ -159,7 +161,7 @@ er1.pca.vectors <- er1_sock_meta %>%
 er1.pca.vectors$Runtime <- factor(er1.pca.vectors$Runtime, 
                                   levels = c(unique(er1.pca.vectors$Runtime)[-3],unique(er1.pca.vectors$Runtime)[3]))
 
-  er1.palette <- c("goldenrod1", "royalblue3", "khaki", "lightblue1", "orchid")
+  er1.palette <- c("goldenrod1", "royalblue3", "khaki", "skyblue1", "orchid")
   er1.shapes <- c(24,24,21,23,22)
   names(er1.palette) <- levels(er1.pca.vectors$Runtime)
   names(er1.shapes) <- levels(er1.pca.vectors$Runtime)
@@ -169,15 +171,16 @@ sockall_er1 <- ggplot(data = er1.pca.vectors,
        aes(x=V1, y=V2, fill = Runtime, shape = Runtime)) + 
   geom_point(alpha = 0.7, size = 3, color = "gray20") +
   scale_fill_manual(name = "Run Timing", values = er1.palette) +
-  scale_color_manual(name = "Run Timing", values = c("black", "black", "firebrick4", "gold4", "lightblue4")) +
+  scale_color_manual(name = "Run Timing", values = c("black", "black", "firebrick4", "gold4", "skyblue1")) +
   scale_shape_manual(name = "Run Timing", values = er1.shapes) +
   ggtitle(expression('Sockeye'~italic(esr1)))+
-  geom_vline(xintercept = 0.075, color = "gray30", alpha = 0.5, linetype = "dashed") +
-  geom_vline(xintercept = -0.04, color = "gray30", alpha = 0.5, linetype = "dashed") +
+  geom_vline(xintercept = 0.075, color = "gray20", alpha = 0.5, linetype = "dashed", linewidth = 1) +
+  geom_vline(xintercept = -0.04, color = "gray20", alpha = 0.5, linetype = "dashed", linewidth = 1) +
   scale_x_continuous(breaks = c(-0.05, 0, 0.05, 0.1, 0.15, 0.2)) +
   labs(x = paste0("PC1 (",round(er1.varPC1, digits = 1),"%)"), 
        y= paste0("PC2 (",round(er1.varPC2, digits = 1),"%)")) +
-  guides(fill = guide_legend(title.position="top", title.hjust = 0.5,vjust=1,
+  guides(fill = guide_legend(title.position="top", title.hjust = 0.5,
+                             title.theme = element_text(vjust = 1),
                              nrow = 3, byrow = TRUE,
                              override.aes = list(size =3)))
 

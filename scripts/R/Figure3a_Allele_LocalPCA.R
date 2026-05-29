@@ -360,7 +360,7 @@ pca_flip <- plot_grid(NULL,NULL,NULL,
                       chum_lrrc9, pink_lrrc9,sock_lrrc9,
                       rel_heights = c(0.1,1,0.1,1), rel_widths = c(1,1,1),
                       nrow = 4, align = 'v',
-                      labels = c('A) esr1','','B) esrb',
+                      labels = c('A) esr1','','B) esr2b',
                                  '','','',
                                  'C) lrrc9','',''),
                       label_fontfamily = "helvetica",
@@ -373,9 +373,9 @@ pca_three_genes_flip <- plot_grid(pca_flip, extras_flip,
                                   rel_widths=c(3, 1),
                                   align = 'hv')
 
-#jpeg("../Salmon_runtiming/2024_fourspecies/figures/pca/combine/fourspp_genes_pca_threegenes_allele_cutoff_20260323.jpg",
-jpeg("./figures/pca/combine/fourspp_genes_pca_allele_cutoff_sevenPanels_legend_reconfigure3_20260310.jpg",
-     width = 20, height = 10, res = 300, units = "in")
+jpeg("../Salmon_runtiming/2024_fourspecies/figures/pca/combine/fourspp_genes_pca_threegenes_allele_cutoff_20260528.jpg",
+#jpeg("./figures/pca/combine/fourspp_genes_pca_allele_cutoff_sevenPanels_legend_reconfigure3_20260528.jpg",
+     width = 20, height = 10, res = 500, units = "in")
 pca_three_genes_flip
 dev.off()
 

@@ -1,4 +1,4 @@
-# BARPLOTS FOR LRRC9 AND ESRB ALLELE FREQUENCIES
+# BARPLOTS FOR LRRC9, ESR1, AND ESRB ALLELE FREQUENCIES
 # the proportions are pulled from the outputs of the species-specific pca_lrrc9 and pca_esrb scripts
 
 packages_needed <- c("ggplot2", "scales", "ggpubr", "tidyverse", "grid", "gridExtra",
@@ -103,7 +103,7 @@ genes_df <- genes_df %>%
          gsub("Early Stream$",'Early Stream (Teal)',.) %>% 
          gsub("Late Stream$",'Late Stream (Whitefish)',.) %>%
          gsub("- ","Stream (",.) %>% gsub("Pick Creek","Pick)",.) %>%
-         gsub("Late Beach",'Late Beach (Anvil)',.)) 
+         gsub("Late Beach$",'Late Beach (Anvil)',.)) 
 
 genes_df$Runtime <- factor(genes_df$Runtime, 
                                   levels = c(unique(genes_df$Runtime)[-5],unique(genes_df$Runtime)[5]))
@@ -116,7 +116,7 @@ lrrc9_barplot <- ggplot(filter(genes_df, Gene == "LRRC9"),
                scales = "free", space = "free",
                labeller = label_wrap_gen(10)) +
   scale_fill_manual(name = "Genotype", values = c("goldenrod2", "mediumseagreen", "royalblue3")) +
-  ylab("Proportion") + xlab("Run Timing Phenotype") +
+  xlab("Run Timing Phenotype") +
   ggtitle(expression(italic(lrrc9))) +
   scale_x_discrete(labels = function(x) str_wrap(x, width = 9)) +
   scale_y_continuous(expand = expansion(mult = c(0.01, 0.01))) +
@@ -128,7 +128,8 @@ lrrc9_barplot <- ggplot(filter(genes_df, Gene == "LRRC9"),
         axis.text.x = element_text(size = 12, vjust = 1, color = "black"),
         axis.text.y = element_text(size = 12, angle = 0, color = "black"),
         axis.ticks.x = element_blank(), axis.title.x = element_blank(),
-        axis.title.y = element_text(size = 20, angle = 90, margin = margin(0,5,0,1)),
+        axis.title.y = element_blank(),
+        #axis.title.y = element_text(size = 20, angle = 90, margin = margin(0,5,0,1)),
         panel.background = element_rect(fill = "white", color = "black"),
         panel.spacing = unit(0,"mm"),
         strip.background = element_rect(fill = "gray95", color = "black"),
@@ -144,8 +145,8 @@ esrb_barplot <- ggplot(filter(genes_df, Gene == "ESRB"),
                scales = "free", space = "free",
                labeller = label_wrap_gen(10)) +
   scale_fill_manual(name = "Genotype", values = c("goldenrod2", "mediumseagreen", "royalblue3")) +
-  ylab("Proportion") + xlab("Run Timing Phenotype") +
-  ggtitle(expression(italic(esrb))) +
+  xlab("Run Timing Phenotype") +
+  ggtitle(expression(italic(esr2b))) +
   scale_x_discrete(labels = function(x) str_wrap(x, width = 9)) +
   scale_y_continuous(expand = expansion(mult = c(0.01, 0.01))) +
   theme_bw() +
@@ -182,7 +183,9 @@ esr1_barplot <- ggplot(filter(genes_df, Gene == "ESR1"),
         axis.text.x = element_text(size = 12, vjust = 1, color = "black"),
         axis.text.y = element_text(size = 12, angle = 0, color = "black"),
         axis.ticks.x = element_blank(),
-        axis.title.x = element_blank(), axis.title.y = element_blank(),
+        axis.title.x = element_blank(),
+        axis.title.y = element_text(size = 18, angle = 90, margin = margin(0,5,0,1)),
+        #axis.title.y = element_blank(),
         panel.background = element_rect(fill = "white", color = "black"),
         panel.spacing = unit(0,"mm"),
         strip.background = element_rect(fill = "gray95", color = "black"),
@@ -192,7 +195,7 @@ esr1_barplot
 
 ### Combine Plots ##############
 final_barplot <- cowplot::plot_grid(esr1_barplot, esrb_barplot, lrrc9_barplot, 
-                                    rel_widths = c(8, 4.8, 10),
+                                    rel_widths = c(7.5, 4.5, 11),
                                     nrow = 1, align = "h",
                                     labels = c('A','B','C'), 
                                     label_fontfamily = "ArialMT",
@@ -211,7 +214,7 @@ grid.arrange(gridExtra::arrangeGrob(final_barplot, bottom = x.grob))
 dev.off()
 
 jpeg(file = paste0(outdir,"three_genes_barplot_",format(Sys.Date(),"%Y%m%d"),".jpg"), 
-     width = 40, height = 15, res = 300, units = 'cm')
+     width = 48, height = 16, res = 300, units = 'cm')
 grid.arrange(gridExtra::arrangeGrob(final_barplot, bottom = x.grob))
 dev.off()
 

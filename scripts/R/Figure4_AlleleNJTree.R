@@ -245,5 +245,8 @@ ggtree(er1AlleleTree, aes(color = RuntimeAl), size = 1.5) +
   ggnewscale::new_scale_colour() +
   geom_text2(aes(label = branch.length), hjust = -.3)
 
+ggsave("../Salmon_runtiming/2024_fourspecies/figures/esr1_branchlength.jpeg",
+       width = 30, height = 30)
+
 rm(ibs_mat_er1, bam_er1, er1AlleleTree, c_er1, d_er1, p_er1, plot_er1)
 
