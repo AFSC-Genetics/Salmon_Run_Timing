@@ -1,0 +1,529 @@
+sample_name,organism,ecotype,dev_stage,collection_date,geo_loc_name,sex,tissue,AlternateID,lat_lon,Lineage
+ABLG14767,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,1_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14768,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,2_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14769,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,3_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14770,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,4_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14771,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,5_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14772,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,6_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14773,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,7_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14774,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,8_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14775,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,9_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14776,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,10_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14777,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,11_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14778,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,12_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14779,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,13_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14780,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,14_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14781,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,15_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14782,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,16_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14783,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,17_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14784,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,18_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14785,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,19_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14786,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,20_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14787,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,21_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14788,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,22_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14789,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,23_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14790,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,24_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14791,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,25_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14792,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,26_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14793,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,27_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14794,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,28_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14795,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,29_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14796,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,30_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14797,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,31_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14798,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,32_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14799,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,33_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14800,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,34_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14801,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,35_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14802,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,36_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14803,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,37_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14804,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,38_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14805,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,39_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14806,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,40_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14807,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,41_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14808,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,42_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14809,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,43_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14810,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,44_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14811,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,45_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14812,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,46_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14813,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,47_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG14814,Oncorhynchus nerka,Late Stream,adult,8/18/24,Bristol Bay - Whitefish Creek,Male,fin,48_WhitefishMales,59.267 N 158.686 W,not applicable
+ABLG36968,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_1,60.392 N 150.126 W,not applicable
+ABLG36969,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_2,60.392 N 150.126 W,not applicable
+ABLG36970,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_3,60.392 N 150.126 W,not applicable
+ABLG36971,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_4,60.392 N 150.126 W,not applicable
+ABLG36972,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_5,60.392 N 150.126 W,not applicable
+ABLG36973,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Female,fin,COSKILR03_6,60.392 N 150.126 W,not applicable
+ABLG36974,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_7,60.392 N 150.126 W,not applicable
+ABLG36975,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_8,60.392 N 150.126 W,not applicable
+ABLG36976,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_9,60.392 N 150.126 W,not applicable
+ABLG36977,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Female,fin,COSKILR03_10,60.392 N 150.126 W,not applicable
+ABLG36978,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_11,60.392 N 150.126 W,not applicable
+ABLG36979,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_12,60.392 N 150.126 W,not applicable
+ABLG36980,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_13,60.392 N 150.126 W,not applicable
+ABLG36981,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_14,60.392 N 150.126 W,not applicable
+ABLG36982,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_15,60.392 N 150.126 W,not applicable
+ABLG36983,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_16,60.392 N 150.126 W,not applicable
+ABLG36984,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_17,60.392 N 150.126 W,not applicable
+ABLG36985,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_18,60.392 N 150.126 W,not applicable
+ABLG36986,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_19,60.392 N 150.126 W,not applicable
+ABLG36987,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_20,60.392 N 150.126 W,not applicable
+ABLG36988,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_21,60.392 N 150.126 W,not applicable
+ABLG36989,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_22,60.392 N 150.126 W,not applicable
+ABLG36990,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_23,60.392 N 150.126 W,not applicable
+ABLG36991,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_24,60.392 N 150.126 W,not applicable
+ABLG36992,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_25,60.392 N 150.126 W,not applicable
+ABLG36993,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Female,fin,COSKILR03_26,60.392 N 150.126 W,not applicable
+ABLG36994,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_27,60.392 N 150.126 W,not applicable
+ABLG36995,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Female,fin,COSKILR03_28,60.392 N 150.126 W,not applicable
+ABLG36996,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Female,fin,COSKILR03_29,60.392 N 150.126 W,not applicable
+ABLG36997,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_30,60.392 N 150.126 W,not applicable
+ABLG36998,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_31,60.392 N 150.126 W,not applicable
+ABLG36999,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_32,60.392 N 150.126 W,not applicable
+ABLG37000,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_33,60.392 N 150.126 W,not applicable
+ABLG37001,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Female,fin,COSKILR03_34,60.392 N 150.126 W,not applicable
+ABLG37002,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_35,60.392 N 150.126 W,not applicable
+ABLG37003,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_36,60.392 N 150.126 W,not applicable
+ABLG37004,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Female,fin,COSKILR03_37,60.392 N 150.126 W,not applicable
+ABLG37005,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_38,60.392 N 150.126 W,not applicable
+ABLG37006,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_39,60.392 N 150.126 W,not applicable
+ABLG37007,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Female,fin,COSKILR03_40,60.392 N 150.126 W,not applicable
+ABLG37008,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_41,60.392 N 150.126 W,not applicable
+ABLG37009,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_42,60.392 N 150.126 W,not applicable
+ABLG37010,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_43,60.392 N 150.126 W,not applicable
+ABLG37011,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_44,60.392 N 150.126 W,not applicable
+ABLG37012,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Female,fin,COSKILR03_45,60.392 N 150.126 W,not applicable
+ABLG37013,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_46,60.392 N 150.126 W,not applicable
+ABLG37014,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_47,60.392 N 150.126 W,not applicable
+ABLG37015,Oncorhynchus kisutch,Early,adult,9/24/03,Slilak River - Inlet of Slikak Lake,Male,fin,COSKILR03_48,60.392 N 150.126 W,not applicable
+ABLG37016,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_97,60.464 N 150.531 W,not applicable
+ABLG37017,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_98,60.464 N 150.531 W,not applicable
+ABLG37018,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_99,60.464 N 150.531 W,not applicable
+ABLG37019,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_100,60.464 N 150.531 W,not applicable
+ABLG37020,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_101,60.464 N 150.531 W,not applicable
+ABLG37021,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_102,60.464 N 150.531 W,not applicable
+ABLG37022,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_103,60.464 N 150.531 W,not applicable
+ABLG37023,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_104,60.464 N 150.531 W,not applicable
+ABLG37024,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_105,60.464 N 150.531 W,not applicable
+ABLG37025,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_106,60.464 N 150.531 W,not applicable
+ABLG37026,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_107,60.464 N 150.531 W,not applicable
+ABLG37027,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_108,60.464 N 150.531 W,not applicable
+ABLG37028,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_109,60.464 N 150.531 W,not applicable
+ABLG37029,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_110,60.464 N 150.531 W,not applicable
+ABLG37030,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_111,60.464 N 150.531 W,not applicable
+ABLG37031,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_112,60.464 N 150.531 W,not applicable
+ABLG37032,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_113,60.464 N 150.531 W,not applicable
+ABLG37033,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_114,60.464 N 150.531 W,not applicable
+ABLG37034,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_115,60.464 N 150.531 W,not applicable
+ABLG37035,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_116,60.464 N 150.531 W,not applicable
+ABLG37036,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_117,60.464 N 150.531 W,not applicable
+ABLG37037,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_118,60.464 N 150.531 W,not applicable
+ABLG37038,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_119,60.464 N 150.531 W,not applicable
+ABLG37039,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_120,60.464 N 150.531 W,not applicable
+ABLG37040,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_121,60.464 N 150.531 W,not applicable
+ABLG37041,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_122,60.464 N 150.531 W,not applicable
+ABLG37042,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_123,60.464 N 150.531 W,not applicable
+ABLG37043,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_124,60.464 N 150.531 W,not applicable
+ABLG37044,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_125,60.464 N 150.531 W,not applicable
+ABLG37045,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_126,60.464 N 150.531 W,not applicable
+ABLG37046,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_127,60.464 N 150.531 W,not applicable
+ABLG37047,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_128,60.464 N 150.531 W,not applicable
+ABLG37048,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_129,60.464 N 150.531 W,not applicable
+ABLG37049,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_130,60.464 N 150.531 W,not applicable
+ABLG37050,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_131,60.464 N 150.531 W,not applicable
+ABLG37051,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_132,60.464 N 150.531 W,not applicable
+ABLG37052,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_133,60.464 N 150.531 W,not applicable
+ABLG37053,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_134,60.464 N 150.531 W,not applicable
+ABLG37054,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_135,60.464 N 150.531 W,not applicable
+ABLG37055,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_136,60.464 N 150.531 W,not applicable
+ABLG37056,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_137,60.464 N 150.531 W,not applicable
+ABLG37057,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_138,60.464 N 150.531 W,not applicable
+ABLG37058,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_139,60.464 N 150.531 W,not applicable
+ABLG37059,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_140,60.464 N 150.531 W,not applicable
+ABLG37060,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_141,60.464 N 150.531 W,not applicable
+ABLG37061,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_142,60.464 N 150.531 W,not applicable
+ABLG37062,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_143,60.464 N 150.531 W,not applicable
+ABLG37063,Oncorhynchus kisutch,Late,adult,1/25/14,Kenai River - Outlet of Slikak Lake,not collected,fin,Coho_144,60.464 N 150.531 W,not applicable
+ABLG34821,Oncorhynchus keta,Early,adult,7/4/04,Yukon River - Gisasa River,Male,fin,CMGIS04_96,65.267 N 157.667 W,not applicable
+ABLG34822,Oncorhynchus keta,Early,adult,7/4/04,Yukon River - Gisasa River,Female,fin,CMGIS04_97,65.267 N 157.667 W,not applicable
+ABLG34823,Oncorhynchus keta,Early,adult,7/4/04,Yukon River - Gisasa River,Female,fin,CMGIS04_98,65.267 N 157.667 W,not applicable
+ABLG34824,Oncorhynchus keta,Early,adult,7/4/04,Yukon River - Gisasa River,Male,fin,CMGIS04_99,65.267 N 157.667 W,not applicable
+ABLG34825,Oncorhynchus keta,Early,adult,7/4/04,Yukon River - Gisasa River,Male,fin,CMGIS04_100,65.267 N 157.667 W,not applicable
+ABLG34826,Oncorhynchus keta,Early,adult,7/4/04,Yukon River - Gisasa River,Female,fin,CMGIS04_101,65.267 N 157.667 W,not applicable
+ABLG34827,Oncorhynchus keta,Early,adult,7/4/04,Yukon River - Gisasa River,Male,fin,CMGIS04_102,65.267 N 157.667 W,not applicable
+ABLG34828,Oncorhynchus keta,Early,adult,7/4/04,Yukon River - Gisasa River,Female,fin,CMGIS04_103,65.267 N 157.667 W,not applicable
+ABLG34829,Oncorhynchus keta,Early,adult,7/4/04,Yukon River - Gisasa River,Female,fin,CMGIS04_104,65.267 N 157.667 W,not applicable
+ABLG34830,Oncorhynchus keta,Early,adult,7/4/04,Yukon River - Gisasa River,Female,fin,CMGIS04_105,65.267 N 157.667 W,not applicable
+ABLG34831,Oncorhynchus keta,Early,adult,7/4/04,Yukon River - Gisasa River,Male,fin,CMGIS04_106,65.267 N 157.667 W,not applicable
+ABLG34832,Oncorhynchus keta,Early,adult,7/4/04,Yukon River - Gisasa River,Male,fin,CMGIS04_107,65.267 N 157.667 W,not applicable
+ABLG34833,Oncorhynchus keta,Early,adult,7/4/04,Yukon River - Gisasa River,Male,fin,CMGIS04_108,65.267 N 157.667 W,not applicable
+ABLG34834,Oncorhynchus keta,Early,adult,7/4/04,Yukon River - Gisasa River,Male,fin,CMGIS04_109,65.267 N 157.667 W,not applicable
+ABLG34835,Oncorhynchus keta,Early,adult,7/4/04,Yukon River - Gisasa River,Male,fin,CMGIS04_110,65.267 N 157.667 W,not applicable
+ABLG34836,Oncorhynchus keta,Early,adult,7/4/04,Yukon River - Gisasa River,Male,fin,CMGIS04_111,65.267 N 157.667 W,not applicable
+ABLG34837,Oncorhynchus keta,Early,adult,7/4/04,Yukon River - Gisasa River,Female,fin,CMGIS04_112,65.267 N 157.667 W,not applicable
+ABLG34838,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_113,65.267 N 157.667 W,not applicable
+ABLG34839,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_114,65.267 N 157.667 W,not applicable
+ABLG34840,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_115,65.267 N 157.667 W,not applicable
+ABLG34841,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_116,65.267 N 157.667 W,not applicable
+ABLG34842,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_118,65.267 N 157.667 W,not applicable
+ABLG34843,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_119,65.267 N 157.667 W,not applicable
+ABLG34844,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Female,fin,CMGIS04_120,65.267 N 157.667 W,not applicable
+ABLG34845,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Female,fin,CMGIS04_121,65.267 N 157.667 W,not applicable
+ABLG34846,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_122,65.267 N 157.667 W,not applicable
+ABLG34847,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_123,65.267 N 157.667 W,not applicable
+ABLG34848,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_124,65.267 N 157.667 W,not applicable
+ABLG34849,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Female,fin,CMGIS04_125,65.267 N 157.667 W,not applicable
+ABLG34850,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_127,65.267 N 157.667 W,not applicable
+ABLG34851,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_128,65.267 N 157.667 W,not applicable
+ABLG34852,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_129,65.267 N 157.667 W,not applicable
+ABLG34853,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_130,65.267 N 157.667 W,not applicable
+ABLG34854,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_131,65.267 N 157.667 W,not applicable
+ABLG34855,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_132,65.267 N 157.667 W,not applicable
+ABLG34856,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_133,65.267 N 157.667 W,not applicable
+ABLG34857,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_134,65.267 N 157.667 W,not applicable
+ABLG34858,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_135,65.267 N 157.667 W,not applicable
+ABLG34859,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_136,65.267 N 157.667 W,not applicable
+ABLG34860,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_137,65.267 N 157.667 W,not applicable
+ABLG34861,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_138,65.267 N 157.667 W,not applicable
+ABLG34862,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_139,65.267 N 157.667 W,not applicable
+ABLG34863,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Female,fin,CMGIS04_140,65.267 N 157.667 W,not applicable
+ABLG34864,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_141,65.267 N 157.667 W,not applicable
+ABLG34865,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Female,fin,CMGIS04_142,65.267 N 157.667 W,not applicable
+ABLG34866,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_143,65.267 N 157.667 W,not applicable
+ABLG34867,Oncorhynchus keta,Early,adult,7/5/04,Yukon River - Gisasa River,Male,fin,CMGIS04_144,65.267 N 157.667 W,not applicable
+ABLG34868,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_21,62.793 N 137.337 W,not applicable
+ABLG34869,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_29,62.793 N 137.337 W,not applicable
+ABLG34870,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_22,62.793 N 137.337 W,not applicable
+ABLG34871,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_23,62.793 N 137.337 W,not applicable
+ABLG34872,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_24,62.793 N 137.337 W,not applicable
+ABLG34873,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_25,62.793 N 137.337 W,not applicable
+ABLG34874,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_26,62.793 N 137.337 W,not applicable
+ABLG34875,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_27,62.793 N 137.337 W,not applicable
+ABLG34876,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_28,62.793 N 137.337 W,not applicable
+ABLG34877,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_30,62.793 N 137.337 W,not applicable
+ABLG34878,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_31,62.793 N 137.337 W,not applicable
+ABLG34879,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_32,62.793 N 137.337 W,not applicable
+ABLG34880,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_33,62.793 N 137.337 W,not applicable
+ABLG34881,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_34,62.793 N 137.337 W,not applicable
+ABLG34882,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_35,62.793 N 137.337 W,not applicable
+ABLG34883,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_36,62.793 N 137.337 W,not applicable
+ABLG34884,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_37,62.793 N 137.337 W,not applicable
+ABLG34885,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_38,62.793 N 137.337 W,not applicable
+ABLG34886,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_39,62.793 N 137.337 W,not applicable
+ABLG34887,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_40,62.793 N 137.337 W,not applicable
+ABLG34888,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_41,62.793 N 137.337 W,not applicable
+ABLG34889,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_42,62.793 N 137.337 W,not applicable
+ABLG34890,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_43,62.793 N 137.337 W,not applicable
+ABLG34891,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_44,62.793 N 137.337 W,not applicable
+ABLG34892,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_45,62.793 N 137.337 W,not applicable
+ABLG34893,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_46,62.793 N 137.337 W,not applicable
+ABLG34894,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_47,62.793 N 137.337 W,not applicable
+ABLG34895,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_48,62.793 N 137.337 W,not applicable
+ABLG34896,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_49,62.793 N 137.337 W,not applicable
+ABLG34897,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_50,62.793 N 137.337 W,not applicable
+ABLG34898,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_51,62.793 N 137.337 W,not applicable
+ABLG34899,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_52,62.793 N 137.337 W,not applicable
+ABLG34900,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_53,62.793 N 137.337 W,not applicable
+ABLG34901,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_54,62.793 N 137.337 W,not applicable
+ABLG34902,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_55,62.793 N 137.337 W,not applicable
+ABLG34903,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_56,62.793 N 137.337 W,not applicable
+ABLG34904,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_57,62.793 N 137.337 W,not applicable
+ABLG34905,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_58,62.793 N 137.337 W,not applicable
+ABLG34906,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_59,62.793 N 137.337 W,not applicable
+ABLG34907,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_60,62.793 N 137.337 W,not applicable
+ABLG34908,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_61,62.793 N 137.337 W,not applicable
+ABLG34909,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_62,62.793 N 137.337 W,not applicable
+ABLG34910,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_63,62.793 N 137.337 W,not applicable
+ABLG34911,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_64,62.793 N 137.337 W,not applicable
+ABLG34912,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_65,62.793 N 137.337 W,not applicable
+ABLG34913,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_66,62.793 N 137.337 W,not applicable
+ABLG34914,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_67,62.793 N 137.337 W,not applicable
+ABLG34915,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_68,62.793 N 137.337 W,not applicable
+ABLG34916,Oncorhynchus keta,Late,adult,9/25/93,Yukon River - Pelly River,not collected,fin,CMPEL93_69,62.793 N 137.337 W,not applicable
+ABLG8337,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5701,58.381 N 134.641 W,Even Lineage
+ABLG8338,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5702,58.381 N 134.641 W,Even Lineage
+ABLG8341,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5705,58.381 N 134.641 W,Even Lineage
+ABLG8340,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5704,58.381 N 134.641 W,Even Lineage
+ABLG8342,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5706,58.381 N 134.641 W,Even Lineage
+ABLG8339,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5703,58.381 N 134.641 W,Even Lineage
+ABLG8359,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5723,58.381 N 134.641 W,Even Lineage
+ABLG8352,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5716,58.381 N 134.641 W,Even Lineage
+ABLG8371,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5735,58.381 N 134.641 W,Even Lineage
+ABLG8349,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5713,58.381 N 134.641 W,Even Lineage
+ABLG8360,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5724,58.381 N 134.641 W,Even Lineage
+ABLG8350,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5714,58.381 N 134.641 W,Even Lineage
+ABLG8374,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5738,58.381 N 134.641 W,Even Lineage
+ABLG8363,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5727,58.381 N 134.641 W,Even Lineage
+ABLG8351,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5715,58.381 N 134.641 W,Even Lineage
+ABLG8362,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5726,58.381 N 134.641 W,Even Lineage
+ABLG8367,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5731,58.381 N 134.641 W,Even Lineage
+ABLG8348,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5712,58.381 N 134.641 W,Even Lineage
+ABLG8368,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5732,58.381 N 134.641 W,Even Lineage
+ABLG8355,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5719,58.381 N 134.641 W,Even Lineage
+ABLG8366,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5730,58.381 N 134.641 W,Even Lineage
+ABLG8344,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5708,58.381 N 134.641 W,Even Lineage
+ABLG8345,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5709,58.381 N 134.641 W,Even Lineage
+ABLG8356,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5720,58.381 N 134.641 W,Even Lineage
+ABLG8372,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5736,58.381 N 134.641 W,Even Lineage
+ABLG8361,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5725,58.381 N 134.641 W,Even Lineage
+ABLG8346,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5710,58.381 N 134.641 W,Even Lineage
+ABLG8347,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5711,58.381 N 134.641 W,Even Lineage
+ABLG8365,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5729,58.381 N 134.641 W,Even Lineage
+ABLG8377,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5741,58.381 N 134.641 W,Even Lineage
+ABLG8370,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5734,58.381 N 134.641 W,Even Lineage
+ABLG8357,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5721,58.381 N 134.641 W,Even Lineage
+ABLG8364,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5728,58.381 N 134.641 W,Even Lineage
+ABLG8353,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5717,58.381 N 134.641 W,Even Lineage
+ABLG8379,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5743,58.381 N 134.641 W,Even Lineage
+ABLG8343,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5707,58.381 N 134.641 W,Even Lineage
+ABLG8376,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5740,58.381 N 134.641 W,Even Lineage
+ABLG8378,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5742,58.381 N 134.641 W,Even Lineage
+ABLG8354,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5718,58.381 N 134.641 W,Even Lineage
+ABLG8373,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5737,58.381 N 134.641 W,Even Lineage
+ABLG8375,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5739,58.381 N 134.641 W,Even Lineage
+ABLG8369,Oncorhynchus gorbuscha,Late,adult,2002-09,Juneau - Auke Creek,Male,axillary process,5733,58.381 N 134.641 W,Even Lineage
+ABLG8406,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5527,58.381 N 134.641 W,Even Lineage
+ABLG8411,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5532,58.381 N 134.641 W,Even Lineage
+ABLG8401,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5522,58.381 N 134.641 W,Even Lineage
+ABLG8400,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5521,58.381 N 134.641 W,Even Lineage
+ABLG8397,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5518,58.381 N 134.641 W,Even Lineage
+ABLG8396,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5517,58.381 N 134.641 W,Even Lineage
+ABLG8384,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5505,58.381 N 134.641 W,Even Lineage
+ABLG8382,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5503,58.381 N 134.641 W,Even Lineage
+ABLG8391,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5512,58.381 N 134.641 W,Even Lineage
+ABLG8389,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5510,58.381 N 134.641 W,Even Lineage
+ABLG8395,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5516,58.381 N 134.641 W,Even Lineage
+ABLG8398,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5519,58.381 N 134.641 W,Even Lineage
+ABLG8394,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5515,58.381 N 134.641 W,Even Lineage
+ABLG8388,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5509,58.381 N 134.641 W,Even Lineage
+ABLG8387,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5508,58.381 N 134.641 W,Even Lineage
+ABLG8393,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5514,58.381 N 134.641 W,Even Lineage
+ABLG8385,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5506,58.381 N 134.641 W,Even Lineage
+ABLG8381,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5502,58.381 N 134.641 W,Even Lineage
+ABLG8399,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5520,58.381 N 134.641 W,Even Lineage
+ABLG8380,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5501,58.381 N 134.641 W,Even Lineage
+ABLG8383,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5504,58.381 N 134.641 W,Even Lineage
+ABLG8386,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5507,58.381 N 134.641 W,Even Lineage
+ABLG8404,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5525,58.381 N 134.641 W,Even Lineage
+ABLG8405,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5526,58.381 N 134.641 W,Even Lineage
+ABLG8407,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5528,58.381 N 134.641 W,Even Lineage
+ABLG8408,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5529,58.381 N 134.641 W,Even Lineage
+ABLG8412,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5533,58.381 N 134.641 W,Even Lineage
+ABLG8414,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5535,58.381 N 134.641 W,Even Lineage
+ABLG8415,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5536,58.381 N 134.641 W,Even Lineage
+ABLG8416,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5537,58.381 N 134.641 W,Even Lineage
+ABLG8417,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5538,58.381 N 134.641 W,Even Lineage
+ABLG8418,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5539,58.381 N 134.641 W,Even Lineage
+ABLG8419,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5540,58.381 N 134.641 W,Even Lineage
+ABLG8420,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5541,58.381 N 134.641 W,Even Lineage
+ABLG8421,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5542,58.381 N 134.641 W,Even Lineage
+ABLG8422,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5543,58.381 N 134.641 W,Even Lineage
+ABLG8423,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Female,axillary process,OBD5544,58.381 N 134.641 W,Even Lineage
+ABLG8258,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5856,58.381 N 134.641 W,Even Lineage
+ABLG8291,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5889,58.381 N 134.641 W,Even Lineage
+ABLG8290,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5888,58.381 N 134.641 W,Even Lineage
+ABLG8270,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5868,58.381 N 134.641 W,Even Lineage
+ABLG8261,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5859,58.381 N 134.641 W,Even Lineage
+ABLG8280,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5878,58.381 N 134.641 W,Even Lineage
+ABLG8296,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5894,58.381 N 134.641 W,Even Lineage
+ABLG8285,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5883,58.381 N 134.641 W,Even Lineage
+ABLG8259,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5857,58.381 N 134.641 W,Even Lineage
+ABLG8277,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5875,58.381 N 134.641 W,Even Lineage
+ABLG8293,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5891,58.381 N 134.641 W,Even Lineage
+ABLG8279,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5877,58.381 N 134.641 W,Even Lineage
+ABLG8276,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5874,58.381 N 134.641 W,Even Lineage
+ABLG8288,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5886,58.381 N 134.641 W,Even Lineage
+ABLG8272,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5870,58.381 N 134.641 W,Even Lineage
+ABLG8295,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5893,58.381 N 134.641 W,Even Lineage
+ABLG8266,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5864,58.381 N 134.641 W,Even Lineage
+ABLG8286,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5884,58.381 N 134.641 W,Even Lineage
+ABLG8275,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5873,58.381 N 134.641 W,Even Lineage
+ABLG8273,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5871,58.381 N 134.641 W,Even Lineage
+ABLG8253,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5851,58.381 N 134.641 W,Even Lineage
+ABLG8289,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5887,58.381 N 134.641 W,Even Lineage
+ABLG8263,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5861,58.381 N 134.641 W,Even Lineage
+ABLG8267,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5865,58.381 N 134.641 W,Even Lineage
+ABLG8256,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5854,58.381 N 134.641 W,Even Lineage
+ABLG8282,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5880,58.381 N 134.641 W,Even Lineage
+ABLG8292,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5890,58.381 N 134.641 W,Even Lineage
+ABLG8262,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5860,58.381 N 134.641 W,Even Lineage
+ABLG8284,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5882,58.381 N 134.641 W,Even Lineage
+ABLG8287,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5885,58.381 N 134.641 W,Even Lineage
+ABLG8257,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5855,58.381 N 134.641 W,Even Lineage
+ABLG8260,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5858,58.381 N 134.641 W,Even Lineage
+ABLG8283,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5881,58.381 N 134.641 W,Even Lineage
+ABLG8294,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5892,58.381 N 134.641 W,Even Lineage
+ABLG8268,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5866,58.381 N 134.641 W,Even Lineage
+ABLG8274,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5872,58.381 N 134.641 W,Even Lineage
+ABLG8265,Oncorhynchus gorbuscha,Late,adult,2006-09,Juneau - Auke Creek,Female,axillary process,OBD5863,58.381 N 134.641 W,Even Lineage
+ABLG8424,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5551,58.381 N 134.641 W,Even Lineage
+ABLG8444,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5571,58.381 N 134.641 W,Even Lineage
+ABLG8442,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5569,58.381 N 134.641 W,Even Lineage
+ABLG8461,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5588,58.381 N 134.641 W,Even Lineage
+ABLG8459,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5586,58.381 N 134.641 W,Even Lineage
+ABLG8463,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5590,58.381 N 134.641 W,Even Lineage
+ABLG8425,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5552,58.381 N 134.641 W,Even Lineage
+ABLG8426,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5553,58.381 N 134.641 W,Even Lineage
+ABLG8427,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5554,58.381 N 134.641 W,Even Lineage
+ABLG8428,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5555,58.381 N 134.641 W,Even Lineage
+ABLG8429,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5556,58.381 N 134.641 W,Even Lineage
+ABLG8430,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5557,58.381 N 134.641 W,Even Lineage
+ABLG8431,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5558,58.381 N 134.641 W,Even Lineage
+ABLG8432,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5559,58.381 N 134.641 W,Even Lineage
+ABLG8433,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5560,58.381 N 134.641 W,Even Lineage
+ABLG8435,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5562,58.381 N 134.641 W,Even Lineage
+ABLG8436,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5563,58.381 N 134.641 W,Even Lineage
+ABLG8437,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5564,58.381 N 134.641 W,Even Lineage
+ABLG8438,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5565,58.381 N 134.641 W,Even Lineage
+ABLG8439,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5566,58.381 N 134.641 W,Even Lineage
+ABLG8441,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5568,58.381 N 134.641 W,Even Lineage
+ABLG8443,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5570,58.381 N 134.641 W,Even Lineage
+ABLG8445,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5572,58.381 N 134.641 W,Even Lineage
+ABLG8446,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5573,58.381 N 134.641 W,Even Lineage
+ABLG8447,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5574,58.381 N 134.641 W,Even Lineage
+ABLG8449,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5576,58.381 N 134.641 W,Even Lineage
+ABLG8450,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5577,58.381 N 134.641 W,Even Lineage
+ABLG8451,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5578,58.381 N 134.641 W,Even Lineage
+ABLG8452,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5579,58.381 N 134.641 W,Even Lineage
+ABLG8453,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5580,58.381 N 134.641 W,Even Lineage
+ABLG8454,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5581,58.381 N 134.641 W,Even Lineage
+ABLG8455,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5582,58.381 N 134.641 W,Even Lineage
+ABLG8456,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5583,58.381 N 134.641 W,Even Lineage
+ABLG8457,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5584,58.381 N 134.641 W,Even Lineage
+ABLG8458,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5585,58.381 N 134.641 W,Even Lineage
+ABLG8460,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5587,58.381 N 134.641 W,Even Lineage
+ABLG8462,Oncorhynchus gorbuscha,Early,adult,2006-08,Juneau - Auke Creek,Male,axillary process,OBD5589,58.381 N 134.641 W,Even Lineage
+ABLG8329,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4033,58.381 N 134.641 W,Odd Lineage
+ABLG8303,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4007,58.381 N 134.641 W,Odd Lineage
+ABLG8333,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4037,58.381 N 134.641 W,Odd Lineage
+ABLG8334,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4038,58.381 N 134.641 W,Odd Lineage
+ABLG8311,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4015,58.381 N 134.641 W,Odd Lineage
+ABLG8335,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4039,58.381 N 134.641 W,Odd Lineage
+ABLG8325,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4029,58.381 N 134.641 W,Odd Lineage
+ABLG8310,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4014,58.381 N 134.641 W,Odd Lineage
+ABLG8319,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4023,58.381 N 134.641 W,Odd Lineage
+ABLG8306,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4010,58.381 N 134.641 W,Odd Lineage
+ABLG8305,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4009,58.381 N 134.641 W,Odd Lineage
+ABLG8327,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4031,58.381 N 134.641 W,Odd Lineage
+ABLG8336,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4040,58.381 N 134.641 W,Odd Lineage
+ABLG8301,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4005,58.381 N 134.641 W,Odd Lineage
+ABLG8320,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4024,58.381 N 134.641 W,Odd Lineage
+ABLG8326,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4030,58.381 N 134.641 W,Odd Lineage
+ABLG8331,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4035,58.381 N 134.641 W,Odd Lineage
+ABLG8308,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4012,58.381 N 134.641 W,Odd Lineage
+ABLG8328,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4032,58.381 N 134.641 W,Odd Lineage
+ABLG8313,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4017,58.381 N 134.641 W,Odd Lineage
+ABLG8318,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4022,58.381 N 134.641 W,Odd Lineage
+ABLG8314,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4018,58.381 N 134.641 W,Odd Lineage
+ABLG8322,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4026,58.381 N 134.641 W,Odd Lineage
+ABLG8330,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4034,58.381 N 134.641 W,Odd Lineage
+ABLG8317,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4021,58.381 N 134.641 W,Odd Lineage
+ABLG8312,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4016,58.381 N 134.641 W,Odd Lineage
+ABLG8300,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4004,58.381 N 134.641 W,Odd Lineage
+ABLG8332,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4036,58.381 N 134.641 W,Odd Lineage
+ABLG8315,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4019,58.381 N 134.641 W,Odd Lineage
+ABLG8302,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4006,58.381 N 134.641 W,Odd Lineage
+ABLG8321,Oncorhynchus gorbuscha,Late,adult,2001-09,Juneau - Auke Creek,Male,axillary process,4025,58.381 N 134.641 W,Odd Lineage
+ABLG8469,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5606,58.381 N 134.641 W,Odd Lineage
+ABLG8496,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5633,58.381 N 134.641 W,Odd Lineage
+ABLG8501,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5638,58.381 N 134.641 W,Odd Lineage
+ABLG8499,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5636,58.381 N 134.641 W,Odd Lineage
+ABLG8479,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5616,58.381 N 134.641 W,Odd Lineage
+ABLG8492,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5629,58.381 N 134.641 W,Odd Lineage
+ABLG8471,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5608,58.381 N 134.641 W,Odd Lineage
+ABLG8464,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5601,58.381 N 134.641 W,Odd Lineage
+ABLG8465,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5602,58.381 N 134.641 W,Odd Lineage
+ABLG8466,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5603,58.381 N 134.641 W,Odd Lineage
+ABLG8467,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5604,58.381 N 134.641 W,Odd Lineage
+ABLG8468,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5605,58.381 N 134.641 W,Odd Lineage
+ABLG8470,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5607,58.381 N 134.641 W,Odd Lineage
+ABLG8472,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5609,58.381 N 134.641 W,Odd Lineage
+ABLG8473,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5610,58.381 N 134.641 W,Odd Lineage
+ABLG8474,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5611,58.381 N 134.641 W,Odd Lineage
+ABLG8475,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5612,58.381 N 134.641 W,Odd Lineage
+ABLG8476,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5613,58.381 N 134.641 W,Odd Lineage
+ABLG8477,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5614,58.381 N 134.641 W,Odd Lineage
+ABLG8478,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5615,58.381 N 134.641 W,Odd Lineage
+ABLG8480,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5617,58.381 N 134.641 W,Odd Lineage
+ABLG8482,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5619,58.381 N 134.641 W,Odd Lineage
+ABLG8483,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5620,58.381 N 134.641 W,Odd Lineage
+ABLG8484,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5621,58.381 N 134.641 W,Odd Lineage
+ABLG8485,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5622,58.381 N 134.641 W,Odd Lineage
+ABLG8486,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5623,58.381 N 134.641 W,Odd Lineage
+ABLG8488,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5625,58.381 N 134.641 W,Odd Lineage
+ABLG8489,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5626,58.381 N 134.641 W,Odd Lineage
+ABLG8490,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5627,58.381 N 134.641 W,Odd Lineage
+ABLG8491,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5628,58.381 N 134.641 W,Odd Lineage
+ABLG8493,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5630,58.381 N 134.641 W,Odd Lineage
+ABLG8494,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5631,58.381 N 134.641 W,Odd Lineage
+ABLG8495,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5632,58.381 N 134.641 W,Odd Lineage
+ABLG8497,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5634,58.381 N 134.641 W,Odd Lineage
+ABLG8500,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5637,58.381 N 134.641 W,Odd Lineage
+ABLG8503,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Female,axillary process,OBD5640,58.381 N 134.641 W,Odd Lineage
+ABLG8215,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5803,58.381 N 134.641 W,Odd Lineage
+ABLG8232,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5820,58.381 N 134.641 W,Odd Lineage
+ABLG8251,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5839,58.381 N 134.641 W,Odd Lineage
+ABLG8241,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5829,58.381 N 134.641 W,Odd Lineage
+ABLG8247,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5835,58.381 N 134.641 W,Odd Lineage
+ABLG8223,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5811,58.381 N 134.641 W,Odd Lineage
+ABLG8248,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5836,58.381 N 134.641 W,Odd Lineage
+ABLG8238,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5826,58.381 N 134.641 W,Odd Lineage
+ABLG8249,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5837,58.381 N 134.641 W,Odd Lineage
+ABLG8214,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5802,58.381 N 134.641 W,Odd Lineage
+ABLG8216,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5804,58.381 N 134.641 W,Odd Lineage
+ABLG8220,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5808,58.381 N 134.641 W,Odd Lineage
+ABLG8242,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5830,58.381 N 134.641 W,Odd Lineage
+ABLG8245,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5833,58.381 N 134.641 W,Odd Lineage
+ABLG8218,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5806,58.381 N 134.641 W,Odd Lineage
+ABLG8227,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5815,58.381 N 134.641 W,Odd Lineage
+ABLG8243,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5831,58.381 N 134.641 W,Odd Lineage
+ABLG8246,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5834,58.381 N 134.641 W,Odd Lineage
+ABLG8225,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5813,58.381 N 134.641 W,Odd Lineage
+ABLG8221,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5809,58.381 N 134.641 W,Odd Lineage
+ABLG8224,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5812,58.381 N 134.641 W,Odd Lineage
+ABLG8213,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5801,58.381 N 134.641 W,Odd Lineage
+ABLG8233,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5821,58.381 N 134.641 W,Odd Lineage
+ABLG8250,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5838,58.381 N 134.641 W,Odd Lineage
+ABLG8240,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5828,58.381 N 134.641 W,Odd Lineage
+ABLG8244,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5832,58.381 N 134.641 W,Odd Lineage
+ABLG8219,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5807,58.381 N 134.641 W,Odd Lineage
+ABLG8230,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5818,58.381 N 134.641 W,Odd Lineage
+ABLG8252,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5840,58.381 N 134.641 W,Odd Lineage
+ABLG8231,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5819,58.381 N 134.641 W,Odd Lineage
+ABLG8239,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5827,58.381 N 134.641 W,Odd Lineage
+ABLG8226,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5814,58.381 N 134.641 W,Odd Lineage
+ABLG8237,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5825,58.381 N 134.641 W,Odd Lineage
+ABLG8228,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5816,58.381 N 134.641 W,Odd Lineage
+ABLG8222,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5810,58.381 N 134.641 W,Odd Lineage
+ABLG8236,Oncorhynchus gorbuscha,Late,adult,2005-09,Juneau - Auke Creek,Female,axillary process,OBD5824,58.381 N 134.641 W,Odd Lineage
+ABLG8515,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5662,58.381 N 134.641 W,Odd Lineage
+ABLG8521,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5668,58.381 N 134.641 W,Odd Lineage
+ABLG8524,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5671,58.381 N 134.641 W,Odd Lineage
+ABLG8514,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5661,58.381 N 134.641 W,Odd Lineage
+ABLG8531,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5678,58.381 N 134.641 W,Odd Lineage
+ABLG8512,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5659,58.381 N 134.641 W,Odd Lineage
+ABLG8542,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5689,58.381 N 134.641 W,Odd Lineage
+ABLG8518,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5665,58.381 N 134.641 W,Odd Lineage
+ABLG8536,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5683,58.381 N 134.641 W,Odd Lineage
+ABLG8539,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5686,58.381 N 134.641 W,Odd Lineage
+ABLG8511,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5658,58.381 N 134.641 W,Odd Lineage
+ABLG8520,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5667,58.381 N 134.641 W,Odd Lineage
+ABLG8541,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5688,58.381 N 134.641 W,Odd Lineage
+ABLG8513,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5660,58.381 N 134.641 W,Odd Lineage
+ABLG8525,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5672,58.381 N 134.641 W,Odd Lineage
+ABLG8507,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5654,58.381 N 134.641 W,Odd Lineage
+ABLG8527,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5674,58.381 N 134.641 W,Odd Lineage
+ABLG8505,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5652,58.381 N 134.641 W,Odd Lineage
+ABLG8540,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5687,58.381 N 134.641 W,Odd Lineage
+ABLG8523,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5670,58.381 N 134.641 W,Odd Lineage
+ABLG8535,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5682,58.381 N 134.641 W,Odd Lineage
+ABLG8522,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5669,58.381 N 134.641 W,Odd Lineage
+ABLG8537,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5684,58.381 N 134.641 W,Odd Lineage
+ABLG8530,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5677,58.381 N 134.641 W,Odd Lineage
+ABLG8526,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5673,58.381 N 134.641 W,Odd Lineage
+ABLG8528,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5675,58.381 N 134.641 W,Odd Lineage
+ABLG8534,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5681,58.381 N 134.641 W,Odd Lineage
+ABLG8506,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5653,58.381 N 134.641 W,Odd Lineage
+ABLG8517,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5664,58.381 N 134.641 W,Odd Lineage
+ABLG8538,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5685,58.381 N 134.641 W,Odd Lineage
+ABLG8529,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5676,58.381 N 134.641 W,Odd Lineage
+ABLG8532,Oncorhynchus gorbuscha,Early,adult,2005-08,Juneau - Auke Creek,Male,axillary process,OBD5679,58.381 N 134.641 W,Odd Lineage
