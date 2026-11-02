@@ -34,7 +34,8 @@ ls_peaks <- bind_rows(
   dplyr::rename(chrom = chrName, final = end) %>%
   # add 100kb buffer to start & end of peak boundary
   dplyr::mutate(start = beg - 100000,
-                end = final + 100000)
+                end = final + 100000,
+                Alignment = "Chum")
 
 # valr format: chrom, start, end
 df_valr <- ls_peaks %>%
@@ -42,7 +43,7 @@ df_valr <- ls_peaks %>%
 
 ##### Export Local Score Table SX ------------------------------------ ########
 # count overlaps with n > 1
-bed_intersect(df_valr, df_valr) %>%
+shared_df <- bed_intersect(df_valr, df_valr) %>%
   dplyr::group_by(chrom, start.x, end.x) %>%
   dplyr::summarize(n = n(), .groups = "drop") %>% 
   left_join(ls_peaks, ., 
@@ -50,8 +51,45 @@ bed_intersect(df_valr, df_valr) %>%
   dplyr::mutate(shared_peak = tidyr::replace_na(n > 1, FALSE)) %>%
   dplyr::select(-c(n,start,end)) %>%
   dplyr::rename(end = final) %>%
-  arrange(chr, beg) %>% 
+  arrange(chr, beg) 
+
+shared_df %>% 
   write_tsv(file = "./results/localscore/fourspp_localscore_peaks_xi3_01sig_100kbuffer.txt",col_names=T)
+
+### ADD SPECIES SPECIFIC ################################################
+pink_chrom_df <- read.table("./data/R/pinkV1_chrom_meta.txt", header = F)
+sock_chrom_df <- read.table("./data/R/sockeyeV1_chrom_meta.txt", header = F)
+coho_chrom_df <- read.table("./data/R/cohoV2_chrom_meta.txt", header = F)
+
+colnames(pink_chrom_df) <- c("chr","chrName")
+colnames(coho_chrom_df) <- c("chr","chrName")
+colnames(sock_chrom_df) <- c("chr","chrName")
+
+spp_specific_ls_peaks <- bind_rows(
+  read_tsv("./results/localscore/AukePink_minInd0.3_HWE_xi3_01sig.txt", col_names = T) %>%
+    mutate(Species = "Pink", Alignment = "Pink") %>%
+    dplyr::rename(`chrName` = `chr`) %>%
+    left_join(., pink_chrom_df, by="chrName"),
+  read_tsv("./results/localscore/sock-sock_minInd0.3_HWE_xi3_01sig.txt", col_names = T) %>%
+    mutate(Species = "Sockeye", Alignment = "Sockeye") %>%
+    dplyr::rename(`chrName` = `chr`) %>%
+    left_join(., sock_chrom_df, by="chrName"),
+  read_tsv("./results/localscore/tocoho_minInd0.3_minDepthHalf_HWE_xi3_01sig.txt", col_names = T) %>%
+    mutate(Species = "Coho", Alignment = "Coho") %>%
+    dplyr::rename(`chrName` = `chr`) %>%
+    left_join(., coho_chrom_df, by="chrName")
+) %>%
+  dplyr::select(Species, chr,everything()) %>%
+  dplyr::arrange(Species,chr,beg) %>%
+  dplyr::select(-peak) %>%
+  dplyr::rename(chrom = chrName)
+
+shared_df %>%
+  bind_rows(spp_specific_ls_peaks %>% 
+              mutate(shared_peak = NA)) %>%
+  dplyr::arrange(Alignment, Species, chr, beg) %>%
+  write_tsv("./results/localscore/TableS4_fourspp_localscore_peaks_all_alignments_xi3_01sig_100kbuffer.txt",col_names=T)
+
 
 #### Fst Files import ----------------------------------------------- ########
 
