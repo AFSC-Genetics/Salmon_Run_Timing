@@ -1,0 +1,529 @@
+sample_name	library_ID	title	library_strategy	library_source	library_selection	library_layout	platform	instrument_model	design_description	filetype	filename	filename2	filename3	filename4	assembly	fasta_file
+ABLG43528	PC24_early_01	Sockeye_Early_Stream_Pick_Creek_1	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43528_S138_L006_R1_001.fastq.gz	43528_S138_L006_R2_001.fastq.gz				
+ABLG43529	PC24_early_02	Sockeye_Early_Stream_Pick_Creek_2	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43529_S139_L006_R1_001.fastq.gz	43529_S139_L006_R2_001.fastq.gz				
+ABLG43530	PC24_early_03	Sockeye_Early_Stream_Pick_Creek_3	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43530_S140_L006_R1_001.fastq.gz	43530_S140_L006_R2_001.fastq.gz				
+ABLG43531	PC24_early_04	Sockeye_Early_Stream_Pick_Creek_4	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43531_S141_L006_R1_001.fastq.gz	43531_S141_L006_R2_001.fastq.gz				
+ABLG43532	PC24_early_05	Sockeye_Early_Stream_Pick_Creek_5	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43532_S142_L006_R1_001.fastq.gz	43532_S142_L006_R2_001.fastq.gz				
+ABLG43533	PC24_early_06	Sockeye_Early_Stream_Pick_Creek_6	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43533_S143_L006_R1_001.fastq.gz	43533_S143_L006_R2_001.fastq.gz				
+ABLG43534	PC24_early_07	Sockeye_Early_Stream_Pick_Creek_7	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43534_S144_L006_R1_001.fastq.gz	43534_S144_L006_R2_001.fastq.gz				
+ABLG43535	PC24_early_08	Sockeye_Early_Stream_Pick_Creek_8	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43535_S145_L006_R1_001.fastq.gz	43535_S145_L006_R2_001.fastq.gz				
+ABLG43536	PC24_early_09	Sockeye_Early_Stream_Pick_Creek_9	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43536_S146_L006_R1_001.fastq.gz	43536_S146_L006_R2_001.fastq.gz				
+ABLG43537	PC24_early_10	Sockeye_Early_Stream_Pick_Creek_10	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43537_S147_L006_R1_001.fastq.gz	43537_S147_L006_R2_001.fastq.gz				
+ABLG43538	PC24_early_11	Sockeye_Early_Stream_Pick_Creek_11	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43538_S148_L006_R1_001.fastq.gz	43538_S148_L006_R2_001.fastq.gz				
+ABLG43539	PC24_early_12	Sockeye_Early_Stream_Pick_Creek_12	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43539_S149_L006_R1_001.fastq.gz	43539_S149_L006_R2_001.fastq.gz				
+ABLG43540	PC24_early_13	Sockeye_Early_Stream_Pick_Creek_13	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43540_S150_L006_R1_001.fastq.gz	43540_S150_L006_R2_001.fastq.gz				
+ABLG43541	PC24_early_14	Sockeye_Early_Stream_Pick_Creek_14	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43541_S151_L006_R1_001.fastq.gz	43541_S151_L006_R2_001.fastq.gz				
+ABLG43542	PC24_early_15	Sockeye_Early_Stream_Pick_Creek_15	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43542_S152_L006_R1_001.fastq.gz	43542_S152_L006_R2_001.fastq.gz				
+ABLG43543	PC24_early_16	Sockeye_Early_Stream_Pick_Creek_16	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43543_S153_L006_R1_001.fastq.gz	43543_S153_L006_R2_001.fastq.gz				
+ABLG43544	PC24_early_17	Sockeye_Early_Stream_Pick_Creek_17	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43544_S154_L006_R1_001.fastq.gz	43544_S154_L006_R2_001.fastq.gz				
+ABLG43545	PC24_early_18	Sockeye_Early_Stream_Pick_Creek_18	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43545_S155_L006_R1_001.fastq.gz	43545_S155_L006_R2_001.fastq.gz				
+ABLG43546	PC24_early_19	Sockeye_Early_Stream_Pick_Creek_19	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43546_S156_L006_R1_001.fastq.gz	43546_S156_L006_R2_001.fastq.gz				
+ABLG43547	PC24_early_20	Sockeye_Early_Stream_Pick_Creek_20	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43547_S157_L006_R1_001.fastq.gz	43547_S157_L006_R2_001.fastq.gz				
+ABLG43548	PC24_early_21	Sockeye_Early_Stream_Pick_Creek_21	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43548_S158_L006_R1_001.fastq.gz	43548_S158_L006_R2_001.fastq.gz				
+ABLG43549	PC24_early_22	Sockeye_Early_Stream_Pick_Creek_22	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43549_S159_L006_R1_001.fastq.gz	43549_S159_L006_R2_001.fastq.gz				
+ABLG43550	PC24_early_23	Sockeye_Early_Stream_Pick_Creek_23	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43550_S160_L006_R1_001.fastq.gz	43550_S160_L006_R2_001.fastq.gz				
+ABLG43551	PC24_early_24	Sockeye_Early_Stream_Pick_Creek_24	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43551_S161_L006_R1_001.fastq.gz	43551_S161_L006_R2_001.fastq.gz				
+ABLG43552	PC24_early_25	Sockeye_Early_Stream_Pick_Creek_25	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43552_S162_L006_R1_001.fastq.gz	43552_S162_L006_R2_001.fastq.gz				
+ABLG43553	PC24_early_26	Sockeye_Early_Stream_Pick_Creek_26	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43553_S163_L006_R1_001.fastq.gz	43553_S163_L006_R2_001.fastq.gz				
+ABLG43554	PC24_early_27	Sockeye_Early_Stream_Pick_Creek_27	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43554_S164_L006_R1_001.fastq.gz	43554_S164_L006_R2_001.fastq.gz				
+ABLG43555	PC24_early_28	Sockeye_Early_Stream_Pick_Creek_28	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43555_S165_L006_R1_001.fastq.gz	43555_S165_L006_R2_001.fastq.gz				
+ABLG43556	PC24_early_29	Sockeye_Early_Stream_Pick_Creek_29	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43556_S166_L006_R1_001.fastq.gz	43556_S166_L006_R2_001.fastq.gz				
+ABLG43557	PC24_early_30	Sockeye_Early_Stream_Pick_Creek_30	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43557_S167_L006_R1_001.fastq.gz	43557_S167_L006_R2_001.fastq.gz				
+ABLG43558	PC24_early_31	Sockeye_Early_Stream_Pick_Creek_31	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43558_S168_L006_R1_001.fastq.gz	43558_S168_L006_R2_001.fastq.gz				
+ABLG43559	PC24_early_32	Sockeye_Early_Stream_Pick_Creek_32	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43559_S169_L006_R1_001.fastq.gz	43559_S169_L006_R2_001.fastq.gz				
+ABLG43560	PC24_early_33	Sockeye_Early_Stream_Pick_Creek_33	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43560_S170_L006_R1_001.fastq.gz	43560_S170_L006_R2_001.fastq.gz				
+ABLG43561	PC24_early_34	Sockeye_Early_Stream_Pick_Creek_34	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43561_S171_L006_R1_001.fastq.gz	43561_S171_L006_R2_001.fastq.gz				
+ABLG43562	PC24_early_35	Sockeye_Early_Stream_Pick_Creek_35	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43562_S172_L006_R1_001.fastq.gz	43562_S172_L006_R2_001.fastq.gz				
+ABLG43563	PC24_early_36	Sockeye_Early_Stream_Pick_Creek_36	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43563_S173_L006_R1_001.fastq.gz	43563_S173_L006_R2_001.fastq.gz				
+ABLG43564	PC24_early_37	Sockeye_Early_Stream_Pick_Creek_37	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43564_S174_L006_R1_001.fastq.gz	43564_S174_L006_R2_001.fastq.gz				
+ABLG43565	PC24_early_38	Sockeye_Early_Stream_Pick_Creek_38	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43565_S175_L006_R1_001.fastq.gz	43565_S175_L006_R2_001.fastq.gz				
+ABLG43566	PC24_early_39	Sockeye_Early_Stream_Pick_Creek_39	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43566_S176_L006_R1_001.fastq.gz	43566_S176_L006_R2_001.fastq.gz				
+ABLG43567	PC24_early_40	Sockeye_Early_Stream_Pick_Creek_40	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43567_S177_L006_R1_001.fastq.gz	43567_S177_L006_R2_001.fastq.gz				
+ABLG43568	PC24_early_41	Sockeye_Early_Stream_Pick_Creek_41	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43568_S178_L006_R1_001.fastq.gz	43568_S178_L006_R2_001.fastq.gz				
+ABLG43569	PC24_early_42	Sockeye_Early_Stream_Pick_Creek_42	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43569_S179_L006_R1_001.fastq.gz	43569_S179_L006_R2_001.fastq.gz				
+ABLG43570	PC24_early_43	Sockeye_Early_Stream_Pick_Creek_43	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43570_S180_L006_R1_001.fastq.gz	43570_S180_L006_R2_001.fastq.gz				
+ABLG43571	PC24_early_44	Sockeye_Early_Stream_Pick_Creek_44	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43571_S181_L006_R1_001.fastq.gz	43571_S181_L006_R2_001.fastq.gz				
+ABLG43572	PC24_early_45	Sockeye_Early_Stream_Pick_Creek_45	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43572_S182_L006_R1_001.fastq.gz	43572_S182_L006_R2_001.fastq.gz				
+ABLG43573	PC24_early_46	Sockeye_Early_Stream_Pick_Creek_46	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43573_S183_L006_R1_001.fastq.gz	43573_S183_L006_R2_001.fastq.gz				
+ABLG43574	PC24_early_47	Sockeye_Early_Stream_Pick_Creek_47	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43574_S184_L006_R1_001.fastq.gz	43574_S184_L006_R2_001.fastq.gz				
+ABLG43575	PC24_early_48	Sockeye_Early_Stream_Pick_Creek_48	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43575_S185_L006_R1_001.fastq.gz	43575_S185_L006_R2_001.fastq.gz				
+ABLG43576	PC24_late_01	Sockeye_Late_Stream_Pick_Creek_1	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43576_S186_L006_R1_001.fastq.gz	43576_S186_L006_R2_001.fastq.gz				
+ABLG43577	PC24_late_02	Sockeye_Late_Stream_Pick_Creek_2	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43577_S187_L006_R1_001.fastq.gz	43577_S187_L006_R2_001.fastq.gz				
+ABLG43578	PC24_late_03	Sockeye_Late_Stream_Pick_Creek_3	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43578_S188_L006_R1_001.fastq.gz	43578_S188_L006_R2_001.fastq.gz				
+ABLG43579	PC24_late_04	Sockeye_Late_Stream_Pick_Creek_4	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43579_S189_L006_R1_001.fastq.gz	43579_S189_L006_R2_001.fastq.gz				
+ABLG43580	PC24_late_05	Sockeye_Late_Stream_Pick_Creek_5	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43580_S190_L006_R1_001.fastq.gz	43580_S190_L006_R2_001.fastq.gz				
+ABLG43581	PC24_late_06	Sockeye_Late_Stream_Pick_Creek_6	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43581_S191_L006_R1_001.fastq.gz	43581_S191_L006_R2_001.fastq.gz				
+ABLG43582	PC24_late_07	Sockeye_Late_Stream_Pick_Creek_7	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43582_S192_L006_R1_001.fastq.gz	43582_S192_L006_R2_001.fastq.gz				
+ABLG43583	PC24_late_08	Sockeye_Late_Stream_Pick_Creek_8	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43583_S193_L006_R1_001.fastq.gz	43583_S193_L006_R2_001.fastq.gz				
+ABLG43584	PC24_late_09	Sockeye_Late_Stream_Pick_Creek_9	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43584_S194_L006_R1_001.fastq.gz	43584_S194_L006_R2_001.fastq.gz				
+ABLG43585	PC24_late_10	Sockeye_Late_Stream_Pick_Creek_10	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43585_S195_L006_R1_001.fastq.gz	43585_S195_L006_R2_001.fastq.gz				
+ABLG43586	PC24_late_11	Sockeye_Late_Stream_Pick_Creek_11	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43586_S196_L006_R1_001.fastq.gz	43586_S196_L006_R2_001.fastq.gz				
+ABLG43587	PC24_late_12	Sockeye_Late_Stream_Pick_Creek_12	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43587_S197_L006_R1_001.fastq.gz	43587_S197_L006_R2_001.fastq.gz				
+ABLG43588	PC24_late_13	Sockeye_Late_Stream_Pick_Creek_13	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43588_S198_L006_R1_001.fastq.gz	43588_S198_L006_R2_001.fastq.gz				
+ABLG43589	PC24_late_14	Sockeye_Late_Stream_Pick_Creek_14	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43589_S199_L006_R1_001.fastq.gz	43589_S199_L006_R2_001.fastq.gz				
+ABLG43590	PC24_late_15	Sockeye_Late_Stream_Pick_Creek_15	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43590_S200_L006_R1_001.fastq.gz	43590_S200_L006_R2_001.fastq.gz				
+ABLG43591	PC24_late_16	Sockeye_Late_Stream_Pick_Creek_16	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43591_S201_L006_R1_001.fastq.gz	43591_S201_L006_R2_001.fastq.gz				
+ABLG43592	PC24_late_17	Sockeye_Late_Stream_Pick_Creek_17	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43592_S202_L006_R1_001.fastq.gz	43592_S202_L006_R2_001.fastq.gz				
+ABLG43593	PC24_late_18	Sockeye_Late_Stream_Pick_Creek_18	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43593_S203_L006_R1_001.fastq.gz	43593_S203_L006_R2_001.fastq.gz				
+ABLG43594	PC24_late_19	Sockeye_Late_Stream_Pick_Creek_19	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43594_S204_L006_R1_001.fastq.gz	43594_S204_L006_R2_001.fastq.gz				
+ABLG43595	PC24_late_20	Sockeye_Late_Stream_Pick_Creek_20	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43595_S205_L006_R1_001.fastq.gz	43595_S205_L006_R2_001.fastq.gz				
+ABLG43596	PC24_late_21	Sockeye_Late_Stream_Pick_Creek_21	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43596_S206_L006_R1_001.fastq.gz	43596_S206_L006_R2_001.fastq.gz				
+ABLG43597	PC24_late_22	Sockeye_Late_Stream_Pick_Creek_22	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43597_S207_L006_R1_001.fastq.gz	43597_S207_L006_R2_001.fastq.gz				
+ABLG43598	PC24_late_23	Sockeye_Late_Stream_Pick_Creek_23	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43598_S208_L006_R1_001.fastq.gz	43598_S208_L006_R2_001.fastq.gz				
+ABLG43599	PC24_late_24	Sockeye_Late_Stream_Pick_Creek_24	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43599_S209_L006_R1_001.fastq.gz	43599_S209_L006_R2_001.fastq.gz				
+ABLG43600	PC24_late_25	Sockeye_Late_Stream_Pick_Creek_25	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43600_S210_L006_R1_001.fastq.gz	43600_S210_L006_R2_001.fastq.gz				
+ABLG43601	PC24_late_26	Sockeye_Late_Stream_Pick_Creek_26	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43601_S211_L006_R1_001.fastq.gz	43601_S211_L006_R2_001.fastq.gz				
+ABLG43602	PC24_late_27	Sockeye_Late_Stream_Pick_Creek_27	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43602_S212_L006_R1_001.fastq.gz	43602_S212_L006_R2_001.fastq.gz				
+ABLG43603	PC24_late_28	Sockeye_Late_Stream_Pick_Creek_28	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43603_S213_L006_R1_001.fastq.gz	43603_S213_L006_R2_001.fastq.gz				
+ABLG43604	PC24_late_29	Sockeye_Late_Stream_Pick_Creek_29	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43604_S214_L006_R1_001.fastq.gz	43604_S214_L006_R2_001.fastq.gz				
+ABLG43605	PC24_late_30	Sockeye_Late_Stream_Pick_Creek_30	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43605_S215_L006_R1_001.fastq.gz	43605_S215_L006_R2_001.fastq.gz				
+ABLG43606	PC24_late_31	Sockeye_Late_Stream_Pick_Creek_31	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43606_S216_L006_R1_001.fastq.gz	43606_S216_L006_R2_001.fastq.gz				
+ABLG43607	PC24_late_32	Sockeye_Late_Stream_Pick_Creek_32	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43607_S217_L006_R1_001.fastq.gz	43607_S217_L006_R2_001.fastq.gz				
+ABLG43608	PC24_late_33	Sockeye_Late_Stream_Pick_Creek_33	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43608_S218_L006_R1_001.fastq.gz	43608_S218_L006_R2_001.fastq.gz				
+ABLG43609	PC24_late_34	Sockeye_Late_Stream_Pick_Creek_34	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43609_S219_L006_R1_001.fastq.gz	43609_S219_L006_R2_001.fastq.gz				
+ABLG43610	PC24_late_35	Sockeye_Late_Stream_Pick_Creek_35	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43610_S220_L006_R1_001.fastq.gz	43610_S220_L006_R2_001.fastq.gz				
+ABLG43611	PC24_late_36	Sockeye_Late_Stream_Pick_Creek_36	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43611_S221_L006_R1_001.fastq.gz	43611_S221_L006_R2_001.fastq.gz				
+ABLG43612	PC24_late_37	Sockeye_Late_Stream_Pick_Creek_37	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43612_S222_L006_R1_001.fastq.gz	43612_S222_L006_R2_001.fastq.gz				
+ABLG43613	PC24_late_38	Sockeye_Late_Stream_Pick_Creek_38	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43613_S223_L006_R1_001.fastq.gz	43613_S223_L006_R2_001.fastq.gz				
+ABLG43614	PC24_late_39	Sockeye_Late_Stream_Pick_Creek_39	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43614_S224_L006_R1_001.fastq.gz	43614_S224_L006_R2_001.fastq.gz				
+ABLG43615	PC24_late_40	Sockeye_Late_Stream_Pick_Creek_40	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43615_S225_L006_R1_001.fastq.gz	43615_S225_L006_R2_001.fastq.gz				
+ABLG43616	PC24_late_41	Sockeye_Late_Stream_Pick_Creek_41	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43616_S226_L006_R1_001.fastq.gz	43616_S226_L006_R2_001.fastq.gz				
+ABLG43617	PC24_late_42	Sockeye_Late_Stream_Pick_Creek_42	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43617_S227_L006_R1_001.fastq.gz	43617_S227_L006_R2_001.fastq.gz				
+ABLG43618	PC24_late_43	Sockeye_Late_Stream_Pick_Creek_43	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43618_S228_L006_R1_001.fastq.gz	43618_S228_L006_R2_001.fastq.gz				
+ABLG43619	PC24_late_44	Sockeye_Late_Stream_Pick_Creek_44	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43619_S229_L006_R1_001.fastq.gz	43619_S229_L006_R2_001.fastq.gz				
+ABLG43620	PC24_late_45	Sockeye_Late_Stream_Pick_Creek_45	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43620_S230_L006_R1_001.fastq.gz	43620_S230_L006_R2_001.fastq.gz				
+ABLG43621	PC24_late_46	Sockeye_Late_Stream_Pick_Creek_46	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43621_S231_L006_R1_001.fastq.gz	43621_S231_L006_R2_001.fastq.gz				
+ABLG43622	PC24_late_47	Sockeye_Late_Stream_Pick_Creek_47	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43622_S232_L006_R1_001.fastq.gz	43622_S232_L006_R2_001.fastq.gz				
+ABLG43623	PC24_late_48	Sockeye_Late_Stream_Pick_Creek_48	WGS	GENOMIC	RANDOM	paired	ILLUMINA	Illumina NovaSeq X Plus	shotgun sequencing	fastq	43623_S233_L006_R1_001.fastq.gz	43623_S233_L006_R2_001.fastq.gz				
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
+																
