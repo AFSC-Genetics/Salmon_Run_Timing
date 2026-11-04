@@ -2,7 +2,8 @@
 # the proportions are pulled from the outputs of the species-specific pca_lrrc9 and pca_esrb scripts
 
 packages_needed <- c("ggplot2", "scales", "ggpubr", "tidyverse", "grid", "gridExtra",
-                     "lattice", "patchwork", "here", "cowplot", "magrittr", "ggh4x")
+                     "lattice", "patchwork", "here", "cowplot", "magrittr", "ggh4x",
+                     "svglite")
 
 for(i in 1:length(packages_needed)){
   if(!(packages_needed[i] %in% installed.packages())){install.packages(packages_needed[i])}
@@ -11,11 +12,16 @@ for(i in 1:length(packages_needed)){
 
 
 outdir="./figures/barplot/"
-
+dir.create(outdir, showWarnings = FALSE)
 # setwd("../../Salmon_Run_Timing")
 # outdir="../Salmon_runtiming/2024_fourspecies/figures/barplot/"
 
-### Input Proportions##################
+# for science, consistent font sizing
+largeFS <- 18  # Title & your textGrob
+mediumFS <- 12  # Axis titles, legend titles
+smallFS <- 9   # Axis text, annotations, captions
+
+### Input Proportions ##################
 
 #### LRRC9 ##################
 
@@ -24,13 +30,13 @@ pinkeven_lrrc9 <- read.table(file = "data/R/threespp_lrrc9_alleles/pink-chum_min
   select(Runtime, Genotype, n) %>%
   mutate(Species = "Pink Even")
 
-pinkodd_lrrc9 <- read.csv("./data/R/threespp_lrrc9_alleles/PinkOdd_2019_GTseq.csv", row.names = NULL) %>%
+pinkodd_lrrc9 <- read.csv("./results/GTseq/Pink/PinkSalmon_2019Q1_Q4.csv", row.names = NULL) %>%
   mutate(Species = "Pink Odd",
          Runtime = Pheno,
-         n = nPinks,
-         Genotype = case_when(value == 4004 ~ "EE",
-                              value == 2004 ~ "EL",
-                              value == 2002 ~ "LL")) %>%
+         n = nInd,
+         Genotype = case_when(Geno == 'AA' ~ "EE",
+                              Geno == 'AT' ~ "EL",
+                              Geno == 'TT' ~ "LL")) %>%
   select(Species, Runtime, Genotype, n)
 
 sock_lrrc9 <- read.table(file = "./data/R/threespp_lrrc9_alleles/sock-all_lrrc9_allele_proportions.txt",
@@ -83,11 +89,16 @@ esr1_df <- rbind(sock_esr1, coho_esr1) %>%
 genes_df <- rbind(lrrc9_df, esrb_df, esr1_df) %>%
   select(Species, Gene, everything())
 
+genes_df <- genes_df %>%
+  mutate(Runtime = gsub('Stream','Crk.',Runtime))
+
+RuntimeList <- c("Early","Late","Early Crk.","Late Crk.", "Late Beach", 
+                 "Early Crk. (Teal)", "Late Crk. (Whitefish)", 
+                 "Early Crk. (Pick)", "Late Crk. (Pick)", "Late Beach (Anvil)")
+
 # add levels for ordering plots
 genes_df$Species <- factor(genes_df$Species, levels = c("Pink Even", "Pink Odd", "Sockeye", "Chum", "Coho"))
-genes_df$Runtime <- factor(genes_df$Runtime, levels = c("Early","Late","Early Stream","Late Stream", "Late Beach", 
-                                                        "Early Stream (Teal)", "Late Stream (Whitefish)", 
-                                                        "Early Stream (Pick)", "Late Stream (Pick)", "Late Beach (Anvil)"))
+genes_df$Runtime <- factor(genes_df$Runtime, levels = RuntimeList)
 genes_df$Gene <- factor(genes_df$Gene, levels = c("LRRC9", "ESRB", "ESR1"))
 levels(genes_df$Species)
 levels(genes_df$Gene)
@@ -95,19 +106,17 @@ levels(genes_df$Gene)
 write.csv(genes_df, "./data/R/AlleleGroup_CountPerSpecies-Genotype_2.csv", 
             row.names = F)
 
-#### LRRC9 Plot  ###############
+#### LRRC9 Plot ###############
 
 # expand sockeye location names
 genes_df <- genes_df %>%
   mutate(Runtime = Runtime %>% 
-         gsub("Early Stream$",'Early Stream (Teal)',.) %>% 
-         gsub("Late Stream$",'Late Stream (Whitefish)',.) %>%
-         gsub("- ","Stream (",.) %>% gsub("Pick Creek","Pick)",.) %>%
+         gsub("Early Crk.$",'Early Crk. (Teal)',.) %>% 
+         gsub("Late Crk.$",'Late Crk. (Whitefish)',.) %>%
          gsub("Late Beach$",'Late Beach (Anvil)',.)) 
 
 genes_df$Runtime <- factor(genes_df$Runtime, 
                                   levels = c(unique(genes_df$Runtime)[-5],unique(genes_df$Runtime)[5]))
-
 
 lrrc9_barplot <- ggplot(filter(genes_df, Gene == "LRRC9"), 
                         aes(x = Runtime, y = n, fill = Genotype)) +
@@ -118,7 +127,7 @@ lrrc9_barplot <- ggplot(filter(genes_df, Gene == "LRRC9"),
   scale_fill_manual(name = "Genotype", values = c("goldenrod2", "mediumseagreen", "royalblue3")) +
   xlab("Run Timing Phenotype") +
   ggtitle(expression(italic(lrrc9))) +
-  scale_x_discrete(labels = function(x) str_wrap(x, width = 9)) +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
   scale_y_continuous(expand = expansion(mult = c(0.01, 0.01))) +
   theme_bw() +
   theme(legend.position = "right", legend.background = element_rect(color = "white"),
@@ -147,7 +156,7 @@ esrb_barplot <- ggplot(filter(genes_df, Gene == "ESRB"),
   scale_fill_manual(name = "Genotype", values = c("goldenrod2", "mediumseagreen", "royalblue3")) +
   xlab("Run Timing Phenotype") +
   ggtitle(expression(italic(esr2b))) +
-  scale_x_discrete(labels = function(x) str_wrap(x, width = 9)) +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
   scale_y_continuous(expand = expansion(mult = c(0.01, 0.01))) +
   theme_bw() +
   theme(legend.position = "none",
@@ -174,7 +183,7 @@ esr1_barplot <- ggplot(filter(genes_df, Gene == "ESR1"),
   scale_fill_manual(name = "Genotype", values = c("goldenrod2", "mediumseagreen", "royalblue3")) +
   ylab("Proportion") + xlab("Run Timing Phenotype") +
   ggtitle(expression(italic(esr1))) +
-  scale_x_discrete(labels = function(x) str_wrap(x, width = 9)) +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
   scale_y_continuous(expand = expansion(mult = c(0.01, 0.01))) +
   theme_bw() +
   theme(legend.position = "none",
@@ -215,6 +224,12 @@ dev.off()
 
 jpeg(file = paste0(outdir,"three_genes_barplot_",format(Sys.Date(),"%Y%m%d"),".jpg"), 
      width = 48, height = 16, res = 300, units = 'cm')
+grid.arrange(gridExtra::arrangeGrob(final_barplot, bottom = x.grob))
+dev.off()
+
+# 
+ragg::agg_jpeg(str_c(outdir,"three_genes_barplot_ragg.jpeg"), 
+               width = 4800, height = 1600, res = 300, scaling = 1)
 grid.arrange(gridExtra::arrangeGrob(final_barplot, bottom = x.grob))
 dev.off()
 

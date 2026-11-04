@@ -5,18 +5,18 @@
 "Pink Even","LRRC9","Late","EL",29
 "Pink Even","LRRC9","Early","LL",2
 "Pink Even","LRRC9","Late","LL",45
-"Pink Odd","LRRC9","Early","LL",2
-"Pink Odd","LRRC9","Early","EL",9
-"Pink Odd","LRRC9","Early","EE",7
-"Pink Odd","LRRC9","Late","LL",18
-"Pink Odd","LRRC9","Late","EL",20
-"Sockeye","LRRC9","Early Stream","EE",18
-"Sockeye","LRRC9","Late Stream","EE",14
-"Sockeye","LRRC9","Early Stream","EL",8
-"Sockeye","LRRC9","Late Stream","EL",19
+"Pink Odd","LRRC9","Early","EE",12
+"Pink Odd","LRRC9","Early","EL",8
+"Pink Odd","LRRC9","Early","LL",4
+"Pink Odd","LRRC9","Late","EL",15
+"Pink Odd","LRRC9","Late","LL",24
+"Sockeye","LRRC9","Early Crk.","EE",18
+"Sockeye","LRRC9","Late Crk.","EE",14
+"Sockeye","LRRC9","Early Crk.","EL",8
+"Sockeye","LRRC9","Late Crk.","EL",19
 "Sockeye","LRRC9","Late Beach","EL",2
-"Sockeye","LRRC9","Early Stream","LL",1
-"Sockeye","LRRC9","Late Stream","LL",13
+"Sockeye","LRRC9","Early Crk.","LL",1
+"Sockeye","LRRC9","Late Crk.","LL",13
 "Sockeye","LRRC9","Late Beach","LL",25
 "Chum","LRRC9","Early","EE",27
 "Chum","LRRC9","Early","EL",14
@@ -29,18 +29,18 @@
 "Coho","ESRB","Early","EE",45
 "Coho","ESRB","Late","EL",1
 "Coho","ESRB","Late","LL",37
-"Sockeye","ESR1","Early Stream (Pick)","EE",37
-"Sockeye","ESR1","Late Stream (Pick)","EE",2
-"Sockeye","ESR1","Early Stream (Teal)","EE",11
-"Sockeye","ESR1","Late Stream (Whitefish)","EE",35
-"Sockeye","ESR1","Early Stream (Pick)","EL",11
-"Sockeye","ESR1","Late Stream (Pick)","EL",20
+"Sockeye","ESR1","Early Crk. (Pick)","EE",37
+"Sockeye","ESR1","Late Crk. (Pick)","EE",2
+"Sockeye","ESR1","Early Crk. (Teal)","EE",11
+"Sockeye","ESR1","Late Crk. (Whitefish)","EE",35
+"Sockeye","ESR1","Early Crk. (Pick)","EL",11
+"Sockeye","ESR1","Late Crk. (Pick)","EL",20
 "Sockeye","ESR1","Late Beach (Anvil)","EL",10
-"Sockeye","ESR1","Early Stream (Teal)","EL",12
-"Sockeye","ESR1","Late Stream (Whitefish)","EL",11
-"Sockeye","ESR1","Late Stream (Pick)","LL",24
+"Sockeye","ESR1","Early Crk. (Teal)","EL",12
+"Sockeye","ESR1","Late Crk. (Whitefish)","EL",11
+"Sockeye","ESR1","Late Crk. (Pick)","LL",24
 "Sockeye","ESR1","Late Beach (Anvil)","LL",17
-"Sockeye","ESR1","Early Stream (Teal)","LL",4
+"Sockeye","ESR1","Early Crk. (Teal)","LL",4
 "Coho","ESR1","Early","EE",39
 "Coho","ESR1","Early","EL",6
 "Coho","ESR1","Late","EL",2
