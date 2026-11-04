@@ -43,7 +43,7 @@ gene_by_spp <- genes_df %>%
 fis_df <- map2_dfr(gene_by_spp$spp, gene_by_spp$chrName, function(species, chr) {
   
   file_paths <- list.files("./results/fis", 
-                           pattern = str_c(".*", chr, ".*\\.hwe\\.gz$"),
+                           pattern = str_c(".*", chr, ".*HWE_minMaf\\.hwe\\.gz$"),
                            full.names = TRUE)
   
   map_dfr(file_paths, function(fp) {
@@ -60,23 +60,27 @@ fis_df <- map2_dfr(gene_by_spp$spp, gene_by_spp$chrName, function(species, chr) 
   })
 })
 
-head(fis_df)
-
 fis_df %>%
   distinct(spp,runtime,chrName)
+
+# should be 2 of each for early/late
+fis_df %>%
+  distinct(spp,runtime,chrName) %>%
+  count(spp,chrName)
 
 ### The plots are a lot, so maybe just do a table ##########################
 boundaries <- read_tsv('./data/R/gene_peak_boundaries.txt', col_names=TRUE) %>%
   separate(Boundaries, into=c('start','end'),sep='-', convert = TRUE)
 
-# chr 8 in chum (esr1) is included because 
+# chr 8 in chum (esr1) is included because it is in the mappability calcs.
 
 fis_by_bound <- boundaries %>%
   mutate(Chromosome = as.character(Chromosome)) %>%
   left_join(fis_df %>%
               left_join(all_chrom_meta, join_by('spp','chrName')),
             by = join_by(Species == spp, Chromosome == chr, 
-                         start <= Position, end >= Position)) %>%
+                         start <= Position, 
+                         end >= Position)) %>%
   mutate(lowFis = Fis < -0.5) %>%
   group_by(Species, Chromosome, start, end) %>%
   summarize(Average = mean(Fis, na.rm = TRUE),
@@ -91,6 +95,11 @@ boundaries %>%
   mutate(Chromosome = as.character(Chromosome)) %>%
   left_join(fis_by_bound, join_by(Species, Chromosome, start, end)) %>%
   write_tsv("./results/TableSX_FIS_by_gene_region.tsv")
+
+fis_df %>%
+  filter(spp=='Coho',
+         chr=='21',
+         Position >= 24719119, Position <= 24743990)
 
 
 ##### Plotting ###########################
@@ -112,7 +121,16 @@ pwalk(
            y = expression(italic(F)[IS])) +
       theme_bw()
     
-    ggsave(filename = str_c("./figures/fis/",spp,"_chr",chr,"_",gene,".jpeg"),
-           plot = p, width = 7, height = 5, dpi = 500)
+    ggsave(filename = str_c("./figures/fis/minMaf",spp,"_chr",chr,"_",gene,".jpeg"),
+           plot = p, width = 7, height = 5, dpi = 200)
   }
 )
+
+
+### looking at the data
+boundaries %>%
+  mutate(Chromosome = as.character(Chromosome)) %>%
+  left_join(fis_df %>%
+              left_join(all_chrom_meta, join_by('spp','chrName')),
+            by = join_by(Species == spp, Chromosome == chr, 
+                         start <= Position, end >= Position)) %>% View
