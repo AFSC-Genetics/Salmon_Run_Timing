@@ -1,0 +1,17 @@
+Species	Chromosome	Boundaries	Boundary_Desc
+Chum	8	23100059-23997201	esr1 region
+Chum	8	23525841-23552881	esr1 gene
+Chum	29	24700042-263998921	esr2b region
+Chum	29	25451985-25483494	esr2b gene
+Chum	35	27861977-28299479	lrrc9 region
+Chum	35	28128954-28169980	lrrc9 gene
+Pink	10	72650536-72875058	lrrc9 region
+Pink	10	72710811-72735126	lrrc9 gene
+Sockeye	12	41162738-41448689	lrrc9 region
+Sockeye	12	41184975-41207762	lrrc9 gene
+Sockeye	13	7206200 -7645274	esr1 region
+Sockeye	13	7621613-7645274	esr1 gene
+Coho	7	29455765-30509378	esr2b region
+Coho	7	30264668-30291493	esr2b gene
+Coho	21	24716700-24902281	esr1 region
+Coho	21	24719119-24743990	esr1 gene

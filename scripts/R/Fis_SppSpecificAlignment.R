@@ -98,8 +98,10 @@ boundaries %>%
 
 fis_df %>%
   filter(spp=='Coho',
-         chr=='21',
-         Position >= 24719119, Position <= 24743990)
+         chrName=='NC_034194.2',
+         Position >= 24719119, 
+         Position <= 24743990) %>%
+  arrange(Fis) %>% View()
 
 
 ##### Plotting ###########################
