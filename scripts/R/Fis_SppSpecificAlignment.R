@@ -91,21 +91,23 @@ fis_by_bound <- boundaries %>%
             PropLowFis = mean(lowFis, na.rm = TRUE), # mean is prop for T/F
             .groups = "drop")
 
-boundaries %>%
-  mutate(Chromosome = as.character(Chromosome)) %>%
-  left_join(fis_by_bound, join_by(Species, Chromosome, start, end)) %>%
-  write_tsv("./results/TableSX_FIS_by_gene_region.tsv")
-
+# spot check results
 fis_df %>%
   filter(spp=='Coho',
          chrName=='NC_034194.2',
          Position >= 24719119, 
          Position <= 24743990) %>%
-  arrange(Fis) %>% View()
+  arrange(Fis)
+
+boundaries %>%
+  mutate(Chromosome = as.character(Chromosome)) %>%
+  left_join(fis_by_bound, join_by(Species, Chromosome, start, end)) %>%
+  write_tsv("./results/fis/TableSX_FIS_by_gene_region.tsv")
 
 
-##### Plotting ###########################
+##### Plotting ###################################################
 
+# iterate over species and chromosome
 pwalk(
   gene_by_spp,
   function(spp, chrName, chr, start, end, gene, ...) {
