@@ -5,6 +5,9 @@
 # figures
 **/figures/
 
+# old unused code
+**/old/
+
 # History files
 .Rhistory
 .Rapp.history
