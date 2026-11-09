@@ -3,6 +3,36 @@ library(tidyverse)
 library(sf)
 library(patchwork)
 
+#### Plotting params
+#For colors use colorbrewer Dark2 which is colorblind friendly
+
+# for science, consistent font sizing
+width2col <- 7.25  # 2 col, in inches
+width1col <- 3.6  # 1 col, in inches
+
+largeFS <- 10 # Panel Labels
+mediumFS <- 8  # Axis titles, legend titles
+smallFS <- 6  # Axis text, annotations, captions
+
+theme_set(
+  theme(legend.text=element_text(size=mediumFS),
+        legend.title = element_text(size = mediumFS),
+        axis.text = element_text(size = smallFS, angle = 0),
+        axis.title.x = element_text(size = mediumFS),
+        axis.title.y = element_text(size = mediumFS, angle=90, margin=margin(0,0,0,0)),
+        plot.title = element_text(size = mediumFS, hjust = 0.5, margin=margin(0,0,2,0)),
+        panel.background = element_rect(fill = "white"), 
+        panel.spacing = unit(0,"lines"),
+        strip.text.y = element_text(angle = 0),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank()
+  )
+)
+
+pointSize = 2.5
+
+####
+
 #Load Metadata
 SalmonCollections<-read_csv("./Data/Raw/CollectionInfo.csv")
 
@@ -67,13 +97,13 @@ pChum <- ggplot() +
   geom_sf(data = YukonKoyR, inherit.aes = FALSE,color="blue",alpha=0.25)+
   coord_sf(xlim = c(-179, -125),  ylim = c(46.5, 73),expand = FALSE)+
   geom_point(data=SalmonCollections %>%
-               mutate(Species = factor(Species,levels=c("Chum","Coho","Sockeye","Pink"))),aes(x=Long,y=Lat,fill=Species),pch=21,size=4)+
+               mutate(Species = factor(Species,levels=c("Chum","Coho","Sockeye","Pink"))),aes(x=Long,y=Lat,fill=Species),pch=21,size=pointSize)+
   xlab("")+
   ylab("")+
-  theme(legend.position="right",
-        text = element_text(size=30),
-        axis.text=element_text(size=10),
-        plot.margin=grid::unit(c(1,1,0.5,0.5), "mm"))+#trbl
+  # theme(legend.position="right",
+  #       text = element_text(size=30),
+  #       axis.text=element_text(size=10),
+  #       plot.margin=grid::unit(c(1,1,0.5,0.5), "mm"))+#trbl
   scale_y_continuous(breaks = seq(45, 70, by = 10)) + 
   scale_x_continuous(breaks = seq(-170, -125, by = 20))+
   ggspatial::annotation_north_arrow(
@@ -89,10 +119,10 @@ pChum <- ggplot() +
     bar_cols = c("grey60", "white")
   )+
   annotate("text",y=65,x= -150.0,label="Yukon R.",
-           fontface = 'italic',angle = 33,size=3,color='grey50')+
+           fontface = 'italic',angle = 33,size=mediumFS/.pt,color='grey50')+
   geom_text(data=SalmonCollections %>% 
               mutate(Species = factor(Species,levels=c("Chum","Coho","Sockeye","Pink")))%>%
-              filter(Species == "Chum"),aes(x=Long+2,y=Lat+2,label=Label),size=3,fontface = "italic",angle=45)
+              filter(Species == "Chum"),aes(x=Long+2,y=Lat+2,label=Label),size=mediumFS/.pt,fontface = "italic",angle=45)
 
 #### Coho Skilak R ####
 st_layers(dsn = "./Data/Mapping/AWC_geodatabase/AWC2024.gdb.zip")
@@ -126,13 +156,13 @@ pSkilak <- ggplot() +
   geom_sf(data = Skilak_L, inherit.aes = FALSE,color="blue",fill="lightblue")+
   coord_sf(xlim = c(-151.45, -149.95),  ylim = c(60.0, 61.0),expand = FALSE)+
   geom_point(data=SalmonCollections %>%
-               mutate(Species = factor(Species,levels=c("Chum","Coho","Sockeye","Pink"))),aes(x=Long,y=Lat,fill=Species),pch=21,size=4)+
+               mutate(Species = factor(Species,levels=c("Chum","Coho","Sockeye","Pink"))),aes(x=Long,y=Lat,fill=Species),pch=21,size=pointSize)+
   xlab("")+
   ylab("")+
-  theme(legend.position="right",
-        text = element_text(size=30),
-        axis.text=element_text(size=10),
-        plot.margin=grid::unit(c(1,1,0.5,0.5), "mm"))+#trbl
+  # theme(legend.position="right",
+  #       text = element_text(size=30),
+  #       axis.text=element_text(size=10),
+  #       plot.margin=grid::unit(c(1,1,0.5,0.5), "mm"))+#trbl
   scale_y_continuous(breaks = seq(60.3, 60.6, by = .3)) + 
   scale_x_continuous(breaks = seq(-152, -149, by = 1))+
   ggspatial::annotation_scale(
@@ -147,7 +177,7 @@ pSkilak <- ggplot() +
            fontface = 'italic',angle = -12,size=3,color='grey50')+
   geom_text(data=SalmonCollections %>% 
               mutate(Species = factor(Species,levels=c("Chum","Coho","Sockeye","Pink")))%>%
-              filter(Species == "Coho"),aes(x=Long+0.065,y=Lat+0.025,label=Label),size=3,fontface = "italic")
+              filter(Species == "Coho"),aes(x=Long+0.065,y=Lat+0.025,label=Label),size=mediumFS/.pt,fontface = "italic")
 
 #Sockeye 
 st_layers(dsn = "./Data/Mapping/AWC_geodatabase/AWC2024.gdb.zip")
@@ -179,13 +209,13 @@ pNerka <- ggplot() +
   geom_sf(data = Nerka_L, inherit.aes = FALSE,color="blue",fill="lightblue")+
   coord_sf(xlim = c(-158.5, -159.25),  ylim = c(59.2, 59.625),expand = FALSE)+
   geom_point(data=SalmonCollections %>%
-               mutate(Species = factor(Species,levels=c("Chum","Coho","Sockeye","Pink"))),aes(x=Long,y=Lat,fill=Species),pch=21,size=4)+
+               mutate(Species = factor(Species,levels=c("Chum","Coho","Sockeye","Pink"))),aes(x=Long,y=Lat,fill=Species),pch=21,size=pointSize)+
   xlab("")+
   ylab("")+
-  theme(legend.position="right",
-        text = element_text(size=30),
-        axis.text=element_text(size=10),
-        plot.margin=grid::unit(c(1,1,0.5,0.5), "mm"))+#trbl
+  # theme(legend.position="right",
+  #       text = element_text(size=30),
+  #       axis.text=element_text(size=10),
+  #       plot.margin=grid::unit(c(1,1,0.5,0.5), "mm"))+#trbl
   scale_y_continuous(breaks = seq(59.2, 59.6, by = .2)) + 
   scale_x_continuous(breaks = seq(-159.1,-158.6, by = 0.4))+
   ggspatial::annotation_scale(
@@ -200,7 +230,7 @@ pNerka <- ggplot() +
            fontface = 'italic',angle = -80,size=3,color='grey50')+
   geom_text(data=SalmonCollections %>% 
               mutate(Species = factor(Species,levels=c("Chum","Coho","Sockeye","Pink")))%>%
-              filter(Species == "Sockeye"),aes(x=Long-0.025,y=Lat-0.012,label=Label),size=3,fontface = "italic")
+              filter(Species == "Sockeye"),aes(x=Long-0.025,y=Lat-0.012,label=Label),size=mediumFS/.pt,fontface = "italic")
 
 # Pink Salmon
 #load("./Data/Mapping/AWC_data.RData") #fc_AWC_point lives here
@@ -277,17 +307,17 @@ pAuke <- ggplot() +
                                  st_crs("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +towgs84=0,0,0"))), inherit.aes = FALSE,color="blue",fill="lightblue")+
   geom_sf(data = fc2,color='black', fill="white", inherit.aes = FALSE)+
   geom_sf_text(data = fc_AWC_pointCrp2 ,aes(label=NewLab), 
-               inherit.aes = FALSE,color="black",alpha=0.5,size=3,
+               inherit.aes = FALSE,color="black",alpha=0.5,size=mediumFS/.pt,
                nudge_x=fc_AWC_pointCrp2$my_nudge_x,nudge_y=fc_AWC_pointCrp2$my_nudge_y)+
   geom_point(data=SalmonCollections %>%
-               mutate(Species = factor(Species,levels=c("Chum","Coho","Sockeye","Pink"))),aes(x=Long,y=Lat,fill=Species),pch=21,size=4)+
+               mutate(Species = factor(Species,levels=c("Chum","Coho","Sockeye","Pink"))),aes(x=Long,y=Lat,fill=Species),pch=21,size=pointSize)+
   coord_sf(xlim = c(-134.67, -134.62),  ylim = c(58.370, 58.4),expand = FALSE)+
   annotate("text",x=-134.66,y=58.3755,label="Auke\nBay",color="grey",fontface='italic')+
   xlab("")+
   ylab("")+
-  theme(legend.position="none",
-        text = element_text(size=30),
-        axis.text=element_text(size=10))+
+  # theme(legend.position="none",
+  #       text = element_text(size=30),
+  #       axis.text=element_text(size=10))+
   scale_y_continuous(breaks = seq(58.37, 58.4, by = .02)) + 
   scale_x_continuous(breaks = seq(-134.7, -134.6, by = .02))+
   ggspatial::annotation_scale(
@@ -295,7 +325,7 @@ pAuke <- ggplot() +
     bar_cols = c("grey60", "white")
   ) +
   geom_point(aes(y=58.380462,x= -134.642068), pch=25,fill="black",color="black")+#Add a point
-  annotate("text",y=58.3798,x= -134.641, colour="black",label="Weir",size=3)+
+  annotate("text",y=58.3798,x= -134.641, colour="black",label="Weir",size=smallFS/.pt)+
   theme(panel.background = element_rect(fill = "#cccccc",
                                         colour = "#cccccc",
                                         size = 0.5, linetype = "solid"),
@@ -305,7 +335,7 @@ pAuke <- ggplot() +
                                         colour = "#cccccc"))+
   geom_text(data=SalmonCollections %>% 
               mutate(Species = factor(Species,levels=c("Chum","Coho","Sockeye","Pink")))%>%
-              filter(Species == "Pink") %>% slice_head(n=1),aes(x=Long+0.0009,y=Lat+0.00125,label=Label),size=3,fontface = "italic",angle=36)
+              filter(Species == "Pink") %>% slice_head(n=1),aes(x=Long+0.0009,y=Lat+0.00125,label=Label),size=mediumFS/.pt,fontface = "italic",angle=36)
 
 #Combine Plots
 p1<- pChum + theme(
@@ -341,12 +371,12 @@ PTdf <- PTdf %>%
 
 Prt<-PTdf %>%
   ggplot(.,aes(y=RunTimeFct,x=PTnumPAD,fill=Species))+
-  geom_point(pch=21,size=3,position = position_jitter(width = 0, height = 0.15, seed = 123),aes(alpha=0.5))+
+  geom_point(pch=21,size=pointSize,position = position_jitter(width = 0, height = 0.15, seed = 123),aes(alpha=0.5))+
   xlab("Day of Year")+
   ylab("Run Timing")+
   ggrepel::geom_text_repel(data=PTdf %>%
               mutate(Species = factor(Species,levels=c("Chum","Coho","Sockeye","Pink"))),aes(x=PTnumPAD,y=RunTimeFct,label=Label),
-            size=3,
+            size=mediumFS/.pt,
             fontface = "italic",
             angle=45,
             hjust = 0,
@@ -375,19 +405,44 @@ p5<-Prt +theme(legend.position = "none",
 
 my_settings <- list(
   scale_fill_brewer(palette = 'Dark2'),
-  guides(size = "none"),
-  theme(plot.tag = element_text(size = 14, face = "bold")) # Hardcode the tag size here
+  guides(
+    size = "none", 
+    alpha = "none",
+    fill = guide_legend(override.aes = list(alpha = 1))
+  ),
+  theme(
+    plot.tag = element_text(size = largeFS, face = "bold"), 
+    legend.title = element_text(size = largeFS),            
+    legend.text = element_text(size = mediumFS),
+    legend.position = "right",
+    legend.box.margin = margin(r = 40, unit = "pt")
+  ) 
 )
 
 p1 <- p1 + my_settings
-p2 <- p2 + my_settings
-p3 <- p3 + my_settings
-p4 <- p4 + my_settings
-p5 <- p5 + my_settings
+p2 <- p2 + my_settings + theme(legend.position = "none")
+p3 <- p3 + my_settings + theme(legend.position = "none")
+p4 <- p4 + my_settings + theme(legend.position = "none")
+p5 <- p5 + my_settings + theme(legend.position = "none")
 
-pdf("./figures/FigureS1.pdf",width=12,height=12)
-(p1 + p2 + p3 + p4)/p5 + plot_layout(guides = "collect",widths = c(6, 3),heights = c(6, 1))+
-  plot_annotation(tag_levels = 'A') &
-  scale_fill_brewer(palette = 'Dark2') &
-  guides(size='none') 
+pMaps <- (p1 + p2 + p3 + p4) / p5 + 
+  plot_layout(guides = "collect", widths = c(6, 3), heights = c(6, 1)) +
+  plot_annotation(tag_levels = 'A') 
+
+png(str_c("./figures/FigS1_Maps_", format(Sys.Date(), "%Y%m%d"), ".png"),
+    width= width2col, height= 1.25*width2col, res = 500, units = "in")
+pMaps
 dev.off()
+
+svglite::svglite(str_c("./figures/FigS1_Maps_",format(Sys.Date(),"%Y%m%d"),".svg"),
+                 width= width2col, height= 1.5*width2col)
+print(pMaps)
+dev.off()
+
+
+
+
+
+
+
+
