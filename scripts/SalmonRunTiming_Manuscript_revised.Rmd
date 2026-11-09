@@ -378,8 +378,19 @@ and *esr1* region on chromosome 21 (NC_034194.2:24716700-24902281).
 This sources the R function in 
 
 ``` r
-./scripts/R/SumGeneProtein.R)
+./scripts/R/SumGeneProtein.R
 ```
+
+### KEGG pathway analysis
+To determine if genes within the shared regions affect shared biological pathways, 
+a Kyoto Encyclopedia of Genes and Genomes (KEGG) analysis was performed in R with 
+the package KEGGREST. 
+
+``` r
+./scripts/R/KeggPathways.R
+```
+
+The pathways are summarized as Table S5.
 
 ## Shared Regions of Divergence across Species
 
@@ -407,10 +418,10 @@ values on chr35 negative to avoid plotting as an inversion.
 The gene/duplicate figures were imported into Inkscape and further developed 
 into an illustration for the manuscript.
 
-### Consensus Tree
+### Maximum Likelihood Trees of *lrrc9* and *esr2b* and their duplicates
 
-Sequences were downloaded from NCBI for *lrrc9*, *esrb*, and their duplicated 
-variants (*lrrc9*-like, and *esrb*-like) from reference genomes in the four 
+Sequences were downloaded from NCBI for *lrrc9*, *esr2b*, and their duplicated 
+variants (*lrrc9*-like, and *esr2b*-like) from reference genomes in the four 
 salmon species included in this study. Locus specific information to obtain 
 sequences is available in Table S3 of the supplemental tables. Pike, a closely 
 related species, was used as an outgroup. All sequences were imported into 
@@ -423,14 +434,17 @@ Clustal alignments can be performed from the command line with
 clustalo -i INPUT.fasta -o clustal.aln -v --outfmt=clustal --output-order=tree-order --iter=0 --cluster-size=100 -t DNA
 ```
 
-where `INPUT` can be replaced by the locus name (lrrc9 or esrb); and the locus 
+where `INPUT` can be replaced by the locus name (*lrrc9* or *esrb*); and the locus 
 specific fasta file is located in the data directory.
 
-Consensus trees were plotted for *lrrc9* and *esrb* in R with ggtree with
+Maximum likelihood trees were constructed with the ape and visualized with ggtree
+on lines 161-451.
 
 ``` r
-./scripts/R/Figure2_BC_ConsensusTrees.R
+./scripts/R/MaximumLikelihoodTrees.R
 ```
+
+The two output trees are subpanels B and C in Figure 2.
 
 ### Genotype Assignment from Local PCAs & Allele Based $F_{ST}$
 
@@ -442,7 +456,9 @@ within *lrrc9* while for *esrb*, it exceeded *esrb* slightly.
 
 ***lrrc9***: NC_068455.1:28128954-28169980
 
-***esrb***: NC_068449.1:25414060-25501622
+***esr2b***: NC_068449.1:25414060-25501622
+
+***esr1***: NC_068428.1:23264160-23645630
 
 ``` bash
 sbatch ./scripts/shell/GENE_pca_FILTER.sh
@@ -468,7 +484,7 @@ Figure 3 from the manuscript, local PCAs, which were used to
 define the genotypes at each locus can be created with the following script 
 
 ``` r
-./scripts/R/Figure3a_Allele_LocalPCA.R
+./scripts/R/Figure3_Allele_LocalPCA.R
 ```
 
 Figure 5, zoomed in $F_{ST}$ between early and late genotypes and confined 
@@ -476,7 +492,7 @@ to the regions of highest association with run timing can be created with
 the following script
 
 ``` r
-./scripts/R/Figure3b_Allele_Fst_Genes.R
+./scripts/R/Figure5_Allele_Fst_Genes.R
 ```
 
 Additional, supplemental local PCAs - adding Whitefish to the local *lrrc9* sockeye 
@@ -579,6 +595,23 @@ Trees were then plotted for all genes (*esr1*, *esrb* and
 
 ``` r
 ./scripts/R/Figure4_AlleleNJTree.R
+```
+
+### Maximum Likelihood Tree of Estrogen Receptors
+To help visualize the association of estrogen receptors with reproductive 
+timing we downloaded the ammino acid sequences found in Table S8.  
+Sequences were aligned with Clustal Omega v1.2.2 (72) 
+
+```bash
+clustalo -i input.fasta -o clustal.aln -v --outfmt=clustal --output-order=tree-order --iter=3 --full --full-iter --cluster-size=100 -t Protein
+```
+
+A maximum likelihood tree was constructed with the R package ape v5.8 
+with the JTT amino acid model and node support from 100 bootstrap replicates
+on lines 8-158 of the script:
+
+``` r
+./scripts/R/MaximumLikelihoodTrees.R
 ```
 
 ### Additional GTseq Analyses
