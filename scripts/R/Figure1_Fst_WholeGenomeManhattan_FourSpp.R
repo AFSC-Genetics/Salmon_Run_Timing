@@ -98,7 +98,7 @@ cum_df <- four_df %>%
   mutate(cumPos = midPos + bp_offset) %>%
   dplyr::select(-bp_offset)
 
-rm(four_df, cum_temp, chrom, i, cumPos) # remove unneeded files
+rm(four_df) # remove unneeded files
 
 # SINGLE OUT ESR1, ESRB, AND LRRC9 REGIONS
 esr1_df <- cum_df %>%
