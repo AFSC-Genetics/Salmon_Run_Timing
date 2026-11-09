@@ -56,7 +56,7 @@ plotBS(fit_ml$tree, bs_trees, type = "phylogram")
 
 # Save tree with bootstrap values mapped to it
 final_tree <- plotBS(fit_ml$tree, bs_trees, type = "none")
-write.tree(final_tree, file = "ml_aa_tree.nwk")
+write.tree(final_tree, file = "./results/estrogenreceptor_protein/ml_aa_tree.nwk")
 #### format the ML tree
 ER_tree <- final_tree
 
@@ -157,6 +157,86 @@ final_plot <- p +
   scale_x_continuous(expand = expansion(mult = c(0, 0.35)))
 print(final_plot)
 
+#### Final Plots Estrogen Receptors ####
+cb_palette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", 
+                "#0072B2", "#D55E00", "#CC79A7", "#999999")
+
+# for science, consistent font sizing
+width2col <- 7.25  # 2 col, in inches
+width1col <- 3.6  # 1 col, in inches
+
+largeFS <- 10 # Panel Labels
+mediumFS <- 8  # Axis titles, legend titles
+smallFS <- 6  # Axis text, annotations, captions
+
+p <- ggtree(ER_tree) %<+% d %<+% node_metadata
+
+ER_plot <- p + 
+  geom_tiplab(aes(label=newlabel,
+                  fontface = ifelse(newlabel %in% c("Chum esr2b*","Coho esr2b*",
+                                                    "Atlantic Cod esr2a*","Atlantic Herring esr2a*",
+                                                    "Coho esr1*", "Sockeye esr1*"), "bold", "plain")),
+              size = mediumFS / .pt) + 
+  geom_nodepoint(aes(color = Event, shape = Event, size = Event), na.rm = TRUE) +
+  geom_text2(aes(label = label, subset = !isTip & !is.na(as.numeric(label))), 
+             hjust = 1.2, vjust = -0.5, size = smallFS / .pt, color = "darkgray") +
+  geom_text2(aes(label = Event), hjust = 1.2, vjust = -1.5, na.rm = TRUE, size = mediumFS / .pt, fontface = "bold") +
+  scale_color_manual(
+    name = "Duplication Event",
+    values = c("1R/2R" = cb_palette[1], "Ss4R" = cb_palette[6], "Ts3R" = cb_palette[3]),
+    breaks = c("1R/2R", "Ts3R", "Ss4R"),
+    labels = c("1R/2R, ~ 450MYA", "Ts3R, ~325MYA", "Ss4R, ~106MYA"),
+    na.translate = FALSE
+  ) +
+  scale_shape_manual(
+    name = "Duplication Event",
+    values = c("1R/2R" = 17, "Ss4R" = 15, "Ts3R" = 19),
+    breaks = c("1R/2R", "Ts3R", "Ss4R"),
+    labels = c("1R/2R, ~ 450MYA", "Ts3R, ~325MYA", "Ss4R, ~106MYA"),
+    na.translate = FALSE
+  ) + 
+  scale_size_manual(
+    name = "Duplication Event",
+    values = c("1R/2R" = 4, "Ss4R" = 4, "Ts3R" = 4),
+    breaks = c("1R/2R", "Ts3R", "Ss4R"),
+    labels = c("1R/2R, ~ 450MYA", "Ts3R, ~325MYA", "Ss4R, ~106MYA"),
+    na.translate = FALSE
+  ) +
+  theme_tree2()+
+  theme_tree() +  
+  
+  theme(
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    axis.line.x = element_blank(),
+    legend.position = c(0.15, 0.65),
+    legend.background = element_blank(),
+    legend.box.background = element_blank(),
+    legend.title = element_text(size = largeFS),
+    legend.text = element_text(size = mediumFS)
+  ) +
+  geom_treescale(
+    x = 0,               
+    y = -1,              
+    width = 0.5,         
+    color = "black", 
+    fontsize = smallFS/ .pt
+  ) +
+  coord_cartesian(clip = "off") +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.35)))
+
+png(str_c("./figures/FigS6_EstrogenReceptorMLtree",format(Sys.Date(),"%Y%m%d"),".png"),
+    width= width2col, height= width2col, res = 500, units = "in")
+ER_plot
+dev.off()
+
+# svg for science 
+svglite::svglite(str_c("./figures/FigS6_EstrogenReceptorMLtree",format(Sys.Date(),"%Y%m%d"),".svg"),
+                 width= width2col, height= width2col)
+print(ER_plot)
+dev.off()
+
+####
 
 #### Lrrc9 ML Tree ####
 # #### Maximum likelihood tree from alignment
