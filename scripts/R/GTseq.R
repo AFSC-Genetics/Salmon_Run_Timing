@@ -1,8 +1,36 @@
 #### GTseq Analysis #### 
 library(tidyverse)
 
+#### Plotting params
 cb_palette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", 
                 "#0072B2", "#D55E00", "#CC79A7", "#999999")
+
+# for science, consistent font sizing
+width2col <- 7.25  # 2 col, in inches
+width1col <- 3.6  # 1 col, in inches
+
+largeFS <- 10 # Panel Labels
+mediumFS <- 8  # Axis titles, legend titles
+smallFS <- 6  # Axis text, annotations, captions
+
+theme_set(
+  theme(legend.text=element_text(size=mediumFS),
+        legend.title = element_text(size = mediumFS),
+        axis.text = element_text(size = smallFS, angle = 0),
+        axis.title.x = element_text(size = mediumFS),
+        axis.title.y = element_text(size = mediumFS, angle=90, margin=margin(0,0,0,0)),
+        plot.title = element_text(size = mediumFS, hjust = 0.5, margin=margin(0,0,2,0)),
+        panel.background = element_rect(fill = "white"), 
+        panel.spacing = unit(0,"lines"),
+        strip.text.y = element_text(angle = 0),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank()
+  )
+)
+
+pointSize = 1.5
+
+####
 
 #Define the directories
 Path2Flash <- normalizePath("./bin/FLASH2-master/") 
@@ -258,7 +286,7 @@ p_PinksRW <- Pink_RWpopFreq %>%
   filter(!is.na(JD))%>%
   mutate(Region = factor(Region,levels=c('Russia','Western AK','Kodiak','Prince William Sound','Southeast AK')))%>%
   ggplot(.,aes(x=JD,y=frequency))+
-  geom_point(aes(shape=Region,color=lineage),size=3, stroke = 1.5)+
+  geom_point(aes(shape=Region,color=lineage),size=pointSize)+
   geom_smooth(method='lm', formula= y~x)+
   ylab(expression(paste("Frequency of Early ",italic("lrrc9"), " Allele",sep="")))+
   xlab("Julian Day")+
@@ -266,30 +294,23 @@ p_PinksRW <- Pink_RWpopFreq %>%
   scale_shape_manual(values = c(25,15,1,17,4))+
   geom_point(data=Pink_RWpopFreq %>%
                filter(locus == 'OgoE1_LG10_72730177_1' & allele == 'A') %>%
-               filter(grepl(pattern='Duck',`Pop name`)),aes(x=JD,y=frequency),pch=2,size=3.5,color='black') +
+               filter(grepl(pattern='Duck',`Pop name`)),aes(x=JD,y=frequency),pch=2,size=pointSize,color='black') +
   coord_cartesian(ylim=c(0,1))+
   scale_color_manual(values=cb_palette[c(2,6)])+
   labs(color = "Lineage", 
-       shape = "Region")+
-  theme_bw() +
-  theme(axis.text = element_text(size = 8),
-        axis.title = element_text(size = 9), 
-        legend.title = element_text(size = 9),
-        text = element_text(family = "Arial"))
+       shape = "Region")
   
-#Export as SVG for manuscript
-ggsave(filename = "./figures/FigureS5.svg",
-       plot = p_PinksRW,
-       width = 7.25,
-       height= 6.25,
-       dpi=500)
+# for import into MS
+png(str_c("./figures/FigS3_Pinklrrc9Rangewide",format(Sys.Date(),"%Y%m%d"),".png"),
+    width= width2col, height= 0.75*width2col, res = 500, units = "in")
+p_PinksRW
+dev.off()
 
-ggsave(filename = "./figures/FigureS5.jpeg",
-       plot = p_PinksRW,
-       width = 7.25,
-       height= 6.25,
-       dpi=500)
-
+# svg for science 
+svglite::svglite(str_c("./figures/FigS3_Pinklrrc9Rangewide",format(Sys.Date(),"%Y%m%d"),".svg"),
+        width= width2col, height= 0.75*width2col)
+print(p_PinksRW)
+dev.off()
 
 #Rangewide lm 
 
@@ -490,19 +511,15 @@ p_Chum <- WeeklyFreqs %>%
   filter(locus == 'OkeV2_LG29_25455833' & allele == 'T' | locus == "OkeV2_LG35_28165076" & allele == 'C') %>%
   mutate(locus_rn = ifelse(locus == 'OkeV2_LG29_25455833','esr2b',ifelse(locus == "OkeV2_LG35_28165076",'lrrc9',NA)))%>%
   ggplot(.,aes(x=as.factor(Week),y=frequency,group=locus_rn,color=locus_rn))+
-  geom_point(aes(shape=locus_rn,fill=locus_rn),color="black",size=3)+
+  geom_point(aes(shape=locus_rn,fill=locus_rn),color="black",size=pointSize)+
   geom_smooth(method = "lm", se = TRUE)+
   scale_x_discrete(breaks = WeekLabs$Week, labels = WeekLabs$lab)+
-  # theme(legend.position = "inside",
-  #       legend.position.inside = c(0.98, 0.98),
-  #       legend.justification = c(1, 1))+
   ylab('Frequency of Early Allele')+
   xlab("Week")+
   scale_color_manual(values=cb_palette[c(5,6)])+
   scale_fill_manual(values=cb_palette[c(5,6)])+
   scale_shape_manual(values=c(21,22))+
   scale_y_continuous(labels=scales::percent)+
-  theme_bw()+
   labs(color = "Locus", 
        fill = "Locus", 
        shape = "Locus")
@@ -653,10 +670,9 @@ p_Sockeye <- DailyFreq %>%
   mutate(PopLoc = paste(Location, locus_rn, sep=", ")) %>%
   filter(locus_rn=="lrrc9" & allele=="T" | locus_rn== "esr1" & allele=="G") %>% #filter(locus=="One_RAD27165_52" & allele=="T" |locus== "One2_LG13_27674674_16" & allele=="G") %>%
   ggplot(aes(x = JD, y = frequency, group=PopLoc, color=PopLoc)) +
-  geom_point(aes(shape=PopLoc, fill=PopLoc), color='black',size=3) +
+  geom_point(aes(shape=PopLoc, fill=PopLoc), color='black',size=pointSize) +
   geom_smooth(method="lm", se=F) +
   scale_shape_manual(values=c(22, 22, 21, 21)) + 
-  theme_bw() +
   ylab('Frequency of Early Allele')+
   xlab('Julian Date')+
   scale_color_manual(values = c(cb_palette[c(3,8,6,7)]))+
@@ -669,8 +685,45 @@ p_Sockeye <- DailyFreq %>%
 #Model fits weren't explored because of very low sample sizes by location and locus (n=3)
 
 
-cowplot::plot_grid(p_Chum,
-                   p_Sockeye,
-                   labels = c("A","B"),
-                   nrow=2,
-                   align = 'vh')
+
+### Plot for S5 ### 
+
+theme_set(
+    theme(
+      legend.text = element_text(size = mediumFS),
+      legend.title = element_text(size = mediumFS),
+      axis.text = element_text(size = smallFS),
+      axis.text.x = element_text(angle = 45, hjust = 0.3), 
+      axis.title.x = element_text(size = mediumFS),
+      axis.title.y = element_text(size = mediumFS, angle = 90, margin = margin(0,0,0,0)),
+      plot.title = element_text(size = mediumFS, hjust = 0.5, margin = margin(0,0,2,0)),
+      panel.background = element_rect(fill = "white"), 
+      panel.spacing = unit(0,"lines"),
+      strip.text.y = element_text(angle = 0),
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank()
+)
+)
+
+pointSize = 1.5
+
+
+
+pChum_Sockeye <- cowplot::plot_grid(p_Chum,
+                                    p_Sockeye,
+                                    labels = c("A","B"),
+                                    nrow=2,
+                                    align = 'vh')
+# for import into MS
+png(str_c("./figures/FigS5_ChumSockeyeGTseq",format(Sys.Date(),"%Y%m%d"),".png"),
+    width= width2col, height= width2col, res = 500, units = "in")
+pChum_Sockeye
+dev.off()
+
+# svg for science 
+svglite::svglite(str_c("./figures/FigS5_ChumSockeyeGTseq",format(Sys.Date(),"%Y%m%d"),".svg"),
+                 width= width2col, height= width2col)
+print(pChum_Sockeye)
+dev.off()
+
+
