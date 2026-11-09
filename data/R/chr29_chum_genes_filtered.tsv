@@ -19,7 +19,7 @@ NC_068449.1	25.164403	25.198422	ppp2r5eb	ppp2r5eb	protein phosphatase 2%2C regul
 NC_068449.1	25.17099	25.174071	LOC118362588	LOC118362588	uncharacterized LOC118362588	#cdcace	0.075	0.08
 NC_068449.1	25.203881	25.30326	kcnh5b	kcnh5b	potassium voltage-gated channel%2C subfamily H (eag-related)%2C member 5b	orangered3	0.025	0.03
 NC_068449.1	25.30986	25.452074	syne2b	syne2b	spectrin repeat containing%2C nuclear envelope 2b	khaki3	0.075	0.08
-NC_068449.1	25.451985	25.483494	LOC118362590	esrb	estrogen receptor beta	dodgerblue2	0.025	0.03
+NC_068449.1	25.451985	25.483494	LOC118362590	esr2b	estrogen receptor beta	#56B4E9	0.025	0.03
 NC_068449.1	25.554129	25.581471	LOC118362592	jag2l	protein jagged-2-like	#A0869D	0.025	0.03
 NC_068449.1	25.604709	25.606495	LOC118362046	LOC118362046	uncharacterized LOC118362046	#050401	0.075	0.08
 NC_068449.1	25.662813	25.712891	LOC118362594	tflllb90l	transcription factor IIIB 90 kDa subunit-like	#d99d7d	0.025	0.03
