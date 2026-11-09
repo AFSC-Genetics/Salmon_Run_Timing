@@ -1,0 +1,39 @@
+Name_Seq,NewTipLab
+Esr1_Bowfin_XP_066556610.1 esr1 [organism=Amia ocellicauda] [GeneID=136747574] [isoform=X1],Bowfin esr1
+esr1_SpottedGar_XP_006625908.1 esr1 [organism=Lepisosteus oculatus] [GeneID=102698804],Spotted Gar esr1
+esr1_Zebrafish_NP_694491.1 esr1 [organism=Danio rerio] [GeneID=259252],Zebrafish esr1
+esr1_Stickleback_NP_001254601.1 esr1 [organism=Gasterosteus aculeatus] [GeneID=100190863],Stickleback esr1
+esrL_CohoLG12_XP_020351601.1 LOC109900320 [organism=Oncorhynchus kisutch] [GeneID=109900320],Coho esr1-L
+esrL_PinkLG12_XP_046148097.1 LOC123991021 [organism=Oncorhynchus gorbuscha] [GeneID=123991021],Pink esr1-L
+esr1_PikeLG18_XP_010880455.1 esr1 [organism=Esox lucius] [GeneID=105017493] [isoform=X1],Pike esr1
+esr1_SockeyeLG13_XP_029532303.2 esr1 [organism=Oncorhynchus nerka] [GeneID=115139262] [isoform=X1],Sockeye esr1*
+esr1_CohoLG21_XP_020310466.1 esr1 [organism=Oncorhynchus kisutch] [GeneID=109866292] [isoform=X1],Coho esr1*
+esr1_ChumLG8_XP_035615921.1 esr1 [organism=Oncorhynchus keta] [GeneID=118373789] [isoform=X1],Chum esr1
+esr1_PinkLG14_XP_046154627.1 esr1 [organism=Oncorhynchus gorbuscha] [GeneID=123995230] [isoform=X1],Pink esr1
+esr2a_Zebrafish_NP_851297.1 esr2a [organism=Danio rerio] [GeneID=317734],Zebrafish esr2a
+esr2a_Stickleback_XP_040016728.2 esr2a [organism=Gasterosteus aculeatus] [GeneID=120808138] [isoform=X1],Stickleback esr2a
+esr2a_PikeLG18_XP_010880710.2 esr2a [organism=Esox lucius] [GeneID=105017652] [isoform=X1],Pike esr2a
+esr2a_SockeyeLG24_XP_029487426.2 esr2a [organism=Oncorhynchus nerka] [GeneID=115107861],Sockeye esr2a
+esr2a_ChumLG19_XP_035649912.2 esr2a [organism=Oncorhynchus keta] [GeneID=118398550],Chum esr2a
+esr2a_CohoLG12_XP_020352285.1 esr2a [organism=Oncorhynchus kisutch] [GeneID=109900844],Coho esr2a
+esr2a_PinkLG12_XP_046147746.1 esr2a [organism=Oncorhynchus gorbuscha] [GeneID=123990857],Pink esr2a
+esrb_Bowfin_XP_066550245.1 LOC136716768 [organism=Amia ocellicauda] [GeneID=136716768],Bowfin esr2
+esrb_SpottedGar_XP_015206031.1 LOC102689263 [organism=Lepisosteus oculatus] [GeneID=102689263],Spotted Gar esr2
+esr2b_Zebrafish_XP_073775411.1 esr2b [organism=Danio rerio] [GeneID=317733] [isoform=X2],Zebrafish esr2b
+esr2b_Stickleback_XP_077945347.1 esr2b [organism=Gasterosteus aculeatus] [GeneID=120832508],Stickleback esr2b
+esr2b_PikeLG15_XP_010877102.1 esr2b [organism=Esox lucius] [GeneID=105015549],Pike esr2b
+esrb_CohoLG14_XP_020356852.1 LOC109904118 [organism=Oncorhynchus kisutch] [GeneID=109904118],Coho esr2b-L
+esrbL_ChumLG35_XP_035608027.1 LOC118368223 [organism=Oncorhynchus keta] [GeneID=118368223] [isoform=X3],Chum esr2b-L
+esrbL_PinkLG10_XP_046222946.1 LOC124046531 [organism=Oncorhynchus gorbuscha] [GeneID=124046531],Pink esr2b-L
+esr2b_CohoLG7_XP_020343518.2_1 esr2b [organism=Oncorhynchus kisutch] [GeneID=109894436],Coho esr2b*
+esrbL_SockeyeLG18_XP_029543895.2 LOC115146152 [organism=Oncorhynchus nerka] [GeneID=115146152] [isoform=X1],Sockeye esr2b
+esr2(esrb)_ChumLG29_XP_035598919.2 LOC118362590 [organism=Oncorhynchus keta] [GeneID=118362590],Chum esr2b*
+esrbL_PinkLG17_XP_046165296.1 LOC124002081 [organism=Oncorhynchus gorbuscha] [GeneID=124002081],Pink esr2b
+NP_001191648.1 estrogen receptor [Aplysia californica],California Sea Hare esr
+ACF16007.1 estrogen receptor [Branchiostoma floridae],Florida lancelet esr
+BAF45381.1 estrogen receptor [Magallana gigas],Pacific oyster esr
+XP_032811970.2 estrogen receptor isoform X1 [Petromyzon marinus],Sea lamprey esr
+esr2b_AtlanticCod_XP_030211702.1 estrogen receptor 2b [Gadus morhua],Atlantic Cod esr2b
+esr2a_AtlanticHerring_XP_031437265.1 estrogen receptor 2a [Clupea harengus],Atlantic Herring esr2a*
+esr2a_AtlanticCod_XP_030200891.1 estrogen receptor 2a isoform X1 [Gadus morhua],Atlantic Cod esr2a*
+esr1_AtlanticCod_XP_030201777.1 estrogen receptor [Gadus morhua],Atlantic Cod esr1

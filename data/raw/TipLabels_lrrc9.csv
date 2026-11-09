@@ -1,0 +1,10 @@
+Name_Seq,NewTipLab
+Pike_lrrc9_LG15_NC_047583.1:16166890-16195893 lrrc9 [organism=Esox lucius] [GeneID=105015570] [chromosome=15],Pike 
+Pink_lrrc9_LG10_NC_060182.1:72710811-72735126_1 lrrc9 [organism=Oncorhynchus gorbuscha] [GeneID=124045283] [chromosome=LG10],Pink*
+Coho_lrrc9_LG14_NC_034187.2:c25694324-25650992 lrrc9 [organism=Oncorhynchus kisutch] [GeneID=109904104] [chromosome=LG14],Coho
+Chum_lrrc9_LG35_NC_068455.1:c28169980-28128954 lrrc9 [organism=Oncorhynchus keta] [GeneID=118368240] [chromosome=35],Chum*
+Sockeye_lrrc9_LG12_NC_088407.1:63409008-63432236 lrrc9 [organism=Oncorhynchus nerka] [GeneID=115138988] [chromosome=LG12],Sockeye*
+Chum_lrrc9L_LG29_NC_068449.1:24717125-24728717 LOC118362174 [organism=Oncorhynchus keta] [GeneID=118362174] [chromosome=29],Chum
+Pink_lrrc9L_LG17_NC_060189.1:26785883-26797695 LOC124001390 [organism=Oncorhynchus gorbuscha] [GeneID=124001390] [chromosome=LG17],Pink
+Coho_lrrc9L_LG7_NC_034180.2:c31008960-30991059 LOC109893742 [organism=Oncorhynchus kisutch] [GeneID=109893742] [chromosome=LG7],Coho
+Sockeye_lrrc9L_LG18_NC_088413.1:c56357384-56334228 LOC115146781 [organism=Oncorhynchus nerka] [GeneID=115146781] [chromosome=LG18],Sockeye
