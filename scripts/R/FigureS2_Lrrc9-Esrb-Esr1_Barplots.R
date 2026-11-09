@@ -16,6 +16,7 @@ dir.create(outdir, showWarnings = FALSE)
 
 ### Input Proportions ##################
 
+
 #### LRRC9 ------------------------------------------------  ##################
 
 pinkeven_lrrc9 <- read.table(file = "data/R/threespp_lrrc9_alleles/pink-chum_minInd0.3_lrrc9_allele_proportions.txt",
@@ -144,6 +145,12 @@ theme_set(
 )
 
 #### LRRC9 Plot ###############
+# color blind palette colors
+cb_palette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442",
+                "#0072B2", "#D55E00", "#CC79A7", "#999999")
+
+genotypePalette <- c("#F0E442", "#009E73", "#0072B2")
+
 
 lrrc9_barplot <- ggplot(filter(genes_df, Gene == "LRRC9"), 
                         aes(x = Runtime, y = n, fill = Genotype)) +
@@ -151,7 +158,7 @@ lrrc9_barplot <- ggplot(filter(genes_df, Gene == "LRRC9"),
   facet_nested(~ Species, 
                scales = "free", space = "free",
                labeller = label_wrap_gen(10)) +
-  scale_fill_manual(name = "Genotype", values = c("goldenrod2", "mediumseagreen", "royalblue3")) +
+  scale_fill_manual(name = "Genotype", values = genotypePalette) +
   xlab("Run Timing Phenotype") +
   ggtitle(expression(italic(lrrc9))) +
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
@@ -168,7 +175,7 @@ esrb_barplot <- ggplot(filter(genes_df, Gene == "ESRB"),
   facet_nested(~ Species, 
                scales = "free", space = "free",
                labeller = label_wrap_gen(10)) +
-  scale_fill_manual(name = "Genotype", values = c("goldenrod2", "mediumseagreen", "royalblue3")) +
+  scale_fill_manual(name = "Genotype", values = genotypePalette) +
   xlab("Run Timing Phenotype") +
   ggtitle(expression(italic(esr2b))) +
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
@@ -186,7 +193,7 @@ esr1_barplot <- ggplot(filter(genes_df, Gene == "ESR1"),
   facet_nested(~ Species, 
                scales = "free", space = "free",
                labeller = label_wrap_gen(10)) +
-  scale_fill_manual(name = "Genotype", values = c("goldenrod2", "mediumseagreen", "royalblue3")) +
+  scale_fill_manual(name = "Genotype", values = genotypePalette) +
   ylab("Proportion") + xlab("Run Timing Phenotype") +
   ggtitle(expression(italic(esr1))) +
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
@@ -203,9 +210,9 @@ final_plot <- (esr1_barplot | esrb_barplot | lrrc9_barplot) +
   plot_annotation(tag_levels = 'A',
                   caption = "Run Timing Phenotype") & 
   theme(
-      plot.tag = element_text(size = largeFS, family = "Arial", face = "bold"),
+      plot.tag = element_text(size = largeFS, family = "sans", face = "bold"),
       plot.tag.position = c(0.04, 0.95),
-      plot.caption = element_text(size = mediumFS, family = "Arial", hjust = 0.5,
+      plot.caption = element_text(size = mediumFS, family = "sans", hjust = 0.5,
                                   margin = margin(0,0,2,0)),
       legend.box.spacing = unit(0, "pt"),
       legend.box.margin  = margin(0, 2, 0, 2, unit = "pt"),
@@ -213,14 +220,14 @@ final_plot <- (esr1_barplot | esrb_barplot | lrrc9_barplot) +
   )
 
 # for high quality svg image
-svglite(str_c(outdir,"three_genes_barplot_patchwork.svg"),
+svglite(str_c(outdir,"FigureS2_gene_proportions_barplot.svg"),
         width=width2col, height=width2col/2.5)
 final_plot
 dev.off()
 
 # for putting directly into manuscript
-jpeg(str_c(outdir,"three_genes_barplot_patchwork.jpeg"),
-     width=width2col, height=width2col/2.5, res=300, units = "in")
+png(str_c(outdir,"FigureS2_gene_proportions_barplot.png"),
+     width=width2col, height=width2col/2.5, res=500, units = "in")
 final_plot
 dev.off()
 
