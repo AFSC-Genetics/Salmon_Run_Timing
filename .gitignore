@@ -1,5 +1,6 @@
 # Results files
 **/results/
+**/GTseqSRA/
 *.html
 
 # figures
