@@ -432,6 +432,44 @@ MixGenosDeDup <- MixGenos %>%
   slice_max(.,TotalReads) %>%
   ungroup()
 
+DrpdInds <- MixGenos %>%
+  filter(!grepl(pattern="Undetermined|QC|NTC|empty",indiv))%>% #remove the 
+  #mutate(indiv = gsub(pattern="[a-b]$",replacement="",indiv))%>%
+  mutate(SampleID = gsub(pattern="\\.",replacement="_",indiv),
+         MiSeqRun = collection)%>%
+  left_join(Depths %>% mutate(SampleID=gsub(pattern="-",replacement="_",ABLG)),by=c("SampleID","MiSeqRun")) %>%
+  mutate(DDindiv = gsub(pattern="[a-b]$",replacement="",indiv))%>%
+  group_by(DDindiv) %>%
+  filter(n() > 1) %>%
+  mutate(TotalReads = TotalReads_esrb+TotalReads_lrrc9)%>%
+  slice_min(.,TotalReads,with_ties = F) %>%
+  ungroup()
+
+# Need to make a table with full path to each file and the MiSeq run 
+# so we know which to drop
+ChumFiles <- list.files("./data/raw/GTseq/Chum/",recursive = T,full.names = T) %>%
+  grep(pattern=".fastq",.,value=T)%>%
+  {.[!grepl(pattern="Undetermined|NTC|QC|empty",.)]}
+
+DeDupTib <- tibble(FileName = ChumFiles) %>%
+  mutate(MiSeqRun = lapply(str_split(FileName,pattern="/"),"[[",8) %>% unlist(),
+         Sample = lapply(str_split(FileName,pattern="/"),"[[",9) %>% unlist(),
+         Fastq = lapply(str_split(FileName,pattern="/"),"[[",10) %>% unlist(),
+         indiv = lapply(str_split(Sample,pattern="_S"),"[[",1) %>% unlist(),
+         collection = MiSeqRun)
+
+
+DroppedTib<-DeDupTib %>%
+  left_join(.,DrpdInds%>%
+              mutate(indiv=gsub(pattern="\\.",replacement="-",indiv)),
+            by=c('indiv','collection','MiSeqRun')) %>%
+  filter(!is.na(SampleID))
+
+write_delim(DroppedTib,
+            "./results/GTseq/DroppedJuvenileChum.txt",
+            delim="\t")
+
+#
 
 MixGenosDeDup %>%
   filter(!is.na(OkeV2_LG29_25455833_1)) %>%
