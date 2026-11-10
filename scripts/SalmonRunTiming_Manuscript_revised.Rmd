@@ -438,7 +438,7 @@ where `INPUT` can be replaced by the locus name (*lrrc9* or *esrb*); and the loc
 specific fasta file is located in the data directory.
 
 Maximum likelihood trees were constructed with the ape and visualized with ggtree
-on lines 161-451.
+on lines 241-531.
 
 ``` r
 ./scripts/R/MaximumLikelihoodTrees.R
@@ -608,7 +608,7 @@ clustalo -i input.fasta -o clustal.aln -v --outfmt=clustal --output-order=tree-o
 
 A maximum likelihood tree was constructed with the R package ape v5.8 
 with the JTT amino acid model and node support from 100 bootstrap replicates
-on lines 8-158 of the script:
+on lines 8-237 of the script:
 
 ``` r
 ./scripts/R/MaximumLikelihoodTrees.R

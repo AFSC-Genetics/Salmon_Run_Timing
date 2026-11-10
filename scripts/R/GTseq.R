@@ -281,6 +281,8 @@ Pink_RWpopFreq <- Pinks_RW %>%
   ungroup() %>%
   mutate(JD = yday(`samp date`)) 
 
+pointSize<-2
+
 p_PinksRW <- Pink_RWpopFreq %>%
   filter(locus == 'OgoE1_LG10_72730177_1' & allele == 'A') %>% #subset on early allele
   filter(!is.na(JD))%>%
@@ -705,7 +707,7 @@ theme_set(
 )
 )
 
-pointSize = 1.5
+pointSize = 2
 
 
 
