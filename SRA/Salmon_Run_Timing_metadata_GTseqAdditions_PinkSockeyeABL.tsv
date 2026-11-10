@@ -1,0 +1,353 @@
+sample_name	bioproject_accession	organism	ecotype	dev_stage	collection_date	geo_loc_name	sex	tissue	AlternateID	lat_lon	lineage	Project
+ABLG31880	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1302	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31881	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1303	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31882	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1304	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31883	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1305	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31884	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1307	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31850	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-24	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1234	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31851	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-24	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1240	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31852	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-24	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1244	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31853	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-24	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1248	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31854	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-24	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1250	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31855	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-24	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1251	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31856	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-24	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1254	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31857	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-24	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1255	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31858	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-24	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1256	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31859	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-24	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1259	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31860	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-24	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1265	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31861	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-24	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1266	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31862	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-24	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1267	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31863	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-24	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1268	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31864	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-24	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1272	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31865	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-24	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1275	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31867	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1277	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31868	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1278	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31869	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1280	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31870	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1282	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31871	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1284	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31872	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1285	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31873	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1287	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31874	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1288	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31875	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1289	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31876	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1292	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31877	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1294	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31878	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1298	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31879	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1300	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31840	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-23	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1200	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31841	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-23	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1205	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31842	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-23	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1206	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31843	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-23	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1210	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31844	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-23	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1213	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31845	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-23	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1215	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31846	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-23	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1217	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31847	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-23	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1218	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31848	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-23	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1219	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31849	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-23	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1225	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31885	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1309	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31886	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1310	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31887	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-25	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1312	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31888	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1314	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31889	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1315	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31890	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1321	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31891	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1322	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31892	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1324	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31893	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1325	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31894	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1327	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31895	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1328	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31896	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1329	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31897	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1330	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31898	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1332	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31899	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1334	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31900	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1335	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31901	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1339	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31902	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1340	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31903	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1341	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31904	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1342	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31905	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1344	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31906	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1347	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31907	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1349	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31908	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1352	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31909	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1354	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31910	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1356	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31911	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1357	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31912	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-26	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1358	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31913	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-27	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1359	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31914	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-27	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1360	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31915	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-27	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1363	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31916	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-27	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1367	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31917	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-27	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1374	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31918	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-27	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1375	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31919	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-27	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1376	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31920	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-27	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1377	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31921	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-28	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1379	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31922	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-28	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1381	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31923	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-28	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1383	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31924	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-28	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1384	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31925	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-28	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1386	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31926	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-28	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1387	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31808	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-01	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1154	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31809	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-07	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1155	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31810	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-09	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1156	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31811	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-18	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1157	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31812	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-18	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1158	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31813	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-18	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1159	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31814	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-18	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1160	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31815	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-18	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1161	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31816	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-18	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1162	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31817	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-18	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1163	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31818	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-19	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1164	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31819	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-19	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1165	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31820	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-19	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1167	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31821	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-20	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1169	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31822	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-20	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1170	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31823	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-20	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1171	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31824	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-20	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1172	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31825	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-20	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1173	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31826	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-21	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1174	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31827	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-21	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1176	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31828	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-21	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1177	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31829	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-21	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1178	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31830	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-22	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1183	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31831	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-22	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1184	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31832	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-23	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1186	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31833	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-23	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1187	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31834	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-23	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1191	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31835	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-23	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1192	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31836	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-23	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1193	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31837	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-23	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1194	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31838	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-23	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1198	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31839	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-23	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1199	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31927	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-28	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1393	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31928	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-28	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1394	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31929	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-28	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1398	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31930	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-28	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1399	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31931	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-28	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1400	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31932	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-29	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1402	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31933	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-29	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1403	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31934	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-29	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1409	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31935	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-29	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1410	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31936	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-29	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1414	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31937	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-29	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1415	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31938	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-30	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1416	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31939	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-30	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1417	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31940	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-30	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1420	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31941	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-30	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1422	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31942	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-30	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1424	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31943	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-30	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1425	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31944	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-31	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1426	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31945	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-31	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1427	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31946	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-31	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1429	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31947	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-08-31	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1430	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31948	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-01	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1433	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31949	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-01	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1437	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31950	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-01	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1438	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31951	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-01	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1440	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31952	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-01	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1441	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31953	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-01	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1442	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31954	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-02	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1443	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31955	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-02	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1444	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31956	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-02	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1445	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31957	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-02	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1450	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31958	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-02	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1451	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31959	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-02	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1452	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31960	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-03	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1454	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31961	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-03	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1455	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31962	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-03	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1457	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31963	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-03	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1460	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31964	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-03	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1462	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31965	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-04	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1465	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31966	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-04	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1467	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31967	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-04	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1470	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31968	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-04	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1472	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31969	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-04	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1473	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31970	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-04	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1474	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG31971	PRJNA1259009	Oncorhynchus gorbuscha	not applicable	adult	2019-09-05	USA:Alaska, Juneau, Auke Creek	Female	axillary process	1477	58.381 N 134.641 W	Odd	Auke Pinks 2019
+ABLG44649	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44649	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44650	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44650	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44651	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44651	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44652	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44652	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44653	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44653	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44654	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44654	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44655	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44655	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44656	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44656	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44657	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44657	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44658	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44658	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44659	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44659	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44660	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44660	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44661	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44661	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44662	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44662	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44663	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44663	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44664	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44664	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44665	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44665	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44666	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44666	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44667	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44667	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44668	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44668	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44669	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44669	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44670	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44670	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44671	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44671	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44672	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44672	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44673	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44673	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44674	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44674	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44675	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44675	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44676	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44676	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44677	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44677	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44678	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44678	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44679	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44679	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44680	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44680	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44681	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44681	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44682	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44682	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44683	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44683	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44684	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44684	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44685	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44685	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44686	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44686	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44687	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44687	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44688	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44688	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44689	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44689	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44690	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44690	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44691	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44691	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44692	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44692	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44693	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44693	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44694	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44694	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44695	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44695	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44696	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-08-30	USA: Alaska, Pick Creek	not collected	fin	Pick Creek44696	59.549 N 159.07 W	not applicable	Sockeye Bristol Bay
+ABLG44697	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44697	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44698	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44698	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44699	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44699	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44700	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44700	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44701	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44701	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44702	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44702	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44703	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44703	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44704	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44704	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44705	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44705	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44706	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44706	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44707	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44707	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44708	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44708	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44709	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44709	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44710	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44710	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44711	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44711	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44712	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44712	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44713	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44713	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44714	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44714	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44715	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44715	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44716	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44716	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44717	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44717	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44718	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44718	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44719	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44719	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44720	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44720	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44721	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44721	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44722	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44722	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44723	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44723	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44724	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44724	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44725	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44725	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44726	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44726	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44727	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44727	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44728	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44728	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44729	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44729	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44730	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44730	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44731	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44731	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44732	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44732	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44733	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44733	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44734	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44734	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44735	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44735	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44737	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44737	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44738	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44738	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44739	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44739	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44740	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44740	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44741	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44741	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44742	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44742	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG44743	PRJNA1259009	Oncorhynchus nerka	stream	adult	2024-09-04	USA: Alaska, Whitefish Creek	not collected	fin	Whitefish Creek44743	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57007	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57007	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57008	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57008	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57009	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57009	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57010	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57010	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57011	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57011	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57012	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57012	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57013	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57013	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57014	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57014	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57015	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57015	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57016	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57016	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57017	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57017	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57018	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57018	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57019	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57019	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57020	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57020	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57021	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57021	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57022	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57022	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57023	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57023	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57024	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57024	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57025	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57025	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57026	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57026	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57027	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57027	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57028	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57028	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57029	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57029	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57030	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57030	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57031	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57031	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57032	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57032	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57033	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57033	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57034	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57034	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57035	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57035	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57036	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57036	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57037	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57037	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57038	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57038	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57039	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57039	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57040	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57040	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57041	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57041	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57042	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57042	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57043	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57043	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57044	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57044	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57045	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57045	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57046	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57046	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57047	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57047	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57048	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57048	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57049	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57049	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57050	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57050	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57051	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57051	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57052	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57052	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57053	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57053	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57054	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57054	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57055	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-10	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57055	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57056	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57056	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57057	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57057	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57058	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57058	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57059	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57059	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57060	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57060	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57061	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57061	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57062	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57062	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57063	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57063	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57064	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57064	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57065	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57065	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57066	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57066	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57067	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57067	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57068	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57068	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57069	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57069	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57070	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57070	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57071	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57071	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57072	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57072	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57073	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57073	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57074	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57074	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57075	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57075	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57076	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57076	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57077	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57077	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57078	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57078	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57079	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57079	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57080	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57080	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57081	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57081	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57082	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57082	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57083	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57083	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57084	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57084	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57085	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57085	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57086	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57086	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57087	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57087	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57088	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57088	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57089	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57089	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57090	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57090	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57091	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57091	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57092	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57092	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57093	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57093	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57094	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57094	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57095	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57095	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57096	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Male	fin	Whitefish Creek57096	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57097	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57097	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57098	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57098	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57099	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57099	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57100	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57100	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
+ABLG57101	PRJNA1259009	Oncorhynchus nerka	stream	adult	2011-08-12	USA: Alaska, Whitefish Creek	Female	fin	Whitefish Creek57101	59.267 N 158.686 W	not applicable	Sockeye Bristol Bay
