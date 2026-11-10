@@ -207,22 +207,22 @@ Pinks2019 %>%
 
 PinkPopMeta <- readxl::read_xlsx('./data/raw/pink_rangewide_adaptive_popmetadata.xlsx')
 
-NovaSeqDir = "./data/raw/GTseq/Pink/NovaSeqRuns"
+NextSeqDir = "./data/raw/GTseq/Pink/NextSeqRuns"
 
-ScoreNovaSeqRuns(NovaSeqDir = NovaSeqDir, #No sample sheets here
+ScoreNextSeqRuns(NextSeqDir = NextSeqDir, #No sample sheets here
                OutDir = OutDir, 
                primer_probe_filepath = Pink_pp_filepath)
 
-NovaSeqRuns<-list.dirs(NovaSeqDir,recursive = F) %>%
+NextSeqRuns<-list.dirs(NextSeqDir,recursive = F) %>%
   {fs::path_file(fs::path_file(.))}
 
 MixFiles<-list.files(OutDir,recursive = T) %>%
   grep(pattern="polygenResults_singleSNP_rubias.txt",x=.,value=T)%>%
-  {grep(pattern=paste(NovaSeqRuns,collapse="|"),.,value=T)}
+  {grep(pattern=paste(NextSeqRuns,collapse="|"),.,value=T)}
 
 DepthFiles <- list.files(OutDir,recursive = T) %>%
   grep(pattern="AlleleReads_singleSNPs",x=.,value=T)%>%
-  {grep(pattern=paste(NovaSeqRuns,collapse="|"),.,value=T)}
+  {grep(pattern=paste(NextSeqRuns,collapse="|"),.,value=T)}
 
 MixGenos<-lapply(1:length(MixFiles),function(x) read_delim(file.path(OutDir,MixFiles[x]),
                                                            delim="\t",

@@ -111,6 +111,23 @@ for (i in 1:nrow(FileNameWrangle)){
   system(SysCmd,wait=T)
 }
 
+#Check for missing data - esp. dates
+
+MissingDates <- GtseqMeta %>%
+  filter(is.na(collection_date))
+
+# There are some pink salmon that do not have a sampling date, but 
+# The chum salmon are just not binding cause they have a letter attached to their identifier
+
+GtseqMeta<-GtseqMeta %>%
+  mutate(ChumID = ifelse(grepl(pattern="Chum Yukon River",Project),gsub(pattern="a$",replacement="",sample_name),NA))%>%
+  left_join(.,JYC24meta %>% mutate(ChumID = SampleID), by="ChumID") %>%
+  mutate(collection_date = ifelse((is.na(collection_date) & grepl(pattern="Chum Yukon River",Project)), format(Date,"%Y-%m-%d"),collection_date)) %>%
+  select(1:12)
+
+GtseqMeta %>%
+  filter(grepl(pattern="a$",sample_name))
+
 
 write_delim(GtseqMeta,
             file="./data/raw/GTseq/GTseq_meta.txt",

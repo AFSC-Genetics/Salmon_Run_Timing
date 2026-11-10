@@ -19,14 +19,22 @@ user set up their own directories and modify some paths.
 ## Sample Collection
 
 Data from Auke Creek pink salmon (even and odd lineage), Wood River sockeye 
-salmon, Yukon River chum salmon, and Skilak River coho salmon. Sample collection 
-data was compiled from the raw data in each four species manually with three 
-columns: sampleID, Runtime, and Species
+salmon, Yukon River chum salmon, and Skilak River coho salmon. 
 
-``` r
-# All samples and sequencing information can be found at:
-as.vector(Sys.glob("./data/raw/*"))
+Information on the samples used in lcWGS analyses can be found:
+
+``` bash
+./data/raw/CollectionInfo.csv
 ```
+
+For each individual included in the analyses the file 
+
+``` bash
+./data/raw/fourspecies_runtiming_metadata.csv
+```
+
+as information on the sampleID, run-timing phenotype, and species.
+
 
 ### Site Map
 
@@ -52,7 +60,7 @@ supplemental methods.
 
 Species were analyzed individually. All scripts to process the low-coverage data 
 and referenced in the preceding sections are located in the `./scripts/` directory. To 
-facilitate location of relevent files, paths shown to execute the code assume `scripts` is 
+facilitate location of relevant files, paths shown to execute the code assume `scripts` is 
 the current working directory. Note that all .sh scripts have directory structure not 
 reflected in the github repository and require some standardization on an HPC. For the purpose 
 of this markdown document not all code for species specific analyses are provided. Instead, 
@@ -110,14 +118,14 @@ GENOME for their a specific reference genome. For instance, the
 genetic call for indexing would be
 
 ``` bash
-sbatch ./shell/SPECIES/GCF_023373465.1_Oket_V2_genomic_bwa-indexSLURM
+sbatch ./shell/SPECIES/GENOME_genomic_bwa-indexSLURM
 sbatch ./shell/SPECIES/GENOME_genomic_faiSLURM.sh
 ```
 
 whereas the specific code for pink aligned to the chum salmon genome would be 
 
 ``` bash
-sbatch ./shell/pink-even/GENOME_genomic_bwa-indexSLURM.sh
+sbatch ./shell/pink-even/GCF_023373465.1_Oket_V2_bwa-indexSLURM.sh
 sbatch ./shell/pink-even/GCF_023373465.1_Oket_V2_genomic_faiSLURM.sh
 ```
 
@@ -183,13 +191,6 @@ were close to the 0.5x cutoff (\~0.4x) which were retained.
 
 ``` r
 ./R/species-specific/PREFIX_depth_and_downsampling.R
-```
-
-As mentioned for chum salmon, no downsampling was done for chum salmon,
-so depths were verified in the script
-
-``` r
-./scripts/shell/chum/checkdepth.sh
 ```
 
 Individuals that failed to pass this filter threshold can be added to a 
@@ -288,7 +289,7 @@ sbatch ./scripts/shell/SPECIES/PREFIX_print_idx_FILTER_globalFst.sh
 
 ### Identifying Regions of Divergence associated with Run Timing
 
-Multi-species whole genome $F_{ST}$ scan plot with *esr1*, *esrb* and *lrrc9* highlighted. 
+Multi-species whole genome $F_{ST}$ scan plot with *esr1*, *esr2b* and *lrrc9* highlighted. 
 These plots are the initial run-timing phenotype comparisons.
 
 1.  Pink (Even): Early v. Late
@@ -313,8 +314,9 @@ The two other comparisons were included as a supplementary figure.
 
 Corresponding local score functions are taken 
 from [Fariello et al 2017](https://forge-dga.jouy.inra.fr/projects/local-score)
-and were adapted for . The script 
-is written for pool-sequencing data, which was emulated by calculating the number of 
+and were adapted by Willis et al. 
+https://github.com/stuartwillis/poolparty/blob/main/rscripts/r_localscore.R 
+for pool-sequencing data, which was emulated by calculating the number of 
 reads per allele per locus for each run timing group in angsd.
 
 ``` bash
@@ -322,31 +324,29 @@ sbatch ./shell/SPECIES/PREFIX_FILTER_countsARRAY.sh
 ```
 
 There are separate counts for the two phenotypes, which were compared 
-with a Fisher's exact test based on a custom R 
-script that outputs a p-value 
-for each SNP, implemented in the following bash script.
+with a Fisher's exact test p-values 
+for each SNP, implemented in the following R script
 
 ``` r
 ./scripts/shell/localscore_FET_dumpCounts3_MM3.R
 ```
 
-which gets executed in the script
+which gets executed in the bash script
 
 ``` bash
 sbatch ./scripts/shell/SPECIES/PREFIX_local_score_FET.sh
 ```
 
 The significant local score peaks were determined with the species-specific 
-local score script adapted from the 
-PoolParty [github](https://github.com/stuartwillis/poolparty/tree/main/rscripts). The 
-p-values formed a non-uniform distribution, and we used a xi=3 and alpha = 0.01 for 
+local score script. The p-values formed a non-uniform distribution, 
+and we used a xi=3 and alpha = 0.01 for 
 conservative significance values.
 
 ``` r
 ./scipts/R/species-specific/PREFIX_local_score.R
 ```
 
-The compiled supplementary table of significant peaks was compiled, 
+A supplementary table (S3) of significant peaks was compiled, 
 and peaks across species were compared for any overlap. Peaks were considered 
 shared if they were within 100kb.
 
@@ -438,13 +438,13 @@ where `INPUT` can be replaced by the locus name (*lrrc9* or *esrb*); and the loc
 specific fasta file is located in the data directory.
 
 Maximum likelihood trees were constructed with the ape and visualized with ggtree
-on lines 241-531.
+in the R script
 
 ``` r
 ./scripts/R/MaximumLikelihoodTrees.R
 ```
 
-The two output trees are subpanels B and C in Figure 2.
+The two output trees are sub panels B and C in Figure 2.
 
 ### Genotype Assignment from Local PCAs & Allele Based $F_{ST}$
 
@@ -452,7 +452,7 @@ Local principal component analysis, focused on the peaks of divergence associate
 with run timing, was used to define run timing genotypes. There was variation 
 in the width of elevated divergence across species, so the region showing elevated 
 divergence across all species was used. For *lrrc9,* the shared peak was contained 
-within *lrrc9* while for *esrb*, it exceeded *esrb* slightly.
+within *lrrc9* while for *esr2b*, it exceeded *esr2b* slightly.
 
 ***lrrc9***: NC_068455.1:28128954-28169980
 
@@ -503,7 +503,7 @@ included in the EE and LL bamslists for the above $F_{ST}$ scan.
 ./scripts/R/FigureS3_AlleleLocalPCAs_OddPink-Sockeye.R
 ```
 
-For the *esrb* and *lrrc9* regions plotted in Figure 3B&C, we determined if there 
+For the *esr2b* and *lrrc9* regions plotted in Figure 3B&C, we determined if there 
 were SNPs with elevated $F_{ST}$ ($F_{ST}$ \> 0.5) shared across species. 
 If SNPs were within an annotated gene region, the genes and associated GO 
 terms were listed with that SNP in Table S4.
