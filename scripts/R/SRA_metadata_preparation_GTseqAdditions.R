@@ -17,7 +17,9 @@ library(readr)
 
 PRJ="PRJNA1259009"
 
-GTseqMeta <- read_tsv("./SRA/GTseq_meta.txt")
+GTseqMeta <- read_tsv("./SRA/GTseq_meta.txt") %>%
+  distinct() # bc Pick Creek was duplicated
+  
 
 # decided to split by project, but
 GTseqMeta %>% 
@@ -103,6 +105,7 @@ SRA <- fastqfiles %>%
          filename = `1`, filename2 = ifelse(is.na(`2`),'',`2`)
          ) %>%
   filter(!(sample_name %in% dropNoDateData)) %>%
+  filter(!(sample_name %in% DropDuplicates$indiv)) %>%
   dplyr::select(-c(`1`,`2`))
 
 SRA %>%
@@ -159,19 +162,17 @@ fastqfiles %>%
   left_join(SRA %>% distinct(sample_name,Project), by='sample_name') %>%
   filter(!(sample_name %in% pick_acc$sample_name),   # 192 pick creek samples
          !(sample_name %in% og_acc$sample_name),     # this shouldn't drop anything, but to be sure
-         !(sample_name %in% dropNoDateData)) %>%     # drop pink samples without collectiond date that weren't used in analyses
+         !(sample_name %in% dropNoDateData)) %>%     # drop pink samples without collection date that weren't used in analyses
   mutate(Project=gsub(" ",'',Project)) %>%
   group_by(Project) %>%
   group_walk(~ { 
     write_tsv(select(.x,fastqfile), str_c("SRA/FastqFilesByProject_",.y$Project, ".txt"),col_names = F)
   })
 
-# in sedna, i created subfolders for each fastq and moved them there
+# in sedna, i created subfolders for each fastq and moved them there, like so:
 # while IFS= read -r f || [ -n "$f" ]; do [ -n "$f" ] && [ -e "$f" ] && { case "$f" in *.gz) cp -v -- "$f" ../PinkRangewide/ ;; *) \gzip -v -- "$f" && cp -v -- "${f}.gz" ../PinkRangewide/ ;; esac; }; done < ../FastqFilesByProject_PinksRangewide.txt
 WGSandGTseqSamples <- bind_rows(og_acc,pick_acc) %>%
   inner_join(SRA, by="sample_name")
-
-# why are there duplicates?????????????????????????????????
 
 # Sequence columns but replace sample_name with accession
 WGSandGTseqSamples %>%
@@ -181,10 +182,11 @@ WGSandGTseqSamples %>%
   rename(biosample_accession=accession) %>%
   write_tsv("./SRA/SRA_sequencing_preparation_PickCreekGTseqAdditions.tsv")
 
+
 # don't think i need this since the metadata was already imported in the WGS submission
-WGSandGTseqSamples %>%
-  dplyr::select(all_of(metaCols)) %>%
-  write_tsv("./SRA/SRA_metadata_preparation_WGSandGTseqAdditions.tsv")
+# WGSandGTseqSamples %>%
+#   dplyr::select(all_of(metaCols)) %>%
+#   write_tsv("./SRA/SRA_metadata_preparation_PickCreekGTseqAdditions.tsv")
 
 
 ### BASH COMMANDS ####
@@ -194,13 +196,6 @@ WGSandGTseqSamples %>%
 # cd /uploads/natashahowe15_gmail.com_ua4ygaIi/SUB15992991_pick_runtiming
 # mirror -Rv --continue --parallel=5 --use-pget-n=2 /scratch2/nhowe/runtiming/sock-pick/sednagold/Oncorhynchus_nerka/sockeye0425/ .
 
-# Pink Rangewide
+# Pink Rangewide -------------------
 # lftp subftp@ftp-private.ncbi.nlm.nih.gov:/uploads/natashahowe15_gmail.com_LZS2pxfx/PinkRangewideGTseq
 # PW: B1ckyadixdaycsuD
-
-# just to note, but i think ive had this before
-# chmod: Access failed: 550 CHMOD 644 ./P104_PSITU14_8_65727_H7.fastq.gz: Permission denied
-# chmod: Access failed: 550 CHMOD 644 ./P104_PSITU14_9_65727_A8.fastq.gz: Permission denied
-# New: 951 files, 0 symlinks
-# 5067173056 bytes transferred in 176 seconds (27.51 MiB/s)
-# 951 errors detected
