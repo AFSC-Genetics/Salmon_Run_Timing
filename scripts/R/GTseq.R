@@ -445,6 +445,18 @@ DrpdInds <- MixGenos %>%
   slice_min(.,TotalReads,with_ties = F) %>%
   ungroup()
 
+KeptInds <- MixGenos %>%
+  filter(!grepl(pattern="Undetermined|QC|NTC|empty",indiv))%>% #remove the 
+  #mutate(indiv = gsub(pattern="[a-b]$",replacement="",indiv))%>%
+  mutate(SampleID = gsub(pattern="\\.",replacement="_",indiv),
+         MiSeqRun = collection)%>%
+  left_join(Depths %>% mutate(SampleID=gsub(pattern="-",replacement="_",ABLG)),by=c("SampleID","MiSeqRun")) %>%
+  mutate(DDindiv = gsub(pattern="[a-b]$",replacement="",indiv))%>%
+  mutate(TotalReads = TotalReads_esrb+TotalReads_lrrc9)%>%
+  group_by(DDindiv) %>%
+  slice_max(.,TotalReads,with_ties = F) %>%
+  ungroup()
+
 # Need to make a table with full path to each file and the MiSeq run 
 # so we know which to drop
 ChumFiles <- list.files("./data/raw/GTseq/Chum/",recursive = T,full.names = T) %>%
@@ -469,19 +481,14 @@ write_delim(DroppedTib,
             "./results/GTseq/DroppedJuvenileChum.txt",
             delim="\t")
 
-#
+SRAsamps <- DeDupTib %>%
+  left_join(.,KeptInds%>%
+              mutate(indiv=gsub(pattern="\\.",replacement="-",indiv)),
+            by=c('indiv','collection','MiSeqRun')) %>%
+  filter(!is.na(SampleID))%>%
+  filter(!(is.na(OkeV2_LG29_25455833_1) & is.na(OkeV2_LG35_28165076_1)))
 
-MixGenosDeDup %>%
-  filter(!is.na(OkeV2_LG29_25455833_1)) %>%
-  filter(!is.na(OkeV2_LG35_28165076_1))%>%
-  filter(!grepl(pattern="^X",DDindiv))%>%
-  select(DDindiv,TotalReads_esrb,TotalReads_lrrc9) %>%
-  pivot_longer(cols = starts_with('TotalReads'), 
-               names_to = "variable", 
-               values_to = "value") %>%
-  ungroup() %>%
-  group_by(variable) %>%
-  summarize(MeanDepth = mean(value))
+#
 
 #How many samples genotyped for at least one locus 
 MixGenosDeDup %>%
@@ -564,6 +571,17 @@ p_Chum <- WeeklyFreqs %>%
        fill = "Locus", 
        shape = "Locus")
   
+JYC_SampsIncld <- MixGenosDeDup %>%
+       filter(!grepl(pattern="Undetermined|QC|NTC|empty",indiv))%>% #remove the 
+       mutate(indiv = gsub(pattern="[a-b]$",replacement="",indiv))%>%
+       mutate(SampleID = gsub(pattern="\\.",replacement="_",indiv))%>%
+       left_join(.,JYC24meta %>% mutate(SampleID=gsub(pattern="-",replacement="_",SampleID)), by="SampleID") %>%
+       filter(!is.na(Date))%>%
+       mutate(Year = substr(Date, start = 1, stop = 4),
+                           JD = format(Date, "%j")) %>%
+       mutate(Week = lubridate::isoweek(Date)) %>% 
+  filter(!(is.na(OkeV2_LG29_25455833_1) & is.na(OkeV2_LG35_28165076_1))) #keep them if they are genotyped for at least one locus
+
 #Model Fits  
 Locus_Fits <-  WeeklyFreqs %>%
   mutate(locus = gsub(pattern="_1$",replacement="",locus))%>%
@@ -607,7 +625,9 @@ PickWhitefish_meta <- bind_rows(Meta1,Meta2,Meta3) %>%
   select(-c(Location1,Location2))%>%
   filter(!is.na(ABLG)) %>%
   mutate(CollectionDate = str_c(CollectionYear,'-',CollectionMonth,'-',CollectionDay),
-         LocaleDate = str_c(sub(' Creek','',Location),'.',CollectionDate))
+         LocaleDate = str_c(sub(' Creek','',Location),'.',CollectionDate)) %>%
+  group_by(ABLG) %>%
+  slice_head(n=1) # there are some duplicated records in the muliple files
 
 rm(Meta1,Meta2,Meta3)
 
