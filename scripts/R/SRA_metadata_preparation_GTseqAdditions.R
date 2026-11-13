@@ -84,6 +84,7 @@ fastqfiles <- read_tsv("./SRA/Run_Timing_GTseq_fastq_filelist_updated.txt", col_
                        T ~ sub(".*_L\\d+_([^_]+).*", "\\1", sample)),
          R = sub(".fastq.gz","",R) %>% sub("R","",.))
 
+
 # now format for the sra
 SRA <- fastqfiles %>%
   tidyr::pivot_wider(id_cols = sample_name, names_from = R, values_from = sample) %>%
@@ -105,7 +106,7 @@ SRA <- fastqfiles %>%
          filename = `1`, filename2 = ifelse(is.na(`2`),'',`2`)
          ) %>%
   filter(!(sample_name %in% dropNoDateData)) %>%
-  filter(!(sample_name %in% DropDuplicates$indiv)) %>%
+  #filter(!(filename %in% DropDuplicates$Fastq)) %>% # just to confirm, I did have it as sample_name %in% DropDuplicates$indiv, which accidentally deleted duplicate and original.
   dplyr::select(-c(`1`,`2`))
 
 SRA %>%
@@ -127,12 +128,6 @@ pick_acc <- read_tsv('SRA/attributes_SUB15992991_PickCreekAdditionsWGS.tsv') %>%
   select(accession,sample_name)
 og_acc <- read_tsv('SRA/attributes_SUB15296226_OriginalWGSUpload.tsv') %>%
   select(accession,sample_name)
-
-
-# pickWGS <- read_tsv("./SRA/Salmon_Run_Timing_SRA_Sequences_PickCreekAdditions_SUB15992991.tsv") %>%
-#   pull(sample_name)
-# originalWGS <- read_csv("./SRA/SRA_metadata_preparation.csv") %>%
-#   pull(sample_name)
 
 justGTseqSRA <- SRA %>%
   filter(!(sample_name %in% pick_acc$sample_name),   # 192 pick creek samples
@@ -183,6 +178,9 @@ WGSandGTseqSamples %>%
   write_tsv("./SRA/SRA_sequencing_preparation_PickCreekGTseqAdditions.tsv")
 
 
+SRA %>%
+  filter(sample_name %in% DropDuplicates$indiv)
+
 # don't think i need this since the metadata was already imported in the WGS submission
 # WGSandGTseqSamples %>%
 #   dplyr::select(all_of(metaCols)) %>%
@@ -199,3 +197,30 @@ WGSandGTseqSamples %>%
 # Pink Rangewide -------------------
 # lftp subftp@ftp-private.ncbi.nlm.nih.gov:/uploads/natashahowe15_gmail.com_LZS2pxfx/PinkRangewideGTseq
 # PW: B1ckyadixdaycsuD
+
+# Accidentally deleted the duplicated samples and the original ones that were used
+# code above is fixed. 
+
+uploadedChum <- read_tsv("SRA/Salmon_Run_Timing_sequence_GTseqAdditions_YukonChum.tsv",col_names = T)
+# good news is that the redownload didn't change anything.
+
+
+DuplicatesInFastqs <- read_tsv("./SRA/YukonChumRedownload_fastq_list.txt", col_names = F) %>%
+  filter(!grepl("MACOS",X1), !grepl("_P1",X1)) %>%
+  mutate(sample = basename(X1),
+         sample_name = str_split(sample, "_", simplify = T)[,1]) %>%
+  filter(!(sample %in% uploadedChum$filename),
+         !(sample %in% uploadedChum$filename2),
+         !(sample %in% DropDuplicates$Fastq))
+  
+
+SRA %>%
+  filter((filename %in% DuplicatesInFastqs$sample) | (filename2 %in% DuplicatesInFastqs$sample)) %>%
+  dplyr::select(all_of(seqCols)) %>%
+  write_tsv("./SRA/Salmon_Run_Timing_sequence_YukonChumGTseq_2ndSubmission.tsv")
+
+SRA %>%
+  filter((filename %in% DuplicatesInFastqs$sample) | (filename2 %in% DuplicatesInFastqs$sample)) %>%
+  dplyr::select(all_of(metaCols)) %>%
+  write_tsv("./SRA/Salmon_Run_Timing_metadata_YukonChumGTseq_2ndSubmission.tsv")
+
