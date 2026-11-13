@@ -196,7 +196,7 @@ SRA %>%
 
 # Pink Rangewide -------------------
 # lftp subftp@ftp-private.ncbi.nlm.nih.gov:/uploads/natashahowe15_gmail.com_LZS2pxfx/PinkRangewideGTseq
-# PW: B1ckyadixdaycsuD
+# PW: 
 
 # Accidentally deleted the duplicated samples and the original ones that were used
 # code above is fixed. 
@@ -205,22 +205,28 @@ uploadedChum <- read_tsv("SRA/Salmon_Run_Timing_sequence_GTseqAdditions_YukonChu
 # good news is that the redownload didn't change anything.
 
 
-DuplicatesInFastqs <- read_tsv("./SRA/YukonChumRedownload_fastq_list.txt", col_names = F) %>%
-  filter(!grepl("MACOS",X1), !grepl("_P1",X1)) %>%
-  mutate(sample = basename(X1),
-         sample_name = str_split(sample, "_", simplify = T)[,1]) %>%
-  filter(!(sample %in% uploadedChum$filename),
-         !(sample %in% uploadedChum$filename2),
-         !(sample %in% DropDuplicates$Fastq))
+KeepDuplicatedFastqs <- read_tsv("./SRA/YukonChumRedownload_fastq_list.txt", col_names = F) %>%
+  filter(!grepl("MACOS",X1), !grepl("_P1",X1)) %>% # hidden things from zipped file
+  mutate(fastq = basename(X1),
+         sample_name = str_split(fastq, "_", simplify = T)[,1]) %>%
+  filter(!(fastq %in% uploadedChum$filename),
+         !(fastq %in% uploadedChum$filename2),
+         !(fastq %in% DropDuplicates$Fastq))
   
 
 SRA %>%
-  filter((filename %in% DuplicatesInFastqs$sample) | (filename2 %in% DuplicatesInFastqs$sample)) %>%
+  filter((filename %in% KeepDuplicatedFastqs$fastq) | (filename2 %in% KeepDuplicatedFastqs$fastq)) %>%
   dplyr::select(all_of(seqCols)) %>%
   write_tsv("./SRA/Salmon_Run_Timing_sequence_YukonChumGTseq_2ndSubmission.tsv")
 
 SRA %>%
-  filter((filename %in% DuplicatesInFastqs$sample) | (filename2 %in% DuplicatesInFastqs$sample)) %>%
+  filter((filename %in% KeepDuplicatedFastqs$fastq) | (filename2 %in% KeepDuplicatedFastqs$fastq)) %>%
   dplyr::select(all_of(metaCols)) %>%
   write_tsv("./SRA/Salmon_Run_Timing_metadata_YukonChumGTseq_2ndSubmission.tsv")
 
+KeepDuplicatedFastqs %>%
+  left_join(SRA %>% distinct(sample_name), by='sample_name') %>%
+  dplyr::select(fastq) %>%
+  write_tsv("SRA/FastqFilesByProject_YukonChumGTseq_2ndSubmission.txt",col_names = F)
+
+# okay do another submission for these
