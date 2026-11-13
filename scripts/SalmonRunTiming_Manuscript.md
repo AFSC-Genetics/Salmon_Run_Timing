@@ -451,6 +451,15 @@ collection. $F_{IS}$ values were summarized over the genomic regions
 that were associated with run timing. There was no evidence of collapsed 
 paralogs, prominent troughs of $F_{IS}$ less than -0.5. 
 
+$F_{IS}$ per chromosome was calculated with 
+
+``` bash
+./scripts/shell/SPECIES_FILTER_fisARRAY.sh
+```
+
+results were visually inspected and summarized for each gene region with 
+the script
+
 ``` r
 ./scripts/R/Fis_SppSpecificAlignment.R
 ```
