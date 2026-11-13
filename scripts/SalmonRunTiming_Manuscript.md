@@ -1,8 +1,7 @@
 ---
-title: "Diversification of large-effect loci in a duplicated genomic region 
-leads to complex phenotypes"
-author: "Patrick Barry & Natasha Howe"
-date: "April 01, 2025"
+title: "A duplicated genomic region provides multiple pathways for the evolution of reproductive life-history diversity in salmon"
+author: "Patrick D. Barry, Natasha Howe, Gregory L. Owens, Diana S. Baetscher, Katie D’Amelio, Scott Vulstek, Joshua Russell, Elizabeth Lee, Andrew Barclay, Anthony J. Gharrett, David A. Tallmon, Wesley A. Larson"
+date: "November 08, 2026"
 output: 
   html_document:
     keep_md: true
@@ -11,32 +10,78 @@ output:
 
 ## Introduction
 
-This markdown document outlines all analyses presented in the manuscript 'Diversification of large-effect loci in a duplicated genomic region leads to complex phenotypes'. The document points to relevant scripts for each major analysis. To perform the analyses will require that the user set up their own directories and modify some paths.
+This markdown document outlines all analyses performed for and 
+presented in the manuscript 
+'A duplicated genomic region provides multiple pathways for the evolution of 
+reproductive life-history diversity in salmon'. The document points to relevant 
+scripts for each major analysis. To perform the analyses will require that the 
+user download all the sequencing data, set up directories, and modify paths within scripts.
+The analysis generally follows the pipeline https://github.com/AFSC-Genetics/lcWGS-pipeline
+with minor modification and additional analyses.
 
 ## Sample Collection
 
-Data from Auke Creek pink salmon (even and odd lineage), Wood River sockeye salmon, Yukon River chum salmon, and Skilak River coho salmon. Sample collection data was compiled from the raw data in each four species manually with three columns: sampleID, Runtime, and Species
+Data from Auke Creek pink salmon (even and odd lineage), Wood River sockeye 
+salmon, Yukon River chum salmon, and Skilak River coho salmon. 
 
-``` r
-# All samples and sequencing information can be found at:
-as.vector(Sys.glob("./data/raw/*"))
+Information on the samples used in lcWGS analyses can be found:
+
+``` bash
+./data/raw/CollectionInfo.csv
 ```
+
+For each individual included in the analyses, the file 
+
+``` bash
+./data/raw/fourspecies_runtiming_metadata.csv
+```
+
+has information on the sampleID, run-timing phenotype, and species.
+
+### Sequencing data
+Low-coverage whole genome fastq files for pink, chum, coho, and 
+sockeye (Whitefish and Pick creeks) as well as
+genotyping in the thousands by sequencing for Auke Creek from 2019, 
+Yukon River chum salmon from 2024 and sockeye salmon from 2011 and 2024 are 
+available through NCBIs Sequence 
+Read Archive (SRA; BioProject: PRJNA1259009). Sequences from sockeye populations 
+Teal Creek and Anvil Beach are available at NCBI SRA (PRJNA1006708). PacBio HiFi 
+sequencing data for pink salmon are available in SRA SRR41275153. 
 
 ### Site Map
 
-The Alaska anadromous waters (AWC) catalog available from ADFG is required for plotting water bodies in the map of collections (Figure S1). The AWC can be downloaded from <https://www.adfg.alaska.gov/sf/SARR/AWC/index.cfm?ADFG=maps.dataFiles>. Additionally, SEAK salmon stat areas are used in the pink salmon subplot. This file is available from ADFG <https://gis.adfg.alaska.gov/ags/rest/services/CF_public/SoutheastSalmon5AAC33_200/MapServer/9> or the authors.
+The Alaska anadromous waters (AWC) catalog available from ADFG is required for 
+plotting water bodies in the map of collections (Figure S1). The AWC can be 
+downloaded from https://www.adfg.alaska.gov/sf/SARR/AWC/index.cfm?ADFG=maps.dataFiles. 
+Additionally, SEAK salmon stat areas are used in the pink salmon subplot. This file 
+is available from 
+ADFG https://gis.adfg.alaska.gov/ags/rest/services/CF_public/SoutheastSalmon5AAC33_200/MapServer/9.
+
+The map and run timing figure S1 can be created with the script:
 
 ``` r
-FigureS1_SiteMap.R
+./scripts/R/FigureS1_SiteMap.R
 ```
 
 ## Low-coverage whole genome sequencing pipeline
 
-The analyses of low-coverage sequencing data follow a standard workflow which are outlined below with all relevant flags. Sequencing projects varied by species and so coverage differed by species. Specific differences are referenced in the supplemental methods.
+The analyses of low-coverage sequencing data follow a standard workflow which 
+are outlined below with all relevant flags. Sequencing projects varied by species 
+and so coverage differed by species. Specific differences are referenced in the 
+supplemental methods.
 
 ### Initial Setup
 
-Species were analyzed individually. All scripts to process the low-coverage data and referenced in the preceding sections are located in the `./scripts/` directory. To facilitate location of relevent files, paths shown to execute the code assume `scripts` is the current working directory. Note that all .sh scripts have directory structure not reflected in the github repository and require some standardization on an HPC. For the purpose of this markdown document not all code for species specific analyses are provided. Instead, script commands are given with PREFIX as a placeholder for the species-specific analysis performed. To reproduce results, one will need to substitute 'PREFIX' in the code below for one of the following options:
+Species were analyzed individually. All scripts to process the low-coverage data 
+and referenced in the preceding sections are located in the `./scripts/` directory. To 
+facilitate location of relevant files, paths shown to execute the code assume `scripts` is 
+the current working directory. Note that all .sh scripts have directory structure not 
+reflected in the github repository and require some standardization on an HPC. For the purpose 
+of this markdown document, in order to condense the presentation of scripts on 
+each of the four species, not all code for each species are provided. Instead, 
+script commands are given with PREFIX as a placeholder for the species-specific 
+analysis performed. To reproduce results, one will need to substitute 'PREFIX' in the 
+code below for one of the following options:
 
 1.  **Chum (Yukon):** "chumrun"
 2.  **Coho (Skilak Lake):** "coho-chum"
@@ -48,7 +93,8 @@ Species were analyzed individually. All scripts to process the low-coverage data
     i.  **Even**: "pink-chum"
     ii. **Odd**: "pink-odd
 
-For instance, to perform the Pink salmon even lineage analysis one would remove `PREFIX` and insert `pink-chum`.
+For instance, to perform the Pink salmon even lineage analysis one would 
+remove `PREFIX` and insert `pink-chum`.
 
 All species were aligned to the chum salmon reference genome which can be downloaded with
 
@@ -62,7 +108,8 @@ After unzipping the genome, chromosomes can be listed with
 grep '^>NC' ./GCF_023373465.1_Oket_V2_genomic.fna |  awk '{print $1}' | sed 's/>//' > chromosomes_all.txt
 ```
 
-Chum salmon have 37 chromosomal pairs as well as the mtDNA genome. For the purpose of this analysis we removed the mitochondrial genome from the list of chromosomes to analyze.
+Chum salmon have 37 chromosomal pairs as well as the mtDNA genome. For the purpose 
+of this analysis we removed the mitochondrial genome from the list of chromosomes to analyze.
 
 ``` r
 sed '/NC_017838.1/d' chromosomes_all.txt > chromosomes.txt
@@ -74,27 +121,50 @@ Chromosome sizes were extracted with
  cut -f1,2 GCF_023373465.1_Oket_V2_genomic.fna.fai | grep '^NC' > chrom_sizes.txt
 ```
 
-Two shell scripts index the reference genome. The HPC used for these analyses used a SLURM manager and so commands presented here use SLURM specific submission commands such as `sbatch`. If your HPC uses a different manager, these commands will need to be changed.
+Two shell scripts index the reference genome. The HPC used for these analyses 
+used a SLURM manager and so commands presented here use SLURM specific submission 
+commands such as `sbatch`. If your HPC uses a different manager, these 
+commands will need to be changed.
+
+Similar to the PREFIX placeholder, to simplify the orientation of the 
+reader to specific analyses for a given species, we use 
+SPECIES as a placeholder for chum, sockeye, pink, or coho as well as 
+GENOME for their a specific reference genome. For instance, the 
+generic call for indexing would be
 
 ``` bash
-sbatch ./shell/GCF_023373465.1_Oket_V2_genomic_bwa-index_script.sh
-sbatch ./shell/GCF_023373465.1_Oket_V2_genomic_fai_script.sh
+sbatch ./shell/SPECIES/GENOME_genomic_bwa-indexSLURM
+sbatch ./shell/SPECIES/GENOME_genomic_faiSLURM.sh
 ```
 
-### Step 1: Quality Control
+whereas the specific code for the even lineage pink salmon colleciton 
+aligned to the chum salmon genome would be 
 
-This step is a quality control of the sequencing data (raw fastqs). It runs FastQC on the raw sequence data. FastQC is a java based application that runs a set of quality control measures.
+``` bash
+sbatch ./shell/pink-even/GCF_023373465.1_Oket_V2_bwa-indexSLURM.sh
+sbatch ./shell/pink-even/GCF_023373465.1_Oket_V2_genomic_faiSLURM.sh
+```
 
-Run two shell scripts PREFIX-raw_fastqcARRAY.sh and PREFIX-raw_multiqcSLURM.sh can be run in succession.
+### Quality Control
+
+This step is a quality control of the sequencing data (raw fastqs). It runs 
+FastQC on the raw sequence data. FastQC is a java based application that runs 
+a set of quality control measures.
+
+Run two shell scripts PREFIX-raw_fastqcARRAY.sh and PREFIX-raw_multiqcSLURM.sh 
+can be run in succession.
 
 ``` bash
 sbatch ./shell/PREFIX-raw_fastqcARRAY.sh
 sbatch ./shell/PREFIX-raw_multiqcSLURM.sh
 ```
 
-### Step 2: Trim
+### Trim
 
-After initial quality control steps, adapters were trimmed from raw fastqs with the program TRIMMOMATIC and an additional quality-check of the trimmed fastqs with multiQC was performed. Three shell scripts: PREFIX_trimARRAY.sh, PREFIX-trim_fastqcARRAY.sh, and PREFIX-trim_multiqcSLURM.sh should all run in succession.
+After initial quality control steps, adapters were trimmed from raw fastqs 
+with the program TRIMMOMATIC and an additional quality-check of the trimmed 
+fastqs with multiQC was performed. Three shell scripts: PREFIX_trimARRAY.sh, 
+PREFIX-trim_fastqcARRAY.sh, and PREFIX-trim_multiqcSLURM.sh should all run in succession.
 
 ``` bash
 # trim adapters
@@ -105,11 +175,14 @@ sbatch ./shell/PREFIX-trim_fastqcARRAY.sh
 sbatch ./shell/PREFIX-trim_multiqcSLURM.sh
 ```
 
-The multiQC.html output file was downloaded to evaluate if any issues were present in the trimmed data before proceeding to alignment.
+The multiQC.html output file was downloaded to evaluate if any issues were 
+present in the trimmed data before proceeding to alignment.
 
-### Step 3: Align
+### Align
 
-Alignment of trimmed reads to the chum salmon reference genome was performed with BWA and aligned reads were then processed with SAMTOOLS. The average read depth for each sample was then calculated.
+Alignment of trimmed reads to the chum salmon reference genome was 
+performed with BWA and aligned reads were then processed with SAMTOOLS. The 
+average read depth for each sample was then calculated.
 
 ``` bash
 # align to genome
@@ -119,78 +192,123 @@ sbatch ./shell/PREFIX_alignARRAY.sh
 sbatch ./shell/PREFIX_depthsARRAY.sh
 ```
 
-The output file PREFIX_depths.csv was imported and run through the downsampling script to see if there was a similar distribution of depths across early and late individuals. We generally used 0.5x as a depth cutoff; removing individual samples which fell below this threshold; however, two chum samples were close to the 0.5x cutoff (\~0.4x) which were retained.
+which calls the python script
+
+``` bash
+./scripts/shell/mean_cov_ind.py 
+```
+to calculate depths.
+
+The output file PREFIX_depths.csv was imported and run through the 
+downsampling script to see if there was a similar distribution of depths across 
+early and late individuals. We generally used 0.5x as a depth cutoff; removing 
+individual samples which fell below this threshold; however, two chum samples 
+were close to the 0.5x cutoff (\~0.4x) which were retained.
 
 ``` r
 ./R/species-specific/PREFIX_depth_and_downsampling.R
 ```
 
-Individuals that failed to pass this filter threshold can be added to a file that list individuals to exclude in further analyses (-b flag in subsequent scripts).
+Individuals that failed to pass this filter threshold were added to a 
+blocklist file that list individuals to exclude in further analyses (-b flag in 
+subsequent scripts).
 
 #### Mapped Reads
 
-Calculate the total number of mapped reads from the bamslists with samtools.
+We calculated the total number of mapped reads from the bamslists with samtools.
 
 ``` bash
-sbatch ./shell/PREFIX_mapped_reads.sh
+sbatch ./shell/SPECIES/PREFIX_mapped_reads.sh
 ```
 
-The average and standard deviation for the mapped reads after downloading the file can be calculated in R with
+The average and standard deviation for the mapped reads after downloading 
+the file can be calculated in R with
 
 ``` r
 mean(read.csv("./results/depth/PREFIX_mapped_reads.csv", header = F)$V1)
 sd(read.csv("./results/depth/PREFIX_mapped_reads.csv", header = F)$V1)
 ```
 
-### Step 4: Genotype Likelihoods
+### Genotype Likelihoods
 
-Genotype likelihoods (GL) for polymorphic sites across the genome were calculated with ANGSD. This was done by calculating GLs for each chromosome. This script uses PREFIX_angsdARRAY_input.txt (array file with chromosomes) and a list of the .bam files to analyze (PREFIX_filtered_bamslist.txt).
+Genotype likelihoods (GL) for polymorphic sites across the genome were 
+calculated with ANGSD. This was done by calculating GLs for each chromosome. This 
+script uses PREFIX_angsdARRAY_input.txt (array file with chromosomes) and a list 
+of the .bam files to analyze (PREFIX_filtered_bamslist.txt).
+
+If a filter was applied it will be represented by FILTER (see below).
 
 ``` bash
-sbatch ./shell/PREFIX_minInd0.3_glsARRAY.sh 
+sbatch ./shell/SPECIES/PREFIX_FILTER_glsARRAY.sh 
 ```
 
 Filters slightly differed depending on the species alignment and average coverage.
 
--   *minMapQ* [15 or 20]: the minimum map quality was 20 for chum salmon and 15 for all other species (pink, sockeye, and coho) to relax alignment stringency for those species to the chum reference genome.
+-   *minMapQ* [15 or 20]: the minimum map quality was 20 for chum salmon and 15 
+for all other species (pink, sockeye, and coho) to relax alignment stringency 
+for those species to the chum reference genome.
 -   *minQ* [20]: the minimum quality of nucleotide call was 20 for all species.
--   *C* [50]: An adjustment of the Map Quality for excessive mismatches was set at 50. This is the suggested value for BWA and leads to fewer false positive variant calls.
--   *minDepth* [N or 0.5\*N]: The minimum depth was set to the number of individuals if average depth \> 1 and to half the number of individuals if avg depth was \< 1. Discard site if total sequencing depth (all individuals added together) is below minDepth.
--   *setMaxDepth* [20\*minDepth]: Maximum depth was set to the number of individuals times 10 or 20. This discards the site if total sequencing depth (all individuals added together) is above the number of individuals multiplied by 10 or 20 depending on the average depth of coverage.
+-   *C* [50]: An adjustment of the Map Quality for excessive mismatches was set 
+at 50. This is the suggested value for BWA and leads to fewer false positive variant calls.
+-   *minDepth* [N or 0.5\*N]: The minimum depth was set to the number of 
+individuals if average depth \> 1 and to half the number of individuals if 
+avg depth was \< 1. Discard site if total sequencing depth 
+(all individuals added together) is below minDepth.
+-   *setMaxDepth* [20\*minDepth]: Maximum depth was set to the number of individuals 
+times 10 or 20. This discards the site if total sequencing depth (all 
+individuals added together) is above the number of individuals multiplied 
+by 10 or 20 depending on the average depth of coverage.
 -   *SNP_pval* [1e-10]: Retain sites with a p-value from the likelihood test of less than 1e-10.
 -   *Gl* [1]: use SAMtools genotype likelihood calling algorithm.
 -   *minMaf* [0.05]: Retain sites with a maf above 0.05.
 -   *minInd* [0.3\*N]: Set to 30% of sample size to include a proportion of individuals.
 -   Additional Filters: *only_proper_pairs* [1]; *remove_bads* [1]; *uniqueOnly* [1]; *trim* [0]; *doMajorMinor* [1]
 
-### Step 5: Collate
+### Collate
 
-The GL output are split by chromosome, which can be combined to make a GL file for the whole genome by concatenating the individual beagle and maf files. Additionally, a *sites* file can be created that will be used as input for $F_{ST}$ calculations under the -sites flag.
+The GL output are split by chromosome, which can be combined to make 
+a GL file for the whole genome by concatenating the individual beagle 
+and maf files. Additionally, a *sites* file is created in the maf.sh 
+script to identify the polymorphic sites based on the collections. This 
+sites file can be passed, with the -sites flag, to angsd in 
+downstream analyses such as calculations of $F_{ST}$.
 
 ``` bash
-sbatch ./shell/PREFIX_minInd0.3_concatenate_mafs.sh
-sbatch ./shell/PREFIX_minInd0.3_concatenate_beagles.sh
+sbatch ./shell/PREFIX_FILTER_concatenate_mafs.sh
+sbatch ./shell/PREFIX_FILTER_concatenate_beagles.sh
 ```
 
-### Step 6: Population Analyses - $F_{ST}$
+### Population Analyses - $F_{ST}$
 
-A file containing a list of .bam files (bamslists) for the early and late run timing phenotypes (subset of the filtered bamslist of all samples for a given species) was created to evaluate divergence between run timing phenotypes.
+A file containing a list of .bam files (bamslists) for the early and late 
+run-timing phenotypes (subset of the filtered bamslist of all samples for a 
+given species) was created to evaluate divergence between run-timing phenotypes.
 
-First, angsd calls GLs for each subgroup, but it uses the *sites* flag from the sites file created in Step 5, so the SNPs being called will only be from the polymorphic files from Step 4. Therefore, some of the filtering steps have been removed, such as: *SNP_pval* and *minMaf*. Filters were adjusted for the sample size of the subset group: *setminDepth* and set*maxDepth*, and *minInd.*
+First, angsd calls GLs for each subgroup, but it uses the *sites* flag,
+from above, so the SNPs being called will only be from 
+the polymorphic files. Therefore, some of the filtering steps 
+have been removed, such as: *SNP_pval* and *minMaf*. Filters were adjusted for 
+the sample size of the subset group: *setminDepth* and set*maxDepth*, and *minInd.*
 
 ``` bash
-sbatch ./shell/PREFIX_minInd0.3_fstARRAY.sh
+sbatch ./shell/PREFIX_FILTER_fstARRAY.sh
 ```
 
 #### Weighted $F_{ST}$
 
+Global and genomic region weighted $F_{ST}$ were calculated as 
+the ‘ratio of averages’ of polymorphic sites first by using the 
+realSFS fst print function in ANGSD to extract the $F_{ST}$ from the 
+indexed $F_{ST}$ file with
+
 ``` bash
-sbatch ./shell/PREFIX_print_idx_minInd0.3_globalFst.sh
+sbatch ./scripts/shell/SPECIES/PREFIX_print_idx_FILTER_globalFst.sh
 ```
 
-## Identifying Regions of Divergence associated with Run Timing
+### Identifying Regions of Divergence associated with Run Timing
 
-Multi-species whole genome Fst scan plot with *esrb* and *lrrc9* highlighted. These plots are the initial run timing phenotype comparisons.
+Multi-species whole genome $F_{ST}$ scan plot with *esr1*, *esr2b* and *lrrc9* highlighted. 
+These plots are the initial run-timing phenotype comparisons.
 
 1.  Pink (Even): Early v. Late
 2.  Sockeye: Early Creek v. Late Beach
@@ -198,73 +316,217 @@ Multi-species whole genome Fst scan plot with *esrb* and *lrrc9* highlighted. Th
 4.  Coho: Early v. Late
 
 ``` r
-Figure1_Fst_WholeGenomeManhattan_FourSpp.R
+./scripts/R/Figure1_Fst_WholeGenomeManhattan_FourSpp.R
 ```
 
-The two other comparisons were included as a supplementary figure.
+The two other comparisons were included as supplementary figure S4.
 
 5.  Pink (Odd): Early v. Late
 6.  Sockeye: Early Creek v. Late Creek
 
 ``` r
-FigureS2_Fst_WholeGenomeManhattan_OddPink-Sockeye.R
+./scripts/R/FigureS4_Fst_WholeGenomeManhattan_OddPink-Sockeye.R
 ```
 
 ### Local Score Analyses
 
-Corresponding local score functions are taken from [Fariello et al 2017](https://pubmed.ncbi.nlm.nih.gov/28394503/). The script is written for pool-sequencing data, which was emulated by calculating the number of reads per allele per locus for each run timing group in angsd.
+To quantify significant peaks, we used the local score approach of Fariello et. al (2017)
+with corresponding local score 
+functions (https://forge-dga.jouy.inra.fr/projects/local-score)
+that  were adapted by Willis et al. 
+https://github.com/stuartwillis/poolparty/blob/main/rscripts/r_localscore.R 
+for pool-sequencing data. We calculating the number of 
+reads per allele per locus for each run timing group in angsd.
 
 ``` bash
-sbatch ./shell/PREFIX_minInd0.3_countsARRAY.sh
+sbatch ./shell/SPECIES/PREFIX_FILTER_countsARRAY.sh
 ```
 
-There are separate counts for the two phenotypes, which were compared with a Fisher's exact test based on a custom R script `localscore_FET_dumpCounts3_MM3.R` that outputs a p-value for each SNP, implemented in the following bash script.
+The separate counts for the two phenotypes were compared 
+with a Fisher's exact test. The resultant p-values for each SNP 
+calculated with the script
+
+``` r
+./scripts/shell/localscore_FET_dumpCounts3_MM3.R
+```
+
+serve as the input for local score. The R script gets executed in the bash script
 
 ``` bash
-sbatch ./shell/PREFIX_local_score_FET.sh
+sbatch ./scripts/shell/SPECIES/PREFIX_local_score_FET.sh
 ```
 
-The significant local score peaks were determined with the species-specific local score script taken from the PoolParty [github](https://github.com/stuartwillis/poolparty/tree/main/rscripts). The p-values formed a non-uniform distribution, and we used a xi=3 and alpha = 0.01 for conservative significance values.
+The significant local score peaks were determined with the species-specific 
+local score script. The p-values formed a non-uniform distribution and so
+the resampling method was used to calculate thresholds for determining 
+significant local score excursions (xi=3 and alpha = 0.01).
 
 ``` r
-./R/species-specific/PREFIX_local_score.R
+./scipts/R/species-specific/PREFIX_local_score.R
 ```
 
-The compiled supplementary table of significant peaks was compiled, and peaks across species were compared for any overlap. Peaks were considered shared if they were within 100kb.
+A supplementary table (S3) of significant peaks was compiled, 
+and peaks across species were compared for any overlap. Peaks were considered 
+shared if they were within 100kb.
 
 ``` r
-TableSXX_fourspp_localscore_peaks.R
+./scripts/R/TableS4_fourspp_localscore_peaks.R
 ```
 
-Local score captures three regions of divergence that were shared across 2+ species: *esr1*, *lrrc9,* and *esrb.*
+Local score captures three regions of divergence that were 
+shared across 2+ species: *esr1*, *esr2b*, and *lrrc9*.
 
-## Evaluation of Nonsynonymous mutations
+### Reference Genome Sensitivity
+To evaluate reference genome bias, and evaluate possible 
+non-synonymous mutations, all species were 
+realigned to species specific reference genomes. Alignment, 
+mapping and the calculation of genotype likelihoods and $F_{ST}$ for species
+specific analyses are located in the directories
 
-After regions of elevated FST were identified with local score, species specific alignments were used to identify SNP positions and determine mutational type. SNPs from seven regions for the four species were evaluated: pink salmon genes within the *lrrc9* region on chromosome 10 (NC_060182.1:72650536-72875058), chum salmon genes within the *esr2b* region on chromosome 29 (NC_068449.1: 25440358-25545548) and the *lrrc9* region on chromosome 35 (NC_068455.1:28033205-28206418), sockeye salmon genes within the *lrrc9* region on chromosome 12 (NC_042546.1:41162738-41448689) and *esr1* region on chromosome 13 (NC_042547.1:7206200-7643690), and for coho genes within the *esr2b* region on chromosome 7 ( NC_034180.2:29455765-30509378) and *esr1* region on chromosome 21 (NC_034194.2:24716700-24902281)
+``` bash
+./scripts/SPECIES-alignment/SCRIPT.sh
+```
+where SCRIPT is the placeholder that mirrors the shell script for the species 
+aligned to the chum genome. 
+
+for instance 
+
+``` bash
+SBATCH ./scripts/coho-alignment/tocoho_minDepthHalf_glsARRAY.sh
+``` 
+will calculate the genotype likelihoods for coho aligned to the coho reference,
+whereas
+
+``` bash
+SBATCH ./scripts/coho/coho-chum_minInd0.3_glsARRAY.sh
+``` 
+
+calculates the genotype likelihoods for coho aligned to the chum salmon genome.
+
+
+Once $F_{ST}$ is calculated between the run-timing phenotype groups, 
+a species specific manhattan plot can be constructed with the script
+
+```R
+./scripts/R/FigureS7_ManhattahSpAlign_REV2.R
+```
+
+### Alignment Diagnostics 
+#### Mappability
+The gene regions of interest are ohnologs and short read sequences 
+may not map to one region uniquely. To evaluate the ability to 
+map reads back to the genomic regions associated with run timing, we 
+calculated the (150,2)-mappability of each genome with GenMap. First 
+genomes were filtered to the assembled chromosomes with samtools. 
+
+``` bash
+./scripts/SPECIES/Genome_Filter.sh
+```
+
+The genome was indexed and then mappability was estimated. 
+
+``` bash
+./scripts/SPECIES/SPECIES_GenMap_Index.sh
+./scripts/SPECIES/SPECIES_GenMap_Mappability.sh
+```
+
+Bedfile was created to easily subset the mappability tracks to the regions
+that we were particularly worried about mismapping.
+
+``` bash
+./scripts/SPECIES/SPECIES_Bedtools_SPECIESMap.sh
+```
+
+Mappability summary statistics were then calculated for each region of the genome
+that was associated with run timing. 
 
 ``` r
-./R/Mutations.R
+./scripts/R/Mappability.R
 ```
+
+#### Per-site $F_{IS}$
+To evaluate the potential for collapsed paralog in the assemblies, we 
+computed per-site inbreeding coefficients ($F_{IS}$) in ANGSD for each 
+collection. $F_{IS}$ values were summarized over the genomic regions 
+that were associated with run timing. There was no evidence of collapsed 
+paralogs, prominent troughs of $F_{IS}$ less than -0.5. 
+
+``` r
+./scripts/R/Fis_SppSpecificAlignment.R
+```
+
+
+### Evaluation of Nonsynonymous mutations
+After regions of elevated $F_{ST}$  were identified with local score, species specific 
+alignments were used to identify SNP positions and determine mutational type. 
+SNPs from seven regions for the four species were evaluated: pink salmon genes 
+within the *lrrc9* region on chromosome 10 (NC_060182.1:72650536-72875058), 
+chum salmon genes within the *esr2b* region on chromosome 29 
+(NC_068449.1: 25440358-25545548) and the *lrrc9* region on chromosome 
+35 (NC_068455.1:28033205-28206418), sockeye salmon genes within 
+the *lrrc9* region on chromosome 12 (NC_042546.1:41162738-41448689) and 
+*esr1* region on chromosome 13 (NC_042547.1:7206200-7643690), and for coho 
+genes within the *esr2b* region on chromosome 7 ( NC_034180.2:29455765-30509378) 
+and *esr1* region on chromosome 21 (NC_034194.2:24716700-24902281). 
+
+``` r
+./scripts/R/Mutations.R
+```
+
+This sources the R function in 
+
+``` r
+./scripts/R/SumGeneProtein.R
+```
+
+### KEGG pathway analysis
+To determine if genes within the shared regions affect shared biological pathways, 
+a Kyoto Encyclopedia of Genes and Genomes (KEGG) analysis was performed in R with 
+the package KEGGREST. 
+
+``` r
+./scripts/R/KeggPathways.R
+```
+
+The pathways are summarized as Table S5.
 
 ## Shared Regions of Divergence across Species
 
-The two highlighted regions of divergence that were shared across 2+ species were *lrrc9* and *esrb*. We calculated the mean weighted Fst across the entire genome for each species. We also calculated local weighted Fst within the shared elevated peaks (that have different bounds for each species).
+The three highlighted regions of divergence that were shared across 2+ species 
+were *esr1*, *esr2b*, and *lrrc9*. We calculated the mean weighted $F_{ST}$ across the 
+entire genome for each species. We also calculated local weighted $F_{ST}$ within the 
+shared elevated peaks (that have different bounds for each species).
 
 ``` r
-TableS2_fourspp_weightedFst_calculations.R
+./scripts/R/TableS2_fourspp_weightedFst_calculations.R
 ```
 
-*Lrrc9* and *esrb* are in the same \~850 kb duplicated region across chromosomes 29 and 35. We plotted the genes in this region to better visualize the duplication and the surrounding regions. To do so, we downloaded the gff file from the reference genome on NCBI. For the zoom in plot, we made the values on chr35 negative to avoid plotting as an inversion.
+*Lrrc9* and *esr2b* are in the same \~850 kb duplicated region across 
+chromosomes 29 and 35. *esr2b* and *esr1* are ohnologs that 
+arose during one of the early WGD in the vertebrate lineage. 
+We plotted the genes in this region to better visualize 
+the duplication and the surrounding regions. To do so, we downloaded the gff 
+file from the reference genome on NCBI. For the zoom in plot of Chr 29 and 35, we 
+converted the values on Chr 35 to negative values to deal with the large 
+inversion and to highlight the consistent order of the 
+duplicated genes in the region. 
 
 ``` r
-Figure2_A_WGD_Illustration.R
+./scripts/R/Figure2_A_WGD_Illustration.R
 ```
 
-The gene/duplicate figures were imported into Inkscape and further developed into an illustration for the manuscript.
+The gene/duplicate figures were imported into Inkscape and further developed 
+into an illustration for the manuscript (Fig. 2A).
 
-### Consensus Tree
+### Maximum Likelihood Trees of *lrrc9* and *esr2b* and their duplicates
 
-Sequences were downloaded from NCBI for *lrrc9*, *esrb*, and their duplicated variants (*lrrc9*-like, and *esrb*-like) from reference genomes in the four salmon species included in this study. Locus specific information to obtain sequences is available in Table S3 of the supplemental tables. Pike, a closely related species, was used as an outgroup. All sequences were imported into Geneious Prime, aligned with Clustal Omega, and neighbor joining trees were created and exported as newick files.
+Sequences were downloaded from NCBI for *lrrc9*, *esr2b*, and their duplicated 
+variants (*lrrc9*-like, and *esr2b*-like) from reference genomes in the four 
+salmon species included in this study. Locus specific information to obtain 
+sequences is available in Table S3 of the supplemental tables. Northern Pike, a closely 
+related species, was used as an outgroup. All sequences were imported into 
+Geneious Prime, aligned with Clustal Omega, and neighbor joining trees were 
+created and exported as newick files.
 
 Clustal alignments can be performed from the command line with
 
@@ -272,76 +534,126 @@ Clustal alignments can be performed from the command line with
 clustalo -i INPUT.fasta -o clustal.aln -v --outfmt=clustal --output-order=tree-order --iter=0 --cluster-size=100 -t DNA
 ```
 
-where `INPUT` can be replaced by the locus name (lrrc9 or esrb); and the locus specific fasta file is located in the data directory.
+where `INPUT` can be replaced by the locus name (*lrrc9* or *esrb*); and the locus 
+specific fasta file is located in the data directory.
 
-Consensus trees were plotted for *lrrc9* and *esrb* in R with ggtree with
+Maximum likelihood trees were constructed with the ape and visualized with ggtree
+in the R script
 
 ``` r
-./R/Figure2_BC_ConsensusTrees.R
+./scripts/R/MaximumLikelihoodTrees.R
 ```
+
+The two output trees are sub panels B and C in Figure 2.
 
 ### Genotype Assignment from Local PCAs & Allele Based $F_{ST}$
 
-Local principal component analysis, focused on the peaks of divergence associated with run timing, was used to define run timing genotypes. There was variation in the width of elevated divergence across species, so the region showing elevated divergence across all species was used. For *lrrc9,* the shared peak was contained within *lrrc9* while for *esrb*, it exceeded *esrb* slightly.
+Local principal component analysis, focused on the peaks of divergence associated 
+with run timing, was used to define run timing genotypes. There was variation 
+in the width of elevated divergence across species, so the region showing elevated 
+divergence across all species was used. For *lrrc9,* the shared peak was contained 
+within *lrrc9* while for *esr2b*, it exceeded *esr2b* slightly.
 
 ***lrrc9***: NC_068455.1:28128954-28169980
 
-***esrb***: NC_068449.1:25414060-25501622
+***esr2b***: NC_068449.1:25414060-25501622
+
+***esr1***: NC_068428.1:23264160-23645630
 
 ``` bash
-sbatch ./shell/lrrc9_pca_minInd0.3.sh
-sbatch ./shell/esrb_pca_minInd0.3.sh
+sbatch ./scripts/shell/GENE_pca_FILTER.sh
 ```
 
-Each species-gene local PCA was plotted independently. Each local PCA showed three distinct clusters of individuals separated along PC1. The three groups were defined as the homozygous early (EE), heterozygous (EL), and homozygous late (LL).
+Each species-gene local PCA was plotted independently. Each local PCA showed 
+three distinct clusters of individuals separated along PC1. The three groups 
+were defined as the homozygous early (EE), heterozygous (EL), and homozygous late (LL).
 
 ``` r
-./R/species_specific/PREFIX_lrrc9_pca.R
-./R/species_specific/PREFIX_esrb_pca.R
+./scripts/R/species_specific/PREFIX_GENE_pca.R
 ```
 
-As part of the scripts to produce local PCA plots, bamslists containing the early and late homozygotes are produced to estimate allele-based $F_{ST}$. These estimates can be produced with
+As part of the scripts to produce local PCA plots, bamslists containing the 
+early and late homozygotes are produced to estimate allele-based $F_{ST}$. These 
+estimates can be produced with
 
 ``` bash
-sbatch ./shell/PREFIX_minInd0.3_lrrc9_allele_fst.sh
-sbatch ./shell/PREFIX_minInd0.3_esrb_allele_fst.sh
+sbatch ./shell/PREFIX_FILTER_GENE_allele_fst.sh
 ```
 
-Figure 3 from the manuscript can be created with the following script which combines the local PCAs and zoomed in $F_{ST}$ plots confined to the regions of highest association with run timing.
+Figure 3 from the manuscript, displaying local PCAs, which were used to 
+define the genotypes at each locus can be created with the script 
 
 ``` r
-./R/Figure3_Allele_LocalPCAandFst.R
+./scripts/R/Figure3_Allele_LocalPCA.R
 ```
 
-Additional, supplemental local PCAs - adding Whitefish to the local *lrrc9* sockeye PCA, and Pink Odd lineage local PCA were created. Whitefish individuals were included in the EE and LL bamslists for the above $F_{ST}$ scan.
+Figure 5, zoomed in $F_{ST}$ between early and late genotypes and confined 
+to the regions of highest association with run timing can be created with 
+the script
 
 ``` r
-./R/FigureS3_AlleleLocalPCAs_OddPink-Sockeye.R
+./scripts/R/Figure5_Allele_Fst_Genes.R
 ```
 
-For the *esrb* and *lrrc9* regions plotted in Figure 3B&C, we determined if there were SNPs with elevated $F_{ST}$ ($F_{ST}$ \> 0.5) shared across species. If SNPs were within an annotated gene region, the genes and associated GO terms were listed with that SNP in Table S4.
+Additional, supplemental local PCAs - adding Whitefish to the local *lrrc9* sockeye 
+PCA, and Pink Odd lineage local PCA were created. Whitefish individuals were 
+included in the EE and LL bamslists for the above $F_{ST}$ scan.
 
 ``` r
-./R/TableS4_allele-based_FST_positions_genes.R
+./scripts/R/FigureS3_AlleleLocalPCAs_OddPink-Sockeye.R
+```
+
+For the *esr2b* and *lrrc9* regions plotted in Fig. 5, we determined if there 
+were SNPs with elevated $F_{ST}$ ($F_{ST}$ \> 0.5) shared across species. 
+If SNPs were within an annotated gene region, the genes and associated GO 
+terms were listed with that SNP in Table S4.
+
+``` r
+./scripts/R/TableS4_allele-based_FST_positions_genes.R
 ```
 
 #### Barplots
+To compare run timing allele frequency by run timing phenotype, barplots of 
+putative allele proportions from PCA assignment of genotypes were constructed. 
+For the pink salmon odd lineage, we used the GTseq proportions from 2019 
+instead of whole genome results.
 
-To compare run timing allele frequency by run timing phenotype, barplots of putative allele proportions from PCA assignment of genotypes were constructed. For pink-odd, we used the GTseq proportions from 2019 instead of whole genome results.
+GTseq analyses for all species for which primers were developed are located in
+the script
 
 ``` r
-./R/FigureS4_Lrrc9_Esrb_Barplots.R
+./scripts/R/GTseq.R
+```
+
+The analyses of Auke Creek from 2019 are located on lines 46-203. It 
+calls in a function to score either the paired-end MiSeq runs from NOAA or the 
+single-end NextSeq 
+runs from ADF&G:
+
+``` r
+./scripts/R/functions/ScoreGTSeq_Fncts.R
+```
+
+as well at the GTscore functions from https://github.com/gjmckinney/GTscore
+
+The barplots in Fig. S2 can be created with the script
+
+``` r
+./R/FigureS4_Lrrc9-Esrb-Esr1_Barplots.R
 ```
 
 ### IBS Matrix
 
-Relationships among the run timing alleles among species were investigated by producing IBS neighbor-joining trees. The IBS matrix was produced in ANGSD with the following settings:
+Relationships among the run timing alleles among species were investigated 
+by producing IBS neighbor-joining trees. The IBS matrix was produced in ANGSD 
+with the following settings:
 
 -   -doIBS 1, -makeMatrix 1
 -   *minMapQ* [20]: the minimum map quality is 20.
 -   *minQ* [20]: the minimum base quality is 20.
 -   *doMajorMinor* [4]: Set the major and minor as the reference genome major/minor, was changed from 1.
--   *C* [50]: use an adjustment of the Map Quality for excessive mismatches of 50. This is the suggested value for BWA and leads to fewer false positive variant calls
+-   *C* [50]: use an adjustment of the Map Quality for excessive mismatches of 50. 
+This is the suggested value for BWA and leads to fewer false positive variant calls
 -   *SNP_pval* [1e-10]: Retain sites with a p-value from the likelihood test of less than 1e-10.
 -   *GL* [1]: use SAMtools genotype likelihood calling algorithm.
 -   *minMaf* [0.05]: Retain sites with a maf above 0.05
@@ -356,28 +668,122 @@ cd runtiming/
 cat ./pink/pink-chum_filtered_bamslist.txt ./sockeye/sock-chum_filtered_bamslist.txt ./anvil/euclide_filtered_bamslist.txt ./coho/coho-chum_filtered_bamslist.txt ./chum/chumrun_bamslist.txt > ./fourspecies/fourspp_bamslist_all.txt
 ```
 
-To facilitate display of the allele-based NJ-tree, the full data set of 432 individuals was subset. We used a subset of the total individuals assigned to homozygous early (EE) and late genotypes (LL): ten individuals per species, 5 per genotype. Individuals were selected largely based on depth, as determined via:
+To facilitate display of the allele-based NJ-tree, the full data set of 
+432 individuals was subset. We used a subset of the total individuals assigned 
+to homozygous early (EE) and late genotypes (LL): ten individuals per species, 
+5 per genotype. Individuals were selected largely based on depth, as determined via:
 
 ``` r
 ./R/Individual_Subset_for_Figure4_AlleleNJTree.R
 ```
 
-The script results in the following two files:
+The script results in the three files:
 
 ```         
 fourspp_lrrc9_top5_ibs_input.txt
 fourspp_esrb_top5_ibs_input.txt
+fourspp_esr1_top5_ibs_input.txt
 ```
 
 The final subsetted IBS matrices to produce NJ trees were calculated with
 
 ``` bash
-top5_lrrc9_fourspp_ibs.sh
-top5_esrb_fourspp_ibs.sh
+./scripts/shell/top5_lrrc9_fourspp_ibs.sh
+./scripts/shell/top5_esrb_fourspp_ibs.sh
+./scripts/shell/top5_esr1_fourspp_ibs.sh
 ```
 
-Trees were then plotted in in R for both *lrrc9* and *esrb* with ggtree
+Trees were then plotted for all genes (*esr1*, *esrb* and 
+*lrrc9*) with ggtree in R with the script 
 
 ``` r
-Figure4_AlleleNJTree.R
+./scripts/R/Figure4_AlleleNJTree.R
 ```
+
+### Maximum Likelihood Tree of Estrogen Receptors
+To help visualize the duplication history and association of estrogen receptors 
+with reproductive timing among taxa we downloaded the ammino acid sequences listed in Table S8.  
+Sequences were aligned with Clustal Omega v1.2.2
+
+```bash
+clustalo -i input.fasta -o clustal.aln -v --outfmt=clustal --output-order=tree-order --iter=3 --full --full-iter --cluster-size=100 -t Protein
+```
+
+A maximum likelihood tree was constructed with the R package ape v5.8 
+with the JTT amino acid model and node support from 100 bootstrap replicates
+on lines 8-225 of the script:
+
+``` r
+./scripts/R/MaximumLikelihoodTrees.R
+```
+
+### Additional GTseq Analyses
+Additional collections of pink, chum, and sockeye salmon were 
+genotyped wtih high coverage at SNPs that showed strong association
+with return timing. 
+
+The primer probe file for these analyses is supplementary Table S10, describing the
+forward and reverse primers and SNP probes. 
+
+All analyses are described below, but are contained in the single script
+
+``` r
+./scripts/R/GTseq.R
+```
+
+Sample metadata for upload to NCBI were wrangled with the script
+
+``` r
+./scripts/R/GTseq_SRAwrangle.R
+```
+
+#### Rangewide Pink Salmon lrrc9 frequencies
+We genotyped 1175 pink salmon from 21 collections at *lrrc9* and used 
+simple linear models to evaluate the association of the early allele 
+frequency and Julian date for pink salmon across the North Pacific. These 
+analyses start on line 206.
+
+#### Outmigration timing in Yukon River juvenile chum salmon
+We genotyped 705 juvenile chum salmon samples that were collected during their 
+outmigration from the Yukon River. Early allele frequency was calculated 
+by weeks for *lrrc9* and *esr2b* and simple linear regression was used
+to evaluate the association between allele frequency and outmigration timing.
+These analyses begin on line 354. 
+
+#### Bristol Bay Sockeye
+We genotyped 381 sockeye samples at *esr1* and *lrrc9* from 
+Whitefish Creek (n=141) and Pick Creek (n=240) over three days of their 
+return in 2011 or 2024. Allele frequency was calculated for each of the 
+three days of the return and visually inspected for concordance with 
+variation observed in lcWGS data. These analyses start on line 597.
+
+
+### Evaluation of structural changes around lrrc9 in pink salmon
+Scripts used to assemble and analyze a Pink Salmon genome and 
+characterize the lrrc9 alleles are located in the directory 
+
+``` bash
+./scripts/shell/pink_assembly
+```
+
+Reads were assembled with Hifiasm into two haplotypes
+
+``` bash
+./scripts/shell/pink_assembly/run_hifiasm.sh
+```
+
+Minimap2 was used to align each haplotype against the reference genome with
+
+``` bash
+./scripts/shell/pink_assembly/run_minimap.sh
+```
+
+and competitively aligned each read to a fasta file containing the 
+*lrrc9* containing contigs for both haplotypes and separated reads based on
+which contig they aligned to 
+
+``` bash
+./scripts/shell/pink_assembly/realign_lrrc9_competitively.sh
+```
+
+We then visualized read alignment in IGV. 
