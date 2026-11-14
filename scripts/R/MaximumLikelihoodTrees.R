@@ -349,13 +349,40 @@ final_lrrc9_plot <- p +
     y = 1.15,              
     width = 0.05,         
     color = "black", 
-    fontsize = 5,
+    fontsize = 6,
     offset = 0.05
   ) +
   coord_cartesian(clip = "off") +
   scale_x_continuous(expand = expansion(mult = c(0, 0.35)))
 
-png(filename = './figures/lrrc9_tree.png',width=5,height=5,units="in",res=300)
+png(filename = './figures/lrrc9_tree.png',width=3.6,height=3.6,units="in",res=500)
+final_lrrc9_plot
+dev.off()
+
+
+
+final_lrrc9_plot <- ggtree(lrrc9_tree, size=0.25) %>% 
+  rotate(17) %>% # put lrrc9 on top
+  rotate(14) %>% # put coho on top 
+  rotate(16) %>% # put sockeye under coho
+  rotate(13) %>%
+  rotate(12) %<+% d  + 
+  geom_tiplab(aes(label=newlabel),size=6/.pt) + 
+  #geom_nodelab(size = 3, hjust = -0.1, vjust = -0.3, color = "black") +
+  # Draw the clean, dedicated phylogenetic scale bar
+  geom_treescale(
+    x = 0.15,               
+    y = 1.15,              
+    width = 0.05,         
+    color = "black",
+    linesize = 0.25,
+    fontsize = 6/.pt,
+    offset = 0.05
+  ) +
+  coord_cartesian(clip = "off") +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.35)))
+
+svg(filename = './figures/lrrc9_tree2.svg',width=1.6,height=1.6)
 final_lrrc9_plot
 dev.off()
 
@@ -500,7 +527,7 @@ p <- ggtree(esr2b_tree) %>%
   rotate(17) %<+% d 
 
 final_esr2b_plot <- p + 
-  geom_tiplab(aes(label=newlabel),size=6) + 
+  geom_tiplab(aes(label=newlabel),size= 6) + 
   #geom_nodelab(size = 3, hjust = -0.1, vjust = -0.3, color = "black") +
   # Draw the clean, dedicated phylogenetic scale bar
   geom_treescale(
@@ -508,12 +535,38 @@ final_esr2b_plot <- p +
     y = 1.15,              
     width = 0.05,         
     color = "black", 
-    fontsize = 5,
+    fontsize = 6,
     offset = 0.05
   ) +
   coord_cartesian(clip = "off") +
   scale_x_continuous(expand = expansion(mult = c(0, 0.35)))
 
-png(filename = './figures/esr2b_tree.png',width=5,height=5,units="in",res=300)
+png(filename = './figures/esr2b_tree.png',width=3.6,height=3.6,units="in",res=500)
+final_esr2b_plot
+dev.off()
+
+# For science, svg #
+
+final_esr2b_plot <- ggtree(esr2b_tree, size=0.25) %>% 
+  rotate(13) %>%
+  rotate(12) %>%
+  rotate(16) %>%
+  rotate(14) %>%
+  rotate(17) %<+% d + 
+  geom_tiplab(aes(label=newlabel),size= 6 / .pt) + 
+  geom_treescale(
+    x = 0.15,               
+    y = 1.15,              
+    width = 0.05,         
+    color = "black",
+    linesize = 0.25,
+    fontsize = 6 / .pt,
+    offset = 0.05
+  ) +
+  coord_cartesian(clip = "off") +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.35)))
+
+# width is slightly less that a 1 column width of 3.6
+svg(filename = './figures/esr2b_tree2.svg',width=1.6,height=1.6)
 final_esr2b_plot
 dev.off()
